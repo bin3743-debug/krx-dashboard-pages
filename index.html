@@ -241,6 +241,52 @@
       color: var(--text);
       font-weight: 600;
     }
+    .expiry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 22px;
+      margin-top: 18px;
+    }
+    .expiry-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      column-gap: 14px;
+      align-items: baseline;
+      padding: 10px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+    }
+    .expiry-item .label {
+      font-size: 17px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .expiry-item .value {
+      font-size: 22px;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .expiry-impact {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(16, 46, 82, 0.06);
+      border: 1px dashed rgba(16, 46, 82, 0.18);
+    }
+    .expiry-impact .heading {
+      font-size: 18px;
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .expiry-impact .note {
+      font-size: 16px;
+      line-height: 1.55;
+      color: #44566b;
+      font-weight: 600;
+    }
     .chart-wrap {
       margin-top: 26px;
       background: white;
@@ -753,6 +799,16 @@
               <div class="market-big" id="program-nonarb"></div>
             </div>
           </div>
+          <div class="expiry-impact">
+            <div class="heading">파생 만기 캘린더</div>
+            <div class="expiry-grid">
+              <div class="expiry-item"><div class="label">직전 월물 만기</div><div class="value" id="expiry-prev-monthly"></div></div>
+              <div class="expiry-item"><div class="label">다음 월물 만기</div><div class="value" id="expiry-next-monthly"></div></div>
+              <div class="expiry-item"><div class="label">직전 분기 동시만기</div><div class="value" id="expiry-prev-quarterly"></div></div>
+              <div class="expiry-item"><div class="label">다음 분기 동시만기</div><div class="value" id="expiry-next-quarterly"></div></div>
+            </div>
+            <div class="note" id="expiry-impact-note"></div>
+          </div>
           <div class="market-foot" id="notes-line-1"></div>
           <div class="market-foot" id="notes-line-2"></div>
         </div>
@@ -930,6 +986,140 @@
       }
     }
 
+    function toDateOnly(value) {
+      const parts = String(value).split("-").map(Number);
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function formatIsoDate(date) {
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    }
+
+    function secondThursday(year, monthIndex) {
+      const first = new Date(year, monthIndex, 1);
+      const offset = (4 - first.getDay() + 7) % 7;
+      return new Date(year, monthIndex, 1 + offset + 7);
+    }
+
+    function isQuarterMonth(monthIndex) {
+      return [2, 5, 8, 11].includes(monthIndex);
+    }
+
+    function previousMonthlyExpiry(dateValue) {
+      const date = toDateOnly(dateValue);
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      let expiry = secondThursday(year, month);
+      if (expiry > date) {
+        month -= 1;
+        if (month < 0) {
+          month = 11;
+          year -= 1;
+        }
+        expiry = secondThursday(year, month);
+      }
+      return expiry;
+    }
+
+    function nextMonthlyExpiry(dateValue) {
+      const date = toDateOnly(dateValue);
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      let expiry = secondThursday(year, month);
+      if (expiry <= date) {
+        month += 1;
+        if (month > 11) {
+          month = 0;
+          year += 1;
+        }
+        expiry = secondThursday(year, month);
+      }
+      return expiry;
+    }
+
+    function previousQuarterlyExpiry(dateValue) {
+      const date = toDateOnly(dateValue);
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      while (true) {
+        if (isQuarterMonth(month)) {
+          const expiry = secondThursday(year, month);
+          if (expiry <= date) return expiry;
+        }
+        month -= 1;
+        if (month < 0) {
+          month = 11;
+          year -= 1;
+        }
+      }
+    }
+
+    function nextQuarterlyExpiry(dateValue) {
+      const date = toDateOnly(dateValue);
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      while (true) {
+        if (isQuarterMonth(month)) {
+          const expiry = secondThursday(year, month);
+          if (expiry > date) return expiry;
+        }
+        month += 1;
+        if (month > 11) {
+          month = 0;
+          year += 1;
+        }
+      }
+    }
+
+    function businessDayDistance(startDate, endDate) {
+      const start = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+      const end = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+      const step = start <= end ? 1 : -1;
+      const cursor = new Date(start);
+      let count = 0;
+      while (cursor.getTime() !== end.getTime()) {
+        cursor.setDate(cursor.getDate() + step);
+        const day = cursor.getDay();
+        if (day !== 0 && day !== 6) count += step;
+      }
+      return count;
+    }
+
+    function buildExpiryContext(dateValue) {
+      const selected = toDateOnly(dateValue);
+      const prevMonthly = previousMonthlyExpiry(dateValue);
+      const nextMonthly = nextMonthlyExpiry(dateValue);
+      const prevQuarterly = previousQuarterlyExpiry(dateValue);
+      const nextQuarterly = nextQuarterlyExpiry(dateValue);
+      const monthlySince = businessDayDistance(prevMonthly, selected);
+      const monthlyUntil = businessDayDistance(selected, nextMonthly);
+      const quarterlySince = businessDayDistance(prevQuarterly, selected);
+      const quarterlyUntil = businessDayDistance(selected, nextQuarterly);
+
+      let headline = "만기 영향 제한적";
+      let note = `개별주식선물은 직전 월물 만기 ${monthlySince}영업일 경과, 다음 만기까지 ${monthlyUntil}영업일 남았습니다. 코스피200 분기 동시만기는 직전 ${quarterlySince}영업일 경과, 다음까지 ${quarterlyUntil}영업일 남아 있어 현재 수급은 방향성 해석 비중이 더 큽니다.`;
+
+      if (Math.abs(monthlySince) <= 2 || Math.abs(monthlyUntil) <= 2 || Math.abs(quarterlySince) <= 2 || Math.abs(quarterlyUntil) <= 2) {
+        headline = "만기 영향 큼";
+        note = "만기일 전후 2영업일 구간이라 계약과 OI 변화에는 청산과 롤오버가 크게 섞일 수 있습니다. 특히 코스피200 분기물과 개별주식선물 모두 방향성 해석보다 만기 영향 분리를 먼저 보는 편이 안전합니다.";
+      } else if (quarterlySince <= 7 || monthlySince <= 5) {
+        headline = "만기 직후 영향 주의";
+        note = `직전 만기 이후 얼마 지나지 않은 구간이라 OI 재형성, 차월물 이동, 포지션 재구축 영향이 남아 있을 수 있습니다. 개별주식선물은 월물 만기 이후 ${monthlySince}영업일, 코스피200 분기물은 동시만기 이후 ${quarterlySince}영업일 경과한 상태로 읽는 것이 좋습니다.`;
+      } else if (quarterlyUntil <= 7 || monthlyUntil <= 5) {
+        headline = "만기 접근 영향 주의";
+        note = `다음 만기일까지 남은 기간이 짧아 근월물 청산과 차월물 이동이 서서히 섞일 수 있습니다. 개별주식선물은 월물 만기까지 ${monthlyUntil}영업일, 코스피200 분기물은 동시만기까지 ${quarterlyUntil}영업일 남았습니다.`;
+      }
+
+      return {
+        prevMonthly: formatIsoDate(prevMonthly),
+        nextMonthly: formatIsoDate(nextMonthly),
+        prevQuarterly: formatIsoDate(prevQuarterly),
+        nextQuarterly: formatIsoDate(nextQuarterly),
+        headline,
+        note
+      };
+    }
+
     function attachTooltipHandlers(svgId, tooltipId) {
       const svg = document.getElementById(svgId);
       svg.querySelectorAll("[data-tooltip-date]").forEach(node => {
@@ -1058,6 +1248,7 @@
     function render(date) {
       const row = byDate.get(date);
       if (!row) return;
+      const expiry = buildExpiryContext(row.date);
 
       setText("hero-date", `기준일 ${row.date}`);
       setText("hero-range", `누적 ${row.range_label}`);
@@ -1087,6 +1278,11 @@
 
       setText("program-arb", fmtSignedFloat(row.market.program_arb_amount));
       setText("program-nonarb", fmtSignedFloat(row.market.program_nonarb_amount));
+      setText("expiry-prev-monthly", expiry.prevMonthly);
+      setText("expiry-next-monthly", expiry.nextMonthly);
+      setText("expiry-prev-quarterly", expiry.prevQuarterly);
+      setText("expiry-next-quarterly", expiry.nextQuarterly);
+      setText("expiry-impact-note", `${expiry.headline} · ${expiry.note}`);
 
       setText(
         "notes-line-1",
@@ -1094,7 +1290,7 @@
       );
       setText(
         "notes-line-2",
-        `참고: 외국인 당일 거래실적 / 전체 OI 비율 - 삼성전자 ${fmtRatio(row.samsung.oi_ratio)}, SK hynix ${fmtRatio(row.skhynix.oi_ratio)}`
+        `참고: 외국인 당일 거래실적 / 전체 OI 비율 - 삼성전자 ${fmtRatio(row.samsung.oi_ratio)}, SK hynix ${fmtRatio(row.skhynix.oi_ratio)} · ${expiry.headline}`
       );
     }
 
