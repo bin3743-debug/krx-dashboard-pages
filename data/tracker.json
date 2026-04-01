@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-31 22:19:56",
+  "generated_at": "2026-04-01 19:03:57",
   "start_date": "2026-03-12",
-  "latest_date": "2026-03-31",
+  "latest_date": "2026-04-01",
   "rows": [
     {
       "date": "2026-03-12",
@@ -492,6 +492,41 @@
         "program_nonarb_amount": -23523.19
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260331.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260331.xlsx, KRX_투자자별거래실적_코스피200선물_20260331.xlsx, KRX_프로그램매매_코스피_20260331.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260331.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260331.xlsx, data_4459_20260331.csv"
+    },
+    {
+      "date": "2026-04-01",
+      "range_label": "2026-03-12 ~ 2026-04-01",
+      "samsung": {
+        "daily_contracts": 45832,
+        "daily_amount": 847.57,
+        "cum_contracts": -123620,
+        "cum_amount": -2276.7000000000003,
+        "oi": 4428858,
+        "oi_delta": 762,
+        "spot_shares": -15820,
+        "spot_amount": -31.94,
+        "oi_ratio": 1.03484916427666
+      },
+      "skhynix": {
+        "daily_contracts": 21775,
+        "daily_amount": 1947.02,
+        "cum_contracts": 28291,
+        "cum_amount": 3484.460000000001,
+        "oi": 1005777,
+        "oi_delta": 7702,
+        "spot_shares": -454971,
+        "spot_amount": -4044.85,
+        "oi_ratio": 2.1649928363842084
+      },
+      "market": {
+        "kospi200_daily_contracts": 7070,
+        "kospi200_daily_amount": 13648.09,
+        "kospi200_cum_contracts": -6373,
+        "kospi200_cum_amount": -13402.650000000001,
+        "program_arb_amount": 5448.73,
+        "program_nonarb_amount": 2711.83
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260401.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260401.xlsx, KRX_투자자별거래실적_코스피200선물_20260401.xlsx, KRX_프로그램매매_코스피_20260401.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260401.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260401.xlsx, data_4459_20260401.csv"
     }
   ]
 }
