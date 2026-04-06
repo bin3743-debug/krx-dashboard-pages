@@ -1,5 +1,5 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-06 21:39:16",
+  "generated_at": "2026-04-06 22:28:16",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-06",
   "rows": [
