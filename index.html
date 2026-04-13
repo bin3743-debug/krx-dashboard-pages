@@ -287,6 +287,12 @@
       color: #44566b;
       font-weight: 600;
     }
+    .expiry-impact .cycle-note {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(16, 46, 82, 0.12);
+      color: #1B2C40;
+    }
     .chart-wrap {
       margin-top: 26px;
       background: white;
@@ -731,8 +737,8 @@
               <div class="metric-list">
                 <div class="metric-row"><div class="label">선물 당일(외국인)</div><div class="value red" id="samsung-daily-contracts"></div></div>
                 <div class="metric-row"><div class="label">선물 금액(외국인)</div><div class="value ink" id="samsung-daily-amount"></div></div>
-                <div class="metric-row"><div class="label">선물 누적(외국인)</div><div class="value red" id="samsung-cum-contracts"></div></div>
-                <div class="metric-row"><div class="label">누적 금액(외국인)</div><div class="value ink" id="samsung-cum-amount"></div></div>
+                <div class="metric-row"><div class="label">선물 월물 누적(외국인)</div><div class="value red" id="samsung-cum-contracts"></div></div>
+                <div class="metric-row"><div class="label">월물 누적 금액(외국인)</div><div class="value ink" id="samsung-cum-amount"></div></div>
               </div>
               <div class="side-list">
                 <div class="side-item">
@@ -757,8 +763,8 @@
               <div class="metric-list">
                 <div class="metric-row"><div class="label">선물 당일(외국인)</div><div class="value red" id="skhynix-daily-contracts"></div></div>
                 <div class="metric-row"><div class="label">선물 금액(외국인)</div><div class="value ink" id="skhynix-daily-amount"></div></div>
-                <div class="metric-row"><div class="label">선물 누적(외국인)</div><div class="value red" id="skhynix-cum-contracts"></div></div>
-                <div class="metric-row"><div class="label">누적 금액(외국인)</div><div class="value ink" id="skhynix-cum-amount"></div></div>
+                <div class="metric-row"><div class="label">선물 월물 누적(외국인)</div><div class="value red" id="skhynix-cum-contracts"></div></div>
+                <div class="metric-row"><div class="label">월물 누적 금액(외국인)</div><div class="value ink" id="skhynix-cum-amount"></div></div>
               </div>
               <div class="side-list">
                 <div class="side-item">
@@ -785,9 +791,9 @@
               <div class="heading">코스피200선물 외국인</div>
               <div class="market-kospi-grid">
                 <div class="market-kospi-row"><div class="label">당일 계약</div><div class="value red" id="k200-daily-contracts"></div></div>
-                <div class="market-kospi-row"><div class="label">누적 계약</div><div class="value red" id="k200-cum-contracts"></div></div>
+                <div class="market-kospi-row"><div class="label">분기 누적 계약</div><div class="value red" id="k200-cum-contracts"></div></div>
                 <div class="market-kospi-row"><div class="label">당일 금액</div><div class="value ink" id="k200-daily-amount"></div></div>
-                <div class="market-kospi-row"><div class="label">누적 금액</div><div class="value ink" id="k200-cum-amount"></div></div>
+                <div class="market-kospi-row"><div class="label">분기 누적 금액</div><div class="value ink" id="k200-cum-amount"></div></div>
               </div>
             </div>
             <div class="market-card">
@@ -808,6 +814,7 @@
               <div class="expiry-item"><div class="label">다음 분기 동시만기</div><div class="value" id="expiry-next-quarterly"></div></div>
             </div>
             <div class="note" id="expiry-impact-note"></div>
+            <div class="note cycle-note">누적 기준: 개별주식선물은 만기일 당일을 이전 월물의 청산·롤오버 영향 구간으로 보고, 새 월물 누적은 만기 다음 거래일부터 시작합니다. 월물별 계약 자료가 아닌 투자자별 거래실적 집계이므로 만기일 데이터는 새 월물 누적에 섞지 않습니다.</div>
           </div>
           <div class="market-foot" id="notes-line-1"></div>
           <div class="market-foot" id="notes-line-2"></div>
@@ -817,10 +824,10 @@
       <section class="chart-wrap">
         <div class="chart-inner">
           <div class="chart-title">누적 계약 추이</div>
-          <div class="chart-sub">카드는 선택한 기준일 스냅샷이고, 차트는 현재까지 누적된 전체 기간 시계열을 보여줍니다.</div>
+          <div class="chart-sub">차트는 선택한 기준일까지의 흐름만 보여줍니다. 개별주식선물은 선택일이 속한 월물 누적 구간, 코스피200선물은 선택일이 속한 분기 누적 구간으로 다시 그립니다.</div>
           <div class="chart-grid">
             <div class="chart-card wide">
-              <h3>삼성전자 / SK hynix 개별주식선물 외국인 누적 계약</h3>
+              <h3>삼성전자 / SK hynix 개별주식선물 외국인 월물 누적 계약</h3>
               <div class="chart-shell">
                 <svg class="chart-svg" id="contractsChart" viewBox="0 0 960 260" preserveAspectRatio="none"></svg>
                 <div class="chart-tooltip" id="contractsTooltip"></div>
@@ -831,17 +838,7 @@
               </div>
             </div>
             <div class="chart-card">
-              <h3>코스피200선물 외국인 누적 계약 추이</h3>
-              <div class="chart-shell">
-                <svg class="chart-svg" id="k200ContractsChart" viewBox="0 0 960 260" preserveAspectRatio="none"></svg>
-                <div class="chart-tooltip" id="k200ContractsTooltip"></div>
-              </div>
-              <div class="chart-legend">
-                <span><i class="chart-dot" style="background:#0f8b8d"></i>코스피200선물 외국인</span>
-              </div>
-            </div>
-            <div class="chart-card">
-              <h3>삼성전자 / SK hynix 현물 외국인(당일) 금액 추이</h3>
+              <h3>삼성전자 / SK hynix 현물 외국인 월물 누적 금액 추이</h3>
               <div class="chart-shell">
                 <svg class="chart-svg" id="spotAmountsChart" viewBox="0 0 960 260" preserveAspectRatio="none"></svg>
                 <div class="chart-tooltip" id="spotAmountsTooltip"></div>
@@ -849,6 +846,16 @@
               <div class="chart-legend">
                 <span><i class="chart-dot" style="background:#d13131"></i>삼성전자</span>
                 <span><i class="chart-dot" style="background:#355c7d"></i>SK hynix</span>
+              </div>
+            </div>
+            <div class="chart-card">
+              <h3>코스피200선물 외국인 분기 누적 계약 추이</h3>
+              <div class="chart-shell">
+                <svg class="chart-svg" id="k200ContractsChart" viewBox="0 0 960 260" preserveAspectRatio="none"></svg>
+                <div class="chart-tooltip" id="k200ContractsTooltip"></div>
+              </div>
+              <div class="chart-legend">
+                <span><i class="chart-dot" style="background:#0f8b8d"></i>코스피200선물 외국인</span>
               </div>
             </div>
           </div>
@@ -984,6 +991,10 @@
       if (tooltip) {
         tooltip.classList.remove("show");
       }
+    }
+
+    function rangeStart(label) {
+      return String(label || "").split(" ~ ")[0];
     }
 
     function toDateOnly(value) {
@@ -1132,17 +1143,30 @@
       });
     }
 
-    function renderLineChart(svgId, tooltipId, series) {
+    function rowsThrough(date) {
+      const selectedIndex = rows.findIndex(row => row.date === date);
+      if (selectedIndex < 0) return rows;
+      return rows.slice(0, selectedIndex + 1);
+    }
+
+    function currentCycleRows(date, rangeKey) {
+      const through = rowsThrough(date);
+      const selected = through[through.length - 1];
+      if (!selected) return through;
+      const selectedStart = rangeStart(selected[rangeKey]);
+      return through.filter(row => rangeStart(row[rangeKey]) === selectedStart);
+    }
+
+    function renderLineChart(svgId, tooltipId, chartRows, series) {
       const svg = document.getElementById(svgId);
       const dims = getChartDims();
-      const rows = DASHBOARD_DATA.rows;
       const allY = series.flatMap(item => item.points.map(point => point.y));
       const scale = buildScale(allY, dims);
-      const axes = buildAxes(rows, scale, dims);
+      const axes = buildAxes(chartRows, scale, dims);
 
       const paths = series.map(item => {
         const d = item.points.map((point, index) => {
-          const x = scale.toX(index, rows.length);
+          const x = scale.toX(index, chartRows.length);
           const y = scale.toY(point.y);
           return `${index === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
         }).join(" ");
@@ -1150,13 +1174,13 @@
       }).join("");
 
       const dots = series.map(item => item.points.map((point, index) => {
-        const x = scale.toX(index, rows.length);
+        const x = scale.toX(index, chartRows.length);
         const y = scale.toY(point.y);
-        const lines = JSON.stringify([`${item.label}: ${item.valueFormatter(point.y)}`]);
+        const lines = JSON.stringify([`${item.label}: ${item.valueFormatter(point.y)}`, ...(point.extraLines || [])]);
         return `
           <circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="4.5" fill="${item.color}" />
           <circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="12" fill="transparent"
-            data-tooltip-date="${rows[index].date}"
+            data-tooltip-date="${chartRows[index].date}"
             data-tooltip-lines='${lines}' />
         `;
       }).join("")).join("");
@@ -1165,19 +1189,18 @@
       attachTooltipHandlers(svgId, tooltipId);
     }
 
-    function renderGroupedBarChart(svgId, tooltipId, series) {
+    function renderGroupedBarChart(svgId, tooltipId, chartRows, series) {
       const svg = document.getElementById(svgId);
       const dims = getChartDims();
-      const rows = DASHBOARD_DATA.rows;
       const allY = series.flatMap(item => item.points.map(point => point.y));
       const scale = buildScale(allY, dims);
-      const axes = buildAxes(rows, scale, dims);
-      const slotWidth = scale.plotWidth / Math.max(rows.length, 1);
+      const axes = buildAxes(chartRows, scale, dims);
+      const slotWidth = scale.plotWidth / Math.max(chartRows.length, 1);
       const groupWidth = Math.min(slotWidth * 0.72, 48);
       const barWidth = groupWidth / Math.max(series.length, 1);
 
-      const bars = rows.map((row, rowIndex) => {
-        const centerX = scale.toX(rowIndex, rows.length);
+      const bars = chartRows.map((row, rowIndex) => {
+        const centerX = scale.toX(rowIndex, chartRows.length);
         return series.map((item, seriesIndex) => {
           const value = item.points[rowIndex].y;
           const x = centerX - groupWidth / 2 + (seriesIndex * barWidth) + barWidth * 0.1;
@@ -1197,61 +1220,96 @@
       attachTooltipHandlers(svgId, tooltipId);
     }
 
-    function renderContractsChart() {
-      const rows = DASHBOARD_DATA.rows;
-      renderLineChart("contractsChart", "contractsTooltip", [
+    function renderContractsChart(date) {
+      const chartRows = currentCycleRows(date, "stock_range_label");
+      renderLineChart("contractsChart", "contractsTooltip", chartRows, [
         {
           color: "#d13131",
           label: "삼성전자",
           valueFormatter: value => fmtSignedInt(value, "계약"),
-          points: rows.map((row, index) => ({ x: index, y: row.samsung.cum_contracts }))
+          points: chartRows.map((row, index) => ({
+            x: index,
+            y: row.samsung.cum_contracts,
+            extraLines: [`월물 누적 ${row.stock_range_label}`]
+          }))
         },
         {
           color: "#355c7d",
           label: "SK hynix",
           valueFormatter: value => fmtSignedInt(value, "계약"),
-          points: rows.map((row, index) => ({ x: index, y: row.skhynix.cum_contracts }))
+          points: chartRows.map((row, index) => ({
+            x: index,
+            y: row.skhynix.cum_contracts,
+            extraLines: [`월물 누적 ${row.stock_range_label}`]
+          }))
         }
       ]);
     }
 
-    function renderKospi200ContractsChart() {
-      const rows = DASHBOARD_DATA.rows;
-      renderLineChart("k200ContractsChart", "k200ContractsTooltip", [
+    function renderKospi200ContractsChart(date) {
+      const chartRows = currentCycleRows(date, "market_range_label");
+      renderLineChart("k200ContractsChart", "k200ContractsTooltip", chartRows, [
         {
           color: "#0f8b8d",
           label: "코스피200선물 외국인",
           valueFormatter: value => fmtSignedInt(value, "계약"),
-          points: rows.map((row, index) => ({ x: index, y: row.market.kospi200_cum_contracts }))
+          points: chartRows.map((row, index) => ({
+            x: index,
+            y: row.market.kospi200_cum_contracts,
+            extraLines: [`분기 누적 ${row.market_range_label}`]
+          }))
         }
       ]);
     }
 
-    function renderSpotAmountsChart() {
-      const rows = DASHBOARD_DATA.rows;
-      renderGroupedBarChart("spotAmountsChart", "spotAmountsTooltip", [
+    function renderSpotAmountsChart(date) {
+      const chartRows = currentCycleRows(date, "stock_range_label");
+      let samsungCum = 0;
+      let skhynixCum = 0;
+      renderLineChart("spotAmountsChart", "spotAmountsTooltip", chartRows, [
         {
           color: "#d13131",
           label: "삼성전자",
           valueFormatter: value => fmtSignedFloat(value),
-          points: rows.map((row, index) => ({ x: index, y: row.samsung.spot_amount }))
+          points: chartRows.map((row, index) => {
+            samsungCum += row.samsung.spot_amount;
+            return {
+              x: index,
+              y: samsungCum,
+              extraLines: [`월물 누적 ${row.stock_range_label}`]
+            };
+          })
         },
         {
           color: "#355c7d",
           label: "SK hynix",
           valueFormatter: value => fmtSignedFloat(value),
-          points: rows.map((row, index) => ({ x: index, y: row.skhynix.spot_amount }))
+          points: chartRows.map((row, index) => {
+            skhynixCum += row.skhynix.spot_amount;
+            return {
+              x: index,
+              y: skhynixCum,
+              extraLines: [`월물 누적 ${row.stock_range_label}`]
+            };
+          })
         }
       ]);
+    }
+
+    function renderCharts(date) {
+      renderContractsChart(date);
+      renderKospi200ContractsChart(date);
+      renderSpotAmountsChart(date);
     }
 
     function render(date) {
       const row = byDate.get(date);
       if (!row) return;
       const expiry = buildExpiryContext(row.date);
+      renderCharts(row.date);
 
       setText("hero-date", `기준일 ${row.date}`);
-      setText("hero-range", `누적 ${row.range_label}`);
+      setText("hero-range", `월물 누적 ${row.stock_range_label || row.range_label}`);
 
       setText("samsung-daily-contracts", fmtSignedInt(row.samsung.daily_contracts, "계약"));
       setText("samsung-daily-amount", fmtSignedFloat(row.samsung.daily_amount));
@@ -1319,9 +1377,6 @@
       });
 
       render(DASHBOARD_DATA.latest_date);
-      renderContractsChart();
-      renderKospi200ContractsChart();
-      renderSpotAmountsChart();
     }
 
     main().catch(error => {

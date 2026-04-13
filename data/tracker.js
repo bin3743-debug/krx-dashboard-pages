@@ -1,11 +1,13 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-11 08:37:57",
+  "generated_at": "2026-04-13 19:06:44",
   "start_date": "2026-03-12",
-  "latest_date": "2026-04-10",
+  "latest_date": "2026-04-13",
   "rows": [
     {
       "date": "2026-03-12",
       "range_label": "2026-03-12 ~ 2026-03-12",
+      "stock_range_label": "2026-03-12 ~ 2026-03-12",
+      "market_range_label": "2026-03-12 ~ 2026-03-12",
       "samsung": {
         "daily_contracts": -15717,
         "daily_amount": -295.29,
@@ -41,6 +43,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-13",
       "range_label": "2026-03-12 ~ 2026-03-13",
+      "stock_range_label": "2026-03-12 ~ 2026-03-13",
+      "market_range_label": "2026-03-12 ~ 2026-03-13",
       "samsung": {
         "daily_contracts": 57130,
         "daily_amount": 1053.98,
@@ -76,6 +80,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-16",
       "range_label": "2026-03-12 ~ 2026-03-16",
+      "stock_range_label": "2026-03-12 ~ 2026-03-16",
+      "market_range_label": "2026-03-12 ~ 2026-03-16",
       "samsung": {
         "daily_contracts": 90311,
         "daily_amount": 1687.22,
@@ -111,6 +117,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-17",
       "range_label": "2026-03-12 ~ 2026-03-17",
+      "stock_range_label": "2026-03-12 ~ 2026-03-17",
+      "market_range_label": "2026-03-12 ~ 2026-03-17",
       "samsung": {
         "daily_contracts": 4134,
         "daily_amount": 164.58,
@@ -146,6 +154,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-18",
       "range_label": "2026-03-12 ~ 2026-03-18",
+      "stock_range_label": "2026-03-12 ~ 2026-03-18",
+      "market_range_label": "2026-03-12 ~ 2026-03-18",
       "samsung": {
         "daily_contracts": -3900,
         "daily_amount": -71.11,
@@ -181,6 +191,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-19",
       "range_label": "2026-03-12 ~ 2026-03-19",
+      "stock_range_label": "2026-03-12 ~ 2026-03-19",
+      "market_range_label": "2026-03-12 ~ 2026-03-19",
       "samsung": {
         "daily_contracts": -105328,
         "daily_amount": -2122.97,
@@ -216,6 +228,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-20",
       "range_label": "2026-03-12 ~ 2026-03-20",
+      "stock_range_label": "2026-03-12 ~ 2026-03-20",
+      "market_range_label": "2026-03-12 ~ 2026-03-20",
       "samsung": {
         "daily_contracts": -98493,
         "daily_amount": -1970.02,
@@ -251,6 +265,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-23",
       "range_label": "2026-03-12 ~ 2026-03-23",
+      "stock_range_label": "2026-03-12 ~ 2026-03-23",
+      "market_range_label": "2026-03-12 ~ 2026-03-23",
       "samsung": {
         "daily_contracts": -48771,
         "daily_amount": -917.74,
@@ -286,6 +302,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-24",
       "range_label": "2026-03-12 ~ 2026-03-24",
+      "stock_range_label": "2026-03-12 ~ 2026-03-24",
+      "market_range_label": "2026-03-12 ~ 2026-03-24",
       "samsung": {
         "daily_contracts": 185577,
         "daily_amount": 3479.07,
@@ -321,6 +339,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-25",
       "range_label": "2026-03-12 ~ 2026-03-25",
+      "stock_range_label": "2026-03-12 ~ 2026-03-25",
+      "market_range_label": "2026-03-12 ~ 2026-03-25",
       "samsung": {
         "daily_contracts": -34424,
         "daily_amount": -671.47,
@@ -356,6 +376,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-26",
       "range_label": "2026-03-12 ~ 2026-03-26",
+      "stock_range_label": "2026-03-12 ~ 2026-03-26",
+      "market_range_label": "2026-03-12 ~ 2026-03-26",
       "samsung": {
         "daily_contracts": -6978,
         "daily_amount": -129.57,
@@ -391,6 +413,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-27",
       "range_label": "2026-03-12 ~ 2026-03-27",
+      "stock_range_label": "2026-03-12 ~ 2026-03-27",
+      "market_range_label": "2026-03-12 ~ 2026-03-27",
       "samsung": {
         "daily_contracts": -55131,
         "daily_amount": -974.77,
@@ -426,6 +450,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-30",
       "range_label": "2026-03-12 ~ 2026-03-30",
+      "stock_range_label": "2026-03-12 ~ 2026-03-30",
+      "market_range_label": "2026-03-12 ~ 2026-03-30",
       "samsung": {
         "daily_contracts": 884,
         "daily_amount": 21.08,
@@ -461,6 +487,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-03-31",
       "range_label": "2026-03-12 ~ 2026-03-31",
+      "stock_range_label": "2026-03-12 ~ 2026-03-31",
+      "market_range_label": "2026-03-12 ~ 2026-03-31",
       "samsung": {
         "daily_contracts": -138746,
         "daily_amount": -2377.26,
@@ -496,6 +524,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-01",
       "range_label": "2026-03-12 ~ 2026-04-01",
+      "stock_range_label": "2026-03-12 ~ 2026-04-01",
+      "market_range_label": "2026-03-12 ~ 2026-04-01",
       "samsung": {
         "daily_contracts": 45832,
         "daily_amount": 847.57,
@@ -531,6 +561,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-02",
       "range_label": "2026-03-12 ~ 2026-04-02",
+      "stock_range_label": "2026-03-12 ~ 2026-04-02",
+      "market_range_label": "2026-03-12 ~ 2026-04-02",
       "samsung": {
         "daily_contracts": -97127,
         "daily_amount": -1778.01,
@@ -566,6 +598,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-03",
       "range_label": "2026-03-12 ~ 2026-04-03",
+      "stock_range_label": "2026-03-12 ~ 2026-04-03",
+      "market_range_label": "2026-03-12 ~ 2026-04-03",
       "samsung": {
         "daily_contracts": -4208,
         "daily_amount": -81.52,
@@ -601,6 +635,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-06",
       "range_label": "2026-03-12 ~ 2026-04-06",
+      "stock_range_label": "2026-03-12 ~ 2026-04-06",
+      "market_range_label": "2026-03-12 ~ 2026-04-06",
       "samsung": {
         "daily_contracts": 16888,
         "daily_amount": 321.79,
@@ -636,6 +672,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-07",
       "range_label": "2026-03-12 ~ 2026-04-07",
+      "stock_range_label": "2026-03-12 ~ 2026-04-07",
+      "market_range_label": "2026-03-12 ~ 2026-04-07",
       "samsung": {
         "daily_contracts": -17472,
         "daily_amount": -384.77,
@@ -671,6 +709,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-08",
       "range_label": "2026-03-12 ~ 2026-04-08",
+      "stock_range_label": "2026-03-12 ~ 2026-04-08",
+      "market_range_label": "2026-03-12 ~ 2026-04-08",
       "samsung": {
         "daily_contracts": 68514,
         "daily_amount": 1446.56,
@@ -706,6 +746,8 @@ window.KRX_DASHBOARD_DATA = {
     {
       "date": "2026-04-09",
       "range_label": "2026-03-12 ~ 2026-04-09",
+      "stock_range_label": "2026-03-12 ~ 2026-04-09",
+      "market_range_label": "2026-03-12 ~ 2026-04-09",
       "samsung": {
         "daily_contracts": 20247,
         "daily_amount": 394.02,
@@ -740,12 +782,14 @@ window.KRX_DASHBOARD_DATA = {
     },
     {
       "date": "2026-04-10",
-      "range_label": "2026-03-12 ~ 2026-04-10",
+      "range_label": "2026-04-10 ~ 2026-04-10",
+      "stock_range_label": "2026-04-10 ~ 2026-04-10",
+      "market_range_label": "2026-03-12 ~ 2026-04-10",
       "samsung": {
         "daily_contracts": -29811,
         "daily_amount": -625.87,
-        "cum_contracts": -166589,
-        "cum_amount": -2984.500000000001,
+        "cum_contracts": -29811,
+        "cum_amount": -625.87,
         "oi": 4244615,
         "oi_delta": -6030,
         "spot_shares": 468960,
@@ -755,8 +799,8 @@ window.KRX_DASHBOARD_DATA = {
       "skhynix": {
         "daily_contracts": -27276,
         "daily_amount": -2718.41,
-        "cum_contracts": -44199,
-        "cum_amount": -2941.4199999999987,
+        "cum_contracts": -27276,
+        "cum_amount": -2718.41,
         "oi": 1022362,
         "oi_delta": 29230,
         "spot_shares": 811687,
@@ -772,6 +816,43 @@ window.KRX_DASHBOARD_DATA = {
         "program_nonarb_amount": 708.9
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260410.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260410.xlsx, KRX_투자자별거래실적_코스피200선물_20260410.xlsx, KRX_프로그램매매_코스피_20260410.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260410.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260410.xlsx, data_4459_20260410.csv"
+    },
+    {
+      "date": "2026-04-13",
+      "range_label": "2026-04-10 ~ 2026-04-13",
+      "stock_range_label": "2026-04-10 ~ 2026-04-13",
+      "market_range_label": "2026-03-12 ~ 2026-04-13",
+      "samsung": {
+        "daily_contracts": 81130,
+        "daily_amount": 1632.45,
+        "cum_contracts": 51319,
+        "cum_amount": 1006.58,
+        "oi": 4132755,
+        "oi_delta": -111860,
+        "spot_shares": -1433695,
+        "spot_amount": -2871.18,
+        "oi_ratio": 1.963097255946699
+      },
+      "skhynix": {
+        "daily_contracts": -1169,
+        "daily_amount": -116.59,
+        "cum_contracts": -28445,
+        "cum_amount": -2835.0,
+        "oi": 1009442,
+        "oi_delta": -12920,
+        "spot_shares": 442849,
+        "spot_amount": 4553.0,
+        "oi_ratio": -0.11580655451229492
+      },
+      "market": {
+        "kospi200_daily_contracts": -977,
+        "kospi200_daily_amount": -2135.42,
+        "kospi200_cum_contracts": 4999,
+        "kospi200_cum_amount": 11522.719999999996,
+        "program_arb_amount": -1261.37,
+        "program_nonarb_amount": 330.09
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260413.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260413.xlsx, KRX_투자자별거래실적_코스피200선물_20260413.xlsx, KRX_프로그램매매_코스피_20260413.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260413.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260413.xlsx, data_4459_20260413.csv"
     }
   ]
 };
