@@ -156,6 +156,45 @@
       grid-template-columns: 1.2fr repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
+    .summary-details {
+      margin-top: 2px;
+    }
+    .summary-details summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 9px 13px;
+      background: #edf4fb;
+      border: 1px solid rgba(16, 46, 82, 0.12);
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 900;
+      user-select: none;
+    }
+    .summary-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .summary-details summary::before {
+      content: "+";
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: white;
+      color: var(--navy);
+      font-weight: 900;
+    }
+    .summary-details[open] summary::before {
+      content: "-";
+    }
+    .summary-details[open] .summary-grid {
+      margin-top: 12px;
+    }
     .summary-card {
       border-radius: 18px;
       background: #f6f8fb;
@@ -213,6 +252,91 @@
       line-height: 1.38;
       color: #5f4b14;
       font-weight: 800;
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .decision-card {
+      border-radius: 18px;
+      border: 1px solid rgba(16, 46, 82, 0.12);
+      background: linear-gradient(135deg, #ffffff 0%, #f4f8fc 100%);
+      padding: 14px 16px;
+      min-height: 118px;
+    }
+    .decision-card.caution {
+      background: linear-gradient(135deg, #fff8e8 0%, #f9f1dc 100%);
+      border-color: rgba(138, 90, 0, 0.18);
+    }
+    .decision-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+    .decision-headline {
+      font-size: 22px;
+      line-height: 1.22;
+      color: var(--navy);
+      font-weight: 900;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .decision-detail {
+      font-size: 14px;
+      line-height: 1.45;
+      color: #506176;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+    .flow-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .matrix-cell {
+      border-radius: 16px;
+      padding: 12px 13px;
+      border: 1px solid rgba(16, 46, 82, 0.1);
+      background: #f8fafc;
+      min-height: 116px;
+    }
+    .matrix-cell.buy {
+      background: #f0f8f2;
+      border-color: rgba(20, 96, 50, 0.14);
+    }
+    .matrix-cell.sell {
+      background: #fff1f1;
+      border-color: rgba(155, 28, 28, 0.14);
+    }
+    .matrix-cell.mixed {
+      background: #fff7e6;
+      border-color: rgba(138, 90, 0, 0.17);
+    }
+    .matrix-axis {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .matrix-status {
+      font-size: 18px;
+      line-height: 1.24;
+      color: var(--text);
+      font-weight: 900;
+      margin-bottom: 6px;
+      word-break: keep-all;
+    }
+    .matrix-detail {
+      font-size: 13px;
+      line-height: 1.42;
+      color: #506176;
+      font-weight: 800;
+      word-break: keep-all;
     }
     .cycle-line {
       margin-top: -6px;
@@ -626,6 +750,10 @@
       .summary-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .decision-grid,
+      .flow-matrix {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
       .stock-layout {
         grid-template-columns: 1fr;
       }
@@ -721,9 +849,20 @@
       .summary-grid {
         grid-template-columns: 1fr;
       }
+      .decision-grid,
+      .flow-matrix {
+        grid-template-columns: 1fr;
+      }
       .summary-card {
         min-height: 0;
         padding: 14px;
+      }
+      .decision-card,
+      .matrix-cell {
+        min-height: 0;
+      }
+      .decision-headline {
+        font-size: 19px;
       }
       .summary-card .call {
         font-size: 19px;
@@ -896,7 +1035,7 @@
         <div id="hero-range">누적</div>
         <div id="hero-market-range">분기 누적</div>
       </div>
-      <div class="hero-sub">계약 단위 계약 | 금액 단위 억원 | 투자자별 거래실적 누적 기준 proxy</div>
+      <div class="hero-sub">계약 단위 계약 | 금액 단위 억원 | 누적은 보유잔고가 아니라 투자자별 거래실적을 더한 대용치</div>
     </section>
     <main class="container">
       <div class="toolbar">
@@ -905,10 +1044,10 @@
         <div class="stamp" id="generatedAt"></div>
       </div>
 
-      <section class="flow-summary" aria-label="오늘 외국인 수급 판정">
+      <section class="flow-summary" aria-label="전거래일 외국인 수급 판정과 다음 거래일 체크">
         <div class="summary-head">
           <div>
-            <div class="summary-title">오늘 외국인 수급 판정</div>
+            <div class="summary-title">전거래일 수급 판정 / 다음 거래일 체크</div>
             <div class="summary-verdict" id="flow-verdict">데이터 확인 중</div>
           </div>
           <div class="quality-stack">
@@ -917,30 +1056,51 @@
             <span class="quality-chip" id="cycle-badge">누적 구간 확인 중</span>
           </div>
         </div>
-        <div class="summary-grid">
-          <article class="summary-card emphasis">
-            <div class="eyebrow">10초 요약</div>
-            <div class="call" id="flow-summary-main">-</div>
-            <div class="detail" id="flow-summary-detail">-</div>
-            <div class="score-row" id="flow-score-row"></div>
+        <div class="decision-grid" aria-label="3줄 핵심 판단">
+          <article class="decision-card">
+            <div class="decision-label">1. 오늘 결론</div>
+            <div class="decision-headline" id="decision-action-title">-</div>
+            <div class="decision-detail" id="decision-action-detail">-</div>
           </article>
-          <article class="summary-card">
-            <div class="eyebrow">삼성전자</div>
-            <div class="call" id="samsung-flow-call">-</div>
-            <div class="detail" id="samsung-flow-detail">-</div>
+          <article class="decision-card">
+            <div class="decision-label">2. 핵심 근거</div>
+            <div class="decision-headline" id="decision-evidence-title">-</div>
+            <div class="decision-detail" id="decision-evidence-detail">-</div>
           </article>
-          <article class="summary-card">
-            <div class="eyebrow">SK hynix</div>
-            <div class="call" id="skhynix-flow-call">-</div>
-            <div class="detail" id="skhynix-flow-detail">-</div>
-          </article>
-          <article class="summary-card">
-            <div class="eyebrow">주의 / 데이터 품질</div>
-            <div class="call" id="risk-call">-</div>
-            <div class="detail" id="quality-detail">-</div>
-            <div class="warning-list" id="risk-flags"></div>
+          <article class="decision-card caution">
+            <div class="decision-label">3. 과신 방지</div>
+            <div class="decision-headline" id="decision-risk-title">-</div>
+            <div class="decision-detail" id="decision-risk-detail">-</div>
           </article>
         </div>
+        <div class="flow-matrix" id="flow-matrix" aria-label="선물 현물 지수 프로그램 방향 매트릭스"></div>
+        <details class="summary-details">
+          <summary>상세 점수와 데이터 품질 보기</summary>
+          <div class="summary-grid">
+            <article class="summary-card emphasis">
+              <div class="eyebrow">10초 요약</div>
+              <div class="call" id="flow-summary-main">-</div>
+              <div class="detail" id="flow-summary-detail">-</div>
+              <div class="score-row" id="flow-score-row"></div>
+            </article>
+            <article class="summary-card">
+              <div class="eyebrow">삼성전자</div>
+              <div class="call" id="samsung-flow-call">-</div>
+              <div class="detail" id="samsung-flow-detail">-</div>
+            </article>
+            <article class="summary-card">
+              <div class="eyebrow">SK hynix</div>
+              <div class="call" id="skhynix-flow-call">-</div>
+              <div class="detail" id="skhynix-flow-detail">-</div>
+            </article>
+            <article class="summary-card">
+              <div class="eyebrow">주의 / 데이터 품질</div>
+              <div class="call" id="risk-call">-</div>
+              <div class="detail" id="quality-detail">-</div>
+              <div class="warning-list" id="risk-flags"></div>
+            </article>
+          </div>
+        </details>
       </section>
 
       <section class="grid-2">
@@ -956,7 +1116,7 @@
               </div>
               <div class="side-list">
                 <div class="side-item">
-                  <div class="label">OI (투자자전체)</div>
+                  <div class="label">미결제약정 OI (투자자전체)</div>
                   <div class="value" id="samsung-oi"></div>
                   <div class="detail" id="samsung-oi-delta"></div>
                 </div>
@@ -982,7 +1142,7 @@
               </div>
               <div class="side-list">
                 <div class="side-item">
-                  <div class="label">OI (투자자전체)</div>
+                  <div class="label">미결제약정 OI (투자자전체)</div>
                   <div class="value" id="skhynix-oi"></div>
                   <div class="detail" id="skhynix-oi-delta"></div>
                 </div>
@@ -1637,6 +1797,130 @@
       return `<span class="score-pill">${escapeHtml(label)} ${escapeHtml(scoreLabel(result.score))} ${escapeHtml(scoreText(result.score))}</span>`;
     }
 
+    function signalStrengthText(score) {
+      const absScore = Math.abs(Number(score || 0));
+      if (absScore >= 1.6) return "강한 신호";
+      if (absScore >= 0.5) return "보통 신호";
+      return "약한 신호";
+    }
+
+    function readableDate(value) {
+      return String(value || "").replaceAll("-", ".");
+    }
+
+    function matrixCell(axis, status, detail, hint, klass = "neutral") {
+      return `
+        <article class="matrix-cell ${escapeHtml(klass)}">
+          <div class="matrix-axis">${escapeHtml(axis)}</div>
+          <div class="matrix-status">${escapeHtml(status)}</div>
+          <div class="matrix-detail">${escapeHtml(detail)}</div>
+          <div class="matrix-detail">${escapeHtml(hint)}</div>
+        </article>
+      `;
+    }
+
+    function stockMatrixCell(row, key, label) {
+      const stock = row[key];
+      const futureDirection = direction(stock.daily_contracts);
+      const spotDirection = direction(stock.spot_amount);
+      let status = "방향 중립";
+      let klass = "neutral";
+
+      if (futureDirection && spotDirection && futureDirection !== spotDirection) {
+        status = "선물·현물 역방향";
+        klass = "mixed";
+      } else if (futureDirection > 0 || spotDirection > 0) {
+        status = "매수 쪽 우위";
+        klass = "buy";
+      } else if (futureDirection < 0 || spotDirection < 0) {
+        status = "매도 쪽 우위";
+        klass = "sell";
+      }
+
+      return matrixCell(
+        label,
+        status,
+        `선물 ${directionWord(stock.daily_contracts)} ${fmtSignedInt(stock.daily_contracts, "계약")} / 현물 ${directionWord(stock.spot_amount, "순매수", "순매도")} ${fmtSignedFloat(stock.spot_amount)}`,
+        `미결제약정(OI·전체) ${fmtDelta(stock.oi_delta)}`
+        , klass
+      );
+    }
+
+    function marketMatrixCell(row, marketScore) {
+      const value = row.market.kospi200_daily_contracts;
+      const sign = direction(value);
+      const klass = sign > 0 ? "buy" : (sign < 0 ? "sell" : "neutral");
+      return matrixCell(
+        "코스피200선물",
+        `${directionWord(value)} · ${signalStrengthText(marketScore.score)}`,
+        `당일 ${fmtSignedInt(value, "계약")} / 분기 누적 ${fmtSignedInt(row.market.kospi200_cum_contracts, "계약")}`,
+        `강도 ${scoreText(marketScore.score)} · 분기 구간 ${marketScore.percentile ?? "-"}%`,
+        klass
+      );
+    }
+
+    function programMatrixCell(row, programNet) {
+      const sign = direction(programNet);
+      const klass = sign > 0 ? "buy" : (sign < 0 ? "sell" : "neutral");
+      return matrixCell(
+        "프로그램매매",
+        directionWord(programNet, "시장 순매수", "시장 순매도"),
+        `차익 ${fmtSignedFloat(row.market.program_arb_amount)} / 비차익 ${fmtSignedFloat(row.market.program_nonarb_amount)}`,
+        `합산 ${fmtSignedFloat(programNet)}. 시장 전체 흐름 보조지표입니다.`,
+        klass
+      );
+    }
+
+    function renderFlowMatrix(row, marketScore, programNet) {
+      setHtml(
+        "flow-matrix",
+        [
+          stockMatrixCell(row, "samsung", "삼성전자"),
+          stockMatrixCell(row, "skhynix", "SK hynix"),
+          marketMatrixCell(row, marketScore),
+          programMatrixCell(row, programNet)
+        ].join("")
+      );
+    }
+
+    function renderDecisionCards(row, expiry, samsungScore, skScore, marketScore, programNet, warnings, semiLabel, marketLabel) {
+      const conflictCount = warnings.filter(item => item.includes("엇갈립니다")).length;
+      const stockSampleCount = currentCycleRows(row.date, "stock_range_label").length;
+      const marketSampleCount = currentCycleRows(row.date, "market_range_label").length;
+      const strongestStock = samsungScore.score >= skScore.score ? "삼성전자" : "SK hynix";
+      const strongestScore = Math.max(samsungScore.score, skScore.score);
+      const weakestScore = Math.min(samsungScore.score, skScore.score, marketScore.score);
+      let actionTitle = "중립 관찰";
+      let actionDetail = `전거래일(${readableDate(row.date)}) KRX 확정 데이터 기준입니다. 장중 실시간 신호가 아니라 다음 거래일 준비용으로 보세요.`;
+
+      if (conflictCount >= 2 || expiry.headline !== "만기 영향 제한적") {
+        actionTitle = "추격보다 확인 우선";
+        actionDetail = `현물·선물 또는 지수·프로그램이 엇갈립니다. 다음 거래일에는 같은 방향으로 재확인되는지 먼저 보세요.`;
+      } else if (strongestScore >= 0.5 && marketScore.score >= 0.5 && programNet > 0) {
+        actionTitle = "강세 확인 구간";
+        actionDetail = `${strongestStock}와 지수선물이 같이 우호적입니다. 다만 현물 확인 없이 단독 선물 신호로 단정하지 마세요.`;
+      } else if (weakestScore <= -0.5 && marketScore.score <= -0.5 && programNet < 0) {
+        actionTitle = "방어 우선 구간";
+        actionDetail = `지수선물과 프로그램이 약합니다. 반도체 개별 신호보다 시장 전체 압력을 먼저 확인하세요.`;
+      }
+
+      setText("decision-action-title", actionTitle);
+      setText("decision-action-detail", actionDetail);
+      setText("decision-evidence-title", `${semiLabel} / 지수 ${marketLabel}`);
+      setText(
+        "decision-evidence-detail",
+        `최근 20거래일 대비 강도: 삼성 ${scoreText(samsungScore.score)}(${signalStrengthText(samsungScore.score)}), SK ${scoreText(skScore.score)}(${signalStrengthText(skScore.score)}), 지수 ${scoreText(marketScore.score)}(${signalStrengthText(marketScore.score)}).`
+      );
+      setText(
+        "decision-risk-title",
+        stockSampleCount <= 3 ? "월물 표본 짧음" : (conflictCount ? "엇갈림 신호 있음" : "품질은 clean")
+      );
+      setText(
+        "decision-risk-detail",
+        `개별주식선물 ${stockSampleCount}거래일, 코스피200선물 ${marketSampleCount}거래일 누적 구간입니다. 누적은 실제 보유잔고가 아니라 거래실적 합산 대용치이고, OI는 투자자전체 미결제약정입니다.`
+      );
+    }
+
     function buildFlowWarnings(row, expiry) {
       const warnings = [];
       const samsungFuture = direction(row.samsung.daily_contracts);
@@ -1712,11 +1996,13 @@
       const quality = buildQualityBadge();
       const warnings = buildFlowWarnings(row, expiry);
 
+      renderDecisionCards(row, expiry, samsungScore, skScore, marketScore, programNet, warnings, semiLabel, marketLabel);
+      renderFlowMatrix(row, marketScore, programNet);
       setText("flow-verdict", `${semiLabel} / 지수선물 ${marketLabel} / 프로그램 ${directionWord(programNet, "순매수", "순매도")}`);
       setText("flow-summary-main", `${semiLabel}, 지수는 ${marketLabel}`);
       setText(
         "flow-summary-detail",
-        `최근 ${SCORE_LOOKBACK_DAYS}거래일 변동폭 대비: 삼성 ${scoreText(samsungScore.score)}, SK ${scoreText(skScore.score)}, 지수 ${scoreText(marketScore.score)} · 프로그램 순액 ${fmtSignedFloat(programNet)}`
+        `최근 ${SCORE_LOOKBACK_DAYS}거래일 변동폭 대비 강도(σ): 삼성 ${scoreText(samsungScore.score)}, SK ${scoreText(skScore.score)}, 지수 ${scoreText(marketScore.score)} · 프로그램 순액 ${fmtSignedFloat(programNet)}`
       );
       setHtml(
         "flow-score-row",
@@ -1730,16 +2016,16 @@
       setText("samsung-flow-call", `${scoreLabel(samsungScore.score)} ${scoreText(samsungScore.score)}`);
       setText(
         "samsung-flow-detail",
-        `당일 선물 ${fmtSignedInt(row.samsung.daily_contracts, "계약")} (${scoreText(samsungScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.samsung.cum_contracts, "계약")} (${scoreText(samsungScore.cumZ)}, 구간 ${samsungScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.samsung.spot_amount)} (${scoreText(samsungScore.spotZ)}) / OI ${fmtDelta(row.samsung.oi_delta)}`
+        `당일 선물 ${fmtSignedInt(row.samsung.daily_contracts, "계약")} (${scoreText(samsungScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.samsung.cum_contracts, "계약")} (${scoreText(samsungScore.cumZ)}, 구간 ${samsungScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.samsung.spot_amount)} (${scoreText(samsungScore.spotZ)}) / 미결제약정(OI·전체) ${fmtDelta(row.samsung.oi_delta)}`
       );
       setText("skhynix-flow-call", `${scoreLabel(skScore.score)} ${scoreText(skScore.score)}`);
       setText(
         "skhynix-flow-detail",
-        `당일 선물 ${fmtSignedInt(row.skhynix.daily_contracts, "계약")} (${scoreText(skScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.skhynix.cum_contracts, "계약")} (${scoreText(skScore.cumZ)}, 구간 ${skScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.skhynix.spot_amount)} (${scoreText(skScore.spotZ)}) / OI ${fmtDelta(row.skhynix.oi_delta)}`
+        `당일 선물 ${fmtSignedInt(row.skhynix.daily_contracts, "계약")} (${scoreText(skScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.skhynix.cum_contracts, "계약")} (${scoreText(skScore.cumZ)}, 구간 ${skScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.skhynix.spot_amount)} (${scoreText(skScore.spotZ)}) / 미결제약정(OI·전체) ${fmtDelta(row.skhynix.oi_delta)}`
       );
       setText("risk-call", warnings[0]);
       setHtml("risk-flags", warnings.map(item => `<div>${escapeHtml(item)}</div>`).join(""));
-      setText("quality-detail", `${quality.detail}. 주의: 누적은 실제 외국인 보유잔고가 아니라 투자자별 거래실적 proxy입니다.`);
+      setText("quality-detail", `${quality.detail}. 주의: 누적은 실제 외국인 보유잔고가 아니라 투자자별 거래실적을 더한 대용치입니다.`);
       setClassName("quality-badge", quality.klass);
       setText("quality-badge", quality.label);
       setText("source-badge", "원천: KRX 공식 데이터");

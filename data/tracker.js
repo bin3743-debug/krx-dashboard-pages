@@ -1,7 +1,7 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-14 09:44:44",
+  "generated_at": "2026-04-14 19:02:27",
   "start_date": "2026-03-12",
-  "latest_date": "2026-04-13",
+  "latest_date": "2026-04-14",
   "ops_status": {
     "status": "success",
     "last_checked_at": "2026-04-14T08:37:06+09:00",
@@ -874,6 +874,43 @@ window.KRX_DASHBOARD_DATA = {
         "program_nonarb_amount": 330.09
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260413.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260413.xlsx, KRX_투자자별거래실적_코스피200선물_20260413.xlsx, KRX_프로그램매매_코스피_20260413.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260413.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260413.xlsx, data_4459_20260413.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "range_label": "2026-04-10 ~ 2026-04-14",
+      "stock_range_label": "2026-04-10 ~ 2026-04-14",
+      "market_range_label": "2026-03-12 ~ 2026-04-14",
+      "samsung": {
+        "daily_contracts": 161860,
+        "daily_amount": 3384.12,
+        "cum_contracts": 213179,
+        "cum_amount": 4390.7,
+        "oi": 4372041,
+        "oi_delta": 239286,
+        "spot_shares": -499031,
+        "spot_amount": -1017.94,
+        "oi_ratio": 3.7021610730548957
+      },
+      "skhynix": {
+        "daily_contracts": -4235,
+        "daily_amount": -491.35,
+        "cum_contracts": -32680,
+        "cum_amount": -3326.35,
+        "oi": 1050501,
+        "oi_delta": 41059,
+        "spot_shares": 780601,
+        "spot_amount": 8685.03,
+        "oi_ratio": -0.40314097749549976
+      },
+      "market": {
+        "kospi200_daily_contracts": 7150,
+        "kospi200_daily_amount": 16193.83,
+        "kospi200_cum_contracts": 12149,
+        "kospi200_cum_amount": 27716.549999999996,
+        "program_arb_amount": 1668.0,
+        "program_nonarb_amount": 6178.07
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260414.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260414.xlsx, KRX_투자자별거래실적_코스피200선물_20260414.xlsx, KRX_프로그램매매_코스피_20260414.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260414.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260414.xlsx, data_4459_20260414.csv"
     }
   ]
 };
