@@ -1521,6 +1521,8 @@
       ]);
     }
 
+    const SCORE_LOOKBACK_DAYS = 20;
+
     function direction(value, threshold = 0) {
       const number = Number(value || 0);
       if (number > threshold) return 1;
@@ -1535,34 +1537,104 @@
       return "중립";
     }
 
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
     function scoreLabel(score) {
-      if (score >= 2.5) return "강한 매수 우위";
-      if (score >= 1) return "매수 우위";
-      if (score <= -2.5) return "강한 매도 우위";
-      if (score <= -1) return "매도 우위";
+      if (score >= 1.6) return "강한 매수 우위";
+      if (score >= 0.5) return "매수 우위";
+      if (score <= -1.6) return "강한 매도 우위";
+      if (score <= -0.5) return "매도 우위";
       return "혼조";
     }
 
-    function scoreStock(stock) {
-      return (
-        direction(stock.daily_contracts) +
-        direction(stock.cum_contracts) +
-        direction(stock.spot_amount) +
-        direction(stock.oi_delta) * 0.5
-      );
+    function scoreText(score) {
+      const sign = score > 0 ? "+" : "";
+      return `${sign}${Number(score).toFixed(1)}σ`;
+    }
+
+    function baselineRows(date, lookback = SCORE_LOOKBACK_DAYS) {
+      const index = rows.findIndex(item => item.date === date);
+      if (index <= 0) return rows.slice(0, Math.max(index + 1, 1));
+      const start = Math.max(0, index - lookback);
+      return rows.slice(start, index);
+    }
+
+    function metricScale(sampleRows, accessor) {
+      const values = sampleRows
+        .map(accessor)
+        .map(Number)
+        .filter(value => Number.isFinite(value));
+      if (!values.length) return 1;
+
+      const meanAbs = values.reduce((sum, value) => sum + Math.abs(value), 0) / values.length;
+      const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+      const variance = values.reduce((sum, value) => sum + ((value - mean) ** 2), 0) / values.length;
+      const stdev = Math.sqrt(variance);
+      return Math.max(meanAbs, stdev, 1);
+    }
+
+    function standardized(value, sampleRows, accessor) {
+      const scale = metricScale(sampleRows, accessor);
+      return clamp(Number(value || 0) / scale, -3, 3);
+    }
+
+    function percentilePosition(value, sampleRows, accessor) {
+      const values = sampleRows
+        .map(accessor)
+        .map(Number)
+        .filter(item => Number.isFinite(item));
+      if (values.length < 2) return null;
+      const absValue = Math.abs(Number(value || 0));
+      const weakerCount = values.filter(item => Math.abs(item) <= absValue).length;
+      return Math.round((weakerCount / values.length) * 100);
+    }
+
+    function scoreStock(row, key) {
+      const stock = row[key];
+      const sample = baselineRows(row.date);
+      const cycleRows = currentCycleRows(row.date, "stock_range_label");
+      const dailyZ = standardized(stock.daily_contracts, sample, item => item[key].daily_contracts);
+      const cumZ = standardized(stock.cum_contracts, sample, item => item[key].daily_contracts);
+      const spotZ = standardized(stock.spot_amount, sample, item => item[key].spot_amount);
+      const oiZ = standardized(stock.oi_delta, sample, item => item[key].oi_delta);
+      const score = (dailyZ * 0.35) + (cumZ * 0.30) + (spotZ * 0.25) + (oiZ * 0.10);
+
+      return {
+        score,
+        dailyZ,
+        cumZ,
+        spotZ,
+        oiZ,
+        percentile: percentilePosition(stock.cum_contracts, cycleRows, item => item[key].cum_contracts)
+      };
     }
 
     function scoreMarket(row) {
+      const sample = baselineRows(row.date);
+      const cycleRows = currentCycleRows(row.date, "market_range_label");
       const programNet = row.market.program_arb_amount + row.market.program_nonarb_amount;
-      return (
-        direction(row.market.kospi200_daily_contracts) +
-        direction(row.market.kospi200_cum_contracts) +
-        direction(programNet)
+      const dailyZ = standardized(row.market.kospi200_daily_contracts, sample, item => item.market.kospi200_daily_contracts);
+      const cumZ = standardized(row.market.kospi200_cum_contracts, sample, item => item.market.kospi200_daily_contracts);
+      const programZ = standardized(
+        programNet,
+        sample,
+        item => item.market.program_arb_amount + item.market.program_nonarb_amount
       );
+      const score = (dailyZ * 0.45) + (cumZ * 0.35) + (programZ * 0.20);
+
+      return {
+        score,
+        dailyZ,
+        cumZ,
+        programZ,
+        percentile: percentilePosition(row.market.kospi200_cum_contracts, cycleRows, item => item.market.kospi200_cum_contracts)
+      };
     }
 
-    function scoreChip(label, score) {
-      return `<span class="score-pill">${escapeHtml(label)} ${escapeHtml(scoreLabel(score))}</span>`;
+    function scoreChip(label, result) {
+      return `<span class="score-pill">${escapeHtml(label)} ${escapeHtml(scoreLabel(result.score))} ${escapeHtml(scoreText(result.score))}</span>`;
     }
 
     function buildFlowWarnings(row, expiry) {
@@ -1628,12 +1700,15 @@
     }
 
     function renderFlowSummary(row, expiry) {
-      const samsungScore = scoreStock(row.samsung);
-      const skScore = scoreStock(row.skhynix);
+      const samsungScore = scoreStock(row, "samsung");
+      const skScore = scoreStock(row, "skhynix");
       const marketScore = scoreMarket(row);
       const programNet = row.market.program_arb_amount + row.market.program_nonarb_amount;
-      const semiLabel = Math.abs(samsungScore - skScore) <= 1 ? "반도체 혼조" : (samsungScore > skScore ? "삼성전자 우위" : "SK hynix 우위");
-      const marketLabel = scoreLabel(marketScore);
+      const semiDiff = samsungScore.score - skScore.score;
+      const semiLabel = Math.abs(semiDiff) <= 0.6
+        ? "반도체 혼조"
+        : (semiDiff > 0 ? "삼성전자 상대 우위" : "SK hynix 상대 우위");
+      const marketLabel = scoreLabel(marketScore.score);
       const quality = buildQualityBadge();
       const warnings = buildFlowWarnings(row, expiry);
 
@@ -1641,7 +1716,7 @@
       setText("flow-summary-main", `${semiLabel}, 지수는 ${marketLabel}`);
       setText(
         "flow-summary-detail",
-        `삼성 선물 ${directionWord(row.samsung.daily_contracts)}, 현물 ${directionWord(row.samsung.spot_amount)} · SK 선물 ${directionWord(row.skhynix.daily_contracts)}, 현물 ${directionWord(row.skhynix.spot_amount)} · 프로그램 순액 ${fmtSignedFloat(programNet)}`
+        `최근 ${SCORE_LOOKBACK_DAYS}거래일 변동폭 대비: 삼성 ${scoreText(samsungScore.score)}, SK ${scoreText(skScore.score)}, 지수 ${scoreText(marketScore.score)} · 프로그램 순액 ${fmtSignedFloat(programNet)}`
       );
       setHtml(
         "flow-score-row",
@@ -1652,15 +1727,15 @@
         ].join("")
       );
 
-      setText("samsung-flow-call", scoreLabel(samsungScore));
+      setText("samsung-flow-call", `${scoreLabel(samsungScore.score)} ${scoreText(samsungScore.score)}`);
       setText(
         "samsung-flow-detail",
-        `당일 선물 ${fmtSignedInt(row.samsung.daily_contracts, "계약")} / 월물 누적 ${fmtSignedInt(row.samsung.cum_contracts, "계약")} / 현물 ${fmtSignedFloat(row.samsung.spot_amount)} / OI ${fmtDelta(row.samsung.oi_delta)}`
+        `당일 선물 ${fmtSignedInt(row.samsung.daily_contracts, "계약")} (${scoreText(samsungScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.samsung.cum_contracts, "계약")} (${scoreText(samsungScore.cumZ)}, 구간 ${samsungScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.samsung.spot_amount)} (${scoreText(samsungScore.spotZ)}) / OI ${fmtDelta(row.samsung.oi_delta)}`
       );
-      setText("skhynix-flow-call", scoreLabel(skScore));
+      setText("skhynix-flow-call", `${scoreLabel(skScore.score)} ${scoreText(skScore.score)}`);
       setText(
         "skhynix-flow-detail",
-        `당일 선물 ${fmtSignedInt(row.skhynix.daily_contracts, "계약")} / 월물 누적 ${fmtSignedInt(row.skhynix.cum_contracts, "계약")} / 현물 ${fmtSignedFloat(row.skhynix.spot_amount)} / OI ${fmtDelta(row.skhynix.oi_delta)}`
+        `당일 선물 ${fmtSignedInt(row.skhynix.daily_contracts, "계약")} (${scoreText(skScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.skhynix.cum_contracts, "계약")} (${scoreText(skScore.cumZ)}, 구간 ${skScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.skhynix.spot_amount)} (${scoreText(skScore.spotZ)}) / OI ${fmtDelta(row.skhynix.oi_delta)}`
       );
       setText("risk-call", warnings[0]);
       setHtml("risk-flags", warnings.map(item => `<div>${escapeHtml(item)}</div>`).join(""));
