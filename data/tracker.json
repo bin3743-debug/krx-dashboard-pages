@@ -1,7 +1,28 @@
 {
-  "generated_at": "2026-04-14 08:32:05",
+  "generated_at": "2026-04-14 09:06:28",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-13",
+  "ops_status": {
+    "status": "success",
+    "last_checked_at": "2026-04-14T08:37:06+09:00",
+    "latest_available_date": "2026-04-13",
+    "fallback_used": false,
+    "execution_status": "success",
+    "freshness_status": "current",
+    "completeness_status": "complete",
+    "source_quality_status": "official",
+    "consistency_status": "consistent",
+    "overall_status": "normal",
+    "expected_latest_date": "2026-04-13",
+    "actual_latest_date": "2026-04-13",
+    "source_bundle_status": "complete_same_day",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next same-day run",
+    "pipeline_attempts_used": 1,
+    "final_success_attempt": 1,
+    "final_launch_mode": "cdp",
+    "fallback_signals": []
+  },
   "rows": [
     {
       "date": "2026-03-12",
