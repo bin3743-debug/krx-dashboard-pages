@@ -338,6 +338,32 @@
       font-weight: 800;
       word-break: keep-all;
     }
+    .plain-guide {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 2px 0 14px;
+    }
+    .plain-guide-card {
+      border-radius: 16px;
+      padding: 12px 13px;
+      background: #f8fbff;
+      border: 1px solid rgba(16, 46, 82, 0.1);
+      min-height: 104px;
+    }
+    .plain-guide-title {
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .plain-guide-copy {
+      color: #506176;
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 800;
+      word-break: keep-all;
+    }
     .cycle-line {
       margin-top: -6px;
       margin-bottom: 16px;
@@ -850,9 +876,12 @@
         grid-template-columns: 1fr;
       }
       .decision-grid,
-      .flow-matrix {
-        grid-template-columns: 1fr;
-      }
+        .flow-matrix {
+          grid-template-columns: 1fr;
+        }
+        .plain-guide {
+          grid-template-columns: 1fr;
+        }
       .summary-card {
         min-height: 0;
         padding: 14px;
@@ -1074,6 +1103,20 @@
           </article>
         </div>
         <div class="flow-matrix" id="flow-matrix" aria-label="선물 현물 지수 프로그램 방향 매트릭스"></div>
+        <div class="plain-guide" aria-label="누적 OI 만기 리셋 쉬운 설명">
+          <article class="plain-guide-card">
+            <div class="plain-guide-title">누적은 잔고가 아닙니다</div>
+            <div class="plain-guide-copy">예: 누적 -10만계약은 현재 -10만계약을 보유했다는 뜻이 아니라, 해당 구간 동안 외국인 거래실적을 더한 값입니다.</div>
+          </article>
+          <article class="plain-guide-card">
+            <div class="plain-guide-title">OI는 전체 미결제약정입니다</div>
+            <div class="plain-guide-copy">OI 증가는 새 포지션이 붙었다는 힌트지만, 외국인만의 잔고나 순매수로 바로 해석하지 않습니다.</div>
+          </article>
+          <article class="plain-guide-card">
+            <div class="plain-guide-title">만기 다음 거래일부터 새 누적</div>
+            <div class="plain-guide-copy">예: 4월 9일 만기라면 4월 10일부터 새 월물 누적으로 다시 봅니다. 만기일은 청산·롤오버 영향이 큽니다.</div>
+          </article>
+        </div>
         <details class="summary-details">
           <summary>상세 점수와 데이터 품질 보기</summary>
           <div class="summary-grid">
