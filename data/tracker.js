@@ -1,27 +1,31 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-15 19:06:07",
+  "generated_at": "2026-04-16 22:06:48",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-15",
   "ops_status": {
-    "status": "skipped",
-    "last_checked_at": "2026-04-15T07:12:25+09:00",
-    "latest_available_date": "2026-04-14",
+    "status": "failed",
+    "last_checked_at": "2026-04-16T19:04:05+09:00",
+    "latest_available_date": "2026-04-15",
     "fallback_used": true,
-    "execution_status": "degraded",
-    "freshness_status": "current",
+    "execution_status": "failed",
+    "freshness_status": "blocked",
     "completeness_status": "complete",
     "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "degraded",
-    "expected_latest_date": "2026-04-14",
-    "actual_latest_date": "2026-04-14",
-    "source_bundle_status": "skip_reused_same_day_success",
-    "current_bottleneck": "same-day source acquisition required attempt 1 and fallback/restart recovery",
-    "recommended_action": "observe next 19:00 same-day run and reopen if fallback repeats",
-    "pipeline_attempts_used": 1,
-    "final_success_attempt": 1,
-    "final_launch_mode": "persistent_fallback",
-    "fallback_signals": []
+    "overall_status": "failed",
+    "expected_latest_date": "2026-04-16",
+    "actual_latest_date": "2026-04-15",
+    "source_bundle_status": "complete_same_day",
+    "current_bottleneck": "same-day source acquisition failed at pipeline",
+    "recommended_action": "reopen KRX source acquisition repair",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
+    "fallback_signals": [
+      "persistent_profile",
+      "session_recover",
+      "pipeline_retry"
+    ]
   },
   "rows": [
     {
