@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-18 10:48:17",
+  "generated_at": "2026-04-18 12:04:07",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-16",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-04-18T10:48:14+09:00",
+    "last_checked_at": "2026-04-18T12:04:03+09:00",
     "latest_available_date": "2026-04-16",
     "fallback_used": true,
     "execution_status": "failed",
@@ -23,7 +23,8 @@
     "final_launch_mode": null,
     "fallback_signals": [
       "persistent_profile",
-      "session_recover"
+      "session_recover",
+      "pipeline_retry"
     ]
   },
   "rows": [
