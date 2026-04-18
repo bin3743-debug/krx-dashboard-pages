@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-18 07:14:21",
+  "generated_at": "2026-04-18 10:48:17",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-16",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-04-18T07:14:18+09:00",
+    "last_checked_at": "2026-04-18T10:48:14+09:00",
     "latest_available_date": "2026-04-16",
     "fallback_used": true,
     "execution_status": "failed",
@@ -23,8 +23,7 @@ window.KRX_DASHBOARD_DATA = {
     "final_launch_mode": null,
     "fallback_signals": [
       "persistent_profile",
-      "session_recover",
-      "pipeline_retry"
+      "session_recover"
     ]
   },
   "rows": [
