@@ -1,12 +1,12 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-18 13:21:53",
+  "generated_at": "2026-04-18 19:00:12",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-17",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-04-18T13:21:26+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-04-18T19:00:09+09:00",
     "latest_available_date": "2026-04-17",
-    "fallback_used": true,
+    "fallback_used": false,
     "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "complete",
@@ -16,15 +16,12 @@ window.KRX_DASHBOARD_DATA = {
     "expected_latest_date": "2026-04-17",
     "actual_latest_date": "2026-04-17",
     "source_bundle_status": "complete_same_day",
-    "current_bottleneck": "manual dedicated Edge login refresh was required before direct CDP success",
-    "recommended_action": "observe next 19:00 same-day run and reopen if login/security tab selection repeats",
-    "pipeline_attempts_used": 1,
-    "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
-    "fallback_signals": [
-      "manual_dedicated_profile_login_refresh",
-      "cdp_direct_recovery"
-    ]
+    "current_bottleneck": "none",
+    "recommended_action": "observe next same-day run",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
+    "fallback_signals": []
   },
   "rows": [
     {
