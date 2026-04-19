@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-18 19:00:12",
+  "generated_at": "2026-04-19 12:19:46",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-17",
   "ops_status": {
     "status": "skipped",
-    "last_checked_at": "2026-04-18T19:00:09+09:00",
+    "last_checked_at": "2026-04-19T12:19:24+09:00",
     "latest_available_date": "2026-04-17",
     "fallback_used": false,
     "execution_status": "degraded",
@@ -15,12 +15,12 @@
     "overall_status": "degraded",
     "expected_latest_date": "2026-04-17",
     "actual_latest_date": "2026-04-17",
-    "source_bundle_status": "complete_same_day",
+    "source_bundle_status": "skip_reused_same_day_success",
     "current_bottleneck": "none",
     "recommended_action": "observe next same-day run",
     "pipeline_attempts_used": null,
     "final_success_attempt": null,
-    "final_launch_mode": null,
+    "final_launch_mode": "cdp",
     "fallback_signals": []
   },
   "rows": [
