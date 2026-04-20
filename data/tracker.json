@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-04-20 19:03:22",
+  "generated_at": "2026-04-21 07:14:15",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-17",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-04-20T19:03:21+09:00",
+    "last_checked_at": "2026-04-21T07:14:01+09:00",
     "latest_available_date": "2026-04-17",
     "fallback_used": true,
     "execution_status": "failed",
     "freshness_status": "blocked",
-    "completeness_status": "complete",
+    "completeness_status": "missing critical component",
     "source_quality_status": "official",
-    "consistency_status": "consistent",
+    "consistency_status": "mismatch",
     "overall_status": "failed",
     "expected_latest_date": "2026-04-20",
     "actual_latest_date": "2026-04-17",
@@ -22,8 +22,7 @@
     "final_success_attempt": null,
     "final_launch_mode": null,
     "fallback_signals": [
-      "persistent_profile",
-      "session_recover",
+      "cdp_preflight_retry",
       "pipeline_retry"
     ]
   },
