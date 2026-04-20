@@ -1,30 +1,28 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-21 07:17:47",
+  "generated_at": "2026-04-21 07:57:45",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-17",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-04-21T07:17:45+09:00",
+    "last_checked_at": "2026-04-21T07:57:43+09:00",
     "latest_available_date": "2026-04-17",
     "fallback_used": true,
     "execution_status": "failed",
     "freshness_status": "blocked",
     "completeness_status": "missing critical component",
     "source_quality_status": "official",
-    "consistency_status": "mismatch",
+    "consistency_status": "consistent",
     "overall_status": "failed",
     "expected_latest_date": "2026-04-20",
     "actual_latest_date": "2026-04-17",
-    "source_bundle_status": "complete_same_day",
-    "current_bottleneck": "same-day source acquisition failed at pipeline",
-    "recommended_action": "reopen KRX source acquisition repair",
+    "source_bundle_status": "missing_current_bundle",
+    "current_bottleneck": "edge_runtime_connection_failed",
+    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
     "pipeline_attempts_used": null,
     "final_success_attempt": null,
     "final_launch_mode": null,
     "fallback_signals": [
-      "cdp_preflight_retry",
-      "pipeline_retry",
-      "persistent_profile"
+      "runtime_preflight_cdp_failed"
     ]
   },
   "rows": [
