@@ -1,29 +1,27 @@
 {
-  "generated_at": "2026-04-21 23:31:24",
+  "generated_at": "2026-04-21 23:38:13",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-21",
   "ops_status": {
-    "status": "failed",
-    "last_checked_at": "2026-04-21T23:31:21+09:00",
+    "status": "success",
+    "last_checked_at": "2026-04-21T23:38:11+09:00",
     "latest_available_date": "2026-04-21",
-    "fallback_used": true,
-    "execution_status": "failed",
-    "freshness_status": "blocked",
-    "completeness_status": "missing critical component",
-    "source_quality_status": "official source not reached",
+    "fallback_used": false,
+    "execution_status": "success",
+    "freshness_status": "current",
+    "completeness_status": "complete",
+    "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "failed",
+    "overall_status": "normal",
     "expected_latest_date": "2026-04-21",
     "actual_latest_date": "2026-04-21",
-    "source_bundle_status": "missing_current_bundle",
-    "current_bottleneck": "edge_runtime_connection_failed",
-    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
-    "pipeline_attempts_used": null,
-    "final_success_attempt": null,
-    "final_launch_mode": null,
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed"
-    ]
+    "source_bundle_status": "complete_same_day",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next same-day run",
+    "pipeline_attempts_used": 1,
+    "final_success_attempt": 1,
+    "final_launch_mode": "cdp",
+    "fallback_signals": []
   },
   "rows": [
     {
