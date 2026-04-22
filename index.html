@@ -116,11 +116,16 @@
       word-break: keep-all;
     }
     .quality-stack {
+      display: grid;
+      gap: 8px;
+      justify-items: end;
+      min-width: 320px;
+    }
+    .quality-badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       justify-content: flex-end;
-      min-width: 300px;
     }
     .quality-badge,
     .quality-chip {
@@ -150,6 +155,15 @@
       background: #fde5e5;
       color: #9b1c1c;
       border-color: rgba(155, 28, 28, 0.2);
+    }
+    .quality-inline-note {
+      max-width: 540px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #506176;
+      font-weight: 800;
+      text-align: right;
+      word-break: keep-all;
     }
     .summary-grid {
       display: grid;
@@ -413,22 +427,23 @@
     }
     .metric-row {
       display: grid;
-      grid-template-columns: 188px 1fr;
-      align-items: baseline;
-      column-gap: 24px;
+      grid-template-columns: 1fr;
+      row-gap: 6px;
+      align-items: start;
     }
     .metric-row .label {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--muted);
       font-weight: 700;
-      white-space: nowrap;
+      white-space: normal;
       word-break: keep-all;
     }
     .metric-row .value {
-      font-size: 34px;
-      line-height: 1;
+      font-size: 32px;
+      line-height: 1.08;
       font-weight: 700;
       letter-spacing: -0.03em;
+      word-break: keep-all;
     }
     .metric-row .value.red { color: var(--red); }
     .metric-row .value.ink { color: var(--ink); }
@@ -726,10 +741,6 @@
         grid-template-columns: 1fr 250px;
         gap: 14px;
       }
-      .metric-row {
-        grid-template-columns: 168px 1fr;
-        column-gap: 18px;
-      }
       .metric-row .label {
         font-size: 18px;
       }
@@ -870,7 +881,14 @@
       }
       .quality-stack {
         min-width: 0;
+        justify-items: start;
+      }
+      .quality-badge-row {
         justify-content: flex-start;
+      }
+      .quality-inline-note {
+        text-align: left;
+        max-width: none;
       }
       .summary-grid {
         grid-template-columns: 1fr;
@@ -1080,9 +1098,12 @@
             <div class="summary-verdict" id="flow-verdict">데이터 확인 중</div>
           </div>
           <div class="quality-stack">
-            <span class="quality-badge" id="quality-badge">데이터 상태 확인 중</span>
-            <span class="quality-chip" id="source-badge">원천 확인 중</span>
-            <span class="quality-chip" id="cycle-badge">누적 기준 확인 중</span>
+            <div class="quality-badge-row">
+              <span class="quality-badge" id="quality-badge">데이터 상태 확인 중</span>
+              <span class="quality-chip" id="source-badge">원천 확인 중</span>
+              <span class="quality-chip" id="cycle-badge">누적 기준 확인 중</span>
+            </div>
+            <div class="quality-inline-note" id="quality-inline-note">-</div>
           </div>
         </div>
         <div class="decision-grid" aria-label="3줄 핵심 판단">
@@ -1995,26 +2016,47 @@
       const fallbackUsed = Boolean(ops.fallback_used);
       const overall = ops.overall_status || "unknown";
       const sourceQuality = ops.source_quality_status || "unknown";
+      const freshness = ops.freshness_status || "unknown";
+      const completeness = ops.completeness_status || "unknown";
       const latest = ops.actual_latest_date || ops.latest_available_date || DASHBOARD_DATA.latest_date;
+      const bundleStatus = ops.source_bundle_status || "";
+      const reusedSameDaySuccess = bundleStatus === "skip_reused_same_day_success";
+      const freshnessBlocked = freshness !== "current";
+      const completenessBlocked = completeness !== "complete";
 
-      if (overall === "normal" && sourceQuality === "official" && !fallbackUsed && attempt <= 1) {
+      if (!freshnessBlocked && !completenessBlocked) {
+        const notes = [];
+        if (reusedSameDaySuccess) {
+          notes.push(`최신 ${latest} 기준은 유지됐고, 오늘은 직전 same-day 성공본을 그대로 재사용했습니다.`);
+        } else {
+          notes.push(`공식 원천 기준 최신 ${latest}까지 같은 날 묶음으로 확인했습니다.`);
+        }
+        if (attempt > 1) notes.push(`${attempt}번째 시도에서 성공했습니다.`);
+        if (fallbackUsed) notes.push("수집 중 복구 경로가 있었지만 최신성과 완결성은 유지됐습니다.");
+        if (sourceQuality !== "official") notes.push("원천 표시는 보수적으로 보되, 화면에 필요한 최신 묶음은 갖춰졌습니다.");
         return {
           klass: "quality-badge clean",
           label: "데이터 상태: 정상",
-          detail: `KRX 공식 원천 기준 최신 ${latest}까지 같은 날 묶음으로 확인했습니다.`
+          inline: notes[0],
+          detail: notes.join(" ")
         };
       }
       if (overall === "unknown") {
         return {
           klass: "quality-badge watch",
           label: "데이터 상태: 확인 필요",
+          inline: "원천 상태 요약이 아직 없어 화면에서 최신성과 품질을 완결 확인하지 못했습니다.",
           detail: "원천 상태 요약이 아직 없어, 화면에서는 최신성과 품질을 완결 확인하지 못했습니다."
         };
       }
+      const reasons = [];
+      if (freshnessBlocked) reasons.push("최신 기준일이 아직 덜 올라왔습니다");
+      if (completenessBlocked) reasons.push("필수 데이터가 일부 비어 있거나 빠졌습니다");
       return {
-        klass: "quality-badge watch",
-        label: `데이터 상태: ${overall === "normal" ? "정상" : "주의 필요"}`,
-        detail: `최신 ${latest} 기준이지만 보조 경로 또는 재시도가 섞였을 수 있어 해석은 조금 보수적으로 보는 편이 좋습니다.`
+        klass: overall === "failed" ? "quality-badge risk" : "quality-badge watch",
+        label: `데이터 상태: ${overall === "failed" ? "복구 필요" : "주의 필요"}`,
+        inline: `최신 ${latest} 기준을 확인 중이며, ${reasons.join(" · ")}.`,
+        detail: `현재 화면은 ${reasons.join(", ")} 상태라 숫자를 바로 확정적으로 해석하기보다 한 번 더 확인하는 편이 좋습니다.`
       };
     }
 
@@ -2060,6 +2102,7 @@
       );
       setText("risk-call", warnings[0]);
       setHtml("risk-flags", warnings.map(item => `<div>${escapeHtml(item)}</div>`).join(""));
+      setText("quality-inline-note", quality.inline || quality.detail);
       setText("quality-detail", `${quality.detail}. 주의: 누적은 실제 외국인 보유잔고가 아니라 투자자별 거래실적을 더한 대용치입니다.`);
       setClassName("quality-badge", quality.klass);
       setText("quality-badge", quality.label);
