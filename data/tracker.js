@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-28 19:03:11",
+  "generated_at": "2026-04-29 07:10:45",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-28",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-04-28T19:03:08+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-04-29T07:10:42+09:00",
     "latest_available_date": "2026-04-28",
     "fallback_used": true,
     "execution_status": "degraded",
@@ -15,17 +15,13 @@ window.KRX_DASHBOARD_DATA = {
     "overall_status": "degraded",
     "expected_latest_date": "2026-04-28",
     "actual_latest_date": "2026-04-28",
-    "source_bundle_status": "complete_same_day",
+    "source_bundle_status": "skip_reused_same_day_success",
     "current_bottleneck": "same-day source acquisition required attempt 1 and fallback/restart recovery",
     "recommended_action": "observe next 19:00 same-day run and reopen if fallback repeats",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "persistent_fallback",
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "persistent_profile_preflight",
-      "persistent_profile"
-    ]
+    "fallback_signals": []
   },
   "rows": [
     {
