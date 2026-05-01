@@ -1,31 +1,27 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-04-30 19:04:03",
+  "generated_at": "2026-05-01 19:00:09",
   "start_date": "2026-03-12",
   "latest_date": "2026-04-30",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-04-30T19:04:01+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-05-01T19:00:07+09:00",
     "latest_available_date": "2026-04-30",
-    "fallback_used": true,
+    "fallback_used": false,
     "execution_status": "degraded",
     "freshness_status": "current",
-    "completeness_status": "complete",
+    "completeness_status": "partial",
     "source_quality_status": "official",
     "consistency_status": "consistent",
     "overall_status": "degraded",
     "expected_latest_date": "2026-04-30",
     "actual_latest_date": "2026-04-30",
-    "source_bundle_status": "complete_same_day",
-    "current_bottleneck": "same-day source acquisition required attempt 1 and fallback/restart recovery",
-    "recommended_action": "observe next 19:00 same-day run and reopen if fallback repeats",
-    "pipeline_attempts_used": 1,
-    "final_success_attempt": 1,
-    "final_launch_mode": "persistent_fallback",
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "persistent_profile_preflight",
-      "persistent_profile"
-    ]
+    "source_bundle_status": "stale_reused_latest_available",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next same-day run",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
+    "fallback_signals": []
   },
   "rows": [
     {
