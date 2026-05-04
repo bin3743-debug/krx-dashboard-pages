@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-04 19:03:05",
+  "generated_at": "2026-05-05 07:10:12",
   "start_date": "2026-03-12",
   "latest_date": "2026-05-04",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-05-04T19:03:03+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-05-05T07:10:09+09:00",
     "latest_available_date": "2026-05-04",
     "fallback_used": true,
     "execution_status": "degraded",
@@ -15,17 +15,13 @@
     "overall_status": "degraded",
     "expected_latest_date": "2026-05-04",
     "actual_latest_date": "2026-05-04",
-    "source_bundle_status": "complete_same_day",
+    "source_bundle_status": "skip_reused_same_day_success",
     "current_bottleneck": "same-day source acquisition required attempt 1 and fallback/restart recovery",
     "recommended_action": "observe next 19:00 same-day run and reopen if fallback repeats",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "persistent_fallback",
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "persistent_profile_preflight",
-      "persistent_profile"
-    ]
+    "fallback_signals": []
   },
   "rows": [
     {
