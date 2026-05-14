@@ -1165,10 +1165,10 @@
             <div class="title">삼성전자</div>
             <div class="stock-layout">
               <div class="metric-list">
-                <div class="metric-row"><div class="label">선물 당일(외국인)</div><div class="value red" id="samsung-daily-contracts"></div></div>
-                <div class="metric-row"><div class="label">선물 금액(외국인)</div><div class="value ink" id="samsung-daily-amount"></div></div>
-                <div class="metric-row"><div class="label">이번 월물 누적 순매수/순매도</div><div class="value red" id="samsung-cum-contracts"></div></div>
-                <div class="metric-row"><div class="label">이번 월물 누적 금액</div><div class="value ink" id="samsung-cum-amount"></div></div>
+                <div class="metric-row"><div class="label">선물 당일 금액(외국인)</div><div class="value red" id="samsung-daily-amount"></div></div>
+                <div class="metric-row"><div class="label">선물 당일 계약(참고)</div><div class="value ink" id="samsung-daily-contracts"></div></div>
+                <div class="metric-row"><div class="label">이번 월물 누적 금액</div><div class="value red" id="samsung-cum-amount"></div></div>
+                <div class="metric-row"><div class="label">이번 월물 누적 계약(참고)</div><div class="value ink" id="samsung-cum-contracts"></div></div>
               </div>
               <div class="side-list">
                 <div class="side-item">
@@ -1191,10 +1191,10 @@
             <div class="title">SK hynix</div>
             <div class="stock-layout">
               <div class="metric-list">
-                <div class="metric-row"><div class="label">선물 당일(외국인)</div><div class="value red" id="skhynix-daily-contracts"></div></div>
-                <div class="metric-row"><div class="label">선물 금액(외국인)</div><div class="value ink" id="skhynix-daily-amount"></div></div>
-                <div class="metric-row"><div class="label">이번 월물 누적 순매수/순매도</div><div class="value red" id="skhynix-cum-contracts"></div></div>
-                <div class="metric-row"><div class="label">이번 월물 누적 금액</div><div class="value ink" id="skhynix-cum-amount"></div></div>
+                <div class="metric-row"><div class="label">선물 당일 금액(외국인)</div><div class="value red" id="skhynix-daily-amount"></div></div>
+                <div class="metric-row"><div class="label">선물 당일 계약(참고)</div><div class="value ink" id="skhynix-daily-contracts"></div></div>
+                <div class="metric-row"><div class="label">이번 월물 누적 금액</div><div class="value red" id="skhynix-cum-amount"></div></div>
+                <div class="metric-row"><div class="label">이번 월물 누적 계약(참고)</div><div class="value ink" id="skhynix-cum-contracts"></div></div>
               </div>
               <div class="side-list">
                 <div class="side-item">
@@ -1220,10 +1220,10 @@
             <div class="market-card">
               <div class="heading">코스피200선물 외국인</div>
               <div class="market-kospi-grid">
-                <div class="market-kospi-row"><div class="label">당일 계약</div><div class="value red" id="k200-daily-contracts"></div></div>
-                <div class="market-kospi-row"><div class="label">분기 누적 계약</div><div class="value red" id="k200-cum-contracts"></div></div>
-                <div class="market-kospi-row"><div class="label">당일 금액</div><div class="value ink" id="k200-daily-amount"></div></div>
-                <div class="market-kospi-row"><div class="label">분기 누적 금액</div><div class="value ink" id="k200-cum-amount"></div></div>
+                <div class="market-kospi-row"><div class="label">당일 금액</div><div class="value red" id="k200-daily-amount"></div></div>
+                <div class="market-kospi-row"><div class="label">분기 누적 금액</div><div class="value red" id="k200-cum-amount"></div></div>
+                <div class="market-kospi-row"><div class="label">당일 계약(참고)</div><div class="value ink" id="k200-daily-contracts"></div></div>
+                <div class="market-kospi-row"><div class="label">분기 누적 계약(참고)</div><div class="value ink" id="k200-cum-contracts"></div></div>
               </div>
             </div>
             <div class="market-card">
@@ -1877,7 +1877,7 @@
 
     function stockMatrixCell(row, key, label) {
       const stock = row[key];
-      const futureDirection = direction(stock.daily_contracts);
+      const futureDirection = direction(stock.daily_amount);
       const spotDirection = direction(stock.spot_amount);
       let status = "방향 중립";
       let klass = "neutral";
@@ -1896,20 +1896,20 @@
       return matrixCell(
         label,
         status,
-        `선물 ${directionWord(stock.daily_contracts)} ${fmtSignedInt(stock.daily_contracts, "계약")} / 현물 ${directionWord(stock.spot_amount, "순매수", "순매도")} ${fmtSignedFloat(stock.spot_amount)}`,
+        `선물 ${directionWord(stock.daily_amount)} ${fmtSignedFloat(stock.daily_amount)} / 현물 ${directionWord(stock.spot_amount, "순매수", "순매도")} ${fmtSignedFloat(stock.spot_amount)}`,
         `미결제약정(OI·전체) ${fmtDelta(stock.oi_delta)}`
         , klass
       );
     }
 
     function marketMatrixCell(row, marketScore) {
-      const value = row.market.kospi200_daily_contracts;
+      const value = row.market.kospi200_daily_amount;
       const sign = direction(value);
       const klass = sign > 0 ? "buy" : (sign < 0 ? "sell" : "neutral");
       return matrixCell(
         "코스피200선물",
         `${directionWord(value)} · ${signalStrengthText(marketScore.score)}`,
-        `당일 ${fmtSignedInt(value, "계약")} / 분기 누적 ${fmtSignedInt(row.market.kospi200_cum_contracts, "계약")}`,
+        `당일 ${fmtSignedFloat(value)} / 분기 누적 ${fmtSignedFloat(row.market.kospi200_cum_amount)}`,
         `강도 ${scoreText(marketScore.score)} · 분기 구간 ${marketScore.percentile ?? "-"}%`,
         klass
       );
@@ -2093,12 +2093,12 @@
       setText("samsung-flow-call", `${scoreLabel(samsungScore.score)} ${scoreText(samsungScore.score)}`);
       setText(
         "samsung-flow-detail",
-        `당일 선물 ${fmtSignedInt(row.samsung.daily_contracts, "계약")} (${scoreText(samsungScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.samsung.cum_contracts, "계약")} (${scoreText(samsungScore.cumZ)}, 구간 ${samsungScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.samsung.spot_amount)} (${scoreText(samsungScore.spotZ)}) / 미결제약정(OI·전체) ${fmtDelta(row.samsung.oi_delta)}`
+        `당일 선물금액 ${fmtSignedFloat(row.samsung.daily_amount)} (${scoreText(samsungScore.dailyZ)}) / 월물 누적금액 ${fmtSignedFloat(row.samsung.cum_amount)} (${scoreText(samsungScore.cumZ)}, 구간 ${samsungScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.samsung.spot_amount)} (${scoreText(samsungScore.spotZ)}) / 미결제약정(OI·전체) ${fmtDelta(row.samsung.oi_delta)}`
       );
       setText("skhynix-flow-call", `${scoreLabel(skScore.score)} ${scoreText(skScore.score)}`);
       setText(
         "skhynix-flow-detail",
-        `당일 선물 ${fmtSignedInt(row.skhynix.daily_contracts, "계약")} (${scoreText(skScore.dailyZ)}) / 월물 누적 ${fmtSignedInt(row.skhynix.cum_contracts, "계약")} (${scoreText(skScore.cumZ)}, 구간 ${skScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.skhynix.spot_amount)} (${scoreText(skScore.spotZ)}) / 미결제약정(OI·전체) ${fmtDelta(row.skhynix.oi_delta)}`
+        `당일 선물금액 ${fmtSignedFloat(row.skhynix.daily_amount)} (${scoreText(skScore.dailyZ)}) / 월물 누적금액 ${fmtSignedFloat(row.skhynix.cum_amount)} (${scoreText(skScore.cumZ)}, 구간 ${skScore.percentile ?? "-"}%) / 현물 ${fmtSignedFloat(row.skhynix.spot_amount)} (${scoreText(skScore.spotZ)}) / 미결제약정(OI·전체) ${fmtDelta(row.skhynix.oi_delta)}`
       );
       setText("risk-call", warnings[0]);
       setHtml("risk-flags", warnings.map(item => `<div>${escapeHtml(item)}</div>`).join(""));
