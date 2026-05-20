@@ -1,21 +1,21 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-05-20 07:10:09",
+  "generated_at": "2026-05-20 19:01:39",
   "start_date": "2026-03-12",
-  "latest_date": "2026-05-19",
+  "latest_date": "2026-05-20",
   "ops_status": {
-    "status": "skipped",
-    "last_checked_at": "2026-05-20T07:10:07+09:00",
-    "latest_available_date": "2026-05-19",
+    "status": "success",
+    "last_checked_at": "2026-05-20T19:01:35+09:00",
+    "latest_available_date": "2026-05-20",
     "fallback_used": false,
-    "execution_status": "degraded",
+    "execution_status": "success",
     "freshness_status": "current",
     "completeness_status": "complete",
     "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "degraded",
-    "expected_latest_date": "2026-05-19",
-    "actual_latest_date": "2026-05-19",
-    "source_bundle_status": "skip_reused_same_day_success",
+    "overall_status": "normal",
+    "expected_latest_date": "2026-05-20",
+    "actual_latest_date": "2026-05-20",
+    "source_bundle_status": "complete_same_day",
     "current_bottleneck": "none",
     "recommended_action": "observe next same-day run",
     "pipeline_attempts_used": 1,
@@ -1762,6 +1762,43 @@ window.KRX_DASHBOARD_DATA = {
         "program_nonarb_amount": -48169.72
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260519.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260519.xlsx, KRX_투자자별거래실적_코스피200선물_20260519.xlsx, KRX_프로그램매매_코스피_20260519.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260519.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260519.xlsx, data_4459_20260519.csv"
+    },
+    {
+      "date": "2026-05-20",
+      "range_label": "2026-05-15 ~ 2026-05-20",
+      "stock_range_label": "2026-05-15 ~ 2026-05-20",
+      "market_range_label": "2026-03-12 ~ 2026-05-20",
+      "samsung": {
+        "daily_contracts": 153539,
+        "daily_amount": 4182.76,
+        "cum_contracts": 182472,
+        "cum_amount": 5038.320000000001,
+        "oi": 4826034,
+        "oi_delta": 109556,
+        "spot_shares": -5750416,
+        "spot_amount": -15842.37,
+        "oi_ratio": 3.1814736489631033
+      },
+      "skhynix": {
+        "daily_contracts": 7220,
+        "daily_amount": 1273.38,
+        "cum_contracts": -49409,
+        "cum_amount": -9145.91,
+        "oi": 1235518,
+        "oi_delta": 25845,
+        "spot_shares": -704514,
+        "spot_amount": -12258.58,
+        "oi_ratio": 0.5843702803196715
+      },
+      "market": {
+        "kospi200_daily_contracts": -1315,
+        "kospi200_daily_amount": -3465.21,
+        "kospi200_cum_contracts": -10111,
+        "kospi200_cum_amount": -40655.6,
+        "program_arb_amount": 1080.3,
+        "program_nonarb_amount": -11064.68
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260520.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260520.xlsx, KRX_투자자별거래실적_코스피200선물_20260520.xlsx, KRX_프로그램매매_코스피_20260520.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260520.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260520.xlsx, data_4459_20260520.csv"
     }
   ]
 };
