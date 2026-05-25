@@ -2021,12 +2021,17 @@
       const latest = ops.actual_latest_date || ops.latest_available_date || DASHBOARD_DATA.latest_date;
       const bundleStatus = ops.source_bundle_status || "";
       const reusedSameDaySuccess = bundleStatus === "skip_reused_same_day_success";
+      const reusedLatestAvailable = reusedSameDaySuccess || bundleStatus === "stale_reused_latest_available";
       const freshnessBlocked = freshness !== "current";
-      const completenessBlocked = completeness !== "complete";
+      const scheduleSkipReuse = !freshnessBlocked && reusedLatestAvailable && ops.status === "skipped";
+      const completenessBlocked = completeness !== "complete" && !scheduleSkipReuse;
 
       if (!freshnessBlocked && !completenessBlocked) {
         const notes = [];
-        if (reusedSameDaySuccess) {
+        if (scheduleSkipReuse) {
+          notes.push(`최신 ${latest} 기준은 유지됐고, 이번 실행은 휴장/스케줄 gate로 직전 유효본을 재사용했습니다.`);
+          notes.push("필수 데이터 누락은 확인되지 않았습니다. 다음 same-day 실행에서 새 거래일 묶음을 다시 확인하면 됩니다.");
+        } else if (reusedSameDaySuccess) {
           notes.push(`최신 ${latest} 기준은 유지됐고, 오늘은 직전 same-day 성공본을 그대로 재사용했습니다.`);
         } else {
           notes.push(`공식 원천 기준 최신 ${latest}까지 같은 날 묶음으로 확인했습니다.`);
@@ -2035,8 +2040,8 @@
         if (fallbackUsed) notes.push("수집 중 복구 경로가 있었지만 최신성과 완결성은 유지됐습니다.");
         if (sourceQuality !== "official") notes.push("원천 표시는 보수적으로 보되, 화면에 필요한 최신 묶음은 갖춰졌습니다.");
         return {
-          klass: "quality-badge clean",
-          label: "데이터 상태: 정상",
+          klass: scheduleSkipReuse ? "quality-badge watch" : "quality-badge clean",
+          label: scheduleSkipReuse ? "데이터 상태: 관찰" : "데이터 상태: 정상",
           inline: notes[0],
           detail: notes.join(" ")
         };
