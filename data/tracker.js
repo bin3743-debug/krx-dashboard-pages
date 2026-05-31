@@ -1,29 +1,27 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-05-31 08:31:55",
+  "generated_at": "2026-05-31 19:00:08",
   "start_date": "2026-03-12",
   "latest_date": "2026-05-28",
   "ops_status": {
-    "status": "failed",
-    "last_checked_at": "2026-05-31T08:31:53+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-05-31T19:00:06+09:00",
     "latest_available_date": "2026-05-28",
-    "fallback_used": true,
-    "execution_status": "failed",
-    "freshness_status": "blocked",
-    "completeness_status": "missing critical component",
+    "fallback_used": false,
+    "execution_status": "degraded",
+    "freshness_status": "current",
+    "completeness_status": "partial",
     "source_quality_status": "official",
-    "consistency_status": "mismatch",
-    "overall_status": "failed",
-    "expected_latest_date": "2026-05-29",
+    "consistency_status": "consistent",
+    "overall_status": "degraded",
+    "expected_latest_date": "2026-05-28",
     "actual_latest_date": "2026-05-28",
-    "source_bundle_status": "missing_current_bundle",
-    "current_bottleneck": "same-day source acquisition failed at pipeline",
-    "recommended_action": "reopen KRX source acquisition repair",
+    "source_bundle_status": "stale_reused_latest_available",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next same-day run",
     "pipeline_attempts_used": null,
     "final_success_attempt": null,
     "final_launch_mode": null,
-    "fallback_signals": [
-      "edge_restart"
-    ]
+    "fallback_signals": []
   },
   "rows": [
     {
