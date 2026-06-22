@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-06-22 19:01:14",
+  "generated_at": "2026-06-22 23:33:26",
   "start_date": "2026-03-12",
   "latest_date": "2026-06-19",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-06-22T19:01:12+09:00",
+    "last_checked_at": "2026-06-22T23:33:23+09:00",
     "latest_available_date": "2026-06-19",
     "fallback_used": false,
     "execution_status": "failed",
