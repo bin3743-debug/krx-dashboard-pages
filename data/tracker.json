@@ -1,27 +1,31 @@
 {
-  "generated_at": "2026-06-23 07:26:11",
+  "generated_at": "2026-06-23 19:03:57",
   "start_date": "2026-03-12",
-  "latest_date": "2026-06-22",
+  "latest_date": "2026-06-23",
   "ops_status": {
-    "status": "skipped",
-    "last_checked_at": "2026-06-23T07:26:08+09:00",
-    "latest_available_date": "2026-06-22",
-    "fallback_used": false,
+    "status": "success",
+    "last_checked_at": "2026-06-23T19:03:55+09:00",
+    "latest_available_date": "2026-06-23",
+    "fallback_used": true,
     "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "complete",
     "source_quality_status": "official",
     "consistency_status": "consistent",
     "overall_status": "degraded",
-    "expected_latest_date": "2026-06-22",
-    "actual_latest_date": "2026-06-22",
-    "source_bundle_status": "skip_reused_same_day_success",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next same-day run",
+    "expected_latest_date": "2026-06-23",
+    "actual_latest_date": "2026-06-23",
+    "source_bundle_status": "complete_same_day",
+    "current_bottleneck": "same-day source acquisition required attempt 1 and fallback/restart recovery",
+    "recommended_action": "observe next 19:00 same-day run and reopen if fallback repeats",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "final_launch_mode": "persistent_fallback",
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "persistent_profile_preflight",
+      "persistent_profile"
+    ]
   },
   "rows": [
     {
@@ -2576,6 +2580,43 @@
         "program_nonarb_amount": -25080.09
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260622.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260622.xlsx, KRX_투자자별거래실적_코스피200선물_20260622.xlsx, KRX_프로그램매매_코스피_20260622.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260622.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260622.xlsx, data_4459_20260622.csv"
+    },
+    {
+      "date": "2026-06-23",
+      "range_label": "2026-06-12 ~ 2026-06-23",
+      "stock_range_label": "2026-06-12 ~ 2026-06-23",
+      "market_range_label": "2026-06-12 ~ 2026-06-23",
+      "samsung": {
+        "daily_contracts": -177911,
+        "daily_amount": -6134.15,
+        "cum_contracts": -177455,
+        "cum_amount": -6520.539999999999,
+        "oi": 6203256,
+        "oi_delta": -494499,
+        "spot_shares": -2274624,
+        "spot_amount": -7685.31,
+        "oi_ratio": -2.8680260817867262
+      },
+      "skhynix": {
+        "daily_contracts": -101910,
+        "daily_amount": -28165.67,
+        "cum_contracts": -24897,
+        "cum_amount": -7197.66,
+        "oi": 1695258,
+        "oi_delta": -166071,
+        "spot_shares": -946166,
+        "spot_amount": -26523.41,
+        "oi_ratio": -6.011474359654991
+      },
+      "market": {
+        "kospi200_daily_contracts": 6595,
+        "kospi200_daily_amount": 21408.59,
+        "kospi200_cum_contracts": 7857,
+        "kospi200_cum_amount": 26975.1,
+        "program_arb_amount": -935.17,
+        "program_nonarb_amount": -45850.35
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260623.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260623.xlsx, KRX_투자자별거래실적_코스피200선물_20260623.xlsx, KRX_프로그램매매_코스피_20260623.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260623.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260623.xlsx, data_4459_20260623.csv"
     }
   ]
 }
