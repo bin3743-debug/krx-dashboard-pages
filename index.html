@@ -390,6 +390,82 @@
       line-height: 1.4;
       font-weight: 800;
     }
+    .share-wrap {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 16px;
+      margin-bottom: 26px;
+    }
+    .share-inner {
+      background: #edf7fb;
+      border-radius: 20px;
+      padding: 22px 24px;
+    }
+    .share-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .share-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .share-sub {
+      font-size: 15px;
+      line-height: 1.45;
+      color: #506176;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+    .share-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .share-copy-button {
+      border: 1px solid rgba(16, 46, 82, 0.18);
+      border-radius: 999px;
+      background: var(--navy);
+      color: #ffffff;
+      padding: 10px 14px;
+      min-height: 40px;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .share-copy-button:focus-visible {
+      outline: 3px solid rgba(16, 46, 82, 0.22);
+      outline-offset: 2px;
+    }
+    .share-copy-status {
+      min-width: 82px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+      text-align: right;
+    }
+    .share-text {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(16, 46, 82, 0.12);
+      border-radius: 16px;
+      padding: 18px 20px;
+      color: #102e52;
+      font-family: "Noto Sans KR","Malgun Gothic",sans-serif;
+      font-size: 20px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
     .grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -730,6 +806,7 @@
       }
       .outer-card,
       .market-wrap,
+      .share-wrap,
       .chart-wrap {
         padding: 12px;
       }
@@ -868,6 +945,31 @@
         padding: 16px;
         border-radius: 18px;
         margin-bottom: 18px;
+      }
+      .share-wrap {
+        padding: 12px;
+        border-radius: 18px;
+        margin-bottom: 18px;
+      }
+      .share-inner {
+        padding: 16px;
+        border-radius: 16px;
+      }
+      .share-head {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .share-title {
+        font-size: 22px;
+      }
+      .share-text {
+        padding: 14px;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .share-actions {
+        width: 100%;
+        justify-content: flex-start;
       }
       .summary-head {
         flex-direction: column;
@@ -1159,6 +1261,22 @@
         </details>
       </section>
 
+      <section class="share-wrap" aria-label="정보공유문">
+        <div class="share-inner">
+          <div class="share-head">
+            <div>
+              <div class="share-title">정보공유문</div>
+              <div class="share-sub">선택한 기준일의 당일값과 누적기간 값을 함께 표시합니다. 누적은 거래실적 합계이고 실제 보유잔고가 아닙니다.</div>
+            </div>
+            <div class="share-actions">
+              <button class="share-copy-button" id="shareCopyButton" type="button">공유문 복사</button>
+              <span class="share-copy-status" id="shareCopyStatus"></span>
+            </div>
+          </div>
+          <pre class="share-text" id="shareText">공유문 생성 중</pre>
+        </div>
+      </section>
+
       <section class="grid-2">
         <article class="outer-card">
           <div class="inner-card blue">
@@ -1326,6 +1444,8 @@
     const fmtDelta = value => `(전일비 ${value > 0 ? "+" : ""}${Number(value).toLocaleString("ko-KR")})`;
 
     const select = document.getElementById("dateSelect");
+    const shareCopyButton = document.getElementById("shareCopyButton");
+    const shareCopyStatus = document.getElementById("shareCopyStatus");
     let DASHBOARD_DATA = window.KRX_DASHBOARD_DATA || null;
     let rows = [];
     let byDate = new Map();
@@ -1864,6 +1984,91 @@
       return String(value || "").replaceAll("-", ".");
     }
 
+    function shareDate(value) {
+      const dateValue = toDateOnly(value);
+      return `${dateValue.getMonth() + 1}월${dateValue.getDate()}일`;
+    }
+
+    function stockShareStatus(stock) {
+      const futureDirection = direction(stock.daily_amount);
+      const spotDirection = direction(stock.spot_amount);
+      if (futureDirection && spotDirection && futureDirection !== spotDirection) return "선물·현물 역방향";
+      if (futureDirection > 0 && spotDirection > 0) return "선물·현물 동반 매수";
+      if (futureDirection < 0 && spotDirection < 0) return "선물·현물 동반 매도";
+      if (futureDirection > 0 || spotDirection > 0) return "매수 쪽 우위";
+      if (futureDirection < 0 || spotDirection < 0) return "매도 쪽 우위";
+      return "방향 중립";
+    }
+
+    function stockSpotCumAmount(row, key) {
+      const stock = row[key];
+      if (stock.spot_cum_amount !== undefined) return Number(stock.spot_cum_amount || 0);
+      return currentCycleRows(row.date, "stock_range_label").reduce(
+        (sum, item) => sum + Number((item[key] && item[key].spot_amount) || 0),
+        0
+      );
+    }
+
+    function programNetCumAmount(row) {
+      if (row.market.program_net_cum_amount !== undefined) return Number(row.market.program_net_cum_amount || 0);
+      return currentCycleRows(row.date, "market_range_label").reduce(
+        (sum, item) => sum + Number(item.market.program_arb_amount || 0) + Number(item.market.program_nonarb_amount || 0),
+        0
+      );
+    }
+
+    function stockShareBlock(row, key, label) {
+      const stock = row[key];
+      const spotCumAmount = stockSpotCumAmount(row, key);
+      return [
+        label,
+        stockShareStatus(stock),
+        `당일 선물 ${directionWord(stock.daily_amount)} ${fmtSignedFloat(stock.daily_amount)} / 누적기간 선물 ${directionWord(stock.cum_amount)} ${fmtSignedFloat(stock.cum_amount)}`,
+        `당일 현물 ${directionWord(stock.spot_amount, "순매수", "순매도")} ${fmtSignedFloat(stock.spot_amount)} / 누적기간 현물 ${directionWord(spotCumAmount, "순매수", "순매도")} ${fmtSignedFloat(spotCumAmount)}`,
+        `OI(전체) ${fmtOi(stock.oi)}계약 / 전일비 ${fmtSignedInt(stock.oi_delta, "계약")}`
+      ].join("\n");
+    }
+
+    function buildShareText(row, marketScore, programNet) {
+      const programCumAmount = programNetCumAmount(row);
+      return [
+        `${shareDate(row.date)} 종가기준`,
+        `(현재 선택일 기준 누적 구간: 개별주식선물 ${row.stock_range_label || row.range_label} / 코스피200선물 ${row.market_range_label})`,
+        "",
+        stockShareBlock(row, "samsung", "삼성전자"),
+        "",
+        stockShareBlock(row, "skhynix", "SK hynix"),
+        "",
+        "코스피200선물",
+        `${directionWord(row.market.kospi200_daily_amount)} · ${signalStrengthText(marketScore.score)}`,
+        `당일 금액 ${fmtSignedFloat(row.market.kospi200_daily_amount)} / 분기 누적 금액 ${fmtSignedFloat(row.market.kospi200_cum_amount)}`,
+        `당일 계약 ${fmtSignedInt(row.market.kospi200_daily_contracts, "계약")} / 분기 누적 계약 ${fmtSignedInt(row.market.kospi200_cum_contracts, "계약")}`,
+        `강도 ${scoreText(marketScore.score)} · 분기 구간 ${marketScore.percentile ?? "-"}%`,
+        "",
+        "프로그램매매",
+        directionWord(programNet, "시장 순매수", "시장 순매도"),
+        `당일 차익 ${fmtSignedFloat(row.market.program_arb_amount)} / 비차익 ${fmtSignedFloat(row.market.program_nonarb_amount)}`,
+        `당일 합산 ${fmtSignedFloat(programNet)} / 누적기간 합산 ${fmtSignedFloat(programCumAmount)}`,
+        "시장 전체 흐름 보조지표입니다."
+      ].join("\n");
+    }
+
+    function copyTextToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return Promise.resolve();
+    }
+
     function matrixCell(axis, status, detail, hint, klass = "neutral") {
       return `
         <article class="matrix-cell ${escapeHtml(klass)}">
@@ -2080,6 +2285,7 @@
 
       renderDecisionCards(row, expiry, samsungScore, skScore, marketScore, programNet, warnings, semiLabel, marketLabel);
       renderFlowMatrix(row, marketScore, programNet);
+      setText("shareText", buildShareText(row, marketScore, programNet));
       setText("flow-verdict", `${semiLabel} / 지수선물 ${marketLabel} / 프로그램 ${directionWord(programNet, "순매수", "순매도")}`);
       setText("flow-summary-main", `${semiLabel}, 지수는 ${marketLabel}`);
       setText(
@@ -2192,6 +2398,22 @@
       });
 
       document.getElementById("generatedAt").textContent = `생성 시각 ${DASHBOARD_DATA.generated_at}`;
+
+      if (shareCopyButton) {
+        shareCopyButton.addEventListener("click", async () => {
+          const text = document.getElementById("shareText").textContent || "";
+          try {
+            await copyTextToClipboard(text);
+            shareCopyStatus.textContent = "복사됨";
+          } catch (error) {
+            console.error(error);
+            shareCopyStatus.textContent = "복사 실패";
+          }
+          window.setTimeout(() => {
+            shareCopyStatus.textContent = "";
+          }, 1800);
+        });
+      }
 
       select.value = DASHBOARD_DATA.latest_date;
       select.addEventListener("change", event => {

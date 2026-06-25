@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-25 07:10:12",
+  "generated_at": "2026-06-25 19:03:48",
   "start_date": "2026-03-12",
-  "latest_date": "2026-06-24",
+  "latest_date": "2026-06-25",
   "ops_status": {
-    "status": "skipped",
-    "last_checked_at": "2026-06-25T07:10:09+09:00",
-    "latest_available_date": "2026-06-24",
+    "status": "success",
+    "last_checked_at": "2026-06-25T19:03:46+09:00",
+    "latest_available_date": "2026-06-25",
     "fallback_used": true,
     "execution_status": "degraded",
     "freshness_status": "current",
@@ -13,15 +13,19 @@
     "source_quality_status": "official",
     "consistency_status": "consistent",
     "overall_status": "degraded",
-    "expected_latest_date": "2026-06-24",
-    "actual_latest_date": "2026-06-24",
-    "source_bundle_status": "skip_reused_same_day_success",
+    "expected_latest_date": "2026-06-25",
+    "actual_latest_date": "2026-06-25",
+    "source_bundle_status": "complete_same_day",
     "current_bottleneck": "same-day source acquisition required attempt 1 and fallback/restart recovery",
     "recommended_action": "observe next 19:00 same-day run and reopen if fallback repeats",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "persistent_fallback",
-    "fallback_signals": []
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "persistent_profile_preflight",
+      "persistent_profile"
+    ]
   },
   "rows": [
     {
@@ -38,6 +42,8 @@
         "oi_delta": 0,
         "spot_shares": -4889647,
         "spot_amount": -9161.56,
+        "spot_cum_shares": -4889647,
+        "spot_cum_amount": -9161.56,
         "oi_ratio": -0.3958293982093612
       },
       "skhynix": {
@@ -49,6 +55,8 @@
         "oi_delta": 0,
         "spot_shares": -562010,
         "spot_amount": -5260.44,
+        "spot_cum_shares": -562010,
+        "spot_cum_amount": -5260.44,
         "oi_ratio": -1.4613560714493283
       },
       "market": {
@@ -57,7 +65,10 @@
         "kospi200_cum_contracts": -6905,
         "kospi200_cum_amount": -14264.02,
         "program_arb_amount": -551.08,
-        "program_nonarb_amount": -15149.01
+        "program_nonarb_amount": -15149.01,
+        "program_arb_cum_amount": -551.08,
+        "program_nonarb_cum_amount": -15149.01,
+        "program_net_cum_amount": -15700.09
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260312.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260312.xlsx, KRX_투자자별거래실적_코스피200선물_20260312.xlsx, KRX_프로그램매매_코스피_20260312.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260312.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260312.xlsx, data_4459_20260312.csv"
     },
@@ -75,6 +86,8 @@
         "oi_delta": 22569,
         "spot_shares": -2847845,
         "spot_amount": -5219.08,
+        "spot_cum_shares": -7737492,
+        "spot_cum_amount": -14380.64,
         "oi_ratio": 1.430675352391141
       },
       "skhynix": {
@@ -86,6 +99,8 @@
         "oi_delta": 1728,
         "spot_shares": -205127,
         "spot_amount": -1841.85,
+        "spot_cum_shares": -767137,
+        "spot_cum_amount": -7102.289999999999,
         "oi_ratio": -0.025961739869266906
       },
       "market": {
@@ -94,7 +109,10 @@
         "kospi200_cum_contracts": -7226,
         "kospi200_cum_amount": -14820.41,
         "program_arb_amount": -2458.56,
-        "program_nonarb_amount": -13183.89
+        "program_nonarb_amount": -13183.89,
+        "program_arb_cum_amount": -3009.64,
+        "program_nonarb_cum_amount": -28332.9,
+        "program_net_cum_amount": -31342.54
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260313.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260313.xlsx, KRX_투자자별거래실적_코스피200선물_20260313.xlsx, KRX_프로그램매매_코스피_20260313.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260313.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260313.xlsx, data_4459_20260313.csv"
     },
@@ -112,6 +130,8 @@
         "oi_delta": 251425,
         "spot_shares": -498635,
         "spot_amount": -916.56,
+        "spot_cum_shares": -8236127,
+        "spot_cum_amount": -15297.199999999999,
         "oi_ratio": 2.127646040516001
       },
       "skhynix": {
@@ -123,6 +143,8 @@
         "oi_delta": 64960,
         "spot_shares": 324950,
         "spot_amount": 3075.78,
+        "spot_cum_shares": -442187,
+        "spot_cum_amount": -4026.509999999999,
         "oi_ratio": 2.3594040159321006
       },
       "market": {
@@ -131,7 +153,10 @@
         "kospi200_cum_contracts": -10506,
         "kospi200_cum_amount": -21500.57,
         "program_arb_amount": -953.47,
-        "program_nonarb_amount": -7526.69
+        "program_nonarb_amount": -7526.69,
+        "program_arb_cum_amount": -3963.1099999999997,
+        "program_nonarb_cum_amount": -35859.590000000004,
+        "program_net_cum_amount": -39822.700000000004
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260316.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260316.xlsx, KRX_투자자별거래실적_코스피200선물_20260316.xlsx, KRX_프로그램매매_코스피_20260316.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260316.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260316.xlsx, data_4459_20260316.csv"
     },
@@ -149,6 +174,8 @@
         "oi_delta": 121464,
         "spot_shares": 386050,
         "spot_amount": 757.59,
+        "spot_cum_shares": -7850077,
+        "spot_cum_amount": -14539.609999999999,
         "oi_ratio": 0.09468386947826302
       },
       "skhynix": {
@@ -160,6 +187,8 @@
         "oi_delta": 3037,
         "spot_shares": -220808,
         "spot_amount": -2179.49,
+        "spot_cum_shares": -662995,
+        "spot_cum_amount": -6205.999999999998,
         "oi_ratio": -0.7467199076762548
       },
       "market": {
@@ -168,7 +197,10 @@
         "kospi200_cum_contracts": -10593,
         "kospi200_cum_amount": -21625.5,
         "program_arb_amount": 718.65,
-        "program_nonarb_amount": -6300.99
+        "program_nonarb_amount": -6300.99,
+        "program_arb_cum_amount": -3244.4599999999996,
+        "program_nonarb_cum_amount": -42160.58,
+        "program_net_cum_amount": -45405.04
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260317.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260317.xlsx, KRX_투자자별거래실적_코스피200선물_20260317.xlsx, KRX_프로그램매매_코스피_20260317.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260317.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260317.xlsx, data_4459_20260317.csv"
     },
@@ -186,6 +218,8 @@
         "oi_delta": 204969,
         "spot_shares": 1375923,
         "spot_amount": 2815.6,
+        "spot_cum_shares": -6474154,
+        "spot_cum_amount": -11724.009999999998,
         "oi_ratio": -0.0853190615690788
       },
       "skhynix": {
@@ -197,6 +231,8 @@
         "oi_delta": 13611,
         "spot_shares": 582363,
         "spot_amount": 5933.32,
+        "spot_cum_shares": -80632,
+        "spot_cum_amount": -272.6799999999985,
         "oi_ratio": 2.9094510732469785
       },
       "market": {
@@ -205,7 +241,10 @@
         "kospi200_cum_contracts": -2743,
         "kospi200_cum_amount": -4623.490000000002,
         "program_arb_amount": 8667.8,
-        "program_nonarb_amount": 7800.86
+        "program_nonarb_amount": 7800.86,
+        "program_arb_cum_amount": 5423.34,
+        "program_nonarb_cum_amount": -34359.72,
+        "program_net_cum_amount": -28936.38
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260318.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260318.xlsx, KRX_투자자별거래실적_코스피200선물_20260318.xlsx, KRX_프로그램매매_코스피_20260318.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260318.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260318.xlsx, data_4459_20260318.csv"
     },
@@ -223,6 +262,8 @@
         "oi_delta": 150669,
         "spot_shares": -2145636,
         "spot_amount": -4301.73,
+        "spot_cum_shares": -8619790,
+        "spot_cum_amount": -16025.739999999998,
         "oi_ratio": -2.2307002536773473
       },
       "skhynix": {
@@ -234,6 +275,8 @@
         "oi_delta": -33630,
         "spot_shares": -461105,
         "spot_amount": -4677.78,
+        "spot_cum_shares": -541737,
+        "spot_cum_amount": -4950.459999999998,
         "oi_ratio": -1.7977027944544772
       },
       "market": {
@@ -242,7 +285,10 @@
         "kospi200_cum_contracts": -10502,
         "kospi200_cum_amount": -21430.68,
         "program_arb_amount": -796.22,
-        "program_nonarb_amount": -19786.51
+        "program_nonarb_amount": -19786.51,
+        "program_arb_cum_amount": 4627.12,
+        "program_nonarb_cum_amount": -54146.229999999996,
+        "program_net_cum_amount": -49519.10999999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260319.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260319.xlsx, KRX_투자자별거래실적_코스피200선물_20260319.xlsx, KRX_프로그램매매_코스피_20260319.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260319.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260319.xlsx, data_4459_20260319.csv"
     },
@@ -260,6 +306,8 @@
         "oi_delta": 47616,
         "spot_shares": -217834,
         "spot_amount": -823.44,
+        "spot_cum_shares": -8837624,
+        "spot_cum_amount": -16849.179999999997,
         "oi_ratio": -2.065118982371227
       },
       "skhynix": {
@@ -271,6 +319,8 @@
         "oi_delta": 8732,
         "spot_shares": -719644,
         "spot_amount": -7284.96,
+        "spot_cum_shares": -1261381,
+        "spot_cum_amount": -12235.419999999998,
         "oi_ratio": 0.522545364109796
       },
       "market": {
@@ -279,7 +329,10 @@
         "kospi200_cum_contracts": -12023,
         "kospi200_cum_amount": -24716.93,
         "program_arb_amount": 447.22,
-        "program_nonarb_amount": -17849.53
+        "program_nonarb_amount": -17849.53,
+        "program_arb_cum_amount": 5074.34,
+        "program_nonarb_cum_amount": -71995.76,
+        "program_net_cum_amount": -66921.42
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260320.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260320.xlsx, KRX_투자자별거래실적_코스피200선물_20260320.xlsx, KRX_프로그램매매_코스피_20260320.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260320.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260320.xlsx, data_4459_20260320.csv"
     },
@@ -297,6 +350,8 @@
         "oi_delta": 3821,
         "spot_shares": -8062631,
         "spot_amount": -15203.27,
+        "spot_cum_shares": -16900255,
+        "spot_cum_amount": -32052.449999999997,
         "oi_ratio": -1.0217710068941417
       },
       "skhynix": {
@@ -308,6 +363,8 @@
         "oi_delta": -83645,
         "spot_shares": -185688,
         "spot_amount": -1772.12,
+        "spot_cum_shares": -1447069,
+        "spot_cum_amount": -14007.539999999997,
         "oi_ratio": -4.4225644631121295
       },
       "market": {
@@ -316,7 +373,10 @@
         "kospi200_cum_contracts": -22849,
         "kospi200_cum_amount": -47108.75,
         "program_arb_amount": -7159.52,
-        "program_nonarb_amount": -29756.69
+        "program_nonarb_amount": -29756.69,
+        "program_arb_cum_amount": -2085.1800000000003,
+        "program_nonarb_cum_amount": -101752.45,
+        "program_net_cum_amount": -103837.63
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260323.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260323.xlsx, KRX_투자자별거래실적_코스피200선물_20260323.xlsx, KRX_프로그램매매_코스피_20260323.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260323.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260323.xlsx, data_4459_20260323.csv"
     },
@@ -334,6 +394,8 @@
         "oi_delta": -181416,
         "spot_shares": -6154379,
         "spot_amount": -11672.46,
+        "spot_cum_shares": -23054634,
+        "spot_cum_amount": -43724.909999999996,
         "oi_ratio": 4.041516043823652
       },
       "skhynix": {
@@ -345,6 +407,8 @@
         "oi_delta": 46435,
         "spot_shares": -290396,
         "spot_amount": -2843.09,
+        "spot_cum_shares": -1737465,
+        "spot_cum_amount": -16850.629999999997,
         "oi_ratio": 1.045271960794341
       },
       "market": {
@@ -353,7 +417,10 @@
         "kospi200_cum_contracts": -20992,
         "kospi200_cum_amount": -43271.85,
         "program_arb_amount": 3061.27,
-        "program_nonarb_amount": -17906.75
+        "program_nonarb_amount": -17906.75,
+        "program_arb_cum_amount": 976.0899999999997,
+        "program_nonarb_cum_amount": -119659.2,
+        "program_net_cum_amount": -118683.11
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260324.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260324.xlsx, KRX_투자자별거래실적_코스피200선물_20260324.xlsx, KRX_프로그램매매_코스피_20260324.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260324.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260324.xlsx, data_4459_20260324.csv"
     },
@@ -371,6 +438,8 @@
         "oi_delta": -38545,
         "spot_shares": -6169278,
         "spot_amount": -11800.99,
+        "spot_cum_shares": -29223912,
+        "spot_cum_amount": -55525.899999999994,
         "oi_ratio": -0.7560360553471805
       },
       "skhynix": {
@@ -382,6 +451,8 @@
         "oi_delta": 30451,
         "spot_shares": -396640,
         "spot_amount": -3901.84,
+        "spot_cum_shares": -2134105,
+        "spot_cum_amount": -20752.469999999998,
         "oi_ratio": 2.9935360019197024
       },
       "market": {
@@ -390,7 +461,10 @@
         "kospi200_cum_contracts": -13441,
         "kospi200_cum_amount": -27190.86,
         "program_arb_amount": 4554.59,
-        "program_nonarb_amount": -7056.7
+        "program_nonarb_amount": -7056.7,
+        "program_arb_cum_amount": 5530.68,
+        "program_nonarb_cum_amount": -126715.9,
+        "program_net_cum_amount": -121185.22
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260325.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260325.xlsx, KRX_투자자별거래실적_코스피200선물_20260325.xlsx, KRX_프로그램매매_코스피_20260325.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260325.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260325.xlsx, data_4459_20260325.csv"
     },
@@ -408,6 +482,8 @@
         "oi_delta": -104255,
         "spot_shares": -11190838,
         "spot_amount": -20408.11,
+        "spot_cum_shares": -40414750,
+        "spot_cum_amount": -75934.01,
         "oi_ratio": -0.1568453980440853
       },
       "skhynix": {
@@ -419,6 +495,8 @@
         "oi_delta": -71193,
         "spot_shares": -835124,
         "spot_amount": -7906.73,
+        "spot_cum_shares": -2969229,
+        "spot_cum_amount": -28659.199999999997,
         "oi_ratio": 0.026716510703176554
       },
       "market": {
@@ -427,7 +505,10 @@
         "kospi200_cum_contracts": -11846,
         "kospi200_cum_amount": -23984.18,
         "program_arb_amount": 2338.74,
-        "program_nonarb_amount": -18599.37
+        "program_nonarb_amount": -18599.37,
+        "program_arb_cum_amount": 7869.42,
+        "program_nonarb_cum_amount": -145315.27,
+        "program_net_cum_amount": -137445.84999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260326.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260326.xlsx, KRX_투자자별거래실적_코스피200선물_20260326.xlsx, KRX_프로그램매매_코스피_20260326.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260326.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260326.xlsx, data_4459_20260326.csv"
     },
@@ -445,6 +526,8 @@
         "oi_delta": 7228,
         "spot_shares": -10266640,
         "spot_amount": -17985.69,
+        "spot_cum_shares": -50681390,
+        "spot_cum_amount": -93919.7,
         "oi_ratio": -1.237176559822898
       },
       "skhynix": {
@@ -456,6 +539,8 @@
         "oi_delta": 38133,
         "spot_shares": -1269995,
         "spot_amount": -11464.25,
+        "spot_cum_shares": -4239224,
+        "spot_cum_amount": -40123.45,
         "oi_ratio": 0.4197250457547699
       },
       "market": {
@@ -464,7 +549,10 @@
         "kospi200_cum_contracts": -14108,
         "kospi200_cum_amount": -28372.49,
         "program_arb_amount": 229.96,
-        "program_nonarb_amount": -19391.37
+        "program_nonarb_amount": -19391.37,
+        "program_arb_cum_amount": 8099.38,
+        "program_nonarb_cum_amount": -164706.63999999998,
+        "program_net_cum_amount": -156607.25999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260327.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260327.xlsx, KRX_투자자별거래실적_코스피200선물_20260327.xlsx, KRX_프로그램매매_코스피_20260327.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260327.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260327.xlsx, data_4459_20260327.csv"
     },
@@ -482,6 +570,8 @@
         "oi_delta": -10354,
         "spot_shares": -4001044,
         "spot_amount": -6968.96,
+        "spot_cum_shares": -54682434,
+        "spot_cum_amount": -100888.66,
         "oi_ratio": 0.019883752028018998
       },
       "skhynix": {
@@ -493,6 +583,8 @@
         "oi_delta": -16776,
         "spot_shares": -1052679,
         "spot_amount": -9172.88,
+        "spot_cum_shares": -5291903,
+        "spot_cum_amount": -49296.329999999994,
         "oi_ratio": 1.6566436839476264
       },
       "market": {
@@ -501,7 +593,10 @@
         "kospi200_cum_contracts": -14143,
         "kospi200_cum_amount": -28380.86,
         "program_arb_amount": 2098.95,
-        "program_nonarb_amount": -5145.91
+        "program_nonarb_amount": -5145.91,
+        "program_arb_cum_amount": 10198.33,
+        "program_nonarb_cum_amount": -169852.55,
+        "program_net_cum_amount": -159654.22
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260330.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260330.xlsx, KRX_투자자별거래실적_코스피200선물_20260330.xlsx, KRX_프로그램매매_코스피_20260330.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260330.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260330.xlsx, data_4459_20260330.csv"
     },
@@ -519,6 +614,8 @@
         "oi_delta": -17745,
         "spot_shares": -11745643,
         "spot_amount": -19880.73,
+        "spot_cum_shares": -66428077,
+        "spot_cum_amount": -120769.39,
         "oi_ratio": -3.133310569599214
       },
       "skhynix": {
@@ -530,6 +627,8 @@
         "oi_delta": -18921,
         "spot_shares": -1114746,
         "spot_amount": -9126.74,
+        "spot_cum_shares": -6406649,
+        "spot_cum_amount": -58423.06999999999,
         "oi_ratio": -3.474388197279764
       },
       "market": {
@@ -538,7 +637,10 @@
         "kospi200_cum_contracts": -13443,
         "kospi200_cum_amount": -27050.74,
         "program_arb_amount": 3316.19,
-        "program_nonarb_amount": -23523.19
+        "program_nonarb_amount": -23523.19,
+        "program_arb_cum_amount": 13514.52,
+        "program_nonarb_cum_amount": -193375.74,
+        "program_net_cum_amount": -179861.22
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260331.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260331.xlsx, KRX_투자자별거래실적_코스피200선물_20260331.xlsx, KRX_프로그램매매_코스피_20260331.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260331.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260331.xlsx, data_4459_20260331.csv"
     },
@@ -556,6 +658,8 @@
         "oi_delta": 762,
         "spot_shares": -15820,
         "spot_amount": -31.94,
+        "spot_cum_shares": -66443897,
+        "spot_cum_amount": -120801.33,
         "oi_ratio": 1.03484916427666
       },
       "skhynix": {
@@ -567,6 +671,8 @@
         "oi_delta": 7702,
         "spot_shares": -454971,
         "spot_amount": -4044.85,
+        "spot_cum_shares": -6861620,
+        "spot_cum_amount": -62467.91999999999,
         "oi_ratio": 2.1649928363842084
       },
       "market": {
@@ -575,7 +681,10 @@
         "kospi200_cum_contracts": -6373,
         "kospi200_cum_amount": -13402.650000000001,
         "program_arb_amount": 5448.73,
-        "program_nonarb_amount": 2711.83
+        "program_nonarb_amount": 2711.83,
+        "program_arb_cum_amount": 18963.25,
+        "program_nonarb_cum_amount": -190663.91,
+        "program_net_cum_amount": -171700.66
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260401.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260401.xlsx, KRX_투자자별거래실적_코스피200선물_20260401.xlsx, KRX_프로그램매매_코스피_20260401.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260401.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260401.xlsx, data_4459_20260401.csv"
     },
@@ -593,6 +702,8 @@
         "oi_delta": 36449,
         "spot_shares": -1405649,
         "spot_amount": -2586.36,
+        "spot_cum_shares": -67849546,
+        "spot_cum_amount": -123387.69,
         "oi_ratio": -2.1751471959262823
       },
       "skhynix": {
@@ -604,6 +715,8 @@
         "oi_delta": -7889,
         "spot_shares": -87028,
         "spot_amount": -885.06,
+        "spot_cum_shares": -6948648,
+        "spot_cum_amount": -63352.97999999999,
         "oi_ratio": -2.473824717804002
       },
       "market": {
@@ -612,7 +725,10 @@
         "kospi200_cum_contracts": -6318,
         "kospi200_cum_amount": -13170.350000000002,
         "program_arb_amount": -1161.92,
-        "program_nonarb_amount": 1068.32
+        "program_nonarb_amount": 1068.32,
+        "program_arb_cum_amount": 17801.33,
+        "program_nonarb_cum_amount": -189595.59,
+        "program_net_cum_amount": -171794.26
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260402.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260402.xlsx, KRX_투자자별거래실적_코스피200선물_20260402.xlsx, KRX_프로그램매매_코스피_20260402.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260402.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260402.xlsx, data_4459_20260402.csv"
     },
@@ -630,6 +746,8 @@
         "oi_delta": 151434,
         "spot_shares": 524052,
         "spot_amount": 980.15,
+        "spot_cum_shares": -67325494,
+        "spot_cum_amount": -122407.54000000001,
         "oi_ratio": -0.09114654688231374
       },
       "skhynix": {
@@ -641,6 +759,8 @@
         "oi_delta": 1070,
         "spot_shares": 416011,
         "spot_amount": 3655.57,
+        "spot_cum_shares": -6532637,
+        "spot_cum_amount": -59697.40999999999,
         "oi_ratio": -1.5295938367779225
       },
       "market": {
@@ -649,7 +769,10 @@
         "kospi200_cum_contracts": -5325,
         "kospi200_cum_amount": -11274.110000000002,
         "program_arb_amount": -305.07,
-        "program_nonarb_amount": 9033.6
+        "program_nonarb_amount": 9033.6,
+        "program_arb_cum_amount": 17496.260000000002,
+        "program_nonarb_cum_amount": -180561.99,
+        "program_net_cum_amount": -163065.72999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260403.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260403.xlsx, KRX_투자자별거래실적_코스피200선물_20260403.xlsx, KRX_프로그램매매_코스피_20260403.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260403.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260403.xlsx, data_4459_20260403.csv"
     },
@@ -667,6 +790,8 @@
         "oi_delta": -8392,
         "spot_shares": 1219967,
         "spot_amount": 2358.67,
+        "spot_cum_shares": -66105527,
+        "spot_cum_amount": -120048.87000000001,
         "oi_ratio": 0.366465300262632
       },
       "skhynix": {
@@ -678,6 +803,8 @@
         "oi_delta": 75634,
         "spot_shares": -28883,
         "spot_amount": -237.35,
+        "spot_cum_shares": -6561520,
+        "spot_cum_amount": -59934.75999999999,
         "oi_ratio": 0.5779868080164379
       },
       "market": {
@@ -686,7 +813,10 @@
         "kospi200_cum_contracts": -5413,
         "kospi200_cum_amount": -11384.840000000002,
         "program_arb_amount": 1748.69,
-        "program_nonarb_amount": -3197.28
+        "program_nonarb_amount": -3197.28,
+        "program_arb_cum_amount": 19244.95,
+        "program_nonarb_cum_amount": -183759.27,
+        "program_net_cum_amount": -164514.31999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260406.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260406.xlsx, KRX_투자자별거래실적_코스피200선물_20260406.xlsx, KRX_프로그램매매_코스피_20260406.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260406.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260406.xlsx, data_4459_20260406.csv"
     },
@@ -704,6 +834,8 @@
         "oi_delta": 341809,
         "spot_shares": -2727272,
         "spot_amount": -5380.02,
+        "spot_cum_shares": -68832799,
+        "spot_cum_amount": -125428.89000000001,
         "oi_ratio": -0.35295843082180406
       },
       "skhynix": {
@@ -715,6 +847,8 @@
         "oi_delta": 100707,
         "spot_shares": 584545,
         "spot_amount": 5323.52,
+        "spot_cum_shares": -5976975,
+        "spot_cum_amount": -54611.23999999999,
         "oi_ratio": -0.8690554488687559
       },
       "market": {
@@ -723,7 +857,10 @@
         "kospi200_cum_contracts": -4983,
         "kospi200_cum_amount": -10424.690000000002,
         "program_arb_amount": -1505.76,
-        "program_nonarb_amount": 3182.67
+        "program_nonarb_amount": 3182.67,
+        "program_arb_cum_amount": 17739.190000000002,
+        "program_nonarb_cum_amount": -180576.59999999998,
+        "program_net_cum_amount": -162837.40999999997
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260407.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260407.xlsx, KRX_투자자별거래실적_코스피200선물_20260407.xlsx, KRX_프로그램매매_코스피_20260407.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260407.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260407.xlsx, data_4459_20260407.csv"
     },
@@ -741,6 +878,8 @@
         "oi_delta": 271404,
         "spot_shares": 2377005,
         "spot_amount": 5052.66,
+        "spot_cum_shares": -66455794,
+        "spot_cum_amount": -120376.23000000001,
         "oi_ratio": 1.3121361002703789
       },
       "skhynix": {
@@ -752,6 +891,8 @@
         "oi_delta": 169149,
         "spot_shares": 1222811,
         "spot_amount": 12401.14,
+        "spot_cum_shares": -4754164,
+        "spot_cum_amount": -42210.09999999999,
         "oi_ratio": 1.2286083210358452
       },
       "market": {
@@ -760,7 +901,10 @@
         "kospi200_cum_contracts": 2659,
         "kospi200_cum_amount": 6262.179999999997,
         "program_arb_amount": 5156.41,
-        "program_nonarb_amount": 12668.87
+        "program_nonarb_amount": 12668.87,
+        "program_arb_cum_amount": 22895.600000000002,
+        "program_nonarb_cum_amount": -167907.72999999998,
+        "program_net_cum_amount": -145012.12999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260408.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260408.xlsx, KRX_투자자별거래실적_코스피200선물_20260408.xlsx, KRX_프로그램매매_코스피_20260408.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260408.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260408.xlsx, data_4459_20260408.csv"
     },
@@ -778,6 +922,8 @@
         "oi_delta": -970917,
         "spot_shares": 10764941,
         "spot_amount": 22109.67,
+        "spot_cum_shares": -55690853,
+        "spot_cum_amount": -98266.56000000001,
         "oi_ratio": 0.476327710265148
       },
       "skhynix": {
@@ -789,6 +935,8 @@
         "oi_delta": -351316,
         "spot_shares": -912323,
         "spot_amount": -9090.28,
+        "spot_cum_shares": -5666487,
+        "spot_cum_amount": -51300.37999999999,
         "oi_ratio": -1.788583994876814
       },
       "market": {
@@ -797,7 +945,10 @@
         "kospi200_cum_contracts": 4357,
         "kospi200_cum_amount": 10042.579999999996,
         "program_arb_amount": -431.86,
-        "program_nonarb_amount": -13919.35
+        "program_nonarb_amount": -13919.35,
+        "program_arb_cum_amount": 22463.74,
+        "program_nonarb_cum_amount": -181827.08,
+        "program_net_cum_amount": -159363.34
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260409.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260409.xlsx, KRX_투자자별거래실적_코스피200선물_20260409.xlsx, KRX_프로그램매매_코스피_20260409.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260409.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260409.xlsx, data_4459_20260409.csv"
     },
@@ -815,6 +966,8 @@
         "oi_delta": -6030,
         "spot_shares": 468960,
         "spot_amount": 994.11,
+        "spot_cum_shares": 468960,
+        "spot_cum_amount": 994.11,
         "oi_ratio": -0.7023251814357722
       },
       "skhynix": {
@@ -826,6 +979,8 @@
         "oi_delta": 29230,
         "spot_shares": 811687,
         "spot_amount": 8367.53,
+        "spot_cum_shares": 811687,
+        "spot_cum_amount": 8367.53,
         "oi_ratio": -2.667939536093869
       },
       "market": {
@@ -834,7 +989,10 @@
         "kospi200_cum_contracts": 5976,
         "kospi200_cum_amount": 13658.139999999996,
         "program_arb_amount": 691.5,
-        "program_nonarb_amount": 708.9
+        "program_nonarb_amount": 708.9,
+        "program_arb_cum_amount": 23155.24,
+        "program_nonarb_cum_amount": -181118.18,
+        "program_net_cum_amount": -157962.94
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260410.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260410.xlsx, KRX_투자자별거래실적_코스피200선물_20260410.xlsx, KRX_프로그램매매_코스피_20260410.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260410.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260410.xlsx, data_4459_20260410.csv"
     },
@@ -852,6 +1010,8 @@
         "oi_delta": -111860,
         "spot_shares": -1433695,
         "spot_amount": -2871.18,
+        "spot_cum_shares": -964735,
+        "spot_cum_amount": -1877.0699999999997,
         "oi_ratio": 1.963097255946699
       },
       "skhynix": {
@@ -863,6 +1023,8 @@
         "oi_delta": -12920,
         "spot_shares": 442849,
         "spot_amount": 4553.0,
+        "spot_cum_shares": 1254536,
+        "spot_cum_amount": 12920.53,
         "oi_ratio": -0.11580655451229492
       },
       "market": {
@@ -871,7 +1033,10 @@
         "kospi200_cum_contracts": 4999,
         "kospi200_cum_amount": 11522.719999999996,
         "program_arb_amount": -1261.37,
-        "program_nonarb_amount": 330.09
+        "program_nonarb_amount": 330.09,
+        "program_arb_cum_amount": 21893.870000000003,
+        "program_nonarb_cum_amount": -180788.09,
+        "program_net_cum_amount": -158894.22
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260413.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260413.xlsx, KRX_투자자별거래실적_코스피200선물_20260413.xlsx, KRX_프로그램매매_코스피_20260413.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260413.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260413.xlsx, data_4459_20260413.csv"
     },
@@ -889,6 +1054,8 @@
         "oi_delta": 239286,
         "spot_shares": -499031,
         "spot_amount": -1017.94,
+        "spot_cum_shares": -1463766,
+        "spot_cum_amount": -2895.0099999999998,
         "oi_ratio": 3.7021610730548957
       },
       "skhynix": {
@@ -900,6 +1067,8 @@
         "oi_delta": 41059,
         "spot_shares": 780601,
         "spot_amount": 8685.03,
+        "spot_cum_shares": 2035137,
+        "spot_cum_amount": 21605.56,
         "oi_ratio": -0.40314097749549976
       },
       "market": {
@@ -908,7 +1077,10 @@
         "kospi200_cum_contracts": 12149,
         "kospi200_cum_amount": 27716.549999999996,
         "program_arb_amount": 1668.0,
-        "program_nonarb_amount": 6178.07
+        "program_nonarb_amount": 6178.07,
+        "program_arb_cum_amount": 23561.870000000003,
+        "program_nonarb_cum_amount": -174610.02,
+        "program_net_cum_amount": -151048.15
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260414.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260414.xlsx, KRX_투자자별거래실적_코스피200선물_20260414.xlsx, KRX_프로그램매매_코스피_20260414.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260414.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260414.xlsx, data_4459_20260414.csv"
     },
@@ -926,6 +1098,8 @@
         "oi_delta": 206250,
         "spot_shares": 66060,
         "spot_amount": 148.89,
+        "spot_cum_shares": -1397706,
+        "spot_cum_amount": -2746.12,
         "oi_ratio": 2.369071778093616
       },
       "skhynix": {
@@ -937,6 +1111,8 @@
         "oi_delta": -10905,
         "spot_shares": -271995,
         "spot_amount": -3100.14,
+        "spot_cum_shares": 1763142,
+        "spot_cum_amount": 18505.420000000002,
         "oi_ratio": -1.2136445311447908
       },
       "market": {
@@ -945,7 +1121,10 @@
         "kospi200_cum_contracts": 14678,
         "kospi200_cum_amount": 33671.64,
         "program_arb_amount": 1790.48,
-        "program_nonarb_amount": 1547.85
+        "program_nonarb_amount": 1547.85,
+        "program_arb_cum_amount": 25352.350000000002,
+        "program_nonarb_cum_amount": -173062.16999999998,
+        "program_net_cum_amount": -147709.81999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260415.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260415.xlsx, KRX_투자자별거래실적_코스피200선물_20260415.xlsx, KRX_프로그램매매_코스피_20260415.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260415.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260415.xlsx, data_4459_20260415.csv"
     },
@@ -963,6 +1142,8 @@
         "oi_delta": 111985,
         "spot_shares": 1681473,
         "spot_amount": 3690.14,
+        "spot_cum_shares": 283767,
+        "spot_cum_amount": 944.02,
         "oi_ratio": -0.6278948189829341
       },
       "skhynix": {
@@ -974,6 +1155,8 @@
         "oi_delta": -28365,
         "spot_shares": -407323,
         "spot_amount": -4666.39,
+        "spot_cum_shares": 1355819,
+        "spot_cum_amount": 13839.030000000002,
         "oi_ratio": -0.1386429015724399
       },
       "market": {
@@ -982,7 +1165,10 @@
         "kospi200_cum_contracts": 17799,
         "kospi200_cum_amount": 40964.71,
         "program_arb_amount": 1614.27,
-        "program_nonarb_amount": 1359.56
+        "program_nonarb_amount": 1359.56,
+        "program_arb_cum_amount": 26966.620000000003,
+        "program_nonarb_cum_amount": -171702.61,
+        "program_net_cum_amount": -144735.99
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260416.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260416.xlsx, KRX_투자자별거래실적_코스피200선물_20260416.xlsx, KRX_프로그램매매_코스피_20260416.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260416.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260416.xlsx, data_4459_20260416.csv"
     },
@@ -1000,6 +1186,8 @@
         "oi_delta": 27362,
         "spot_shares": -3179994,
         "spot_amount": -6882.77,
+        "spot_cum_shares": -2896227,
+        "spot_cum_amount": -5938.75,
         "oi_ratio": -0.2845067807237435
       },
       "skhynix": {
@@ -1011,6 +1199,8 @@
         "oi_delta": -38517,
         "spot_shares": -584788,
         "spot_amount": -6634.78,
+        "spot_cum_shares": 771031,
+        "spot_cum_amount": 7204.250000000003,
         "oi_ratio": -1.4372158722913415
       },
       "market": {
@@ -1019,7 +1209,10 @@
         "kospi200_cum_contracts": 16651,
         "kospi200_cum_amount": 38270.42,
         "program_arb_amount": -30.88,
-        "program_nonarb_amount": -17105.77
+        "program_nonarb_amount": -17105.77,
+        "program_arb_cum_amount": 26935.74,
+        "program_nonarb_cum_amount": -188808.37999999998,
+        "program_net_cum_amount": -161872.63999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260417.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260417.xlsx, KRX_투자자별거래실적_코스피200선물_20260417.xlsx, KRX_프로그램매매_코스피_20260417.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260417.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260417.xlsx, data_4459_20260417.csv"
     },
@@ -1037,6 +1230,8 @@
         "oi_delta": 142143,
         "spot_shares": -2885092,
         "spot_amount": -6229.21,
+        "spot_cum_shares": -5781319,
+        "spot_cum_amount": -12167.96,
         "oi_ratio": 2.9933653388907855
       },
       "skhynix": {
@@ -1048,6 +1243,8 @@
         "oi_delta": 17405,
         "spot_shares": 527734,
         "spot_amount": 6158.3,
+        "spot_cum_shares": 1298765,
+        "spot_cum_amount": 13362.550000000003,
         "oi_ratio": -0.18664423165296293
       },
       "market": {
@@ -1056,7 +1253,10 @@
         "kospi200_cum_contracts": 18070,
         "kospi200_cum_amount": 41677.159999999996,
         "program_arb_amount": -950.38,
-        "program_nonarb_amount": -1937.29
+        "program_nonarb_amount": -1937.29,
+        "program_arb_cum_amount": 25985.36,
+        "program_nonarb_cum_amount": -190745.66999999998,
+        "program_net_cum_amount": -164760.31
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260420.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260420.xlsx, KRX_투자자별거래실적_코스피200선물_20260420.xlsx, KRX_프로그램매매_코스피_20260420.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260420.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260420.xlsx, data_4459_20260420.csv"
     },
@@ -1074,6 +1274,8 @@
         "oi_delta": 48334,
         "spot_shares": 1303226,
         "spot_amount": 2857.05,
+        "spot_cum_shares": -4478093,
+        "spot_cum_amount": -9310.91,
         "oi_ratio": 0.8638958133621564
       },
       "skhynix": {
@@ -1085,6 +1287,8 @@
         "oi_delta": 121485,
         "spot_shares": 94856,
         "spot_amount": 1163.46,
+        "spot_cum_shares": 1393621,
+        "spot_cum_amount": 14526.010000000002,
         "oi_ratio": -0.037153518699105076
       },
       "market": {
@@ -1093,7 +1297,10 @@
         "kospi200_cum_contracts": 17902,
         "kospi200_cum_amount": 41224.969999999994,
         "program_arb_amount": -224.16,
-        "program_nonarb_amount": 9402.08
+        "program_nonarb_amount": 9402.08,
+        "program_arb_cum_amount": 25761.2,
+        "program_nonarb_cum_amount": -181343.59,
+        "program_net_cum_amount": -155582.38999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260421.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260421.xlsx, KRX_투자자별거래실적_코스피200선물_20260421.xlsx, KRX_프로그램매매_코스피_20260421.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260421.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260421.xlsx, data_4459_20260421.csv"
     },
@@ -1111,6 +1318,8 @@
         "oi_delta": -163258,
         "spot_shares": -1310682,
         "spot_amount": -2831.93,
+        "spot_cum_shares": -5788775,
+        "spot_cum_amount": -12142.84,
         "oi_ratio": 0.5028813302487304
       },
       "skhynix": {
@@ -1122,6 +1331,8 @@
         "oi_delta": -17791,
         "spot_shares": -276240,
         "spot_amount": -3357.52,
+        "spot_cum_shares": 1117381,
+        "spot_cum_amount": 11168.490000000002,
         "oi_ratio": 1.3223466899735148
       },
       "market": {
@@ -1130,7 +1341,10 @@
         "kospi200_cum_contracts": 14558,
         "kospi200_cum_amount": 33170.159999999996,
         "program_arb_amount": -59.08,
-        "program_nonarb_amount": -5042.8
+        "program_nonarb_amount": -5042.8,
+        "program_arb_cum_amount": 25702.12,
+        "program_nonarb_cum_amount": -186386.38999999998,
+        "program_net_cum_amount": -160684.27
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260422.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260422.xlsx, KRX_투자자별거래실적_코스피200선물_20260422.xlsx, KRX_프로그램매매_코스피_20260422.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260422.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260422.xlsx, data_4459_20260422.csv"
     },
@@ -1148,6 +1362,8 @@
         "oi_delta": -34549,
         "spot_shares": 3312699,
         "spot_amount": 7518.32,
+        "spot_cum_shares": -2476076,
+        "spot_cum_amount": -4624.52,
         "oi_ratio": -0.7279141831064975
       },
       "skhynix": {
@@ -1159,6 +1375,8 @@
         "oi_delta": -22146,
         "spot_shares": -126721,
         "spot_amount": -1416.71,
+        "spot_cum_shares": 990660,
+        "spot_cum_amount": 9751.780000000002,
         "oi_ratio": -2.2698282208932437
       },
       "market": {
@@ -1167,7 +1385,10 @@
         "kospi200_cum_contracts": 16296,
         "kospi200_cum_amount": 37515.1,
         "program_arb_amount": 1066.45,
-        "program_nonarb_amount": 2318.18
+        "program_nonarb_amount": 2318.18,
+        "program_arb_cum_amount": 26768.57,
+        "program_nonarb_cum_amount": -184068.21,
+        "program_net_cum_amount": -157299.63999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260423.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260423.xlsx, KRX_투자자별거래실적_코스피200선물_20260423.xlsx, KRX_프로그램매매_코스피_20260423.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260423.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260423.xlsx, data_4459_20260423.csv"
     },
@@ -1185,6 +1406,8 @@
         "oi_delta": -101894,
         "spot_shares": -4898762,
         "spot_amount": -10772.91,
+        "spot_cum_shares": -7374838,
+        "spot_cum_amount": -15397.43,
         "oi_ratio": -1.5393799255014848
       },
       "skhynix": {
@@ -1196,6 +1419,8 @@
         "oi_delta": -13060,
         "spot_shares": -675653,
         "spot_amount": -8204.21,
+        "spot_cum_shares": 315007,
+        "spot_cum_amount": 1547.5700000000033,
         "oi_ratio": -0.8338316296793805
       },
       "market": {
@@ -1204,7 +1429,10 @@
         "kospi200_cum_contracts": 16216,
         "kospi200_cum_amount": 37352.1,
         "program_arb_amount": 56.03,
-        "program_nonarb_amount": -14062.3
+        "program_nonarb_amount": -14062.3,
+        "program_arb_cum_amount": 26824.6,
+        "program_nonarb_cum_amount": -198130.50999999998,
+        "program_net_cum_amount": -171305.90999999997
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260424.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260424.xlsx, KRX_투자자별거래실적_코스피200선물_20260424.xlsx, KRX_프로그램매매_코스피_20260424.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260424.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260424.xlsx, data_4459_20260424.csv"
     },
@@ -1222,6 +1450,8 @@
         "oi_delta": 35356,
         "spot_shares": 4519619,
         "spot_amount": 10125.79,
+        "spot_cum_shares": -2855219,
+        "spot_cum_amount": -5271.639999999999,
         "oi_ratio": 2.342816289351109
       },
       "skhynix": {
@@ -1233,6 +1463,8 @@
         "oi_delta": 49981,
         "spot_shares": 711850,
         "spot_amount": 9143.74,
+        "spot_cum_shares": 1026857,
+        "spot_cum_amount": 10691.310000000003,
         "oi_ratio": 2.1491302449602556
       },
       "market": {
@@ -1241,7 +1473,10 @@
         "kospi200_cum_contracts": 17928,
         "kospi200_cum_amount": 41645.869999999995,
         "program_arb_amount": -539.05,
-        "program_nonarb_amount": 7059.51
+        "program_nonarb_amount": 7059.51,
+        "program_arb_cum_amount": 26285.55,
+        "program_nonarb_cum_amount": -191070.99999999997,
+        "program_net_cum_amount": -164785.44999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260427.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260427.xlsx, KRX_투자자별거래실적_코스피200선물_20260427.xlsx, KRX_프로그램매매_코스피_20260427.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260427.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260427.xlsx, data_4459_20260427.csv"
     },
@@ -1259,6 +1494,8 @@
         "oi_delta": -6132,
         "spot_shares": -3064343,
         "spot_amount": -6826.89,
+        "spot_cum_shares": -5919562,
+        "spot_cum_amount": -12098.529999999999,
         "oi_ratio": -0.3859939046557752
       },
       "skhynix": {
@@ -1270,6 +1507,8 @@
         "oi_delta": -3013,
         "spot_shares": -313358,
         "spot_amount": -4096.08,
+        "spot_cum_shares": 713499,
+        "spot_cum_amount": 6595.230000000003,
         "oi_ratio": 0.9509078986047983
       },
       "market": {
@@ -1278,7 +1517,10 @@
         "kospi200_cum_contracts": 16015,
         "kospi200_cum_amount": 36876.42,
         "program_arb_amount": -139.08,
-        "program_nonarb_amount": 4711.9
+        "program_nonarb_amount": 4711.9,
+        "program_arb_cum_amount": 26146.469999999998,
+        "program_nonarb_cum_amount": -186359.09999999998,
+        "program_net_cum_amount": -160212.62999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260428.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260428.xlsx, KRX_투자자별거래실적_코스피200선물_20260428.xlsx, KRX_프로그램매매_코스피_20260428.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260428.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260428.xlsx, data_4459_20260428.csv"
     },
@@ -1296,6 +1538,8 @@
         "oi_delta": 58796,
         "spot_shares": 2039606,
         "spot_amount": 4578.29,
+        "spot_cum_shares": -3879956,
+        "spot_cum_amount": -7520.239999999999,
         "oi_ratio": 1.570830123451112
       },
       "skhynix": {
@@ -1307,6 +1551,8 @@
         "oi_delta": -11474,
         "spot_shares": -422905,
         "spot_amount": -5480.64,
+        "spot_cum_shares": 290594,
+        "spot_cum_amount": 1114.5900000000029,
         "oi_ratio": 0.2411111954015214
       },
       "market": {
@@ -1315,7 +1561,10 @@
         "kospi200_cum_contracts": 12541,
         "kospi200_cum_amount": 28140.239999999998,
         "program_arb_amount": -340.67,
-        "program_nonarb_amount": 3624.78
+        "program_nonarb_amount": 3624.78,
+        "program_arb_cum_amount": 25805.8,
+        "program_nonarb_cum_amount": -182734.31999999998,
+        "program_net_cum_amount": -156928.52
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260429.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260429.xlsx, KRX_투자자별거래실적_코스피200선물_20260429.xlsx, KRX_프로그램매매_코스피_20260429.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260429.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260429.xlsx, data_4459_20260429.csv"
     },
@@ -1333,6 +1582,8 @@
         "oi_delta": -84444,
         "spot_shares": -846776,
         "spot_amount": -1751.94,
+        "spot_cum_shares": -4726732,
+        "spot_cum_amount": -9272.179999999998,
         "oi_ratio": -0.5519092625959726
       },
       "skhynix": {
@@ -1344,6 +1595,8 @@
         "oi_delta": -4436,
         "spot_shares": -19870,
         "spot_amount": -171.78,
+        "spot_cum_shares": 270724,
+        "spot_cum_amount": 942.8100000000029,
         "oi_ratio": 0.6628642748000532
       },
       "market": {
@@ -1352,7 +1605,10 @@
         "kospi200_cum_contracts": 14304,
         "kospi200_cum_amount": 32586.5,
         "program_arb_amount": 3645.28,
-        "program_nonarb_amount": -14819.14
+        "program_nonarb_amount": -14819.14,
+        "program_arb_cum_amount": 29451.079999999998,
+        "program_nonarb_cum_amount": -197553.45999999996,
+        "program_net_cum_amount": -168102.37999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260430.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260430.xlsx, KRX_투자자별거래실적_코스피200선물_20260430.xlsx, KRX_프로그램매매_코스피_20260430.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260430.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260430.xlsx, data_4459_20260430.csv"
     },
@@ -1370,6 +1626,8 @@
         "oi_delta": 276079,
         "spot_shares": 5250204,
         "spot_amount": 12051.68,
+        "spot_cum_shares": 523472,
+        "spot_cum_amount": 2779.500000000002,
         "oi_ratio": 4.48039911056902
       },
       "skhynix": {
@@ -1381,6 +1639,8 @@
         "oi_delta": 108816,
         "spot_shares": 1237300,
         "spot_amount": 17030.97,
+        "spot_cum_shares": 1508024,
+        "spot_cum_amount": 17973.780000000002,
         "oi_ratio": 5.015849229149231
       },
       "market": {
@@ -1389,7 +1649,10 @@
         "kospi200_cum_contracts": 18302,
         "kospi200_cum_amount": 42588.69,
         "program_arb_amount": 1300.19,
-        "program_nonarb_amount": 25000.93
+        "program_nonarb_amount": 25000.93,
+        "program_arb_cum_amount": 30751.269999999997,
+        "program_nonarb_cum_amount": -172552.52999999997,
+        "program_net_cum_amount": -141801.25999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260504.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260504.xlsx, KRX_투자자별거래실적_코스피200선물_20260504.xlsx, KRX_프로그램매매_코스피_20260504.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260504.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260504.xlsx, data_4459_20260504.csv"
     },
@@ -1407,6 +1670,8 @@
         "oi_delta": 50264,
         "spot_shares": 11875507,
         "spot_amount": 30936.02,
+        "spot_cum_shares": 12398979,
+        "spot_cum_amount": 33715.520000000004,
         "oi_ratio": 3.1423559326598673
       },
       "skhynix": {
@@ -1418,6 +1683,8 @@
         "oi_delta": 77564,
         "spot_shares": 119044,
         "spot_amount": 1952.34,
+        "spot_cum_shares": 1627068,
+        "spot_cum_amount": 19926.120000000003,
         "oi_ratio": 4.869028913557124
       },
       "market": {
@@ -1426,7 +1693,10 @@
         "kospi200_cum_contracts": 9952,
         "kospi200_cum_amount": 19332.640000000003,
         "program_arb_amount": -5576.5,
-        "program_nonarb_amount": 3716.61
+        "program_nonarb_amount": 3716.61,
+        "program_arb_cum_amount": 25174.769999999997,
+        "program_nonarb_cum_amount": -168835.91999999998,
+        "program_net_cum_amount": -143661.15
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260506.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260506.xlsx, KRX_투자자별거래실적_코스피200선물_20260506.xlsx, KRX_프로그램매매_코스피_20260506.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260506.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260506.xlsx, data_4459_20260506.csv"
     },
@@ -1444,6 +1714,8 @@
         "oi_delta": -24664,
         "spot_shares": -10400176,
         "spot_amount": -27954.94,
+        "spot_cum_shares": 1998803,
+        "spot_cum_amount": 5760.580000000005,
         "oi_ratio": 1.5980929932398784
       },
       "skhynix": {
@@ -1455,6 +1727,8 @@
         "oi_delta": 22876,
         "spot_shares": -1570362,
         "spot_amount": -25360.48,
+        "spot_cum_shares": 56706,
+        "spot_cum_amount": -5434.359999999997,
         "oi_ratio": 2.626872611960235
       },
       "market": {
@@ -1463,7 +1737,10 @@
         "kospi200_cum_contracts": 6799,
         "kospi200_cum_amount": 10090.070000000003,
         "program_arb_amount": 1658.84,
-        "program_nonarb_amount": -48906.38
+        "program_nonarb_amount": -48906.38,
+        "program_arb_cum_amount": 26833.609999999997,
+        "program_nonarb_cum_amount": -217742.3,
+        "program_net_cum_amount": -190908.69
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260507.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260507.xlsx, KRX_투자자별거래실적_코스피200선물_20260507.xlsx, KRX_프로그램매매_코스피_20260507.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260507.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260507.xlsx, data_4459_20260507.csv"
     },
@@ -1481,6 +1758,8 @@
         "oi_delta": -137,
         "spot_shares": -9623056,
         "spot_amount": -25455.2,
+        "spot_cum_shares": -7624253,
+        "spot_cum_amount": -19694.619999999995,
         "oi_ratio": 1.76746584737822
       },
       "skhynix": {
@@ -1492,6 +1771,8 @@
         "oi_delta": 22510,
         "spot_shares": -1075745,
         "spot_amount": -17570.01,
+        "spot_cum_shares": -1019039,
+        "spot_cum_amount": -23004.369999999995,
         "oi_ratio": 0.5758908334979276
       },
       "market": {
@@ -1500,7 +1781,10 @@
         "kospi200_cum_contracts": 2171,
         "kospi200_cum_amount": -2987.6299999999974,
         "program_arb_amount": 398.17,
-        "program_nonarb_amount": -33612.65
+        "program_nonarb_amount": -33612.65,
+        "program_arb_cum_amount": 27231.779999999995,
+        "program_nonarb_cum_amount": -251354.94999999998,
+        "program_net_cum_amount": -224123.16999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260508.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260508.xlsx, KRX_투자자별거래실적_코스피200선물_20260508.xlsx, KRX_프로그램매매_코스피_20260508.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260508.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260508.xlsx, data_4459_20260508.csv"
     },
@@ -1518,6 +1802,8 @@
         "oi_delta": 241024,
         "spot_shares": -8030875,
         "spot_amount": -22872.07,
+        "spot_cum_shares": -15655128,
+        "spot_cum_amount": -42566.689999999995,
         "oi_ratio": 5.346357668827344
       },
       "skhynix": {
@@ -1529,6 +1815,8 @@
         "oi_delta": 127755,
         "spot_shares": -457476,
         "spot_amount": -8711.75,
+        "spot_cum_shares": -1476515,
+        "spot_cum_amount": -31716.119999999995,
         "oi_ratio": 5.445608776237143
       },
       "market": {
@@ -1537,7 +1825,10 @@
         "kospi200_cum_contracts": -855,
         "kospi200_cum_amount": -12188.169999999998,
         "program_arb_amount": 654.63,
-        "program_nonarb_amount": -39386.56
+        "program_nonarb_amount": -39386.56,
+        "program_arb_cum_amount": 27886.409999999996,
+        "program_nonarb_cum_amount": -290741.51,
+        "program_net_cum_amount": -262855.10000000003
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260511.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260511.xlsx, KRX_투자자별거래실적_코스피200선물_20260511.xlsx, KRX_프로그램매매_코스피_20260511.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260511.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260511.xlsx, data_4459_20260511.csv"
     },
@@ -1555,6 +1846,8 @@
         "oi_delta": -87147,
         "spot_shares": -7853087,
         "spot_amount": -22083.41,
+        "spot_cum_shares": -23508215,
+        "spot_cum_amount": -64650.09999999999,
         "oi_ratio": -2.035438623564824
       },
       "skhynix": {
@@ -1566,6 +1859,8 @@
         "oi_delta": 39512,
         "spot_shares": -1639358,
         "spot_amount": -31183.63,
+        "spot_cum_shares": -3115873,
+        "spot_cum_amount": -62899.75,
         "oi_ratio": 0.16275967321780507
       },
       "market": {
@@ -1574,7 +1869,10 @@
         "kospi200_cum_contracts": -552,
         "kospi200_cum_amount": -11321.409999999998,
         "program_arb_amount": -394.52,
-        "program_nonarb_amount": -33750.38
+        "program_nonarb_amount": -33750.38,
+        "program_arb_cum_amount": 27491.889999999996,
+        "program_nonarb_cum_amount": -324491.89,
+        "program_net_cum_amount": -297000.0
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260512.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260512.xlsx, KRX_투자자별거래실적_코스피200선물_20260512.xlsx, KRX_프로그램매매_코스피_20260512.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260512.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260512.xlsx, data_4459_20260512.csv"
     },
@@ -1592,6 +1890,8 @@
         "oi_delta": -133062,
         "spot_shares": -5704637,
         "spot_amount": -15526.2,
+        "spot_cum_shares": -29212852,
+        "spot_cum_amount": -80176.29999999999,
         "oi_ratio": 2.5455039947535103
       },
       "skhynix": {
@@ -1603,6 +1903,8 @@
         "oi_delta": 33437,
         "spot_shares": -919525,
         "spot_amount": -17203.84,
+        "spot_cum_shares": -4035398,
+        "spot_cum_amount": -80103.59,
         "oi_ratio": 2.509435759640242
       },
       "market": {
@@ -1611,7 +1913,10 @@
         "kospi200_cum_contracts": -7402,
         "kospi200_cum_amount": -31885.229999999996,
         "program_arb_amount": 179.96,
-        "program_nonarb_amount": -15327.07
+        "program_nonarb_amount": -15327.07,
+        "program_arb_cum_amount": 27671.849999999995,
+        "program_nonarb_cum_amount": -339818.96,
+        "program_net_cum_amount": -312147.11000000004
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260513.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260513.xlsx, KRX_투자자별거래실적_코스피200선물_20260513.xlsx, KRX_프로그램매매_코스피_20260513.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260513.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260513.xlsx, data_4459_20260513.csv"
     },
@@ -1629,6 +1934,8 @@
         "oi_delta": -342061,
         "spot_shares": 740393,
         "spot_amount": 2233.04,
+        "spot_cum_shares": -28472459,
+        "spot_cum_amount": -77943.26,
         "oi_ratio": 2.3753093775082825
       },
       "skhynix": {
@@ -1640,6 +1947,8 @@
         "oi_delta": -275882,
         "spot_shares": -818254,
         "spot_amount": -16084.48,
+        "spot_cum_shares": -4853652,
+        "spot_cum_amount": -96188.06999999999,
         "oi_ratio": -3.9651659815462827
       },
       "market": {
@@ -1648,7 +1957,10 @@
         "kospi200_cum_contracts": -12558,
         "kospi200_cum_amount": -47827.09,
         "program_arb_amount": 2002.44,
-        "program_nonarb_amount": 33.14
+        "program_nonarb_amount": 33.14,
+        "program_arb_cum_amount": 29674.289999999994,
+        "program_nonarb_cum_amount": -339785.82,
+        "program_net_cum_amount": -310111.53
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260514.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260514.xlsx, KRX_투자자별거래실적_코스피200선물_20260514.xlsx, KRX_프로그램매매_코스피_20260514.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260514.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260514.xlsx, data_4459_20260514.csv"
     },
@@ -1666,6 +1978,8 @@
         "oi_delta": 7984,
         "spot_shares": -8891001,
         "spot_amount": -24966.63,
+        "spot_cum_shares": -8891001,
+        "spot_cum_amount": -24966.63,
         "oi_ratio": -2.150743325935217
       },
       "skhynix": {
@@ -1677,6 +1991,8 @@
         "oi_delta": -40260,
         "spot_shares": -1398159,
         "spot_amount": -26345.29,
+        "spot_cum_shares": -1398159,
+        "spot_cum_amount": -26345.29,
         "oi_ratio": -4.919846135093653
       },
       "market": {
@@ -1685,7 +2001,10 @@
         "kospi200_cum_contracts": -9481,
         "kospi200_cum_amount": -39129.31,
         "program_arb_amount": 955.95,
-        "program_nonarb_amount": -44663.9
+        "program_nonarb_amount": -44663.9,
+        "program_arb_cum_amount": 30630.239999999994,
+        "program_nonarb_cum_amount": -384449.72000000003,
+        "program_net_cum_amount": -353819.48000000004
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260515.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260515.xlsx, KRX_투자자별거래실적_코스피200선물_20260515.xlsx, KRX_프로그램매매_코스피_20260515.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260515.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260515.xlsx, data_4459_20260515.csv"
     },
@@ -1703,6 +2022,8 @@
         "oi_delta": 179012,
         "spot_shares": -4481887,
         "spot_amount": -12402.54,
+        "spot_cum_shares": -13372888,
+        "spot_cum_amount": -37369.17,
         "oi_ratio": 1.9405843806663845
       },
       "skhynix": {
@@ -1714,6 +2035,8 @@
         "oi_delta": 26063,
         "spot_shares": -560354,
         "spot_amount": -10211.91,
+        "spot_cum_shares": -1958513,
+        "spot_cum_amount": -36557.2,
         "oi_ratio": 1.6083684507847047
       },
       "market": {
@@ -1722,7 +2045,10 @@
         "kospi200_cum_contracts": -9454,
         "kospi200_cum_amount": -39040.409999999996,
         "program_arb_amount": 1603.31,
-        "program_nonarb_amount": -18148.04
+        "program_nonarb_amount": -18148.04,
+        "program_arb_cum_amount": 32233.549999999996,
+        "program_nonarb_cum_amount": -402597.76,
+        "program_net_cum_amount": -370364.21
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260518.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260518.xlsx, KRX_투자자별거래실적_코스피200선물_20260518.xlsx, KRX_프로그램매매_코스피_20260518.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260518.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260518.xlsx, data_4459_20260518.csv"
     },
@@ -1740,6 +2066,8 @@
         "oi_delta": -62804,
         "spot_shares": -9283253,
         "spot_amount": -25409.88,
+        "spot_cum_shares": -22656141,
+        "spot_cum_amount": -62779.05,
         "oi_ratio": 0.7447718403435784
       },
       "skhynix": {
@@ -1751,6 +2079,8 @@
         "oi_delta": -22383,
         "spot_shares": -1134246,
         "spot_amount": -20060.34,
+        "spot_cum_shares": -3092759,
+        "spot_cum_amount": -56617.53999999999,
         "oi_ratio": -1.4145971679949871
       },
       "market": {
@@ -1759,7 +2089,10 @@
         "kospi200_cum_contracts": -8796,
         "kospi200_cum_amount": -37190.39,
         "program_arb_amount": 2378.4,
-        "program_nonarb_amount": -48169.72
+        "program_nonarb_amount": -48169.72,
+        "program_arb_cum_amount": 34611.95,
+        "program_nonarb_cum_amount": -450767.48,
+        "program_net_cum_amount": -416155.52999999997
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260519.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260519.xlsx, KRX_투자자별거래실적_코스피200선물_20260519.xlsx, KRX_프로그램매매_코스피_20260519.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260519.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260519.xlsx, data_4459_20260519.csv"
     },
@@ -1777,6 +2110,8 @@
         "oi_delta": 109556,
         "spot_shares": -5750416,
         "spot_amount": -15842.37,
+        "spot_cum_shares": -28406557,
+        "spot_cum_amount": -78621.42,
         "oi_ratio": 3.1814736489631033
       },
       "skhynix": {
@@ -1788,6 +2123,8 @@
         "oi_delta": 25845,
         "spot_shares": -704514,
         "spot_amount": -12258.58,
+        "spot_cum_shares": -3797273,
+        "spot_cum_amount": -68876.12,
         "oi_ratio": 0.5843702803196715
       },
       "market": {
@@ -1796,7 +2133,10 @@
         "kospi200_cum_contracts": -10111,
         "kospi200_cum_amount": -40655.6,
         "program_arb_amount": 1080.3,
-        "program_nonarb_amount": -11064.68
+        "program_nonarb_amount": -11064.68,
+        "program_arb_cum_amount": 35692.25,
+        "program_nonarb_cum_amount": -461832.16,
+        "program_net_cum_amount": -426139.91
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260520.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260520.xlsx, KRX_투자자별거래실적_코스피200선물_20260520.xlsx, KRX_프로그램매매_코스피_20260520.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260520.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260520.xlsx, data_4459_20260520.csv"
     },
@@ -1814,6 +2154,8 @@
         "oi_delta": 100993,
         "spot_shares": 3683253,
         "spot_amount": 10986.73,
+        "spot_cum_shares": -24723304,
+        "spot_cum_amount": -67634.69,
         "oi_ratio": 0.05299341773446745
       },
       "skhynix": {
@@ -1825,6 +2167,8 @@
         "oi_delta": 102248,
         "spot_shares": -422909,
         "spot_amount": -7879.55,
+        "spot_cum_shares": -4220182,
+        "spot_cum_amount": -76755.67,
         "oi_ratio": 0.44977970736287215
       },
       "market": {
@@ -1833,7 +2177,10 @@
         "kospi200_cum_contracts": -14540,
         "kospi200_cum_amount": -54455.88,
         "program_arb_amount": 1393.43,
-        "program_nonarb_amount": 18993.22
+        "program_nonarb_amount": 18993.22,
+        "program_arb_cum_amount": 37085.68,
+        "program_nonarb_cum_amount": -442838.93999999994,
+        "program_net_cum_amount": -405753.25999999995
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260521.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260521.xlsx, KRX_투자자별거래실적_코스피200선물_20260521.xlsx, KRX_프로그램매매_코스피_20260521.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260521.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260521.xlsx, data_4459_20260521.csv"
     },
@@ -1851,6 +2198,8 @@
         "oi_delta": 40215,
         "spot_shares": -3431362,
         "spot_amount": -10109.57,
+        "spot_cum_shares": -28154666,
+        "spot_cum_amount": -77744.26000000001,
         "oi_ratio": -0.39293434867880406
       },
       "skhynix": {
@@ -1862,6 +2211,8 @@
         "oi_delta": 1625,
         "spot_shares": -158251,
         "spot_amount": -3055.0,
+        "spot_cum_shares": -4378433,
+        "spot_cum_amount": -79810.67,
         "oi_ratio": -0.19060901558992108
       },
       "market": {
@@ -1870,7 +2221,10 @@
         "kospi200_cum_contracts": -14267,
         "kospi200_cum_amount": -53603.0,
         "program_arb_amount": 791.98,
-        "program_nonarb_amount": -24048.04
+        "program_nonarb_amount": -24048.04,
+        "program_arb_cum_amount": 37877.66,
+        "program_nonarb_cum_amount": -466886.9799999999,
+        "program_net_cum_amount": -429009.31999999995
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260522.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260522.xlsx, KRX_투자자별거래실적_코스피200선물_20260522.xlsx, KRX_프로그램매매_코스피_20260522.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260522.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260522.xlsx, data_4459_20260522.csv"
     },
@@ -1888,6 +2242,8 @@
         "oi_delta": 264969,
         "spot_shares": 1905629,
         "spot_amount": 5747.71,
+        "spot_cum_shares": -26249037,
+        "spot_cum_amount": -71996.55,
         "oi_ratio": 0.4589837833374839
       },
       "skhynix": {
@@ -1899,6 +2255,8 @@
         "oi_delta": 100246,
         "spot_shares": -108355,
         "spot_amount": -2254.26,
+        "spot_cum_shares": -4486788,
+        "spot_cum_amount": -82064.93,
         "oi_ratio": 1.66139103121134
       },
       "market": {
@@ -1907,7 +2265,10 @@
         "kospi200_cum_contracts": -14509,
         "kospi200_cum_amount": -54242.86,
         "program_arb_amount": 882.11,
-        "program_nonarb_amount": -7410.98
+        "program_nonarb_amount": -7410.98,
+        "program_arb_cum_amount": 38759.770000000004,
+        "program_nonarb_cum_amount": -474297.9599999999,
+        "program_net_cum_amount": -435538.1899999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260526.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260526.xlsx, KRX_투자자별거래실적_코스피200선물_20260526.xlsx, KRX_프로그램매매_코스피_20260526.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260526.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260526.xlsx, data_4459_20260526.csv"
     },
@@ -1925,6 +2286,8 @@
         "oi_delta": 464540,
         "spot_shares": -272959,
         "spot_amount": -804.08,
+        "spot_cum_shares": -26521996,
+        "spot_cum_amount": -72800.63,
         "oi_ratio": -1.569596424347843
       },
       "skhynix": {
@@ -1936,6 +2299,8 @@
         "oi_delta": 131885,
         "spot_shares": -15987,
         "spot_amount": -336.94,
+        "spot_cum_shares": -4502775,
+        "spot_cum_amount": -82401.87,
         "oi_ratio": 0.034743388893060355
       },
       "market": {
@@ -1944,7 +2309,10 @@
         "kospi200_cum_contracts": -14265,
         "kospi200_cum_amount": -53285.47,
         "program_arb_amount": -1902.4,
-        "program_nonarb_amount": -18826.0
+        "program_nonarb_amount": -18826.0,
+        "program_arb_cum_amount": 36857.37,
+        "program_nonarb_cum_amount": -493123.9599999999,
+        "program_net_cum_amount": -456266.5899999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260527.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260527.xlsx, KRX_투자자별거래실적_코스피200선물_20260527.xlsx, KRX_프로그램매매_코스피_20260527.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260527.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260527.xlsx, data_4459_20260527.csv"
     },
@@ -1962,6 +2330,8 @@
         "oi_delta": -220301,
         "spot_shares": -5193993,
         "spot_amount": -15562.41,
+        "spot_cum_shares": -31715989,
+        "spot_cum_amount": -88363.04000000001,
         "oi_ratio": -0.47507052926622173
       },
       "skhynix": {
@@ -1973,6 +2343,8 @@
         "oi_delta": 43251,
         "spot_shares": -786646,
         "spot_amount": -17337.16,
+        "spot_cum_shares": -5289421,
+        "spot_cum_amount": -99739.03,
         "oi_ratio": -1.6059842467021679
       },
       "market": {
@@ -1981,7 +2353,10 @@
         "kospi200_cum_contracts": -15561,
         "kospi200_cum_amount": -57534.22,
         "program_arb_amount": -83.77,
-        "program_nonarb_amount": -24049.38
+        "program_nonarb_amount": -24049.38,
+        "program_arb_cum_amount": 36773.600000000006,
+        "program_nonarb_cum_amount": -517173.3399999999,
+        "program_net_cum_amount": -480399.7399999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260528.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260528.xlsx, KRX_투자자별거래실적_코스피200선물_20260528.xlsx, KRX_프로그램매매_코스피_20260528.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260528.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260528.xlsx, data_4459_20260528.csv"
     },
@@ -1999,6 +2374,8 @@
         "oi_delta": 280508,
         "spot_shares": -1049959,
         "spot_amount": -3240.49,
+        "spot_cum_shares": -32765948,
+        "spot_cum_amount": -91603.53000000001,
         "oi_ratio": 2.2058872064031037
       },
       "skhynix": {
@@ -2010,6 +2387,8 @@
         "oi_delta": 92600,
         "spot_shares": -441901,
         "spot_amount": -10294.34,
+        "spot_cum_shares": -5731322,
+        "spot_cum_amount": -110033.37,
         "oi_ratio": -2.341257592804853
       },
       "market": {
@@ -2018,7 +2397,10 @@
         "kospi200_cum_contracts": -10356,
         "kospi200_cum_amount": -40291.65,
         "program_arb_amount": 3985.24,
-        "program_nonarb_amount": 5528.25
+        "program_nonarb_amount": 5528.25,
+        "program_arb_cum_amount": 40758.840000000004,
+        "program_nonarb_cum_amount": -511645.0899999999,
+        "program_net_cum_amount": -470886.2499999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260529.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260529.xlsx, KRX_투자자별거래실적_코스피200선물_20260529.xlsx, KRX_프로그램매매_코스피_20260529.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260529.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260529.xlsx, data_4459_20260529.csv"
     },
@@ -2036,6 +2418,8 @@
         "oi_delta": 300468,
         "spot_shares": -168796,
         "spot_amount": -373.35,
+        "spot_cum_shares": -32934744,
+        "spot_cum_amount": -91976.88000000002,
         "oi_ratio": -0.41443345737942155
       },
       "skhynix": {
@@ -2047,6 +2431,8 @@
         "oi_delta": 21135,
         "spot_shares": -729893,
         "spot_amount": -17148.91,
+        "spot_cum_shares": -6461215,
+        "spot_cum_amount": -127182.28,
         "oi_ratio": 0.9611757654578399
       },
       "market": {
@@ -2055,7 +2441,10 @@
         "kospi200_cum_contracts": -11883,
         "kospi200_cum_amount": -45698.21,
         "program_arb_amount": 11.39,
-        "program_nonarb_amount": -21520.82
+        "program_nonarb_amount": -21520.82,
+        "program_arb_cum_amount": 40770.23,
+        "program_nonarb_cum_amount": -533165.9099999999,
+        "program_net_cum_amount": -492395.67999999993
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260601.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260601.xlsx, KRX_투자자별거래실적_코스피200선물_20260601.xlsx, KRX_프로그램매매_코스피_20260601.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260601.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260601.xlsx, data_4459_20260601.csv"
     },
@@ -2073,6 +2462,8 @@
         "oi_delta": 344189,
         "spot_shares": -11022867,
         "spot_amount": -39372.73,
+        "spot_cum_shares": -43957611,
+        "spot_cum_amount": -131349.61000000002,
         "oi_ratio": -2.5836292872970334
       },
       "skhynix": {
@@ -2084,6 +2475,8 @@
         "oi_delta": -40544,
         "spot_shares": -416513,
         "spot_amount": -9486.34,
+        "spot_cum_shares": -6877728,
+        "spot_cum_amount": -136668.62,
         "oi_ratio": -0.8943318696370303
       },
       "market": {
@@ -2092,7 +2485,10 @@
         "kospi200_cum_contracts": -14441,
         "kospi200_cum_amount": -54683.09,
         "program_arb_amount": 444.64,
-        "program_nonarb_amount": -48688.86
+        "program_nonarb_amount": -48688.86,
+        "program_arb_cum_amount": 41214.87,
+        "program_nonarb_cum_amount": -581854.7699999999,
+        "program_net_cum_amount": -540639.8999999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260602.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260602.xlsx, KRX_투자자별거래실적_코스피200선물_20260602.xlsx, KRX_프로그램매매_코스피_20260602.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260602.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260602.xlsx, data_4459_20260602.csv"
     },
@@ -2110,6 +2506,8 @@
         "oi_delta": 303850,
         "spot_shares": -12439139,
         "spot_amount": -44028.55,
+        "spot_cum_shares": -56396750,
+        "spot_cum_amount": -175378.16000000003,
         "oi_ratio": -0.42426587865271087
       },
       "skhynix": {
@@ -2121,6 +2519,8 @@
         "oi_delta": 6528,
         "spot_shares": -326057,
         "spot_amount": -7425.61,
+        "spot_cum_shares": -7203785,
+        "spot_cum_amount": -144094.22999999998,
         "oi_ratio": 0.5432306555593063
       },
       "market": {
@@ -2129,7 +2529,10 @@
         "kospi200_cum_contracts": -12165,
         "kospi200_cum_amount": -46691.229999999996,
         "program_arb_amount": 1367.97,
-        "program_nonarb_amount": -39248.62
+        "program_nonarb_amount": -39248.62,
+        "program_arb_cum_amount": 42582.840000000004,
+        "program_nonarb_cum_amount": -621103.3899999999,
+        "program_net_cum_amount": -578520.5499999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260604.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260604.xlsx, KRX_투자자별거래실적_코스피200선물_20260604.xlsx, KRX_프로그램매매_코스피_20260604.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260604.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260604.xlsx, data_4459_20260604.csv"
     },
@@ -2147,6 +2550,8 @@
         "oi_delta": -132450,
         "spot_shares": -4259674,
         "spot_amount": -14121.33,
+        "spot_cum_shares": -60656424,
+        "spot_cum_amount": -189499.49000000002,
         "oi_ratio": -3.4475959662346733
       },
       "skhynix": {
@@ -2158,6 +2563,8 @@
         "oi_delta": -49566,
         "spot_shares": -611202,
         "spot_amount": -13063.83,
+        "spot_cum_shares": -7814987,
+        "spot_cum_amount": -157158.05999999997,
         "oi_ratio": -5.049102512818206
       },
       "market": {
@@ -2166,7 +2573,10 @@
         "kospi200_cum_contracts": -9005,
         "kospi200_cum_amount": -36316.7,
         "program_arb_amount": -1177.53,
-        "program_nonarb_amount": -8544.59
+        "program_nonarb_amount": -8544.59,
+        "program_arb_cum_amount": 41405.310000000005,
+        "program_nonarb_cum_amount": -629647.9799999999,
+        "program_net_cum_amount": -588242.6699999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260605.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260605.xlsx, KRX_투자자별거래실적_코스피200선물_20260605.xlsx, KRX_프로그램매매_코스피_20260605.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260605.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260605.xlsx, data_4459_20260605.csv"
     },
@@ -2184,6 +2594,8 @@
         "oi_delta": -94127,
         "spot_shares": -1210770,
         "spot_amount": -3610.96,
+        "spot_cum_shares": -61867194,
+        "spot_cum_amount": -193110.45,
         "oi_ratio": -2.635622038843703
       },
       "skhynix": {
@@ -2195,6 +2607,8 @@
         "oi_delta": -55602,
         "spot_shares": -157834,
         "spot_amount": -3134.33,
+        "spot_cum_shares": -7972821,
+        "spot_cum_amount": -160292.38999999996,
         "oi_ratio": -0.6896013651086877
       },
       "market": {
@@ -2203,7 +2617,10 @@
         "kospi200_cum_contracts": -4429,
         "kospi200_cum_amount": -23214.879999999997,
         "program_arb_amount": -3756.83,
-        "program_nonarb_amount": 10533.36
+        "program_nonarb_amount": 10533.36,
+        "program_arb_cum_amount": 37648.48,
+        "program_nonarb_cum_amount": -619114.6199999999,
+        "program_net_cum_amount": -581466.1399999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260608.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260608.xlsx, KRX_투자자별거래실적_코스피200선물_20260608.xlsx, KRX_프로그램매매_코스피_20260608.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260608.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260608.xlsx, data_4459_20260608.csv"
     },
@@ -2221,6 +2638,8 @@
         "oi_delta": 172915,
         "spot_shares": -1600935,
         "spot_amount": -4923.54,
+        "spot_cum_shares": -63468129,
+        "spot_cum_amount": -198033.99000000002,
         "oi_ratio": -0.6850473473132022
       },
       "skhynix": {
@@ -2232,6 +2651,8 @@
         "oi_delta": 176767,
         "spot_shares": -628404,
         "spot_amount": -13618.94,
+        "spot_cum_shares": -8601225,
+        "spot_cum_amount": -173911.32999999996,
         "oi_ratio": 2.831281060828689
       },
       "market": {
@@ -2240,7 +2661,10 @@
         "kospi200_cum_contracts": -11626,
         "kospi200_cum_amount": -47137.0,
         "program_arb_amount": 954.71,
-        "program_nonarb_amount": -14473.91
+        "program_nonarb_amount": -14473.91,
+        "program_arb_cum_amount": 38603.19,
+        "program_nonarb_cum_amount": -633588.5299999999,
+        "program_net_cum_amount": -594985.3399999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260609.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260609.xlsx, KRX_투자자별거래실적_코스피200선물_20260609.xlsx, KRX_프로그램매매_코스피_20260609.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260609.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260609.xlsx, data_4459_20260609.csv"
     },
@@ -2258,6 +2682,8 @@
         "oi_delta": 174570,
         "spot_shares": -3878425,
         "spot_amount": -11808.5,
+        "spot_cum_shares": -67346554,
+        "spot_cum_amount": -209842.49000000002,
         "oi_ratio": -0.39899665605732354
       },
       "skhynix": {
@@ -2269,6 +2695,8 @@
         "oi_delta": 3583,
         "spot_shares": -280309,
         "spot_amount": -6002.37,
+        "spot_cum_shares": -8881534,
+        "spot_cum_amount": -179913.69999999995,
         "oi_ratio": -3.6555885434266426
       },
       "market": {
@@ -2277,7 +2705,10 @@
         "kospi200_cum_contracts": -8652,
         "kospi200_cum_amount": -38828.41,
         "program_arb_amount": -4720.79,
-        "program_nonarb_amount": -18311.11
+        "program_nonarb_amount": -18311.11,
+        "program_arb_cum_amount": 33882.4,
+        "program_nonarb_cum_amount": -651899.6399999999,
+        "program_net_cum_amount": -618017.2399999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260610.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260610.xlsx, KRX_투자자별거래실적_코스피200선물_20260610.xlsx, KRX_프로그램매매_코스피_20260610.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260610.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260610.xlsx, data_4459_20260610.csv"
     },
@@ -2295,6 +2726,8 @@
         "oi_delta": -1406729,
         "spot_shares": 550752,
         "spot_amount": 1734.29,
+        "spot_cum_shares": -66795802,
+        "spot_cum_amount": -208108.2,
         "oi_ratio": -1.2185117694077323
       },
       "skhynix": {
@@ -2306,6 +2739,8 @@
         "oi_delta": -292659,
         "spot_shares": 258655,
         "spot_amount": 5523.18,
+        "spot_cum_shares": -8622879,
+        "spot_cum_amount": -174390.51999999996,
         "oi_ratio": 0.21367420100676027
       },
       "market": {
@@ -2314,7 +2749,10 @@
         "kospi200_cum_contracts": -9271,
         "kospi200_cum_amount": -40769.54,
         "program_arb_amount": -4224.06,
-        "program_nonarb_amount": -19581.71
+        "program_nonarb_amount": -19581.71,
+        "program_arb_cum_amount": 29658.34,
+        "program_nonarb_cum_amount": -671481.3499999999,
+        "program_net_cum_amount": -641823.0099999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260611.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260611.xlsx, KRX_투자자별거래실적_코스피200선물_20260611.xlsx, KRX_프로그램매매_코스피_20260611.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260611.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260611.xlsx, data_4459_20260611.csv"
     },
@@ -2332,6 +2770,8 @@
         "oi_delta": 245146,
         "spot_shares": 2906596,
         "spot_amount": 9715.87,
+        "spot_cum_shares": 2906596,
+        "spot_cum_amount": 9715.87,
         "oi_ratio": 0.32031196213804924
       },
       "skhynix": {
@@ -2343,6 +2783,8 @@
         "oi_delta": 65278,
         "spot_shares": 574551,
         "spot_amount": 12882.01,
+        "spot_cum_shares": 574551,
+        "spot_cum_amount": 12882.01,
         "oi_ratio": 2.14174608845401
       },
       "market": {
@@ -2351,7 +2793,10 @@
         "kospi200_cum_contracts": 887,
         "kospi200_cum_amount": 3668.55,
         "program_arb_amount": 7847.21,
-        "program_nonarb_amount": 10736.35
+        "program_nonarb_amount": 10736.35,
+        "program_arb_cum_amount": 7847.21,
+        "program_nonarb_cum_amount": 10736.35,
+        "program_net_cum_amount": 18583.56
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260612.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260612.xlsx, KRX_투자자별거래실적_코스피200선물_20260612.xlsx, KRX_프로그램매매_코스피_20260612.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260612.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260612.xlsx, data_4459_20260612.csv"
     },
@@ -2369,6 +2814,8 @@
         "oi_delta": 80604,
         "spot_shares": -1804080,
         "spot_amount": -6103.0,
+        "spot_cum_shares": 1102516,
+        "spot_cum_amount": 3612.870000000001,
         "oi_ratio": 0.002819649966564521
       },
       "skhynix": {
@@ -2380,6 +2827,8 @@
         "oi_delta": 50805,
         "spot_shares": 183161,
         "spot_amount": 4257.73,
+        "spot_cum_shares": 757712,
+        "spot_cum_amount": 17139.739999999998,
         "oi_ratio": -2.172873231904126
       },
       "market": {
@@ -2388,7 +2837,10 @@
         "kospi200_cum_contracts": 1181,
         "kospi200_cum_amount": 4609.34,
         "program_arb_amount": 6486.27,
-        "program_nonarb_amount": -8375.45
+        "program_nonarb_amount": -8375.45,
+        "program_arb_cum_amount": 14333.48,
+        "program_nonarb_cum_amount": 2360.8999999999996,
+        "program_net_cum_amount": 16694.379999999997
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260615.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260615.xlsx, KRX_투자자별거래실적_코스피200선물_20260615.xlsx, KRX_프로그램매매_코스피_20260615.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260615.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260615.xlsx, data_4459_20260615.csv"
     },
@@ -2406,6 +2858,8 @@
         "oi_delta": 120472,
         "spot_shares": -43227,
         "spot_amount": -118.54,
+        "spot_cum_shares": 1059289,
+        "spot_cum_amount": 3494.330000000001,
         "oi_ratio": 0.4004864754837563
       },
       "skhynix": {
@@ -2417,6 +2871,8 @@
         "oi_delta": 56581,
         "spot_shares": 354000,
         "spot_amount": 8448.02,
+        "spot_cum_shares": 1111712,
+        "spot_cum_amount": 25587.76,
         "oi_ratio": 0.7703923005627156
       },
       "market": {
@@ -2425,7 +2881,10 @@
         "kospi200_cum_contracts": 1568,
         "kospi200_cum_amount": 6022.41,
         "program_arb_amount": 40.61,
-        "program_nonarb_amount": 4599.93
+        "program_nonarb_amount": 4599.93,
+        "program_arb_cum_amount": 14374.09,
+        "program_nonarb_cum_amount": 6960.83,
+        "program_net_cum_amount": 21334.92
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260616.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260616.xlsx, KRX_투자자별거래실적_코스피200선물_20260616.xlsx, KRX_프로그램매매_코스피_20260616.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260616.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260616.xlsx, data_4459_20260616.csv"
     },
@@ -2443,6 +2902,8 @@
         "oi_delta": 88348,
         "spot_shares": -2007154,
         "spot_amount": -6703.13,
+        "spot_cum_shares": -947865,
+        "spot_cum_amount": -3208.7999999999993,
         "oi_ratio": 2.3896521018559294
       },
       "skhynix": {
@@ -2454,6 +2915,8 @@
         "oi_delta": 68195,
         "spot_shares": 76254,
         "spot_amount": 1875.64,
+        "spot_cum_shares": 1187966,
+        "spot_cum_amount": 27463.399999999998,
         "oi_ratio": 0.951233908889709
       },
       "market": {
@@ -2462,7 +2925,10 @@
         "kospi200_cum_contracts": -638,
         "kospi200_cum_amount": -1798.0900000000001,
         "program_arb_amount": -648.81,
-        "program_nonarb_amount": -14344.53
+        "program_nonarb_amount": -14344.53,
+        "program_arb_cum_amount": 13725.28,
+        "program_nonarb_cum_amount": -7383.700000000001,
+        "program_net_cum_amount": 6341.58
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260617.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260617.xlsx, KRX_투자자별거래실적_코스피200선물_20260617.xlsx, KRX_프로그램매매_코스피_20260617.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260617.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260617.xlsx, data_4459_20260617.csv"
     },
@@ -2480,6 +2946,8 @@
         "oi_delta": 445538,
         "spot_shares": 2426638,
         "spot_amount": 8734.51,
+        "spot_cum_shares": 1478773,
+        "spot_cum_amount": 5525.710000000001,
         "oi_ratio": 0.5045820525545365
       },
       "skhynix": {
@@ -2491,6 +2959,8 @@
         "oi_delta": 110842,
         "spot_shares": 24441,
         "spot_amount": 839.6,
+        "spot_cum_shares": 1212407,
+        "spot_cum_amount": 28302.999999999996,
         "oi_ratio": 1.849275666642606
       },
       "market": {
@@ -2499,7 +2969,10 @@
         "kospi200_cum_contracts": -2189,
         "kospi200_cum_amount": -7437.25,
         "program_arb_amount": -385.71,
-        "program_nonarb_amount": -9383.09
+        "program_nonarb_amount": -9383.09,
+        "program_arb_cum_amount": 13339.570000000002,
+        "program_nonarb_cum_amount": -16766.79,
+        "program_net_cum_amount": -3427.2199999999993
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260618.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260618.xlsx, KRX_투자자별거래실적_코스피200선물_20260618.xlsx, KRX_프로그램매매_코스피_20260618.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260618.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260618.xlsx, data_4459_20260618.csv"
     },
@@ -2517,6 +2990,8 @@
         "oi_delta": 123192,
         "spot_shares": -2468289,
         "spot_amount": -8994.35,
+        "spot_cum_shares": -989516,
+        "spot_cum_amount": -3468.6399999999994,
         "oi_ratio": -3.7269214636826558
       },
       "skhynix": {
@@ -2528,6 +3003,8 @@
         "oi_delta": -12628,
         "spot_shares": -316975,
         "spot_amount": -8705.77,
+        "spot_cum_shares": 895432,
+        "spot_cum_amount": 19597.229999999996,
         "oi_ratio": 0.31441207694781315
       },
       "market": {
@@ -2536,7 +3013,10 @@
         "kospi200_cum_contracts": 1718,
         "kospi200_cum_amount": 7328.59,
         "program_arb_amount": 2998.79,
-        "program_nonarb_amount": -9955.74
+        "program_nonarb_amount": -9955.74,
+        "program_arb_cum_amount": 16338.36,
+        "program_nonarb_cum_amount": -26722.53,
+        "program_net_cum_amount": -10384.169999999998
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260619.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260619.xlsx, KRX_투자자별거래실적_코스피200선물_20260619.xlsx, KRX_프로그램매매_코스피_20260619.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260619.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260619.xlsx, data_4459_20260619.csv"
     },
@@ -2554,6 +3034,8 @@
         "oi_delta": 174811,
         "spot_shares": -1281826,
         "spot_amount": -4417.81,
+        "spot_cum_shares": -2271342,
+        "spot_cum_amount": -7886.45,
         "oi_ratio": 0.4058822695067228
       },
       "skhynix": {
@@ -2565,6 +3047,8 @@
         "oi_delta": 45241,
         "spot_shares": -502015,
         "spot_amount": -14329.13,
+        "spot_cum_shares": 393417,
+        "spot_cum_amount": 5268.099999999997,
         "oi_ratio": 0.538271310445386
       },
       "market": {
@@ -2573,7 +3057,10 @@
         "kospi200_cum_contracts": 1262,
         "kospi200_cum_amount": 5566.51,
         "program_arb_amount": -419.31,
-        "program_nonarb_amount": -25080.09
+        "program_nonarb_amount": -25080.09,
+        "program_arb_cum_amount": 15919.050000000001,
+        "program_nonarb_cum_amount": -51802.619999999995,
+        "program_net_cum_amount": -35883.56999999999
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260622.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260622.xlsx, KRX_투자자별거래실적_코스피200선물_20260622.xlsx, KRX_프로그램매매_코스피_20260622.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260622.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260622.xlsx, data_4459_20260622.csv"
     },
@@ -2591,6 +3078,8 @@
         "oi_delta": -494499,
         "spot_shares": -2274624,
         "spot_amount": -7685.31,
+        "spot_cum_shares": -4545966,
+        "spot_cum_amount": -15571.76,
         "oi_ratio": -2.8680260817867262
       },
       "skhynix": {
@@ -2602,6 +3091,8 @@
         "oi_delta": -166071,
         "spot_shares": -946166,
         "spot_amount": -26523.41,
+        "spot_cum_shares": -552749,
+        "spot_cum_amount": -21255.310000000005,
         "oi_ratio": -6.011474359654991
       },
       "market": {
@@ -2610,7 +3101,10 @@
         "kospi200_cum_contracts": 7857,
         "kospi200_cum_amount": 26975.1,
         "program_arb_amount": -935.17,
-        "program_nonarb_amount": -45850.35
+        "program_nonarb_amount": -45850.35,
+        "program_arb_cum_amount": 14983.880000000001,
+        "program_nonarb_cum_amount": -97652.97,
+        "program_net_cum_amount": -82669.09
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260623.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260623.xlsx, KRX_투자자별거래실적_코스피200선물_20260623.xlsx, KRX_프로그램매매_코스피_20260623.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260623.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260623.xlsx, data_4459_20260623.csv"
     },
@@ -2628,6 +3122,8 @@
         "oi_delta": 204018,
         "spot_shares": -587956,
         "spot_amount": -1790.25,
+        "spot_cum_shares": -5133922,
+        "spot_cum_amount": -17362.010000000002,
         "oi_ratio": 2.6518609942387354
       },
       "skhynix": {
@@ -2639,6 +3135,8 @@
         "oi_delta": 4696,
         "spot_shares": -1409760,
         "spot_amount": -36374.83,
+        "spot_cum_shares": -1962509,
+        "spot_cum_amount": -57630.14000000001,
         "oi_ratio": 1.9192284026508952
       },
       "market": {
@@ -2647,9 +3145,56 @@
         "kospi200_cum_contracts": 1256,
         "kospi200_cum_amount": 4042.0399999999972,
         "program_arb_amount": -3633.96,
-        "program_nonarb_amount": -27581.96
+        "program_nonarb_amount": -27581.96,
+        "program_arb_cum_amount": 11349.920000000002,
+        "program_nonarb_cum_amount": -125234.93,
+        "program_net_cum_amount": -113885.01
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260624.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260624.xlsx, KRX_투자자별거래실적_코스피200선물_20260624.xlsx, KRX_프로그램매매_코스피_20260624.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260624.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260624.xlsx, data_4459_20260624.csv"
+    },
+    {
+      "date": "2026-06-25",
+      "range_label": "2026-06-12 ~ 2026-06-25",
+      "stock_range_label": "2026-06-12 ~ 2026-06-25",
+      "market_range_label": "2026-06-12 ~ 2026-06-25",
+      "samsung": {
+        "daily_contracts": -127157,
+        "daily_amount": -4479.79,
+        "cum_contracts": -134700,
+        "cum_amount": -5350.629999999999,
+        "oi": 6840114,
+        "oi_delta": 432840,
+        "spot_shares": -1745543,
+        "spot_amount": -6187.14,
+        "spot_cum_shares": -6879465,
+        "spot_cum_amount": -23549.15,
+        "oi_ratio": -1.8589894846781794
+      },
+      "skhynix": {
+        "daily_contracts": 94000,
+        "daily_amount": 27527.9,
+        "cum_contracts": 101729,
+        "cum_amount": 28994.89,
+        "oi": 1923821,
+        "oi_delta": 223867,
+        "spot_shares": -112296,
+        "spot_amount": -2950.36,
+        "spot_cum_shares": -2074805,
+        "spot_cum_amount": -60580.50000000001,
+        "oi_ratio": 4.886109466525212
+      },
+      "market": {
+        "kospi200_daily_contracts": -7778,
+        "kospi200_daily_amount": -28380.47,
+        "kospi200_cum_contracts": -6522,
+        "kospi200_cum_amount": -24338.430000000004,
+        "program_arb_amount": -1372.69,
+        "program_nonarb_amount": 15419.53,
+        "program_arb_cum_amount": 9977.230000000001,
+        "program_nonarb_cum_amount": -109815.4,
+        "program_net_cum_amount": -99838.17
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260625.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260625.xlsx, KRX_투자자별거래실적_코스피200선물_20260625.xlsx, KRX_프로그램매매_코스피_20260625.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260625.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260625.xlsx, data_4459_20260625.csv"
     }
   ]
 }
