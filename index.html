@@ -1909,6 +1909,7 @@
       if (status === "ok") return "정상";
       if (status === "auth_missing") return "인증키 없음";
       if (status === "source_unavailable") return "원천 사용 불가";
+      if (status === "source_empty") return "제공 대기";
       if (status === "pre_listing") return "상장 전";
       if (status === "no_products") return "상품 없음";
       if (status === "etn_source_unavailable") return "ETN 미승인";
@@ -1958,6 +1959,9 @@
       const warning = etpShareWarning(row, key, label);
       const productCount = summary ? Number(summary.product_count || 0) : 0;
       const sourceStatus = summary ? etpSourceLabel(summary.source_status) : "확인 필요";
+      const usableSource = summary && ["ok", "no_products"].includes(summary.source_status);
+      const metricValue = value => usableSource ? value : "-";
+      const productCountText = usableSource ? `${productCount.toLocaleString("ko-KR")}개` : "-";
       return `
         <article class="etp-card">
           <div class="etp-card-title">
@@ -1965,15 +1969,15 @@
             <span class="etp-level ${escapeHtml(line.level)}">${escapeHtml(etpLevelLabel(line.level))}</span>
           </div>
           <div class="etp-metrics">
-            ${etpMetric("총 거래대금", fmtWonToEok(summary && summary.total_trading_value_won))}
-            ${etpMetric("선물형 거래대금", fmtWonToEok(summary && summary.futures_based_trading_value_won))}
-            ${etpMetric("KOSPI 거래대금 비중", fmtEtpRatio(summary && summary.kospi_market_trading_value_share))}
-            ${etpMetric("총 AUM", fmtWonToEok(summary && summary.total_aum_won))}
-            ${etpMetric("선물형 AUM 비중", fmtEtpRatio(summary && summary.futures_based_ratio))}
-            ${etpMetric("인버스 AUM 비중", fmtEtpRatio(summary && summary.inverse_aum_ratio))}
-            ${etpMetric("상장좌수 flow proxy", fmtSignedWonToEok(summary && summary.flow_proxy_won))}
-            ${etpMetric("방향성 압력 proxy", fmtSignedWonToEok(summary && summary.directional_flow_pressure_won))}
-            ${etpMetric("상품 수", `${productCount.toLocaleString("ko-KR")}개`)}
+            ${etpMetric("총 거래대금", metricValue(fmtWonToEok(summary && summary.total_trading_value_won)))}
+            ${etpMetric("선물형 거래대금", metricValue(fmtWonToEok(summary && summary.futures_based_trading_value_won)))}
+            ${etpMetric("KOSPI 거래대금 비중", metricValue(fmtEtpRatio(summary && summary.kospi_market_trading_value_share)))}
+            ${etpMetric("총 AUM", metricValue(fmtWonToEok(summary && summary.total_aum_won)))}
+            ${etpMetric("선물형 AUM 비중", metricValue(fmtEtpRatio(summary && summary.futures_based_ratio)))}
+            ${etpMetric("인버스 AUM 비중", metricValue(fmtEtpRatio(summary && summary.inverse_aum_ratio)))}
+            ${etpMetric("상장좌수 flow proxy", metricValue(fmtSignedWonToEok(summary && summary.flow_proxy_won)))}
+            ${etpMetric("방향성 압력 proxy", metricValue(fmtSignedWonToEok(summary && summary.directional_flow_pressure_won)))}
+            ${etpMetric("상품 수", productCountText)}
             ${etpMetric("소스 상태", sourceStatus)}
           </div>
           ${warning ? `<div class="etp-warning">${escapeHtml(warning)}</div>` : ""}
@@ -1989,9 +1993,13 @@
       return product && product.direction === "inverse_2x" ? "인버스2X" : "레버리지";
     }
 
-    function renderEtpProducts(products) {
+    function renderEtpProducts(products, sourceStatus) {
       if (!products || !products.length) {
-        return `<table class="etp-table"><tbody><tr><td>선택일에 표시할 단일종목 ETF 상품이 없습니다.</td></tr></tbody></table>`;
+        const usableSource = !sourceStatus || ["ok", "no_products"].includes(sourceStatus);
+        const message = usableSource
+          ? "선택일에 표시할 단일종목 ETF 상품이 없습니다."
+          : `선택일 ETF Open API 데이터 상태: ${etpSourceLabel(sourceStatus)}`;
+        return `<table class="etp-table"><tbody><tr><td>${escapeHtml(message)}</td></tr></tbody></table>`;
       }
       const rowsHtml = products
         .slice()
@@ -2037,6 +2045,14 @@
       const context = etpMarketContext(row);
       const value = context.kospi_trading_value_won;
       return value === null || value === undefined ? null : Number(value);
+    }
+
+    function etpMarketChartRowUsable(row) {
+      const impactStatus = row && row.etp_impact ? row.etp_impact.source_status : null;
+      const marketValue = etpMarketTradingValue(row);
+      return ["ok", "no_products"].includes(impactStatus)
+        && Number.isFinite(marketValue)
+        && marketValue > 0;
     }
 
     function etpMarketShare(row, key) {
@@ -2193,13 +2209,14 @@
       const selectedIndex = rows.findIndex(item => item.date === row.date);
       const chartRows = rows
         .slice(0, selectedIndex + 1)
-        .filter(item => Number.isFinite(etpMarketTradingValue(item)));
+        .filter(etpMarketChartRowUsable);
       const context = etpMarketContext(row);
       const selectedMarketValue = etpMarketTradingValue(row);
+      const selectedMarketUsable = etpMarketChartRowUsable(row);
       const selectedSamsungShare = etpMarketShare(row, "samsung");
       const selectedSkShare = etpMarketShare(row, "skhynix");
 
-      if (!chartRows.length || selectedMarketValue === null) {
+      if (!chartRows.length) {
         setText("etp-market-chart-summary", `KOSPI 거래대금: ${etpSourceLabel(context.source_status)}`);
         setHtml("etp-market-chart-svg", `<svg viewBox="0 0 960 300" aria-label="KOSPI 거래대금 데이터 없음"><text x="480" y="150" text-anchor="middle" fill="#66778b" font-size="16" font-weight="800">KOSPI 거래대금 데이터를 확인할 수 없습니다.</text></svg>`);
         setText("etp-market-extreme-note", "두 종목 단일종목 레버리지/인버스 ETF 합산 비중: 확인 가능한 KOSPI/ETF 데이터가 없습니다.");
@@ -2208,7 +2225,9 @@
 
       setText(
         "etp-market-chart-summary",
-        `선택일 KOSPI ${fmtWonToJo(selectedMarketValue)} · 삼성 ETF ${fmtEtpRatio(selectedSamsungShare)} · SK ETF ${fmtEtpRatio(selectedSkShare)}`
+        selectedMarketUsable
+          ? `선택일 KOSPI ${fmtWonToJo(selectedMarketValue)} · 삼성 ETF ${fmtEtpRatio(selectedSamsungShare)} · SK ETF ${fmtEtpRatio(selectedSkShare)}`
+          : `선택일 KOSPI 데이터: ${etpSourceLabel(context.source_status)} · 차트는 최신 사용 가능일 기준`
       );
       setText("etp-market-extreme-note", etpCombinedShareExtremeNote(chartRows));
 
@@ -2299,7 +2318,7 @@
         ].join("")
       );
       renderEtpMarketChart(row);
-      setHtml("etp-product-table", renderEtpProducts(dateImpact.products || []));
+      setHtml("etp-product-table", renderEtpProducts(dateImpact.products || [], dateImpact.source_status));
     }
 
     function setupEtpMarketTooltip() {
