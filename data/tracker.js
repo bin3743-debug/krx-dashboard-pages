@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-04 00:03:59",
+  "generated_at": "2026-07-04 06:34:18",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-03",
   "ops_status": {
     "status": "success",
-    "last_checked_at": "2026-07-04T00:03:54+09:00",
+    "last_checked_at": "2026-07-04T06:34:11+09:00",
     "latest_available_date": "2026-07-03",
     "fallback_used": false,
     "execution_status": "success",
@@ -27,7 +27,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-04 00:03:59 KST",
+    "generated_at": "2026-07-04 06:34:18 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 26,
       "stock_daily_cache_hit": 26,
@@ -16470,10 +16470,10 @@ window.KRX_DASHBOARD_DATA = {
         "oi_ratio": 6.726931945362118
       },
       "market": {
-        "kospi200_daily_contracts": 352,
-        "kospi200_daily_amount": 161.35,
-        "kospi200_cum_contracts": 11040,
-        "kospi200_cum_amount": 31883.219999999994,
+        "kospi200_daily_contracts": 884,
+        "kospi200_daily_amount": 1815.13,
+        "kospi200_cum_contracts": 11572,
+        "kospi200_cum_amount": 33536.99999999999,
         "program_arb_amount": 3346.89,
         "program_nonarb_amount": -12714.0,
         "program_arb_cum_amount": 17075.050000000003,
