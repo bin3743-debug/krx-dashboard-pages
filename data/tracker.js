@@ -1,36 +1,45 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-08 07:27:42",
+  "generated_at": "2026-07-09 07:15:22",
   "start_date": "2026-03-12",
-  "latest_date": "2026-07-07",
+  "latest_date": "2026-07-08",
   "ops_status": {
     "status": "success",
-    "last_checked_at": "2026-07-08T07:27:39+09:00",
-    "latest_available_date": "2026-07-07",
-    "fallback_used": false,
-    "execution_status": "success",
+    "last_checked_at": "2026-07-09T07:15:16+09:00",
+    "latest_available_date": "2026-07-08",
+    "fallback_used": true,
+    "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "complete",
     "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "normal",
-    "expected_latest_date": "2026-07-07",
-    "actual_latest_date": "2026-07-07",
+    "overall_status": "degraded",
+    "expected_latest_date": "2026-07-08",
+    "actual_latest_date": "2026-07-08",
     "source_bundle_status": "complete_target",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next morning final run",
+    "current_bottleneck": "KRX source acquisition required attempt 1 and fallback/restart recovery",
+    "recommended_action": "observe next 07:10 final run and reopen if fallback repeats",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "final_launch_mode": "persistent_fallback",
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "edge_restart",
+      "persistent_profile_preflight",
+      "persistent_profile"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-08 07:27:42 KST",
+    "generated_at": "2026-07-09 07:15:21 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 29,
-      "stock_daily_cache_hit": 29
+      "stock_daily_cache_hit": 29,
+      "etf_daily_source_empty_refetch": 1,
+      "etf_daily_cache_write": 1,
+      "stock_daily_source_empty_refetch": 1,
+      "stock_daily_cache_write": 1
     },
     "thresholds": {
       "high_total_trading_value_won": 500000000000,
@@ -42,9 +51,9 @@ window.KRX_DASHBOARD_DATA = {
     },
     "etn_status": {
       "status": "etn_source_unavailable",
-      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260707: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260707",
-      "date": "2026-07-07",
-      "cached_at": "2026-07-07 20:14:47 KST",
+      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260708: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260708",
+      "date": "2026-07-08",
+      "cached_at": "2026-07-09 07:15:16 KST",
       "cache_status": "hit"
     }
   },
@@ -17741,6 +17750,107 @@ window.KRX_DASHBOARD_DATA = {
         }
       },
       "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260707.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260707.xlsx, KRX_투자자별거래실적_코스피200선물_20260707.xlsx, KRX_프로그램매매_코스피_20260707.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260707.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260707.xlsx, data_4459_20260707.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260707.json"
+    },
+    {
+      "date": "2026-07-08",
+      "range_label": "2026-06-12 ~ 2026-07-08",
+      "stock_range_label": "2026-06-12 ~ 2026-07-08",
+      "market_range_label": "2026-06-12 ~ 2026-07-08",
+      "samsung": {
+        "daily_contracts": 151725,
+        "daily_amount": 4190.55,
+        "cum_contracts": -707936,
+        "cum_amount": -23823.92,
+        "oi": 6988792,
+        "oi_delta": 126837,
+        "spot_shares": -3025867,
+        "spot_amount": -8740.68,
+        "spot_cum_shares": -48496617,
+        "spot_cum_amount": -154072.45,
+        "oi_ratio": 2.170976042783932
+      },
+      "skhynix": {
+        "daily_contracts": -34607,
+        "daily_amount": -6789.39,
+        "cum_contracts": -262874,
+        "cum_amount": -59021.79,
+        "oi": 1835713,
+        "oi_delta": 43758,
+        "spot_shares": 85978,
+        "spot_amount": 1727.47,
+        "spot_cum_shares": -6740518,
+        "spot_cum_amount": -177464.83,
+        "oi_ratio": -1.8852075460597597
+      },
+      "market": {
+        "kospi200_daily_contracts": 5564,
+        "kospi200_daily_amount": 16337.28,
+        "kospi200_cum_contracts": 16542,
+        "kospi200_cum_amount": 47549.85999999999,
+        "program_arb_amount": 1054.35,
+        "program_nonarb_amount": 8002.77,
+        "program_arb_cum_amount": 18495.38,
+        "program_nonarb_cum_amount": -298019.80000000005,
+        "program_net_cum_amount": -279524.42000000004
+      },
+      "etp_impact": {
+        "date": "2026-07-08",
+        "source_status": "source_empty",
+        "message": "etf_daily returned 0 rows",
+        "market_context": {
+          "source": "krx_openapi.stock_bydd_trd",
+          "source_status": "source_empty",
+          "message": "stock_daily returned 0 rows",
+          "kospi_trading_value_won": null,
+          "row_count": 0
+        },
+        "products": [],
+        "summaries": {
+          "samsung": {
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "source_status": "source_empty",
+            "impact_level": "unknown",
+            "impact_reason": "source_empty",
+            "product_count": 0,
+            "total_trading_value_won": 0.0,
+            "futures_based_trading_value_won": 0.0,
+            "total_aum_won": 0.0,
+            "futures_based_aum_won": 0.0,
+            "long_aum_won": 0.0,
+            "inverse_aum_won": 0.0,
+            "kospi_market_trading_value_won": null,
+            "kospi_market_trading_value_share": null,
+            "flow_proxy_won": null,
+            "directional_flow_pressure_won": null,
+            "directional_aum_exposure_won": 0.0,
+            "futures_based_ratio": null,
+            "inverse_aum_ratio": null
+          },
+          "skhynix": {
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "source_status": "source_empty",
+            "impact_level": "unknown",
+            "impact_reason": "source_empty",
+            "product_count": 0,
+            "total_trading_value_won": 0.0,
+            "futures_based_trading_value_won": 0.0,
+            "total_aum_won": 0.0,
+            "futures_based_aum_won": 0.0,
+            "long_aum_won": 0.0,
+            "inverse_aum_won": 0.0,
+            "kospi_market_trading_value_won": null,
+            "kospi_market_trading_value_share": null,
+            "flow_proxy_won": null,
+            "directional_flow_pressure_won": null,
+            "directional_aum_exposure_won": 0.0,
+            "futures_based_ratio": null,
+            "inverse_aum_ratio": null
+          }
+        }
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260708.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260708.xlsx, KRX_투자자별거래실적_코스피200선물_20260708.xlsx, KRX_프로그램매매_코스피_20260708.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260708.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260708.xlsx, data_4459_20260708.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260708.json"
     }
   ]
 };
