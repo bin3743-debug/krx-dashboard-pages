@@ -1,36 +1,43 @@
 {
-  "generated_at": "2026-07-10 07:41:52",
+  "generated_at": "2026-07-11 07:14:36",
   "start_date": "2026-03-12",
-  "latest_date": "2026-07-09",
+  "latest_date": "2026-07-10",
   "ops_status": {
     "status": "success",
-    "last_checked_at": "2026-07-10T07:41:46+09:00",
-    "latest_available_date": "2026-07-09",
-    "fallback_used": false,
-    "execution_status": "success",
+    "last_checked_at": "2026-07-11T07:14:30+09:00",
+    "latest_available_date": "2026-07-10",
+    "fallback_used": true,
+    "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "complete",
     "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "normal",
-    "expected_latest_date": "2026-07-09",
-    "actual_latest_date": "2026-07-09",
+    "overall_status": "degraded",
+    "expected_latest_date": "2026-07-10",
+    "actual_latest_date": "2026-07-10",
     "source_bundle_status": "complete_target",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next morning final run",
+    "current_bottleneck": "KRX source acquisition required attempt 1 and fallback/restart recovery",
+    "recommended_action": "observe next 07:10 final run and reopen if fallback repeats",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "edge_restart",
+      "cdp_preflight_restart_recovered"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-10 07:41:50 KST",
+    "generated_at": "2026-07-11 07:14:35 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 31,
-      "stock_daily_cache_hit": 31
+      "stock_daily_cache_hit": 32,
+      "etf_daily_missing_aum_refetch": 1,
+      "etf_daily_marketplace_csv_fallback": 1,
+      "etf_daily_cache_write": 1
     },
     "thresholds": {
       "high_total_trading_value_won": 500000000000,
@@ -42,9 +49,9 @@
     },
     "etn_status": {
       "status": "etn_source_unavailable",
-      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260709: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260709",
-      "date": "2026-07-09",
-      "cached_at": "2026-07-10 07:15:54 KST",
+      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710",
+      "date": "2026-07-10",
+      "cached_at": "2026-07-11 07:14:28 KST",
       "cache_status": "hit"
     }
   },
@@ -52,9 +59,9 @@
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-10 07:41:52 KST",
+    "generated_at": "2026-07-11 07:14:36 KST",
     "cache_stats": {
-      "futures_expiry_oi_payload_cache_hit": 81,
+      "futures_expiry_oi_payload_cache_hit": 82,
       "futures_daily_cache_refetch": 1,
       "futures_daily_cache_write": 1,
       "stock_futures_kospi_cache_refetch": 1,
@@ -19630,6 +19637,24 @@
       "etp_impact": {
         "date": "2026-05-27",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1131,
+            "date": "2026-05-27",
+            "fetched_at": "2026-07-03 12:27:30 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-05-27",
+            "fetched_at": "2026-07-03 12:27:31 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -20354,6 +20379,24 @@
       "etp_impact": {
         "date": "2026-05-28",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1131,
+            "date": "2026-05-28",
+            "fetched_at": "2026-07-03 12:27:43 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-05-28",
+            "fetched_at": "2026-07-03 12:27:44 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -21078,6 +21121,24 @@
       "etp_impact": {
         "date": "2026-05-29",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1130,
+            "date": "2026-05-29",
+            "fetched_at": "2026-07-03 12:27:45 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-05-29",
+            "fetched_at": "2026-07-03 12:27:46 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -21802,6 +21863,24 @@
       "etp_impact": {
         "date": "2026-06-01",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1130,
+            "date": "2026-06-01",
+            "fetched_at": "2026-07-03 12:27:47 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-06-01",
+            "fetched_at": "2026-07-03 12:27:48 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -22526,6 +22605,24 @@
       "etp_impact": {
         "date": "2026-06-02",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1136,
+            "date": "2026-06-02",
+            "fetched_at": "2026-07-03 12:27:49 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-06-02",
+            "fetched_at": "2026-07-03 12:27:50 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -23250,6 +23347,24 @@
       "etp_impact": {
         "date": "2026-06-04",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1136,
+            "date": "2026-06-04",
+            "fetched_at": "2026-07-03 12:27:50 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-06-04",
+            "fetched_at": "2026-07-03 12:27:52 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -23974,6 +24089,24 @@
       "etp_impact": {
         "date": "2026-06-05",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1136,
+            "date": "2026-06-05",
+            "fetched_at": "2026-07-03 12:27:53 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-06-05",
+            "fetched_at": "2026-07-03 12:27:54 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -24698,6 +24831,24 @@
       "etp_impact": {
         "date": "2026-06-08",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1136,
+            "date": "2026-06-08",
+            "fetched_at": "2026-07-03 12:27:55 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-06-08",
+            "fetched_at": "2026-07-03 12:27:56 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -25422,6 +25573,24 @@
       "etp_impact": {
         "date": "2026-06-09",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1137,
+            "date": "2026-06-09",
+            "fetched_at": "2026-07-03 12:27:57 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 948,
+            "date": "2026-06-09",
+            "fetched_at": "2026-07-03 12:27:58 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -26146,6 +26315,24 @@
       "etp_impact": {
         "date": "2026-06-10",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1137,
+            "date": "2026-06-10",
+            "fetched_at": "2026-07-03 12:27:59 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 947,
+            "date": "2026-06-10",
+            "fetched_at": "2026-07-03 12:28:00 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -26870,6 +27057,24 @@
       "etp_impact": {
         "date": "2026-06-11",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1137,
+            "date": "2026-06-11",
+            "fetched_at": "2026-07-03 12:28:01 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 947,
+            "date": "2026-06-11",
+            "fetched_at": "2026-07-03 12:28:03 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -27564,6 +27769,24 @@
       "etp_impact": {
         "date": "2026-06-12",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1137,
+            "date": "2026-06-12",
+            "fetched_at": "2026-07-03 12:28:03 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-12",
+            "fetched_at": "2026-07-03 12:28:04 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -28258,6 +28481,24 @@
       "etp_impact": {
         "date": "2026-06-15",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1137,
+            "date": "2026-06-15",
+            "fetched_at": "2026-07-03 12:28:05 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-15",
+            "fetched_at": "2026-07-03 12:28:06 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -28958,6 +29199,24 @@
       "etp_impact": {
         "date": "2026-06-16",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1140,
+            "date": "2026-06-16",
+            "fetched_at": "2026-07-03 12:28:07 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-16",
+            "fetched_at": "2026-07-03 12:28:08 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -29658,6 +29917,24 @@
       "etp_impact": {
         "date": "2026-06-17",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1140,
+            "date": "2026-06-17",
+            "fetched_at": "2026-07-03 12:28:08 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-17",
+            "fetched_at": "2026-07-03 12:28:10 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -30358,6 +30635,24 @@
       "etp_impact": {
         "date": "2026-06-18",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1140,
+            "date": "2026-06-18",
+            "fetched_at": "2026-07-03 12:28:10 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-18",
+            "fetched_at": "2026-07-03 12:28:12 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -31058,6 +31353,24 @@
       "etp_impact": {
         "date": "2026-06-19",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1140,
+            "date": "2026-06-19",
+            "fetched_at": "2026-07-03 12:28:12 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-19",
+            "fetched_at": "2026-07-03 12:28:13 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -31758,6 +32071,24 @@
       "etp_impact": {
         "date": "2026-06-22",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1140,
+            "date": "2026-06-22",
+            "fetched_at": "2026-07-03 12:28:14 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-22",
+            "fetched_at": "2026-07-03 12:28:15 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -32458,6 +32789,24 @@
       "etp_impact": {
         "date": "2026-06-23",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1145,
+            "date": "2026-06-23",
+            "fetched_at": "2026-07-03 12:28:15 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-23",
+            "fetched_at": "2026-07-03 12:28:17 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -33158,6 +33507,24 @@
       "etp_impact": {
         "date": "2026-06-24",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1145,
+            "date": "2026-06-24",
+            "fetched_at": "2026-07-03 12:28:17 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-24",
+            "fetched_at": "2026-07-03 12:28:18 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -33858,6 +34225,24 @@
       "etp_impact": {
         "date": "2026-06-25",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1142,
+            "date": "2026-06-25",
+            "fetched_at": "2026-07-03 12:28:19 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-25",
+            "fetched_at": "2026-07-03 12:28:20 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -34558,6 +34943,24 @@
       "etp_impact": {
         "date": "2026-06-26",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1142,
+            "date": "2026-06-26",
+            "fetched_at": "2026-07-03 12:28:21 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-26",
+            "fetched_at": "2026-07-03 12:28:22 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -35258,6 +35661,24 @@
       "etp_impact": {
         "date": "2026-06-29",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1142,
+            "date": "2026-06-29",
+            "fetched_at": "2026-07-03 12:28:23 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 946,
+            "date": "2026-06-29",
+            "fetched_at": "2026-07-03 12:28:24 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -35958,6 +36379,24 @@
       "etp_impact": {
         "date": "2026-06-30",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1143,
+            "date": "2026-06-30",
+            "fetched_at": "2026-07-03 12:28:24 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 945,
+            "date": "2026-06-30",
+            "fetched_at": "2026-07-03 12:28:26 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -36658,6 +37097,24 @@
       "etp_impact": {
         "date": "2026-07-01",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1143,
+            "date": "2026-07-01",
+            "fetched_at": "2026-07-03 12:26:47 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 945,
+            "date": "2026-07-01",
+            "fetched_at": "2026-07-03 12:26:50 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -37358,6 +37815,24 @@
       "etp_impact": {
         "date": "2026-07-02",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1143,
+            "date": "2026-07-02",
+            "fetched_at": "2026-07-03 12:26:50 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
+            "row_count": 945,
+            "date": "2026-07-02",
+            "fetched_at": "2026-07-03 12:26:55 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -38058,6 +38533,24 @@
       "etp_impact": {
         "date": "2026-07-03",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
+            "row_count": 1143,
+            "date": "2026-07-03",
+            "fetched_at": "2026-07-06 09:13:00 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_data_marketplace.stock_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 945,
+            "date": "2026-07-03",
+            "fetched_at": "2026-07-04 07:00:06 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -38758,6 +39251,24 @@
       "etp_impact": {
         "date": "2026-07-06",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 1143,
+            "date": "2026-07-06",
+            "fetched_at": "2026-07-07 07:31:04 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_data_marketplace.stock_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 945,
+            "date": "2026-07-06",
+            "fetched_at": "2026-07-07 07:31:06 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -39458,6 +39969,24 @@
       "etp_impact": {
         "date": "2026-07-07",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 1144,
+            "date": "2026-07-07",
+            "fetched_at": "2026-07-08 07:27:37 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_data_marketplace.stock_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 945,
+            "date": "2026-07-07",
+            "fetched_at": "2026-07-08 07:27:39 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -40158,6 +40687,24 @@
       "etp_impact": {
         "date": "2026-07-08",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 1144,
+            "date": "2026-07-08",
+            "fetched_at": "2026-07-09 07:42:09 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_data_marketplace.stock_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 945,
+            "date": "2026-07-08",
+            "fetched_at": "2026-07-09 07:42:15 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -40858,6 +41405,24 @@
       "etp_impact": {
         "date": "2026-07-09",
         "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 1141,
+            "date": "2026-07-09",
+            "fetched_at": "2026-07-10 07:41:37 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_data_marketplace.stock_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 945,
+            "date": "2026-07-09",
+            "fetched_at": "2026-07-10 07:41:44 KST"
+          }
+        },
         "market_context": {
           "source": "krx_openapi.stock_bydd_trd",
           "source_status": "ok",
@@ -41249,7 +41814,7 @@
       },
       "futures_expiry_oi": {
         "date": "2026-07-09",
-        "source_status": "partial",
+        "source_status": "ok",
         "source": "krx_openapi.futures_expiry_oi",
         "share_basis": "front_next_notional",
         "basis_note": "전체대비 근월물 비중의 전체는 표시된 근월물+차월물 규모 합산 기준입니다.",
@@ -41257,36 +41822,730 @@
           "kospi200": {
             "key": "kospi200",
             "label": "코스피200선물",
-            "status": "insufficient_months",
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202609",
+            "next_month": "202612",
+            "front_open_interest": 163189,
+            "front_notional_won": 47721767242500,
+            "next_open_interest": 7982,
+            "next_notional_won": 2334196215000,
+            "total_front_next_open_interest": 171171,
+            "total_front_next_notional_won": 50055963457500,
+            "front_share_notional": 0.9533682691577429,
+            "all_open_interest": 176057,
+            "all_notional_won": 51484788652500,
+            "other_open_interest": 4886,
+            "other_notional_won": 1428825195000,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 163189,
+                "notional_won": 47721767242500.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 7982,
+                "notional_won": 2334196215000.0,
+                "row_count": 1
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 2376,
+                "notional_won": 694819620000.0,
+                "row_count": 1
+              },
+              "202706": {
+                "month": "202706",
+                "open_interest": 929,
+                "notional_won": 271669792499.99997,
+                "row_count": 1
+              },
+              "202712": {
+                "month": "202712",
+                "open_interest": 1577,
+                "notional_won": 461166052500.0,
+                "row_count": 1
+              },
+              "202812": {
+                "month": "202812",
+                "open_interest": 4,
+                "notional_won": 1169730000.0,
+                "row_count": 1
+              }
+            }
+          },
+          "mini_kospi200": {
+            "key": "mini_kospi200",
+            "label": "K200 미니선물",
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 27848,
+            "front_notional_won": 1628732052000,
+            "next_open_interest": 3492,
+            "next_notional_won": 204234858000,
+            "total_front_next_open_interest": 31340,
+            "total_front_next_notional_won": 1832966910000,
+            "front_share_notional": 0.8885768985322272,
+            "all_open_interest": 31670,
+            "all_notional_won": 1852267455000,
+            "other_open_interest": 330,
+            "other_notional_won": 19300545000,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 27848,
+                "notional_won": 1628732052000.0,
+                "row_count": 1
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 3492,
+                "notional_won": 204234858000.0,
+                "row_count": 1
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 208,
+                "notional_won": 12165192000.0,
+                "row_count": 1
+              },
+              "202611": {
+                "month": "202611",
+                "open_interest": 67,
+                "notional_won": 3918595500.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 55,
+                "notional_won": 3216757500.0,
+                "row_count": 1
+              }
+            }
+          },
+          "stock_futures_total": {
+            "key": "stock_futures_total",
+            "label": "개별주식선물",
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 13723568,
+            "front_notional_won": 56915196727200,
+            "next_open_interest": 431990,
+            "next_notional_won": 2028437520850,
+            "total_front_next_open_interest": 14155558,
+            "total_front_next_notional_won": 58943634248050,
+            "front_share_notional": 0.9655868263515308,
+            "all_open_interest": 14155851,
+            "all_notional_won": 58944601129550,
+            "other_open_interest": 293,
+            "other_notional_won": 966881500,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 13723568,
+                "notional_won": 56915196727200.0,
+                "row_count": 274
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 40,
+                "notional_won": 46899050.0,
+                "row_count": 5
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 431990,
+                "notional_won": 2028437520850.0,
+                "row_count": 53
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 253,
+                "notional_won": 919982450.0,
+                "row_count": 11
+              }
+            }
+          },
+          "samsung": {
+            "key": "samsung",
+            "label": "삼성전자 선물",
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 5472668,
+            "front_notional_won": 15214017040000,
+            "next_open_interest": 324399,
+            "next_notional_won": 901829220000,
+            "total_front_next_open_interest": 5797067,
+            "total_front_next_notional_won": 16115846260000,
+            "front_share_notional": 0.9440408399626915,
+            "all_open_interest": 5797252,
+            "all_notional_won": 16116360560000,
+            "other_open_interest": 185,
+            "other_notional_won": 514300000,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 5472668,
+                "notional_won": 15214017040000.0,
+                "row_count": 1
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 324399,
+                "notional_won": 901829220000.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 171,
+                "notional_won": 475380000.0,
+                "row_count": 1
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 14,
+                "notional_won": 38920000.0,
+                "row_count": 1
+              }
+            }
+          },
+          "skhynix": {
+            "key": "skhynix",
+            "label": "SK하이닉스 선물",
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 1553885,
+            "front_notional_won": 33967926100000,
+            "next_open_interest": 50714,
+            "next_notional_won": 1108608040000,
+            "total_front_next_open_interest": 1604599,
+            "total_front_next_notional_won": 35076534140000,
+            "front_share_notional": 0.9683945957837441,
+            "all_open_interest": 1604599,
+            "all_notional_won": 35076534140000,
+            "other_open_interest": 0,
+            "other_notional_won": 0,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 1553885,
+                "notional_won": 33967926100000.0,
+                "row_count": 1
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 50714,
+                "notional_won": 1108608040000.0,
+                "row_count": 1
+              }
+            }
+          }
+        }
+      },
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260709.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260709.xlsx, KRX_투자자별거래실적_코스피200선물_20260709.xlsx, KRX_프로그램매매_코스피_20260709.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260709.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260709.xlsx, data_4459_20260709.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260709.json"
+    },
+    {
+      "date": "2026-07-10",
+      "range_label": "2026-07-10 ~ 2026-07-10",
+      "stock_range_label": "2026-07-10 ~ 2026-07-10",
+      "market_range_label": "2026-06-12 ~ 2026-07-10",
+      "samsung": {
+        "daily_contracts": -15903,
+        "daily_amount": -432.64,
+        "cum_contracts": -15903,
+        "cum_amount": -432.64,
+        "oi": 5906875,
+        "oi_delta": 109623,
+        "spot_shares": 635576,
+        "spot_amount": 1936.52,
+        "spot_cum_shares": 635576,
+        "spot_cum_amount": 1936.52,
+        "oi_ratio": -0.26922865305258703
+      },
+      "skhynix": {
+        "daily_contracts": -4905,
+        "daily_amount": -998.73,
+        "cum_contracts": -4905,
+        "cum_amount": -998.73,
+        "oi": 1640207,
+        "oi_delta": 35608,
+        "spot_shares": -775283,
+        "spot_amount": -17181.13,
+        "spot_cum_shares": -775283,
+        "spot_cum_amount": -17181.13,
+        "oi_ratio": -0.2990476202089126
+      },
+      "market": {
+        "kospi200_daily_contracts": -2599,
+        "kospi200_daily_amount": -7737.74,
+        "kospi200_cum_contracts": 16470,
+        "kospi200_cum_amount": 47272.7,
+        "program_arb_amount": 959.07,
+        "program_nonarb_amount": -1041.72,
+        "program_arb_cum_amount": 19036.37,
+        "program_nonarb_cum_amount": -286602.9,
+        "program_net_cum_amount": -267566.53
+      },
+      "etp_impact": {
+        "date": "2026-07-10",
+        "source_status": "ok",
+        "input_sources": {
+          "etf_daily": {
+            "endpoint_key": "etf_daily",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 1141,
+            "date": "2026-07-10",
+            "fetched_at": "2026-07-11 07:14:35 KST"
+          },
+          "stock_daily": {
+            "endpoint_key": "stock_daily",
+            "source": "krx_data_marketplace.stock_daily.csv",
+            "status": "marketplace_csv_fallback",
+            "row_count": 945,
+            "date": "2026-07-10",
+            "fetched_at": "2026-07-11 07:14:27 KST"
+          }
+        },
+        "market_context": {
+          "source": "krx_openapi.stock_bydd_trd",
+          "source_status": "ok",
+          "kospi_trading_value_won": 31576970770029.0,
+          "row_count": 945
+        },
+        "products": [
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0193T0",
+            "issue_name": "KODEX SK하이닉스단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 21760.0,
+            "nav": 21657.76,
+            "trading_volume": 179735023,
+            "trading_value_won": 4056290118172.0,
+            "aum_won": null,
+            "market_cap_won": 5047776000000.0,
+            "listed_shares": 231975000.0,
+            "fluctuation_rate_pct": -0.78,
+            "flow_proxy_won": 181383740000.0,
+            "directional_flow_pressure_won": 362767480000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0197X0",
+            "issue_name": "SOL SK하이닉스선물단일종목인버스2X",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "futures_based",
+            "direction": "inverse_2x",
+            "leverage_multiplier": -2.0,
+            "close_price": 9210.0,
+            "nav": 9274.12,
+            "trading_volume": 244671457,
+            "trading_value_won": 2184109296749.0,
+            "aum_won": null,
+            "market_cap_won": 159793500000.0,
+            "listed_shares": 17350000.0,
+            "fluctuation_rate_pct": 1.49,
+            "flow_proxy_won": -35705362000.0,
+            "directional_flow_pressure_won": 71410724000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0195S0",
+            "issue_name": "TIGER SK하이닉스단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 18450.0,
+            "nav": 18345.05,
+            "trading_volume": 84339111,
+            "trading_value_won": 1611974840566.0,
+            "aum_won": null,
+            "market_cap_won": 2781337500000.0,
+            "listed_shares": 150750000.0,
+            "fluctuation_rate_pct": -1.05,
+            "flow_proxy_won": 37148726250.0,
+            "directional_flow_pressure_won": 74297452500.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0193W0",
+            "issue_name": "KODEX 삼성전자단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 17000.0,
+            "nav": 16995.65,
+            "trading_volume": 73178312,
+            "trading_value_won": 1287669540585.0,
+            "aum_won": null,
+            "market_cap_won": 3043425000000.0,
+            "listed_shares": 179025000.0,
+            "fluctuation_rate_pct": 4.71,
+            "flow_proxy_won": 80304446250.0,
+            "directional_flow_pressure_won": 160608892500.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0195R0",
+            "issue_name": "TIGER 삼성전자단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 15635.0,
+            "nav": 15636.1,
+            "trading_volume": 33776974,
+            "trading_value_won": 549156513097.0,
+            "aum_won": null,
+            "market_cap_won": 1665518375000.0,
+            "listed_shares": 106525000.0,
+            "fluctuation_rate_pct": 4.76,
+            "flow_proxy_won": 24626857500.0,
+            "directional_flow_pressure_won": 49253715000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0193L0",
+            "issue_name": "PLUS 삼성전자선물단일종목인버스2X",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "futures_based",
+            "direction": "inverse_2x",
+            "leverage_multiplier": -2.0,
+            "close_price": 14815.0,
+            "nav": 14938.76,
+            "trading_volume": 19515841,
+            "trading_value_won": 279268852394.0,
+            "aum_won": null,
+            "market_cap_won": 45630200000.0,
+            "listed_shares": 3080000.0,
+            "fluctuation_rate_pct": -4.67,
+            "flow_proxy_won": -896325600.0,
+            "directional_flow_pressure_won": 1792651200.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0197W0",
+            "issue_name": "SOL SK하이닉스단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 18200.0,
+            "nav": 18110.35,
+            "trading_volume": 2429641,
+            "trading_value_won": 45759848455.0,
+            "aum_won": null,
+            "market_cap_won": 78715000000.0,
+            "listed_shares": 4325000.0,
+            "fluctuation_rate_pct": -0.57,
+            "flow_proxy_won": 1811035000.0,
+            "directional_flow_pressure_won": 3622070000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0194T0",
+            "issue_name": "ACE SK하이닉스단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 18435.0,
+            "nav": 18291.14,
+            "trading_volume": 1423632,
+            "trading_value_won": 27154904489.0,
+            "aum_won": null,
+            "market_cap_won": 109688250000.0,
+            "listed_shares": 5950000.0,
+            "fluctuation_rate_pct": -0.57,
+            "flow_proxy_won": 6859177500.0,
+            "directional_flow_pressure_won": 13718355000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0194M0",
+            "issue_name": "ACE 삼성전자단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 15780.0,
+            "nav": 15698.29,
+            "trading_volume": 1120890,
+            "trading_value_won": 18223700008.0,
+            "aum_won": null,
+            "market_cap_won": 88762500000.0,
+            "listed_shares": 5625000.0,
+            "fluctuation_rate_pct": 5.02,
+            "flow_proxy_won": 5101944250.0,
+            "directional_flow_pressure_won": 10203888500.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0192L0",
+            "issue_name": "RISE SK하이닉스단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 18395.0,
+            "nav": 18382.97,
+            "trading_volume": 953473,
+            "trading_value_won": 18199397974.0,
+            "aum_won": null,
+            "market_cap_won": 104851500000.0,
+            "listed_shares": 5700000.0,
+            "fluctuation_rate_pct": -1.18,
+            "flow_proxy_won": 459574250.0,
+            "directional_flow_pressure_won": 919148500.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0194R0",
+            "issue_name": "KIWOOM SK하이닉스선물단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "futures_based",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 17765.0,
+            "nav": 17750.39,
+            "trading_volume": 849054,
+            "trading_value_won": 15604506832.0,
+            "aum_won": null,
+            "market_cap_won": 24426875000.0,
+            "listed_shares": 1375000.0,
+            "fluctuation_rate_pct": -0.86,
+            "flow_proxy_won": 887519500.0,
+            "directional_flow_pressure_won": 1775039000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0192M0",
+            "issue_name": "RISE 삼성전자단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 15680.0,
+            "nav": 15752.14,
+            "trading_volume": 408983,
+            "trading_value_won": 6676424558.0,
+            "aum_won": null,
+            "market_cap_won": 66248000000.0,
+            "listed_shares": 4225000.0,
+            "fluctuation_rate_pct": 3.84,
+            "flow_proxy_won": -3150428000.0,
+            "directional_flow_pressure_won": -6300856000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0198D0",
+            "issue_name": "1Q SK하이닉스선물단일종목레버리지",
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "exposure_source": "futures_based",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 19450.0,
+            "nav": 19312.93,
+            "trading_volume": 318888,
+            "trading_value_won": 6395050715.0,
+            "aum_won": null,
+            "market_cap_won": 37733000000.0,
+            "listed_shares": 1940000.0,
+            "fluctuation_rate_pct": -0.49,
+            "flow_proxy_won": 2800374850.0,
+            "directional_flow_pressure_won": 5600749700.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0198B0",
+            "issue_name": "1Q 삼성전자선물단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "futures_based",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 16330.0,
+            "nav": 16255.26,
+            "trading_volume": 214669,
+            "trading_value_won": 3609856661.0,
+            "aum_won": null,
+            "market_cap_won": 31925150000.0,
+            "listed_shares": 1955000.0,
+            "fluctuation_rate_pct": 5.05,
+            "flow_proxy_won": 2031907500.0,
+            "directional_flow_pressure_won": 4063815000.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0194N0",
+            "issue_name": "KIWOOM 삼성전자선물단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "futures_based",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 15405.0,
+            "nav": 15476.04,
+            "trading_volume": 176920,
+            "trading_value_won": 2832053535.0,
+            "aum_won": null,
+            "market_cap_won": 13864500000.0,
+            "listed_shares": 900000.0,
+            "fluctuation_rate_pct": 4.12,
+            "flow_proxy_won": 0.0,
+            "directional_flow_pressure_won": 0.0
+          },
+          {
+            "source": "krx_openapi.etf_bydd_trd",
+            "basis_date": "2026-07-10",
+            "issue_code": "0193K0",
+            "issue_name": "PLUS 삼성전자단일종목레버리지",
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "exposure_source": "spot_plus_futures",
+            "direction": "long_2x",
+            "leverage_multiplier": 2.0,
+            "close_price": 17130.0,
+            "nav": 16999.6,
+            "trading_volume": 159484,
+            "trading_value_won": 2806959896.0,
+            "aum_won": null,
+            "market_cap_won": 20984250000.0,
+            "listed_shares": 1225000.0,
+            "fluctuation_rate_pct": 5.38,
+            "flow_proxy_won": 849980000.0,
+            "directional_flow_pressure_won": 1699960000.0
+          }
+        ],
+        "summaries": {
+          "samsung": {
+            "stock_key": "samsung",
+            "stock_label": "삼성전자",
+            "source_status": "ok",
+            "impact_level": "high",
+            "impact_reason": "high_trading_or_flow_proxy",
+            "product_count": 8,
+            "total_trading_value_won": 2150243900734.0,
+            "futures_based_trading_value_won": 285710762590.0,
+            "total_aum_won": null,
+            "futures_based_aum_won": null,
+            "long_aum_won": null,
+            "inverse_aum_won": null,
+            "flow_proxy_won": 108868381900.0,
+            "directional_flow_pressure_won": 221322066200.0,
+            "directional_aum_exposure_won": null,
+            "futures_based_ratio": null,
+            "inverse_aum_ratio": null,
+            "kospi_market_trading_value_won": 31576970770029.0,
+            "kospi_market_trading_value_share": 0.068095
+          },
+          "skhynix": {
+            "stock_key": "skhynix",
+            "stock_label": "SK hynix",
+            "source_status": "ok",
+            "impact_level": "high",
+            "impact_reason": "high_trading_or_flow_proxy",
+            "product_count": 8,
+            "total_trading_value_won": 7965487963952.0,
+            "futures_based_trading_value_won": 2206108854296.0,
+            "total_aum_won": null,
+            "futures_based_aum_won": null,
+            "long_aum_won": null,
+            "inverse_aum_won": null,
+            "flow_proxy_won": 195644785350.0,
+            "directional_flow_pressure_won": 534111018700.0,
+            "directional_aum_exposure_won": null,
+            "futures_based_ratio": null,
+            "inverse_aum_ratio": null,
+            "kospi_market_trading_value_won": 31576970770029.0,
+            "kospi_market_trading_value_share": 0.252256
+          }
+        }
+      },
+      "futures_expiry_oi": {
+        "date": "2026-07-10",
+        "source_status": "source_empty",
+        "source": "krx_openapi.futures_expiry_oi",
+        "share_basis": "front_next_notional",
+        "basis_note": "전체대비 근월물 비중의 전체는 표시된 근월물+차월물 규모 합산 기준입니다.",
+        "items": {
+          "kospi200": {
+            "key": "kospi200",
+            "label": "코스피200선물",
+            "status": "source_empty",
             "months": {}
           },
           "mini_kospi200": {
             "key": "mini_kospi200",
             "label": "K200 미니선물",
-            "status": "insufficient_months",
+            "status": "source_empty",
             "months": {}
           },
           "stock_futures_total": {
             "key": "stock_futures_total",
             "label": "개별주식선물",
-            "status": "insufficient_months",
+            "status": "source_empty",
             "months": {}
           },
           "samsung": {
             "key": "samsung",
             "label": "삼성전자 선물",
-            "status": "insufficient_months",
+            "status": "source_empty",
             "months": {}
           },
           "skhynix": {
             "key": "skhynix",
             "label": "SK하이닉스 선물",
-            "status": "insufficient_months",
+            "status": "source_empty",
             "months": {}
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260709.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260709.xlsx, KRX_투자자별거래실적_코스피200선물_20260709.xlsx, KRX_프로그램매매_코스피_20260709.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260709.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260709.xlsx, data_4459_20260709.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260709.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260710.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260710.xlsx, KRX_투자자별거래실적_코스피200선물_20260710.xlsx, KRX_프로그램매매_코스피_20260710.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260710.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260710.xlsx, data_4459_20260710.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260710.json"
     }
   ]
 }

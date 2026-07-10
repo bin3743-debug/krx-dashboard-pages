@@ -2046,6 +2046,7 @@
 
     function etpSourceLabel(status) {
       if (status === "ok") return "정상";
+      if (status === "marketplace_csv_fallback") return "KRX Marketplace CSV";
       if (status === "auth_missing") return "인증키 없음";
       if (status === "source_unavailable") return "원천 사용 불가";
       if (status === "source_empty") return "제공 대기";
@@ -2055,6 +2056,24 @@
       if (status === "available") return "사용 가능";
       if (status === "not_checked") return "미확인";
       return status || "확인 필요";
+    }
+
+    function etpInputSourceLabel(dateImpact) {
+      const sources = dateImpact && dateImpact.input_sources ? dateImpact.input_sources : {};
+      const etf = sources.etf_daily || {};
+      const stock = sources.stock_daily || {};
+      const etfStatus = etf.status || dateImpact.source_status || "unknown";
+      const stockStatus = stock.status || (dateImpact.market_context && dateImpact.market_context.source_status) || "unknown";
+      if (etfStatus === "marketplace_csv_fallback" && stockStatus === "marketplace_csv_fallback") {
+        return "ETF/KOSPI 원천: KRX Marketplace CSV";
+      }
+      if (etfStatus === "marketplace_csv_fallback") {
+        return "ETF 원천: KRX Marketplace CSV";
+      }
+      if (etfStatus === "ok") {
+        return "ETF 원천: Open API 정상";
+      }
+      return `ETF 원천: ${etpSourceLabel(etfStatus)}`;
     }
 
     function etpImpactLine(summary) {
@@ -2447,7 +2466,7 @@
       const etnStatus = meta.etn_status && meta.etn_status.status ? meta.etn_status.status : "not_checked";
       setText(
         "etp-source-note",
-        `ETF Open API: ${etpSourceLabel(dateImpact.source_status || meta.status)} · ETN Open API: ${etpSourceLabel(etnStatus)} · 수급 합산 없음`
+        `${etpInputSourceLabel(dateImpact)} · ETN Open API: ${etpSourceLabel(etnStatus)} · 수급 합산 없음`
       );
       setHtml(
         "etp-summary-grid",
@@ -3063,13 +3082,18 @@
     function expiryOiCard(item) {
       if (!item || item.status !== "ok") {
         const label = item && item.label ? item.label : "만기월 OI";
+        const waiting = item && item.status === "source_empty";
+        const badge = waiting ? "제공 대기" : "확인 필요";
+        const note = waiting
+          ? "KRX Open API가 아직 이 날짜의 월물별 OI rows를 제공하지 않았습니다. 다음 렌더에서 재조회합니다."
+          : "표시할 근월/차월 월물 데이터가 부족합니다.";
         return `
           <article class="expiry-oi-card">
             <div class="expiry-oi-card-head">
               <div class="expiry-oi-card-title">${escapeHtml(label)}</div>
-              <div class="expiry-oi-share">확인 필요</div>
+              <div class="expiry-oi-share">${escapeHtml(badge)}</div>
             </div>
-            <div class="expiry-oi-note">표시할 근월/차월 월물 데이터가 부족합니다.</div>
+            <div class="expiry-oi-note">${escapeHtml(note)}</div>
           </article>
         `;
       }
