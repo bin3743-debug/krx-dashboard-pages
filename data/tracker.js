@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-14 07:14:59",
+  "generated_at": "2026-07-14 07:44:53",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-10",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-07-14T07:14:55+09:00",
+    "last_checked_at": "2026-07-14T07:44:47+09:00",
     "latest_available_date": "2026-07-10",
     "fallback_used": true,
     "execution_status": "failed",
@@ -30,7 +30,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-14 07:14:59 KST",
+    "generated_at": "2026-07-14 07:44:51 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 32,
       "stock_daily_cache_hit": 32
@@ -45,17 +45,14 @@ window.KRX_DASHBOARD_DATA = {
     },
     "etn_status": {
       "status": "etn_source_unavailable",
-      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710",
-      "date": "2026-07-10",
-      "cached_at": "2026-07-13 07:33:35 KST",
-      "cache_status": "hit"
+      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710"
     }
   },
   "futures_expiry_oi_meta": {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-14 07:14:59 KST",
+    "generated_at": "2026-07-14 07:44:53 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 83
     }
