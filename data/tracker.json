@@ -1,42 +1,36 @@
 {
-  "generated_at": "2026-07-13 07:33:38",
+  "generated_at": "2026-07-13 22:37:10",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-10",
   "ops_status": {
-    "status": "failed",
-    "last_checked_at": "2026-07-13T07:33:28+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-07-13T22:37:06+09:00",
     "latest_available_date": "2026-07-10",
-    "fallback_used": true,
-    "execution_status": "failed",
-    "freshness_status": "blocked",
-    "completeness_status": "missing critical component",
-    "source_quality_status": "official source not reached",
+    "fallback_used": false,
+    "execution_status": "degraded",
+    "freshness_status": "current",
+    "completeness_status": "complete",
+    "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "failed",
+    "overall_status": "degraded",
     "expected_latest_date": "2026-07-10",
     "actual_latest_date": "2026-07-10",
-    "source_bundle_status": "missing_current_bundle",
-    "current_bottleneck": "edge_runtime_connection_failed",
-    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
-    "pipeline_attempts_used": null,
-    "final_success_attempt": null,
-    "final_launch_mode": null,
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "edge_restart"
-    ]
+    "source_bundle_status": "skip_reused_target_success",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next morning final run",
+    "pipeline_attempts_used": 1,
+    "final_success_attempt": 1,
+    "final_launch_mode": "cdp",
+    "fallback_signals": []
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-13 07:33:34 KST",
+    "generated_at": "2026-07-13 22:37:10 KST",
     "cache_stats": {
-      "etf_daily_cache_hit": 31,
-      "stock_daily_cache_hit": 32,
-      "etf_daily_missing_aum_refetch": 1,
-      "etf_daily_marketplace_csv_fallback": 1,
-      "etf_daily_cache_write": 1
+      "etf_daily_cache_hit": 32,
+      "stock_daily_cache_hit": 32
     },
     "thresholds": {
       "high_total_trading_value_won": 500000000000,
@@ -48,24 +42,19 @@
     },
     "etn_status": {
       "status": "etn_source_unavailable",
-      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710"
+      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260710",
+      "date": "2026-07-10",
+      "cached_at": "2026-07-13 07:33:35 KST",
+      "cache_status": "hit"
     }
   },
   "futures_expiry_oi_meta": {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-13 07:33:38 KST",
+    "generated_at": "2026-07-13 22:37:10 KST",
     "cache_stats": {
-      "futures_daily_cache_hit": 82,
-      "stock_futures_kospi_cache_hit": 82,
-      "stock_futures_kosdaq_cache_hit": 82,
-      "futures_daily_cache_refetch": 1,
-      "futures_daily_cache_write": 1,
-      "stock_futures_kospi_cache_refetch": 1,
-      "stock_futures_kospi_cache_write": 1,
-      "stock_futures_kosdaq_cache_refetch": 1,
-      "stock_futures_kosdaq_cache_write": 1
+      "futures_expiry_oi_payload_cache_hit": 83
     }
   },
   "rows": [
@@ -42100,11 +42089,11 @@
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1141,
             "date": "2026-07-10",
-            "fetched_at": "2026-07-13 07:33:34 KST"
+            "fetched_at": "2026-07-13 22:37:01 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
@@ -42133,15 +42122,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 21760.0,
-            "nav": 21657.76,
+            "nav": 21655.78,
             "trading_volume": 179735023,
             "trading_value_won": 4056290118172.0,
-            "aum_won": null,
+            "aum_won": 5007898315779.0,
             "market_cap_won": 5047776000000.0,
             "listed_shares": 231975000.0,
             "fluctuation_rate_pct": -0.78,
-            "flow_proxy_won": 181383740000.0,
-            "directional_flow_pressure_won": 362767480000.0
+            "flow_proxy_won": 181367157500.0,
+            "directional_flow_pressure_won": 362734315000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42154,15 +42143,15 @@
             "direction": "inverse_2x",
             "leverage_multiplier": -2.0,
             "close_price": 9210.0,
-            "nav": 9274.12,
+            "nav": 9271.45,
             "trading_volume": 244671457,
             "trading_value_won": 2184109296749.0,
-            "aum_won": null,
+            "aum_won": 138144567832.0,
             "market_cap_won": 159793500000.0,
             "listed_shares": 17350000.0,
             "fluctuation_rate_pct": 1.49,
-            "flow_proxy_won": -35705362000.0,
-            "directional_flow_pressure_won": 71410724000.0
+            "flow_proxy_won": -35695082500.0,
+            "directional_flow_pressure_won": 71390165000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42175,15 +42164,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 18450.0,
-            "nav": 18345.05,
+            "nav": 18342.33,
             "trading_volume": 84339111,
             "trading_value_won": 1611974840566.0,
-            "aum_won": null,
+            "aum_won": 2810045003482.0,
             "market_cap_won": 2781337500000.0,
             "listed_shares": 150750000.0,
             "fluctuation_rate_pct": -1.05,
-            "flow_proxy_won": 37148726250.0,
-            "directional_flow_pressure_won": 74297452500.0
+            "flow_proxy_won": 37143218250.0,
+            "directional_flow_pressure_won": 74286436500.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42196,15 +42185,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 17000.0,
-            "nav": 16995.65,
+            "nav": 16994.82,
             "trading_volume": 73178312,
             "trading_value_won": 1287669540585.0,
-            "aum_won": null,
+            "aum_won": 3022954021656.0,
             "market_cap_won": 3043425000000.0,
             "listed_shares": 179025000.0,
             "fluctuation_rate_pct": 4.71,
-            "flow_proxy_won": 80304446250.0,
-            "directional_flow_pressure_won": 160608892500.0
+            "flow_proxy_won": 80300524500.0,
+            "directional_flow_pressure_won": 160601049000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42217,15 +42206,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 15635.0,
-            "nav": 15636.1,
+            "nav": 15632.45,
             "trading_volume": 33776974,
             "trading_value_won": 549156513097.0,
-            "aum_won": null,
+            "aum_won": 1645706415390.0,
             "market_cap_won": 1665518375000.0,
             "listed_shares": 106525000.0,
             "fluctuation_rate_pct": 4.76,
-            "flow_proxy_won": 24626857500.0,
-            "directional_flow_pressure_won": 49253715000.0
+            "flow_proxy_won": 24621108750.0,
+            "directional_flow_pressure_won": 49242217500.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42238,15 +42227,15 @@
             "direction": "inverse_2x",
             "leverage_multiplier": -2.0,
             "close_price": 14815.0,
-            "nav": 14938.76,
+            "nav": 14934.53,
             "trading_volume": 19515841,
             "trading_value_won": 279268852394.0,
-            "aum_won": null,
+            "aum_won": 40323236824.0,
             "market_cap_won": 45630200000.0,
             "listed_shares": 3080000.0,
             "fluctuation_rate_pct": -4.67,
-            "flow_proxy_won": -896325600.0,
-            "directional_flow_pressure_won": 1792651200.0
+            "flow_proxy_won": -896071800.0,
+            "directional_flow_pressure_won": 1792143600.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42259,15 +42248,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 18200.0,
-            "nav": 18110.35,
+            "nav": 18115.93,
             "trading_volume": 2429641,
             "trading_value_won": 45759848455.0,
-            "aum_won": null,
+            "aum_won": 81068777413.0,
             "market_cap_won": 78715000000.0,
             "listed_shares": 4325000.0,
             "fluctuation_rate_pct": -0.57,
-            "flow_proxy_won": 1811035000.0,
-            "directional_flow_pressure_won": 3622070000.0
+            "flow_proxy_won": 1811593000.0,
+            "directional_flow_pressure_won": 3623186000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42280,15 +42269,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 18435.0,
-            "nav": 18291.14,
+            "nav": 18293.07,
             "trading_volume": 1423632,
             "trading_value_won": 27154904489.0,
-            "aum_won": null,
+            "aum_won": 108843783815.0,
             "market_cap_won": 109688250000.0,
             "listed_shares": 5950000.0,
             "fluctuation_rate_pct": -0.57,
-            "flow_proxy_won": 6859177500.0,
-            "directional_flow_pressure_won": 13718355000.0
+            "flow_proxy_won": 6859901250.0,
+            "directional_flow_pressure_won": 13719802500.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42301,15 +42290,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 15780.0,
-            "nav": 15698.29,
+            "nav": 15692.27,
             "trading_volume": 1120890,
             "trading_value_won": 18223700008.0,
-            "aum_won": null,
+            "aum_won": 87484421183.0,
             "market_cap_won": 88762500000.0,
             "listed_shares": 5625000.0,
             "fluctuation_rate_pct": 5.02,
-            "flow_proxy_won": 5101944250.0,
-            "directional_flow_pressure_won": 10203888500.0
+            "flow_proxy_won": 5099987750.0,
+            "directional_flow_pressure_won": 10199975500.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42322,15 +42311,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 18395.0,
-            "nav": 18382.97,
+            "nav": 18432.68,
             "trading_volume": 953473,
             "trading_value_won": 18199397974.0,
-            "aum_won": null,
+            "aum_won": 105066290058.0,
             "market_cap_won": 104851500000.0,
             "listed_shares": 5700000.0,
             "fluctuation_rate_pct": -1.18,
-            "flow_proxy_won": 459574250.0,
-            "directional_flow_pressure_won": 919148500.0
+            "flow_proxy_won": 460817000.0,
+            "directional_flow_pressure_won": 921634000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42343,15 +42332,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 17765.0,
-            "nav": 17750.39,
+            "nav": 17763.04,
             "trading_volume": 849054,
             "trading_value_won": 15604506832.0,
-            "aum_won": null,
+            "aum_won": 24424185549.0,
             "market_cap_won": 24426875000.0,
             "listed_shares": 1375000.0,
             "fluctuation_rate_pct": -0.86,
-            "flow_proxy_won": 887519500.0,
-            "directional_flow_pressure_won": 1775039000.0
+            "flow_proxy_won": 888152000.0,
+            "directional_flow_pressure_won": 1776304000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42364,15 +42353,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 15680.0,
-            "nav": 15752.14,
+            "nav": 15751.91,
             "trading_volume": 408983,
             "trading_value_won": 6676424558.0,
-            "aum_won": null,
+            "aum_won": 67339419781.0,
             "market_cap_won": 66248000000.0,
             "listed_shares": 4225000.0,
             "fluctuation_rate_pct": 3.84,
-            "flow_proxy_won": -3150428000.0,
-            "directional_flow_pressure_won": -6300856000.0
+            "flow_proxy_won": -3150382000.0,
+            "directional_flow_pressure_won": -6300764000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42385,15 +42374,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 19450.0,
-            "nav": 19312.93,
+            "nav": 19344.53,
             "trading_volume": 318888,
             "trading_value_won": 6395050715.0,
-            "aum_won": null,
+            "aum_won": 39462831485.0,
             "market_cap_won": 37733000000.0,
             "listed_shares": 1940000.0,
             "fluctuation_rate_pct": -0.49,
-            "flow_proxy_won": 2800374850.0,
-            "directional_flow_pressure_won": 5600749700.0
+            "flow_proxy_won": 2804956850.0,
+            "directional_flow_pressure_won": 5609913700.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42406,15 +42395,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 16330.0,
-            "nav": 16255.26,
+            "nav": 16260.02,
             "trading_volume": 214669,
             "trading_value_won": 3609856661.0,
-            "aum_won": null,
+            "aum_won": 32926545871.0,
             "market_cap_won": 31925150000.0,
             "listed_shares": 1955000.0,
             "fluctuation_rate_pct": 5.05,
-            "flow_proxy_won": 2031907500.0,
-            "directional_flow_pressure_won": 4063815000.0
+            "flow_proxy_won": 2032502500.0,
+            "directional_flow_pressure_won": 4065005000.0
           },
           {
             "source": "krx_openapi.etf_bydd_trd",
@@ -42427,10 +42416,10 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 15405.0,
-            "nav": 15476.04,
+            "nav": 15476.56,
             "trading_volume": 176920,
             "trading_value_won": 2832053535.0,
-            "aum_won": null,
+            "aum_won": 13928900412.0,
             "market_cap_won": 13864500000.0,
             "listed_shares": 900000.0,
             "fluctuation_rate_pct": 4.12,
@@ -42448,15 +42437,15 @@
             "direction": "long_2x",
             "leverage_multiplier": 2.0,
             "close_price": 17130.0,
-            "nav": 16999.6,
+            "nav": 16989.34,
             "trading_volume": 159484,
             "trading_value_won": 2806959896.0,
-            "aum_won": null,
+            "aum_won": 21236674968.0,
             "market_cap_won": 20984250000.0,
             "listed_shares": 1225000.0,
             "fluctuation_rate_pct": 5.38,
-            "flow_proxy_won": 849980000.0,
-            "directional_flow_pressure_won": 1699960000.0
+            "flow_proxy_won": 849467000.0,
+            "directional_flow_pressure_won": 1698934000.0
           }
         ],
         "summaries": {
@@ -42469,15 +42458,15 @@
             "product_count": 8,
             "total_trading_value_won": 2150243900734.0,
             "futures_based_trading_value_won": 285710762590.0,
-            "total_aum_won": null,
-            "futures_based_aum_won": null,
-            "long_aum_won": null,
-            "inverse_aum_won": null,
-            "flow_proxy_won": 108868381900.0,
-            "directional_flow_pressure_won": 221322066200.0,
-            "directional_aum_exposure_won": null,
-            "futures_based_ratio": null,
-            "inverse_aum_ratio": null,
+            "total_aum_won": 4931899636085.0,
+            "futures_based_aum_won": 87178683107.0,
+            "long_aum_won": 4891576399261.0,
+            "inverse_aum_won": 40323236824.0,
+            "flow_proxy_won": 108857136700.0,
+            "directional_flow_pressure_won": 221298560600.0,
+            "directional_aum_exposure_won": 9702506324874.0,
+            "futures_based_ratio": 0.0177,
+            "inverse_aum_ratio": 0.0082,
             "kospi_market_trading_value_won": 31576970770029.0,
             "kospi_market_trading_value_share": 0.068095
           },
@@ -42490,15 +42479,15 @@
             "product_count": 8,
             "total_trading_value_won": 7965487963952.0,
             "futures_based_trading_value_won": 2206108854296.0,
-            "total_aum_won": null,
-            "futures_based_aum_won": null,
-            "long_aum_won": null,
-            "inverse_aum_won": null,
-            "flow_proxy_won": 195644785350.0,
-            "directional_flow_pressure_won": 534111018700.0,
-            "directional_aum_exposure_won": null,
-            "futures_based_ratio": null,
-            "inverse_aum_ratio": null,
+            "total_aum_won": 8314953755413.0,
+            "futures_based_aum_won": 202031584866.0,
+            "long_aum_won": 8176809187581.0,
+            "inverse_aum_won": 138144567832.0,
+            "flow_proxy_won": 195640713350.0,
+            "directional_flow_pressure_won": 534061756700.0,
+            "directional_aum_exposure_won": 16077329239498.0,
+            "futures_based_ratio": 0.0243,
+            "inverse_aum_ratio": 0.0166,
             "kospi_market_trading_value_won": 31576970770029.0,
             "kospi_market_trading_value_share": 0.252256
           }
@@ -42506,7 +42495,7 @@
       },
       "futures_expiry_oi": {
         "date": "2026-07-10",
-        "source_status": "source_empty",
+        "source_status": "ok",
         "source": "krx_openapi.futures_expiry_oi",
         "share_basis": "front_next_notional",
         "basis_note": "전체대비 근월물 비중의 전체는 표시된 근월물+차월물 규모 합산 기준입니다.",
@@ -42514,32 +42503,245 @@
           "kospi200": {
             "key": "kospi200",
             "label": "코스피200선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202609",
+            "next_month": "202612",
+            "front_open_interest": 157869,
+            "front_notional_won": 47230063402500,
+            "next_open_interest": 7986,
+            "next_notional_won": 2389191585000,
+            "total_front_next_open_interest": 165855,
+            "total_front_next_notional_won": 49619254987500,
+            "front_share_notional": 0.9518495070995749,
+            "all_open_interest": 170752,
+            "all_notional_won": 51084302720000,
+            "other_open_interest": 4897,
+            "other_notional_won": 1465047732500,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 157869,
+                "notional_won": 47230063402500.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 7986,
+                "notional_won": 2389191585000.0,
+                "row_count": 1
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 2387,
+                "notional_won": 714124757500.0001,
+                "row_count": 1
+              },
+              "202706": {
+                "month": "202706",
+                "open_interest": 929,
+                "notional_won": 277931252500.0,
+                "row_count": 1
+              },
+              "202712": {
+                "month": "202712",
+                "open_interest": 1577,
+                "notional_won": 471795032500.0,
+                "row_count": 1
+              },
+              "202812": {
+                "month": "202812",
+                "open_interest": 4,
+                "notional_won": 1196690000.0,
+                "row_count": 1
+              }
+            }
           },
           "mini_kospi200": {
             "key": "mini_kospi200",
             "label": "K200 미니선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 30292,
+            "front_notional_won": 1812506674000,
+            "next_open_interest": 5602,
+            "next_notional_won": 335192869000,
+            "total_front_next_open_interest": 35894,
+            "total_front_next_notional_won": 2147699543000,
+            "front_share_notional": 0.843929347523263,
+            "all_open_interest": 36269,
+            "all_notional_won": 2170137480500,
+            "other_open_interest": 375,
+            "other_notional_won": 22437937500,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 30292,
+                "notional_won": 1812506674000.0002,
+                "row_count": 1
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 5602,
+                "notional_won": 335192869000.0,
+                "row_count": 1
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 249,
+                "notional_won": 14898790500.0,
+                "row_count": 1
+              },
+              "202611": {
+                "month": "202611",
+                "open_interest": 69,
+                "notional_won": 4128580500.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 55,
+                "notional_won": 3290897500.0,
+                "row_count": 1
+              },
+              "202701": {
+                "month": "202701",
+                "open_interest": 2,
+                "notional_won": 119669000.0,
+                "row_count": 1
+              }
+            }
           },
           "stock_futures_total": {
             "key": "stock_futures_total",
             "label": "개별주식선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 14360834,
+            "front_notional_won": 58805696982600,
+            "next_open_interest": 468599,
+            "next_notional_won": 2278746687100,
+            "total_front_next_open_interest": 14829433,
+            "total_front_next_notional_won": 61084443669700,
+            "front_share_notional": 0.962695138889669,
+            "all_open_interest": 14829727,
+            "all_notional_won": 61085446496100,
+            "other_open_interest": 294,
+            "other_notional_won": 1002826400,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 14360834,
+                "notional_won": 58805696982600.0,
+                "row_count": 274
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 468599,
+                "notional_won": 2278746687100.0,
+                "row_count": 86
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 40,
+                "notional_won": 48550900.0,
+                "row_count": 5
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 3,
+                "notional_won": 4052000.0,
+                "row_count": 3
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 251,
+                "notional_won": 950223500.0,
+                "row_count": 12
+              }
+            }
           },
           "samsung": {
             "key": "samsung",
             "label": "삼성전자 선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 5573824,
+            "front_notional_won": 15885398400000,
+            "next_open_interest": 332869,
+            "next_notional_won": 948676650000,
+            "total_front_next_open_interest": 5906693,
+            "total_front_next_notional_won": 16834075050000,
+            "front_share_notional": 0.9436454544023195,
+            "all_open_interest": 5906875,
+            "all_notional_won": 16834593750000,
+            "other_open_interest": 182,
+            "other_notional_won": 518700000,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 5573824,
+                "notional_won": 15885398400000.0,
+                "row_count": 1
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 332869,
+                "notional_won": 948676650000.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 168,
+                "notional_won": 478800000.0,
+                "row_count": 1
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 14,
+                "notional_won": 39900000.0,
+                "row_count": 1
+              }
+            }
           },
           "skhynix": {
             "key": "skhynix",
             "label": "SK하이닉스 선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 1580714,
+            "front_notional_won": 34459565200000,
+            "next_open_interest": 59493,
+            "next_notional_won": 1296947400000,
+            "total_front_next_open_interest": 1640207,
+            "total_front_next_notional_won": 35756512600000,
+            "front_share_notional": 0.9637283586766793,
+            "all_open_interest": 1640207,
+            "all_notional_won": 35756512600000,
+            "other_open_interest": 0,
+            "other_notional_won": 0,
+            "months": {
+              "202608": {
+                "month": "202608",
+                "open_interest": 1580714,
+                "notional_won": 34459565200000.0,
+                "row_count": 1
+              },
+              "202609": {
+                "month": "202609",
+                "open_interest": 59493,
+                "notional_won": 1296947400000.0,
+                "row_count": 1
+              }
+            }
           }
         }
       },
