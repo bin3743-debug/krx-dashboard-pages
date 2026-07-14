@@ -1,5 +1,5 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-14 08:26:01",
+  "generated_at": "2026-07-14 09:04:53",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-13",
   "ops_status": {
@@ -27,7 +27,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-14 08:26:00 KST",
+    "generated_at": "2026-07-14 09:04:53 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 33,
       "stock_daily_cache_hit": 33
@@ -52,7 +52,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-14 08:26:00 KST",
+    "generated_at": "2026-07-14 09:04:53 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 84
     }
