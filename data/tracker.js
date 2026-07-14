@@ -1,33 +1,38 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-14 09:04:53",
+  "generated_at": "2026-07-15 07:16:08",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-13",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-07-14T08:25:57+09:00",
+    "status": "failed",
+    "last_checked_at": "2026-07-15T07:16:03+09:00",
     "latest_available_date": "2026-07-13",
-    "fallback_used": false,
-    "execution_status": "success",
-    "freshness_status": "current",
-    "completeness_status": "complete",
-    "source_quality_status": "official",
+    "fallback_used": true,
+    "execution_status": "failed",
+    "freshness_status": "blocked",
+    "completeness_status": "missing critical component",
+    "source_quality_status": "official source not reached",
     "consistency_status": "consistent",
-    "overall_status": "normal",
-    "expected_latest_date": "2026-07-13",
+    "overall_status": "failed",
+    "expected_latest_date": "2026-07-14",
     "actual_latest_date": "2026-07-13",
-    "source_bundle_status": "complete_target",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next morning final run",
-    "pipeline_attempts_used": 1,
-    "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "source_bundle_status": "missing_current_bundle",
+    "current_bottleneck": "edge_runtime_connection_failed",
+    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "edge_restart",
+      "persistent_profile_preflight",
+      "persistent_profile"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-14 09:04:53 KST",
+    "generated_at": "2026-07-15 07:16:08 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 33,
       "stock_daily_cache_hit": 33
@@ -41,18 +46,14 @@ window.KRX_DASHBOARD_DATA = {
       "medium_flow_proxy_won": 30000000000
     },
     "etn_status": {
-      "status": "etn_source_unavailable",
-      "message": "krx_openapi failed after 2 attempts for https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260713: 401 Client Error: Unauthorized for url: https://data-dbg.krx.co.kr/svc/apis/etp/etn_bydd_trd.json?basDd=20260713",
-      "date": "2026-07-13",
-      "cached_at": "2026-07-14 08:25:52 KST",
-      "cache_status": "hit"
+      "status": "excluded"
     }
   },
   "futures_expiry_oi_meta": {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-14 09:04:53 KST",
+    "generated_at": "2026-07-15 07:16:08 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 84
     }

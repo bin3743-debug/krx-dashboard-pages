@@ -2052,7 +2052,7 @@
       if (status === "source_empty") return "제공 대기";
       if (status === "pre_listing") return "상장 전";
       if (status === "no_products") return "상품 없음";
-      if (status === "etn_source_unavailable") return "ETN 미승인";
+      if (status === "excluded" || status === "etn_source_unavailable") return "ETN 제외";
       if (status === "available") return "사용 가능";
       if (status === "not_checked") return "미확인";
       return status || "확인 필요";
@@ -2470,12 +2470,10 @@
       setText("skhynix-etp-impact", skLine.text);
       setClassName("skhynix-etp-impact", `etp-adjust-row ${skLine.level}`);
 
-      const meta = DASHBOARD_DATA && DASHBOARD_DATA.etp_impact_meta ? DASHBOARD_DATA.etp_impact_meta : {};
       const dateImpact = row.etp_impact || {};
-      const etnStatus = meta.etn_status && meta.etn_status.status ? meta.etn_status.status : "not_checked";
       setText(
         "etp-source-note",
-        `${etpInputSourceLabel(dateImpact)} · ETN Open API: ${etpSourceLabel(etnStatus)} · 수급 합산 없음`
+        `${etpInputSourceLabel(dateImpact)} · ETN 제외 · 수급 합산 없음`
       );
       setHtml(
         "etp-summary-grid",
