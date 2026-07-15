@@ -1,28 +1,30 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-15 08:05:06",
+  "generated_at": "2026-07-16 07:15:59",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-14",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-07-15T08:05:01+09:00",
+    "status": "failed",
+    "last_checked_at": "2026-07-16T07:15:55+09:00",
     "latest_available_date": "2026-07-14",
     "fallback_used": true,
-    "execution_status": "degraded",
-    "freshness_status": "current",
-    "completeness_status": "complete",
-    "source_quality_status": "official",
+    "execution_status": "failed",
+    "freshness_status": "blocked",
+    "completeness_status": "missing critical component",
+    "source_quality_status": "official source not reached",
     "consistency_status": "consistent",
-    "overall_status": "degraded",
-    "expected_latest_date": "2026-07-14",
+    "overall_status": "failed",
+    "expected_latest_date": "2026-07-15",
     "actual_latest_date": "2026-07-14",
-    "source_bundle_status": "complete_target",
-    "current_bottleneck": "KRX source acquisition required attempt 3 and fallback/restart recovery",
-    "recommended_action": "observe next 07:10 final run and reopen if fallback repeats",
-    "pipeline_attempts_used": 3,
-    "final_success_attempt": 3,
-    "final_launch_mode": "cdp",
+    "source_bundle_status": "missing_current_bundle",
+    "current_bottleneck": "edge_runtime_connection_failed",
+    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
     "fallback_signals": [
-      "pipeline_retry",
+      "runtime_preflight_cdp_failed",
+      "edge_restart",
+      "persistent_profile_preflight",
       "persistent_profile"
     ]
   },
@@ -30,7 +32,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-15 08:05:06 KST",
+    "generated_at": "2026-07-16 07:15:59 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 34,
       "stock_daily_cache_hit": 34
@@ -51,7 +53,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-15 08:05:06 KST",
+    "generated_at": "2026-07-16 07:15:59 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 85
     }
