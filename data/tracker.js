@@ -1,33 +1,33 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-16 08:01:44",
+  "generated_at": "2026-07-17 08:30:38",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-15",
   "ops_status": {
-    "status": "skipped",
-    "last_checked_at": "2026-07-16T08:01:38+09:00",
+    "status": "failed",
+    "last_checked_at": "2026-07-17T08:30:31+09:00",
     "latest_available_date": "2026-07-15",
     "fallback_used": false,
-    "execution_status": "degraded",
-    "freshness_status": "current",
-    "completeness_status": "complete",
-    "source_quality_status": "official",
+    "execution_status": "failed",
+    "freshness_status": "blocked",
+    "completeness_status": "missing critical component",
+    "source_quality_status": "official source not reached",
     "consistency_status": "consistent",
-    "overall_status": "degraded",
-    "expected_latest_date": "2026-07-15",
+    "overall_status": "failed",
+    "expected_latest_date": "2026-07-16",
     "actual_latest_date": "2026-07-15",
-    "source_bundle_status": "skip_reused_target_success",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next morning final run",
-    "pipeline_attempts_used": 1,
-    "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
+    "source_bundle_status": "missing_current_bundle",
+    "current_bottleneck": "edge_runtime_connection_failed",
+    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
     "fallback_signals": []
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-16 08:01:44 KST",
+    "generated_at": "2026-07-17 08:30:38 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 35,
       "stock_daily_cache_hit": 35
@@ -48,7 +48,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-16 08:01:44 KST",
+    "generated_at": "2026-07-17 08:30:38 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 86
     }
@@ -44895,7 +44895,7 @@ window.KRX_DASHBOARD_DATA = {
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260715.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260715.xlsx, KRX_투자자별거래실적_코스피200선물_20260715.xlsx, KRX_프로그램매매_코스피_20260715.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260715.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260715.xlsx, data_4459_20260715.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260715.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260715.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260715.xlsx, KRX_투자자별거래실적_코스피200선물_20260715.xlsx, KRX_프로그램매매_코스피_20260715.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260715.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260715.xlsx, data_4459_20260715.csv, openapi_oi_status=match, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260715.json"
     }
   ]
 };
