@@ -1,12 +1,12 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-17 08:30:38",
+  "generated_at": "2026-07-17 08:35:47",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-15",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-07-17T08:30:31+09:00",
+    "last_checked_at": "2026-07-17T08:35:42+09:00",
     "latest_available_date": "2026-07-15",
-    "fallback_used": false,
+    "fallback_used": true,
     "execution_status": "failed",
     "freshness_status": "blocked",
     "completeness_status": "missing critical component",
@@ -21,13 +21,18 @@ window.KRX_DASHBOARD_DATA = {
     "pipeline_attempts_used": null,
     "final_success_attempt": null,
     "final_launch_mode": null,
-    "fallback_signals": []
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "edge_restart",
+      "persistent_profile_preflight",
+      "persistent_profile"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-17 08:30:38 KST",
+    "generated_at": "2026-07-17 08:35:47 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 35,
       "stock_daily_cache_hit": 35
@@ -48,7 +53,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-17 08:30:38 KST",
+    "generated_at": "2026-07-17 08:35:47 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 86
     }
