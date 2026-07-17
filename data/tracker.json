@@ -1,30 +1,27 @@
 {
-  "generated_at": "2026-07-18 07:43:54",
+  "generated_at": "2026-07-18 08:20:40",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-16",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-07-18T07:43:47+09:00",
+    "last_checked_at": "2026-07-18T08:20:35+09:00",
     "latest_available_date": "2026-07-16",
     "fallback_used": true,
     "execution_status": "failed",
     "freshness_status": "blocked",
     "completeness_status": "missing critical component",
-    "source_quality_status": "official source not reached",
-    "consistency_status": "consistent",
+    "source_quality_status": "official",
+    "consistency_status": "mismatch",
     "overall_status": "failed",
     "expected_latest_date": "2026-07-17",
     "actual_latest_date": "2026-07-16",
     "source_bundle_status": "missing_current_bundle",
-    "current_bottleneck": "edge_runtime_connection_failed",
-    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
+    "current_bottleneck": "KRX source acquisition failed at pipeline",
+    "recommended_action": "reopen KRX source acquisition repair",
     "pipeline_attempts_used": null,
     "final_success_attempt": null,
     "final_launch_mode": null,
     "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "edge_restart",
-      "cdp_preflight_restart_recovered",
       "pipeline_retry",
       "persistent_profile"
     ]
@@ -33,7 +30,7 @@
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-18 07:43:54 KST",
+    "generated_at": "2026-07-18 08:20:40 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 36,
       "stock_daily_cache_hit": 36
@@ -54,7 +51,7 @@
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-18 07:43:54 KST",
+    "generated_at": "2026-07-18 08:20:40 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 87
     }
