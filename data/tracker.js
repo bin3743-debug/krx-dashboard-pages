@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-07-19 17:22:06",
+  "generated_at": "2026-07-19 17:23:22",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-16",
   "ops_status": {
     "status": "failed",
-    "last_checked_at": "2026-07-19T17:21:51+09:00",
+    "last_checked_at": "2026-07-19T17:23:16+09:00",
     "latest_available_date": "2026-07-16",
     "fallback_used": true,
     "execution_status": "failed",
@@ -31,7 +31,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-19 17:22:06 KST",
+    "generated_at": "2026-07-19 17:23:22 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 36,
       "stock_daily_cache_hit": 36
@@ -52,7 +52,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-19 17:22:06 KST",
+    "generated_at": "2026-07-19 17:23:22 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 87
     }
