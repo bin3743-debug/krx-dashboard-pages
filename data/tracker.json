@@ -1,37 +1,33 @@
 {
-  "generated_at": "2026-07-19 17:23:22",
+  "generated_at": "2026-07-19 17:30:54",
   "start_date": "2026-03-12",
   "latest_date": "2026-07-16",
   "ops_status": {
-    "status": "failed",
-    "last_checked_at": "2026-07-19T17:23:16+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-07-19T17:30:49+09:00",
     "latest_available_date": "2026-07-16",
-    "fallback_used": true,
-    "execution_status": "failed",
-    "freshness_status": "blocked",
+    "fallback_used": false,
+    "execution_status": "degraded",
+    "freshness_status": "current",
     "completeness_status": "complete",
-    "source_quality_status": "official source not reached",
+    "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "failed",
+    "overall_status": "degraded",
     "expected_latest_date": "2026-07-16",
     "actual_latest_date": "2026-07-16",
-    "source_bundle_status": "complete_target",
-    "current_bottleneck": "edge_runtime_connection_failed",
-    "recommended_action": "restore KRX dedicated Edge runtime/login, then rerun runtime preflight",
+    "source_bundle_status": "skip_reused_target_success",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next morning final run",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "cdp",
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "edge_restart",
-      "edge_profile_quarantine"
-    ]
+    "fallback_signals": []
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-19 17:23:22 KST",
+    "generated_at": "2026-07-19 17:30:54 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 36,
       "stock_daily_cache_hit": 36
@@ -52,7 +48,7 @@
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-07-19 17:23:22 KST",
+    "generated_at": "2026-07-19 17:30:54 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 87
     }
