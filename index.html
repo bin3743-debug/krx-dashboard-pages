@@ -1900,7 +1900,7 @@
           <div class="etp-head">
             <div>
               <div class="etp-title">단일종목 ETF 영향</div>
-              <div class="etp-sub">본주와 개별주식선물 수급에 합산하지 않고, 레버리지/인버스 ETF의 거래대금·AUM·상장좌수 변화가 선물 수급 해석을 흐릴 수 있는지만 보조로 봅니다.</div>
+              <div class="etp-sub">본주와 개별주식선물 수급에 합산하지 않고, 레버리지/인버스 ETF의 거래대금·AUM·상장좌수 변화가 선물 수급 해석을 흐릴 수 있는지만 보조로 봅니다. 총 AUM 전거래일비에는 가격 변동과 설정·환매가 함께 포함됩니다.</div>
             </div>
             <div class="etp-source-note" id="etp-source-note">ETF 보조 데이터 확인 중</div>
           </div>
@@ -1984,6 +1984,15 @@
       const rounded = Math.round(Number(value) / 100000000);
       const sign = rounded > 0 ? "+" : "";
       return `${sign}${rounded.toLocaleString("ko-KR")}억원`;
+    };
+    const fmtAumWithChange = summary => {
+      if (!summary) return "-";
+      const total = fmtWonToEok(summary.total_aum_won);
+      const change = summary.total_aum_change_won;
+      if (total === "-" || change === null || change === undefined || Number.isNaN(Number(change))) {
+        return total;
+      }
+      return `${total} (전거래일비 ${fmtSignedWonToEok(change)})`;
     };
     const fmtEtpRatio = value => {
       if (value === null || value === undefined || Number.isNaN(Number(value))) return "-";
@@ -2145,7 +2154,7 @@
             ${etpMetric("총 거래대금", metricValue(fmtWonToEok(summary && summary.total_trading_value_won)))}
             ${etpMetric("선물형 거래대금", metricValue(fmtWonToEok(summary && summary.futures_based_trading_value_won)))}
             ${etpMetric("KOSPI 거래대금 비중", metricValue(fmtEtpRatio(summary && summary.kospi_market_trading_value_share)))}
-            ${etpMetric("총 AUM", aumMetricValue(fmtWonToEok(summary && summary.total_aum_won)))}
+            ${etpMetric("총 AUM", aumMetricValue(fmtAumWithChange(summary)))}
             ${etpMetric("선물형 AUM 비중", aumMetricValue(fmtEtpRatio(summary && summary.futures_based_ratio)))}
             ${etpMetric("인버스 AUM 비중", aumMetricValue(fmtEtpRatio(summary && summary.inverse_aum_ratio)))}
             ${etpMetric("상장좌수 flow proxy", metricValue(fmtSignedWonToEok(summary && summary.flow_proxy_won)))}
