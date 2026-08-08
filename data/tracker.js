@@ -1,38 +1,43 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-08-08 08:14:17",
+  "generated_at": "2026-08-09 07:17:05",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-07",
   "ops_status": {
     "status": "success",
-    "last_checked_at": "2026-08-08T08:14:11+09:00",
+    "last_checked_at": "2026-08-09T07:17:01+09:00",
     "latest_available_date": "2026-08-07",
-    "fallback_used": false,
+    "fallback_used": true,
     "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "partial",
-    "source_quality_status": "fallback",
+    "source_quality_status": "official",
     "consistency_status": "consistent",
     "overall_status": "partial but usable",
     "expected_latest_date": "2026-08-07",
     "actual_latest_date": "2026-08-07",
     "source_bundle_status": "complete_target_core_auxiliary_partial",
-    "current_bottleneck": "krx_openapi_auxiliary_incomplete",
-    "recommended_action": "retry incomplete KRX auxiliary sources on the next 07:10/08:10 run; core bundle is current",
+    "current_bottleneck": "krx_etf_aum_provider_timing",
+    "recommended_action": "wait for official ETF AUM publication; core bundle and KOSPI source are current",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "final_launch_mode": "persistent_fallback",
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "edge_restart",
+      "persistent_profile_preflight",
+      "persistent_profile"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-08 08:14:17 KST",
+    "generated_at": "2026-08-09 07:17:05 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 50,
       "stock_daily_cache_hit": 51,
-      "etf_daily_cache_refetch": 1,
-      "etf_daily_aum_pending": 1,
+      "etf_daily_marketplace_fallback_refetch": 1,
+      "etf_daily_marketplace_csv_fallback": 1,
       "etf_daily_cache_write": 1
     },
     "thresholds": {
@@ -51,7 +56,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-08 08:14:17 KST",
+    "generated_at": "2026-08-09 07:17:05 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 102
     }
@@ -38992,11 +38997,11 @@ window.KRX_DASHBOARD_DATA = {
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 945,
             "date": "2026-07-03",
-            "fetched_at": "2026-07-04 07:00:06 KST"
+            "fetched_at": "2026-08-08 22:53:16 KST"
           }
         },
         "market_context": {
@@ -39708,19 +39713,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1143,
             "date": "2026-07-06",
-            "fetched_at": "2026-07-07 07:31:04 KST"
+            "fetched_at": "2026-08-08 22:53:17 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 945,
             "date": "2026-07-06",
-            "fetched_at": "2026-07-07 07:31:06 KST"
+            "fetched_at": "2026-08-08 22:53:18 KST"
           }
         },
         "market_context": {
@@ -40432,19 +40437,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1144,
             "date": "2026-07-07",
-            "fetched_at": "2026-07-08 07:27:37 KST"
+            "fetched_at": "2026-08-08 22:53:18 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 945,
             "date": "2026-07-07",
-            "fetched_at": "2026-07-08 07:27:39 KST"
+            "fetched_at": "2026-08-08 22:53:19 KST"
           }
         },
         "market_context": {
@@ -41156,19 +41161,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1144,
             "date": "2026-07-08",
-            "fetched_at": "2026-07-09 07:42:09 KST"
+            "fetched_at": "2026-08-08 22:53:19 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 945,
             "date": "2026-07-08",
-            "fetched_at": "2026-07-09 07:42:15 KST"
+            "fetched_at": "2026-08-08 22:53:20 KST"
           }
         },
         "market_context": {
@@ -41880,19 +41885,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1141,
             "date": "2026-07-09",
-            "fetched_at": "2026-07-10 07:41:37 KST"
+            "fetched_at": "2026-08-08 22:53:20 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 945,
             "date": "2026-07-09",
-            "fetched_at": "2026-07-10 07:41:44 KST"
+            "fetched_at": "2026-08-08 22:53:21 KST"
           }
         },
         "market_context": {
@@ -42588,11 +42593,11 @@ window.KRX_DASHBOARD_DATA = {
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 945,
             "date": "2026-07-10",
-            "fetched_at": "2026-07-11 07:14:27 KST"
+            "fetched_at": "2026-08-08 22:53:22 KST"
           }
         },
         "market_context": {
@@ -44016,11 +44021,11 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1147,
             "date": "2026-07-14",
-            "fetched_at": "2026-07-15 07:41:27 KST"
+            "fetched_at": "2026-08-08 22:53:23 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
@@ -44740,19 +44745,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1147,
             "date": "2026-07-15",
-            "fetched_at": "2026-07-16 07:41:25 KST"
+            "fetched_at": "2026-08-08 22:53:23 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 944,
             "date": "2026-07-15",
-            "fetched_at": "2026-07-16 07:41:26 KST"
+            "fetched_at": "2026-08-08 22:53:24 KST"
           }
         },
         "market_context": {
@@ -46912,19 +46917,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1150,
             "date": "2026-07-21",
-            "fetched_at": "2026-07-22 07:17:07 KST"
+            "fetched_at": "2026-08-08 22:53:24 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-21",
-            "fetched_at": "2026-07-22 07:18:07 KST"
+            "fetched_at": "2026-08-08 22:53:25 KST"
           }
         },
         "market_context": {
@@ -47636,19 +47641,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1150,
             "date": "2026-07-22",
-            "fetched_at": "2026-07-23 07:16:18 KST"
+            "fetched_at": "2026-08-08 22:53:26 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-22",
-            "fetched_at": "2026-07-23 07:16:20 KST"
+            "fetched_at": "2026-08-08 22:53:27 KST"
           }
         },
         "market_context": {
@@ -48360,19 +48365,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1150,
             "date": "2026-07-23",
-            "fetched_at": "2026-07-24 07:16:41 KST"
+            "fetched_at": "2026-08-08 22:53:27 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-23",
-            "fetched_at": "2026-07-24 07:16:42 KST"
+            "fetched_at": "2026-08-08 22:53:28 KST"
           }
         },
         "market_context": {
@@ -49092,11 +49097,11 @@ window.KRX_DASHBOARD_DATA = {
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-24",
-            "fetched_at": "2026-07-25 07:17:19 KST"
+            "fetched_at": "2026-08-08 22:53:29 KST"
           }
         },
         "market_context": {
@@ -50532,19 +50537,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1155,
             "date": "2026-07-28",
-            "fetched_at": "2026-07-29 07:16:22 KST"
+            "fetched_at": "2026-08-08 22:53:29 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-28",
-            "fetched_at": "2026-07-29 07:16:23 KST"
+            "fetched_at": "2026-08-08 22:53:30 KST"
           }
         },
         "market_context": {
@@ -51262,19 +51267,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1155,
             "date": "2026-07-29",
-            "fetched_at": "2026-07-30 07:17:12 KST"
+            "fetched_at": "2026-08-08 22:53:31 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-29",
-            "fetched_at": "2026-07-30 07:17:13 KST"
+            "fetched_at": "2026-08-08 22:53:32 KST"
           }
         },
         "market_context": {
@@ -51992,19 +51997,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1155,
             "date": "2026-07-30",
-            "fetched_at": "2026-07-31 07:17:55 KST"
+            "fetched_at": "2026-08-08 22:53:32 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-30",
-            "fetched_at": "2026-07-31 07:17:56 KST"
+            "fetched_at": "2026-08-08 22:53:33 KST"
           }
         },
         "market_context": {
@@ -52722,19 +52727,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1155,
             "date": "2026-07-31",
-            "fetched_at": "2026-08-03 07:16:30 KST"
+            "fetched_at": "2026-08-08 22:53:33 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-07-31",
-            "fetched_at": "2026-08-01 07:16:29 KST"
+            "fetched_at": "2026-08-08 22:53:34 KST"
           }
         },
         "market_context": {
@@ -53452,19 +53457,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1155,
             "date": "2026-08-03",
-            "fetched_at": "2026-08-04 07:17:04 KST"
+            "fetched_at": "2026-08-08 22:53:34 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-08-03",
-            "fetched_at": "2026-08-04 07:17:05 KST"
+            "fetched_at": "2026-08-08 22:53:35 KST"
           }
         },
         "market_context": {
@@ -54182,19 +54187,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1160,
             "date": "2026-08-04",
-            "fetched_at": "2026-08-05 07:17:04 KST"
+            "fetched_at": "2026-08-08 22:53:36 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-08-04",
-            "fetched_at": "2026-08-05 07:17:05 KST"
+            "fetched_at": "2026-08-08 22:53:37 KST"
           }
         },
         "market_context": {
@@ -54912,19 +54917,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1160,
             "date": "2026-08-05",
-            "fetched_at": "2026-08-06 07:17:08 KST"
+            "fetched_at": "2026-08-08 22:53:37 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-08-05",
-            "fetched_at": "2026-08-06 07:17:09 KST"
+            "fetched_at": "2026-08-08 22:53:38 KST"
           }
         },
         "market_context": {
@@ -55642,19 +55647,19 @@ window.KRX_DASHBOARD_DATA = {
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1160,
             "date": "2026-08-06",
-            "fetched_at": "2026-08-07 07:17:10 KST"
+            "fetched_at": "2026-08-08 22:53:38 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-08-06",
-            "fetched_at": "2026-08-07 07:17:11 KST"
+            "fetched_at": "2026-08-08 22:53:40 KST"
           }
         },
         "market_context": {
@@ -56368,23 +56373,23 @@ window.KRX_DASHBOARD_DATA = {
       },
       "etp_impact": {
         "date": "2026-08-07",
-        "source_status": "aum_pending",
+        "source_status": "ok",
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_openapi.etf_daily",
-            "status": "aum_pending",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
             "row_count": 1160,
             "date": "2026-08-07",
-            "fetched_at": "2026-08-08 08:14:17 KST"
+            "fetched_at": "2026-08-09 07:17:05 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 943,
             "date": "2026-08-07",
-            "fetched_at": "2026-08-08 07:17:17 KST"
+            "fetched_at": "2026-08-08 22:53:07 KST"
           }
         },
         "market_context": {
@@ -56735,7 +56740,7 @@ window.KRX_DASHBOARD_DATA = {
           "samsung": {
             "stock_key": "samsung",
             "stock_label": "삼성전자",
-            "source_status": "aum_pending",
+            "source_status": "ok",
             "impact_level": "medium",
             "impact_reason": "medium_trading_or_flow_proxy",
             "product_count": 8,
@@ -56759,7 +56764,7 @@ window.KRX_DASHBOARD_DATA = {
           "skhynix": {
             "stock_key": "skhynix",
             "stock_label": "SK hynix",
-            "source_status": "aum_pending",
+            "source_status": "ok",
             "impact_level": "high",
             "impact_reason": "high_trading_or_flow_proxy",
             "product_count": 8,
@@ -57052,7 +57057,7 @@ window.KRX_DASHBOARD_DATA = {
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260807.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260807.xlsx, KRX_투자자별거래실적_코스피200선물_20260807.xlsx, KRX_프로그램매매_코스피_20260807.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260807.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260807.xlsx, data_4459_20260807.csv, openapi_oi_status=match, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260807.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260807.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260807.xlsx, KRX_투자자별거래실적_코스피200선물_20260807.xlsx, KRX_프로그램매매_코스피_20260807.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260807.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260807.xlsx, data_4459_20260807.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260807.json"
     }
   ]
 };
