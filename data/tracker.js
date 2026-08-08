@@ -1,12 +1,12 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-08-09 07:17:05",
+  "generated_at": "2026-08-09 08:13:53",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-07",
   "ops_status": {
     "status": "success",
-    "last_checked_at": "2026-08-09T07:17:01+09:00",
+    "last_checked_at": "2026-08-09T08:13:48+09:00",
     "latest_available_date": "2026-08-07",
-    "fallback_used": true,
+    "fallback_used": false,
     "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "partial",
@@ -20,24 +20,19 @@ window.KRX_DASHBOARD_DATA = {
     "recommended_action": "wait for official ETF AUM publication; core bundle and KOSPI source are current",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
-    "final_launch_mode": "persistent_fallback",
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "edge_restart",
-      "persistent_profile_preflight",
-      "persistent_profile"
-    ]
+    "final_launch_mode": "cdp",
+    "fallback_signals": []
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-09 07:17:05 KST",
+    "generated_at": "2026-08-09 08:13:53 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 50,
       "stock_daily_cache_hit": 51,
-      "etf_daily_marketplace_fallback_refetch": 1,
-      "etf_daily_marketplace_csv_fallback": 1,
+      "etf_daily_cache_refetch": 1,
+      "etf_daily_aum_pending": 1,
       "etf_daily_cache_write": 1
     },
     "thresholds": {
@@ -56,7 +51,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-09 07:17:05 KST",
+    "generated_at": "2026-08-09 08:13:53 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 102
     }
@@ -56373,15 +56368,15 @@ window.KRX_DASHBOARD_DATA = {
       },
       "etp_impact": {
         "date": "2026-08-07",
-        "source_status": "ok",
+        "source_status": "aum_pending",
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "aum_pending",
             "row_count": 1160,
             "date": "2026-08-07",
-            "fetched_at": "2026-08-09 07:17:05 KST"
+            "fetched_at": "2026-08-09 08:13:53 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
@@ -56740,7 +56735,7 @@ window.KRX_DASHBOARD_DATA = {
           "samsung": {
             "stock_key": "samsung",
             "stock_label": "삼성전자",
-            "source_status": "ok",
+            "source_status": "aum_pending",
             "impact_level": "medium",
             "impact_reason": "medium_trading_or_flow_proxy",
             "product_count": 8,
@@ -56764,7 +56759,7 @@ window.KRX_DASHBOARD_DATA = {
           "skhynix": {
             "stock_key": "skhynix",
             "stock_label": "SK hynix",
-            "source_status": "ok",
+            "source_status": "aum_pending",
             "impact_level": "high",
             "impact_reason": "high_trading_or_flow_proxy",
             "product_count": 8,
@@ -57057,7 +57052,7 @@ window.KRX_DASHBOARD_DATA = {
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260807.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260807.xlsx, KRX_투자자별거래실적_코스피200선물_20260807.xlsx, KRX_프로그램매매_코스피_20260807.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260807.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260807.xlsx, data_4459_20260807.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260807.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260807.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260807.xlsx, KRX_투자자별거래실적_코스피200선물_20260807.xlsx, KRX_프로그램매매_코스피_20260807.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260807.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260807.xlsx, data_4459_20260807.csv, openapi_oi_status=match, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260807.json"
     }
   ]
 };
