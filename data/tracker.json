@@ -1,33 +1,36 @@
 {
-  "generated_at": "2026-08-10 09:02:59",
+  "generated_at": "2026-08-10 09:49:21",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-07",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-08-10T09:02:54+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-08-10T09:49:15+09:00",
     "latest_available_date": "2026-08-07",
-    "fallback_used": false,
-    "execution_status": "success",
+    "fallback_used": true,
+    "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "complete",
     "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "normal",
+    "overall_status": "degraded",
     "expected_latest_date": "2026-08-07",
     "actual_latest_date": "2026-08-07",
-    "source_bundle_status": "complete_target",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next morning final run",
+    "source_bundle_status": "complete_target_core_auxiliary_partial",
+    "current_bottleneck": "krx_openapi_auxiliary_incomplete",
+    "recommended_action": "retry incomplete KRX auxiliary sources on the next 07:10/08:10 run; core bundle is current",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "fallback_signals": [
+      "runtime_preflight_cdp_failed",
+      "edge_restart"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-10 09:02:59 KST",
+    "generated_at": "2026-08-10 09:49:21 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 51,
       "stock_daily_cache_hit": 51
@@ -48,7 +51,7 @@
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-10 09:02:59 KST",
+    "generated_at": "2026-08-10 09:49:21 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 102
     }
