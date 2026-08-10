@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-10 09:58:33",
+  "generated_at": "2026-08-10 10:06:17",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-07",
   "ops_status": {
     "status": "skipped",
-    "last_checked_at": "2026-08-10T09:58:27+09:00",
+    "last_checked_at": "2026-08-10T10:06:11+09:00",
     "latest_available_date": "2026-08-07",
-    "fallback_used": true,
+    "fallback_used": false,
     "execution_status": "degraded",
     "freshness_status": "current",
     "completeness_status": "complete",
@@ -21,16 +21,13 @@
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "cdp",
-    "fallback_signals": [
-      "runtime_preflight_cdp_failed",
-      "edge_restart"
-    ]
+    "fallback_signals": []
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-10 09:58:32 KST",
+    "generated_at": "2026-08-10 10:06:16 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 51,
       "stock_daily_cache_hit": 51
@@ -51,7 +48,7 @@
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-10 09:58:32 KST",
+    "generated_at": "2026-08-10 10:06:17 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 102
     }
