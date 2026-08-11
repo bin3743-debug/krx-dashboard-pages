@@ -1,33 +1,36 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-08-11 08:12:50",
+  "generated_at": "2026-08-12 07:11:36",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-10",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-08-11T08:12:43+09:00",
+    "status": "failed",
+    "last_checked_at": "2026-08-12T07:11:30+09:00",
     "latest_available_date": "2026-08-10",
-    "fallback_used": false,
-    "execution_status": "success",
-    "freshness_status": "current",
-    "completeness_status": "complete",
+    "fallback_used": true,
+    "execution_status": "failed",
+    "freshness_status": "blocked",
+    "completeness_status": "missing critical component",
     "source_quality_status": "official",
-    "consistency_status": "consistent",
-    "overall_status": "normal",
-    "expected_latest_date": "2026-08-10",
+    "consistency_status": "mismatch",
+    "overall_status": "failed",
+    "expected_latest_date": "2026-08-11",
     "actual_latest_date": "2026-08-10",
-    "source_bundle_status": "complete_target",
-    "current_bottleneck": "none",
-    "recommended_action": "observe next morning final run",
-    "pipeline_attempts_used": 1,
-    "final_success_attempt": 1,
-    "final_launch_mode": "cdp",
-    "fallback_signals": []
+    "source_bundle_status": "missing_current_bundle",
+    "current_bottleneck": "KRX source acquisition failed at pipeline",
+    "recommended_action": "reopen KRX source acquisition repair",
+    "pipeline_attempts_used": null,
+    "final_success_attempt": null,
+    "final_launch_mode": null,
+    "fallback_signals": [
+      "pipeline_retry",
+      "edge_restart"
+    ]
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-11 08:12:50 KST",
+    "generated_at": "2026-08-12 07:11:36 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 52,
       "stock_daily_cache_hit": 52
@@ -48,7 +51,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-11 08:12:50 KST",
+    "generated_at": "2026-08-12 07:11:36 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 103
     }
