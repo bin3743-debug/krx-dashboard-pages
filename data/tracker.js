@@ -1,45 +1,39 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-08-15 08:19:15",
+  "generated_at": "2026-08-15 23:55:18",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-14",
   "ops_status": {
-    "status": "failed",
-    "last_checked_at": "2026-08-15T08:19:05+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-08-15T23:54:46+09:00",
     "latest_available_date": "2026-08-14",
-    "fallback_used": true,
+    "fallback_used": false,
     "execution_status": "degraded",
-    "freshness_status": "blocked",
+    "freshness_status": "current",
     "completeness_status": "partial",
-    "source_quality_status": "fallback",
+    "source_quality_status": "official",
     "consistency_status": "consistent",
     "overall_status": "partial but usable",
     "expected_latest_date": "2026-08-14",
     "actual_latest_date": "2026-08-14",
     "source_bundle_status": "complete_target_core_auxiliary_partial",
-    "current_bottleneck": "krx_openapi_auxiliary_incomplete",
-    "recommended_action": "retry incomplete KRX auxiliary sources on the next 07:10/08:10 run; core bundle is current",
+    "current_bottleneck": "krx_etf_aum_provider_timing",
+    "recommended_action": "wait for official ETF AUM publication; core bundle and KOSPI source are current",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "cdp",
-    "fallback_signals": [
-      "pipeline_retry",
-      "edge_restart",
-      "session_recover"
-    ]
+    "fallback_signals": []
   },
   "etp_impact_meta": {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-15 08:19:12 KST",
+    "generated_at": "2026-08-15 23:55:18 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 55,
-      "stock_daily_cache_hit": 55,
-      "etf_daily_marketplace_fallback_refetch": 1,
+      "stock_daily_cache_hit": 56,
+      "etf_daily_cache_refetch": 1,
       "etf_daily_aum_pending": 1,
-      "etf_daily_cache_write": 1,
-      "stock_daily_marketplace_fallback_refetch": 1,
-      "stock_daily_cache_write": 1
+      "etf_daily_cache_write": 1
     },
     "thresholds": {
       "high_total_trading_value_won": 500000000000,
@@ -57,15 +51,9 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-15 08:19:15 KST",
+    "generated_at": "2026-08-15 23:55:18 KST",
     "cache_stats": {
-      "futures_expiry_oi_payload_cache_hit": 106,
-      "futures_daily_cache_refetch": 1,
-      "futures_daily_cache_write": 1,
-      "stock_futures_kospi_cache_refetch": 1,
-      "stock_futures_kospi_cache_write": 1,
-      "stock_futures_kosdaq_cache_refetch": 1,
-      "stock_futures_kosdaq_cache_write": 1
+      "futures_expiry_oi_payload_cache_hit": 107
     }
   },
   "rows": [
@@ -60020,7 +60008,7 @@ window.KRX_DASHBOARD_DATA = {
             "status": "aum_pending",
             "row_count": 1163,
             "date": "2026-08-14",
-            "fetched_at": "2026-08-15 08:19:10 KST"
+            "fetched_at": "2026-08-15 23:55:18 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
@@ -60696,7 +60684,7 @@ window.KRX_DASHBOARD_DATA = {
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260814.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260814.xlsx, KRX_투자자별거래실적_코스피200선물_20260814.xlsx, KRX_프로그램매매_코스피_20260814.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260814.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260814.xlsx, data_4459_20260814.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260814.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260814.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260814.xlsx, KRX_투자자별거래실적_코스피200선물_20260814.xlsx, KRX_프로그램매매_코스피_20260814.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260814.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260814.xlsx, data_4459_20260814.csv, openapi_oi_status=match, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260814.json"
     }
   ]
 };
