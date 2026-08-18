@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-19 07:12:47",
+  "generated_at": "2026-08-19 08:10:27",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-18",
   "ops_status": {
-    "status": "success",
-    "last_checked_at": "2026-08-19T07:12:40+09:00",
+    "status": "skipped",
+    "last_checked_at": "2026-08-19T08:10:23+09:00",
     "latest_available_date": "2026-08-18",
     "fallback_used": false,
     "execution_status": "degraded",
     "freshness_status": "current",
-    "completeness_status": "partial",
-    "source_quality_status": "fallback",
+    "completeness_status": "complete",
+    "source_quality_status": "official",
     "consistency_status": "consistent",
-    "overall_status": "partial but usable",
+    "overall_status": "degraded",
     "expected_latest_date": "2026-08-18",
     "actual_latest_date": "2026-08-18",
-    "source_bundle_status": "complete_target_core_auxiliary_partial",
-    "current_bottleneck": "krx_openapi_auxiliary_incomplete",
-    "recommended_action": "retry incomplete KRX auxiliary sources on the next 07:10/08:10 run; core bundle is current",
+    "source_bundle_status": "skip_reused_target_success",
+    "current_bottleneck": "none",
+    "recommended_action": "observe next morning final run",
     "pipeline_attempts_used": 1,
     "final_success_attempt": 1,
     "final_launch_mode": "cdp",
@@ -27,16 +27,10 @@
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-19 07:12:46 KST",
+    "generated_at": "2026-08-19 08:10:27 KST",
     "cache_stats": {
-      "etf_daily_cache_hit": 56,
-      "stock_daily_cache_hit": 56,
-      "etf_daily_marketplace_fallback_refetch": 1,
-      "etf_daily_marketplace_csv_fallback": 1,
-      "etf_daily_cache_write": 1,
-      "stock_daily_marketplace_fallback_refetch": 1,
-      "stock_daily_marketplace_csv_fallback": 1,
-      "stock_daily_cache_write": 1
+      "etf_daily_cache_hit": 57,
+      "stock_daily_cache_hit": 57
     },
     "thresholds": {
       "high_total_trading_value_won": 500000000000,
@@ -54,15 +48,9 @@
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-19 07:12:47 KST",
+    "generated_at": "2026-08-19 08:10:27 KST",
     "cache_stats": {
-      "futures_expiry_oi_payload_cache_hit": 107,
-      "futures_daily_cache_refetch": 1,
-      "futures_daily_cache_write": 1,
-      "stock_futures_kospi_cache_refetch": 1,
-      "stock_futures_kospi_cache_write": 1,
-      "stock_futures_kosdaq_cache_refetch": 1,
-      "stock_futures_kosdaq_cache_write": 1
+      "futures_expiry_oi_payload_cache_hit": 108
     }
   },
   "rows": [
@@ -60743,19 +60731,19 @@
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_data_marketplace.etf_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.etf_daily",
+            "status": "ok",
             "row_count": 1163,
             "date": "2026-08-18",
-            "fetched_at": "2026-08-19 07:12:45 KST"
+            "fetched_at": "2026-08-19 08:10:17 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
-            "source": "krx_data_marketplace.stock_daily.csv",
-            "status": "marketplace_csv_fallback",
+            "source": "krx_openapi.stock_daily",
+            "status": "ok",
             "row_count": 942,
             "date": "2026-08-18",
-            "fetched_at": "2026-08-19 07:12:46 KST"
+            "fetched_at": "2026-08-19 08:10:18 KST"
           }
         },
         "market_context": {
@@ -61155,7 +61143,7 @@
       },
       "futures_expiry_oi": {
         "date": "2026-08-18",
-        "source_status": "source_empty",
+        "source_status": "ok",
         "source": "krx_openapi.futures_expiry_oi",
         "share_basis": "front_next_notional",
         "basis_note": "전체대비 근월물 비중의 전체는 표시된 근월물+차월물 규모 합산 기준입니다.",
@@ -61163,36 +61151,267 @@
           "kospi200": {
             "key": "kospi200",
             "label": "코스피200선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202609",
+            "next_month": "202612",
+            "front_open_interest": 150211,
+            "front_notional_won": 40632075500000,
+            "next_open_interest": 9528,
+            "next_notional_won": 2577324000000,
+            "total_front_next_open_interest": 159739,
+            "total_front_next_notional_won": 43209399500000,
+            "front_share_notional": 0.9403527003424336,
+            "all_open_interest": 165848,
+            "all_notional_won": 44861884000000,
+            "other_open_interest": 6109,
+            "other_notional_won": 1652484500000,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 150211,
+                "notional_won": 40632075500000.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 9528,
+                "notional_won": 2577324000000.0,
+                "row_count": 1
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 2786,
+                "notional_won": 753613000000.0,
+                "row_count": 1
+              },
+              "202706": {
+                "month": "202706",
+                "open_interest": 1463,
+                "notional_won": 395741500000.0,
+                "row_count": 1
+              },
+              "202712": {
+                "month": "202712",
+                "open_interest": 1781,
+                "notional_won": 481760500000.0,
+                "row_count": 1
+              },
+              "202812": {
+                "month": "202812",
+                "open_interest": 79,
+                "notional_won": 21369500000.0,
+                "row_count": 1
+              }
+            }
           },
           "mini_kospi200": {
             "key": "mini_kospi200",
             "label": "K200 미니선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202609",
+            "next_month": "202610",
+            "front_open_interest": 40725,
+            "front_notional_won": 2203222500000,
+            "next_open_interest": 3638,
+            "next_notional_won": 196815800000,
+            "total_front_next_open_interest": 44363,
+            "total_front_next_notional_won": 2400038300000,
+            "front_share_notional": 0.9179947253341749,
+            "all_open_interest": 44963,
+            "all_notional_won": 2432498300000,
+            "other_open_interest": 600,
+            "other_notional_won": 32460000000,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 40725,
+                "notional_won": 2203222500000.0,
+                "row_count": 1
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 3638,
+                "notional_won": 196815800000.0,
+                "row_count": 1
+              },
+              "202611": {
+                "month": "202611",
+                "open_interest": 315,
+                "notional_won": 17041500000.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 85,
+                "notional_won": 4598500000.0,
+                "row_count": 1
+              },
+              "202701": {
+                "month": "202701",
+                "open_interest": 197,
+                "notional_won": 10657700000.0,
+                "row_count": 1
+              },
+              "202702": {
+                "month": "202702",
+                "open_interest": 3,
+                "notional_won": 162300000.0,
+                "row_count": 1
+              }
+            }
           },
           "stock_futures_total": {
             "key": "stock_futures_total",
             "label": "개별주식선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202608",
+            "next_month": "202609",
+            "front_open_interest": 2563,
+            "front_notional_won": 1394272000,
+            "next_open_interest": 12891653,
+            "next_notional_won": 38357367081250,
+            "total_front_next_open_interest": 12894216,
+            "total_front_next_notional_won": 38358761353250,
+            "front_share_notional": 3.634820183999159e-05,
+            "all_open_interest": 13021977,
+            "all_notional_won": 38779722570900,
+            "other_open_interest": 127761,
+            "other_notional_won": 420961217650,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 12891653,
+                "notional_won": 38357367081250.0,
+                "row_count": 282
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 127424,
+                "notional_won": 419484429200.0,
+                "row_count": 99
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 61,
+                "notional_won": 102068700.0,
+                "row_count": 5
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 264,
+                "notional_won": 1345148200.0,
+                "row_count": 16
+              },
+              "202611": {
+                "month": "202611",
+                "open_interest": 12,
+                "notional_won": 29571550.0,
+                "row_count": 2
+              },
+              "202608": {
+                "month": "202608",
+                "open_interest": 2563,
+                "notional_won": 1394272000.0,
+                "row_count": 1
+              }
+            }
           },
           "samsung": {
             "key": "samsung",
             "label": "삼성전자 선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202609",
+            "next_month": "202610",
+            "front_open_interest": 4377937,
+            "front_notional_won": 11754760845000,
+            "next_open_interest": 24176,
+            "next_notional_won": 64912560000,
+            "total_front_next_open_interest": 4402113,
+            "total_front_next_notional_won": 11819673405000,
+            "front_share_notional": 0.994508091909499,
+            "all_open_interest": 4402302,
+            "all_notional_won": 11820180870000,
+            "other_open_interest": 189,
+            "other_notional_won": 507465000,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 4377937,
+                "notional_won": 11754760845000.0,
+                "row_count": 1
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 24176,
+                "notional_won": 64912560000.0,
+                "row_count": 1
+              },
+              "202611": {
+                "month": "202611",
+                "open_interest": 11,
+                "notional_won": 29535000.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 143,
+                "notional_won": 383955000.0,
+                "row_count": 1
+              },
+              "202703": {
+                "month": "202703",
+                "open_interest": 35,
+                "notional_won": 93975000.0,
+                "row_count": 1
+              }
+            }
           },
           "skhynix": {
             "key": "skhynix",
             "label": "SK하이닉스 선물",
-            "status": "source_empty",
-            "months": {}
+            "status": "ok",
+            "share_basis": "front_next_notional",
+            "front_month": "202609",
+            "next_month": "202610",
+            "front_open_interest": 1110141,
+            "front_notional_won": 18450543420000,
+            "next_open_interest": 16916,
+            "next_notional_won": 281143920000,
+            "total_front_next_open_interest": 1127057,
+            "total_front_next_notional_won": 18731687340000,
+            "front_share_notional": 0.9849909986806346,
+            "all_open_interest": 1127089,
+            "all_notional_won": 18732219180000,
+            "other_open_interest": 32,
+            "other_notional_won": 531840000,
+            "months": {
+              "202609": {
+                "month": "202609",
+                "open_interest": 1110141,
+                "notional_won": 18450543420000.0,
+                "row_count": 1
+              },
+              "202610": {
+                "month": "202610",
+                "open_interest": 16916,
+                "notional_won": 281143920000.0,
+                "row_count": 1
+              },
+              "202612": {
+                "month": "202612",
+                "open_interest": 32,
+                "notional_won": 531840000.0,
+                "row_count": 1
+              }
+            }
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260818.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260818.xlsx, KRX_투자자별거래실적_코스피200선물_20260818.xlsx, KRX_프로그램매매_코스피_20260818.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260818.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260818.xlsx, data_4459_20260818.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260818.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260818.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260818.xlsx, KRX_투자자별거래실적_코스피200선물_20260818.xlsx, KRX_프로그램매매_코스피_20260818.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260818.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260818.xlsx, data_4459_20260818.csv, openapi_oi_status=match, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260818.json"
     }
   ]
 }
