@@ -1,10 +1,10 @@
 window.KRX_DASHBOARD_DATA = {
-  "generated_at": "2026-08-30 08:10:24",
+  "generated_at": "2026-08-31 07:10:27",
   "start_date": "2026-03-12",
   "latest_date": "2026-08-28",
   "ops_status": {
     "status": "skipped",
-    "last_checked_at": "2026-08-30T08:10:20+09:00",
+    "last_checked_at": "2026-08-31T07:10:20+09:00",
     "latest_available_date": "2026-08-28",
     "fallback_used": false,
     "execution_status": "degraded",
@@ -27,12 +27,12 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.etf_bydd_trd",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-30 08:10:24 KST",
+    "generated_at": "2026-08-31 07:10:27 KST",
     "cache_stats": {
       "etf_daily_cache_hit": 64,
       "stock_daily_cache_hit": 65,
-      "etf_daily_cache_refetch": 1,
-      "etf_daily_aum_pending": 1,
+      "etf_daily_marketplace_fallback_refetch": 1,
+      "etf_daily_marketplace_csv_fallback": 1,
       "etf_daily_cache_write": 1
     },
     "thresholds": {
@@ -51,7 +51,7 @@ window.KRX_DASHBOARD_DATA = {
     "source": "krx_openapi.futures_expiry_oi",
     "status": "ok",
     "message": "ok",
-    "generated_at": "2026-08-30 08:10:24 KST",
+    "generated_at": "2026-08-31 07:10:27 KST",
     "cache_stats": {
       "futures_expiry_oi_payload_cache_hit": 116
     }
@@ -66582,15 +66582,15 @@ window.KRX_DASHBOARD_DATA = {
       },
       "etp_impact": {
         "date": "2026-08-28",
-        "source_status": "aum_pending",
+        "source_status": "ok",
         "input_sources": {
           "etf_daily": {
             "endpoint_key": "etf_daily",
-            "source": "krx_openapi.etf_daily",
-            "status": "aum_pending",
+            "source": "krx_data_marketplace.etf_daily.csv",
+            "status": "marketplace_csv_fallback",
             "row_count": 1163,
             "date": "2026-08-28",
-            "fetched_at": "2026-08-30 08:10:24 KST"
+            "fetched_at": "2026-08-31 07:10:27 KST"
           },
           "stock_daily": {
             "endpoint_key": "stock_daily",
@@ -66949,7 +66949,7 @@ window.KRX_DASHBOARD_DATA = {
           "samsung": {
             "stock_key": "samsung",
             "stock_label": "삼성전자",
-            "source_status": "aum_pending",
+            "source_status": "ok",
             "impact_level": "low",
             "impact_reason": "below_threshold",
             "product_count": 8,
@@ -66973,7 +66973,7 @@ window.KRX_DASHBOARD_DATA = {
           "skhynix": {
             "stock_key": "skhynix",
             "stock_label": "SK hynix",
-            "source_status": "aum_pending",
+            "source_status": "ok",
             "impact_level": "medium",
             "impact_reason": "medium_trading_or_flow_proxy",
             "product_count": 8,
@@ -67266,7 +67266,7 @@ window.KRX_DASHBOARD_DATA = {
           }
         }
       },
-      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260828.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260828.xlsx, KRX_투자자별거래실적_코스피200선물_20260828.xlsx, KRX_프로그램매매_코스피_20260828.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260828.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260828.xlsx, data_4459_20260828.csv, openapi_oi_status=match, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260828.json"
+      "notes": "자동 적재. 파일: KRX_투자자별거래실적_주식선물_삼성전자_20260828.xlsx, KRX_투자자별거래실적_주식선물_SK하이닉스_20260828.xlsx, KRX_투자자별거래실적_코스피200선물_20260828.xlsx, KRX_프로그램매매_코스피_20260828.xlsx, KRX_투자자별거래실적_개별종목_삼성전자_20260828.xlsx, KRX_투자자별거래실적_개별종목_SK하이닉스_20260828.xlsx, data_4459_20260828.csv, openapi_oi_status=mismatch, openapi_oi_proof=C:\\Users\\bin65\\monitor 배포용\\research\\krx\\runtime\\openapi\\krx_openapi_oi_20260828.json"
     }
   ]
 };
