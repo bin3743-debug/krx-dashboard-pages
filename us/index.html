@@ -1,0 +1,2330 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>미국 지수선물 수급 한눈에 보기</title>
+  <style>
+    :root {
+      --bg: #f5f0e6;
+      --paper: #fffaf2;
+      --paper-soft: #f2ebde;
+      --line: #d7ccba;
+      --ink: #1f2c33;
+      --muted: #5d6a6f;
+      --hero-a: #163b4b;
+      --hero-b: #2b6d62;
+      --green: #15805f;
+      --red: #bf5647;
+      --amber: #9a6d24;
+      --shadow: 0 18px 48px rgba(31, 44, 51, 0.08);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+    }
+    * { box-sizing: border-box; }
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans KR", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(154, 109, 36, 0.12), transparent 24%),
+        linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+    }
+    .hero {
+      padding: 34px 24px 42px;
+      background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.14), transparent 22%),
+        linear-gradient(135deg, var(--hero-a), var(--hero-b));
+      color: #fff7ea;
+    }
+    .hero-inner,
+    .page {
+      max-width: 1460px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 247, 234, 0.1);
+      border: 1px solid rgba(255, 247, 234, 0.22);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+    .hero-copy {
+      max-width: 980px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 247, 234, 0.92);
+    }
+    .hero-meta {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-brief {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 12px;
+    }
+    .hero-brief-card {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 247, 234, 0.12);
+      border: 1px solid rgba(255, 247, 234, 0.24);
+      backdrop-filter: blur(8px);
+    }
+    .hero-brief-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 247, 234, 0.74);
+    }
+    .hero-brief-value {
+      margin-top: 6px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #fffaf2;
+    }
+    .hero-brief-note {
+      margin-top: 6px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(255, 247, 234, 0.84);
+    }
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 247, 234, 0.1);
+      border: 1px solid rgba(255, 247, 234, 0.22);
+      font-size: 14px;
+    }
+    .page {
+      margin-top: -18px;
+      padding: 0 18px 34px;
+    }
+    .toolbar,
+    .section,
+    .note-card,
+    .footer-card {
+      background: var(--paper);
+      border: 1px solid rgba(215, 204, 186, 0.88);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+    .toolbar {
+      margin-top: 20px;
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+    .toolbar label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .toolbar select {
+      min-width: 220px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      font-size: 15px;
+    }
+    .toolbar .stamp {
+      justify-self: end;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .section {
+      margin-top: 20px;
+      padding: 22px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+    }
+    .section-copy {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .summary-grid,
+    .two-col,
+    .three-col,
+    .commentary-grid,
+    .footer-grid,
+    .timeline-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .summary-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .two-col,
+    .commentary-grid,
+    .footer-grid,
+    .timeline-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .three-col {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .card,
+    .subcard {
+      background: white;
+      border: 1px solid rgba(215, 204, 186, 0.78);
+      border-radius: 22px;
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-break: keep-all;
+    }
+    .card {
+      padding: 18px;
+    }
+    .summary-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .summary-value {
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+    .summary-note {
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .symbol-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .symbol {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+    .symbol-tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(22, 59, 75, 0.08);
+      color: var(--hero-a);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .trend-list {
+      display: grid;
+      gap: 14px;
+    }
+    .trend-row {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) 110px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: var(--paper-soft);
+    }
+    .trend-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .trend-value {
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .subgrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .subcard {
+      padding: 14px;
+      background: #fcf8f0;
+    }
+    .subcard-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+    .subcard-value {
+      margin-top: 8px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+    .subcard-note {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .decision-title {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .decision-copy {
+      max-width: 760px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .market-read-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .summary-grid > *,
+    .two-col > *,
+    .three-col > *,
+    .commentary-grid > *,
+    .footer-grid > *,
+    .timeline-grid > *,
+    .strike-grid > *,
+    .market-read-grid > * {
+      min-width: 0;
+    }
+    .signal-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .signal-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #fcf8f0;
+      border: 1px solid rgba(215, 204, 186, 0.58);
+    }
+    .signal-row.data-basis-row {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .signal-value {
+      font-weight: 800;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .data-basis-row .signal-value {
+      text-align: left;
+      white-space: normal;
+      line-height: 1.35;
+    }
+    .signal-note {
+      margin-top: 3px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .interpret-box {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(154, 109, 36, 0.08), rgba(154, 109, 36, 0.02));
+      border: 1px dashed rgba(154, 109, 36, 0.34);
+    }
+    .interpret-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .interpret-copy {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .strike-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th,
+    td {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(215, 204, 186, 0.55);
+      text-align: left;
+      font-size: 14px;
+    }
+    th:last-child,
+    td:last-child {
+      text-align: right;
+    }
+    .expiry-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .expiry-row {
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr) 56px;
+      gap: 12px;
+      align-items: center;
+    }
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      background: #ebdfcd;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(22, 59, 75, 0.18), rgba(22, 59, 75, 0.65));
+    }
+    .progress-track {
+      margin-top: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #ebdfcd;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(154, 109, 36, 0.45), rgba(22, 59, 75, 0.78));
+    }
+    .range-copy {
+      margin: -4px 0 12px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .timeline-card {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .timeline-note {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .timeline-svg {
+      width: 100%;
+      height: 180px;
+      display: block;
+      background: linear-gradient(180deg, rgba(252, 248, 240, 0.9), rgba(255, 255, 255, 0.95));
+      border: 1px solid rgba(215, 204, 186, 0.78);
+      border-radius: 18px;
+    }
+    .timeline-gridline {
+      stroke: rgba(31, 44, 51, 0.1);
+      stroke-width: 1;
+    }
+    .timeline-guide {
+      stroke: rgba(154, 109, 36, 0.45);
+      stroke-width: 1.4;
+      stroke-dasharray: 4 4;
+    }
+    .timeline-line {
+      fill: none;
+      stroke: var(--hero-a);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .timeline-dot {
+      fill: white;
+      stroke: var(--hero-a);
+      stroke-width: 2.5;
+      cursor: crosshair;
+    }
+    .spark-dot {
+      fill: white;
+      stroke-width: 2;
+      cursor: crosshair;
+    }
+    .timeline-label {
+      font-size: 11px;
+      fill: var(--muted);
+    }
+    .timeline-legend {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .timeline-legend .subcard-value {
+      font-size: 22px;
+    }
+    .note-card,
+    .footer-card {
+      padding: 18px;
+    }
+    .note-card h3,
+    .footer-card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .note-card ul,
+    .footer-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      background: rgba(31, 44, 51, 0.08);
+      color: var(--ink);
+    }
+    .badge.positive { background: rgba(21, 128, 95, 0.12); color: var(--green); }
+    .badge.negative { background: rgba(191, 86, 71, 0.12); color: var(--red); }
+    .badge.warning { background: rgba(154, 109, 36, 0.14); color: var(--amber); }
+    .action-list {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .proof-table td,
+    .proof-table th {
+      font-size: 12px;
+      padding-right: 8px;
+    }
+    .source-readable {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .source-read-item {
+      padding: 14px;
+      border-radius: 16px;
+      background: #fcf8f0;
+      border: 1px solid rgba(215, 204, 186, 0.58);
+    }
+    .source-read-value {
+      margin-top: 8px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    .source-read-note,
+    .proof-legend {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+    .technical-proof {
+      margin-top: 12px;
+      border-top: 1px dashed rgba(215, 204, 186, 0.9);
+      padding-top: 10px;
+    }
+    .technical-proof summary {
+      cursor: pointer;
+      color: var(--hero-a);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .table-scroll {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-scroll table {
+      min-width: 780px;
+    }
+    .positive { color: var(--green); }
+    .negative { color: var(--red); }
+    .warning { color: var(--amber); }
+    .neutral { color: var(--ink); }
+    .empty {
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .sparkline {
+      width: 100%;
+      height: 54px;
+      display: block;
+    }
+    .chart-tooltip {
+      position: fixed;
+      z-index: 9999;
+      max-width: 280px;
+      padding: 9px 11px;
+      border-radius: 12px;
+      background: rgba(31, 44, 51, 0.94);
+      color: #fffaf2;
+      font-size: 12px;
+      line-height: 1.45;
+      white-space: pre-line;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(12px, 12px);
+      transition: opacity 0.08s ease;
+      box-shadow: 0 12px 30px rgba(31, 44, 51, 0.2);
+    }
+    .chart-tooltip.visible {
+      opacity: 1;
+    }
+    @media (max-width: 1180px) {
+      .summary-grid,
+      .two-col,
+      .three-col,
+      .hero-brief,
+      .market-read-grid,
+      .commentary-grid,
+      .footer-grid,
+      .strike-grid,
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 760px) {
+      .page {
+        padding: 0 12px 24px;
+      }
+      .hero {
+        padding: 28px 16px 34px;
+      }
+      h1 {
+        font-size: clamp(28px, 10vw, 42px);
+      }
+      .hero-copy {
+        font-size: 15px;
+      }
+      .section {
+        padding: 16px;
+      }
+      .decision-head {
+        display: grid;
+      }
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+      .toolbar .stamp {
+        justify-self: start;
+      }
+      .subgrid {
+        grid-template-columns: 1fr;
+      }
+      .source-readable {
+        grid-template-columns: 1fr;
+      }
+      .trend-row {
+        grid-template-columns: 1fr;
+      }
+      .trend-value {
+        text-align: left;
+      }
+      .expiry-row {
+        grid-template-columns: 92px minmax(0, 1fr) 48px;
+      }
+      .table-scroll table {
+        min-width: 640px;
+      }
+    }
+  </style>
+<style id="public-reader-style">
+html{letter-spacing:0}body{padding-bottom:0;min-width:0}*{box-sizing:border-box}
+#public-basis{background:#fff4cc;color:#493600;padding:12px 18px;border-bottom:1px solid #dcc67b;font:600 14px/1.6 sans-serif;overflow-wrap:anywhere}
+.technical-proof{display:none!important}
+#public-footer{padding:24px;display:flex;gap:16px;justify-content:space-between;align-items:flex-end;color:#4b5563;font:12px/1.6 sans-serif;flex-wrap:wrap}
+#public-footer a{color:inherit}#public-watermark{margin-left:auto;white-space:nowrap;font-weight:600}
+@media(max-width:600px){#public-basis{font-size:13px;padding:10px 12px}#public-footer{padding:16px}
+.quality-stack,.quality-badge-row{max-width:100%;min-width:0}.quality-chip{white-space:normal;max-width:100%;overflow-wrap:anywhere}
+.expiry-grid{grid-template-columns:1fr}.expiry-item{grid-template-columns:minmax(0,1fr) minmax(90px,1fr)}
+.rank-table{max-width:100%;overflow-x:auto}body{overflow-x:hidden}}
+</style><style id="public-navigation-style">
+#public-navigation{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 18px;background:#fff;border-bottom:1px solid #d6dce3;font:14px/1.6 sans-serif;letter-spacing:0}
+#public-navigation a{color:#154e42;font-weight:700;text-decoration:underline;text-underline-offset:4px;min-height:32px;display:inline-flex;align-items:center;padding:2px 0}
+#public-navigation a:focus-visible{outline:2px solid #154e42;outline-offset:4px}
+#public-navigation .page-revision{color:#53616b;font-size:12px;overflow-wrap:anywhere}
+@media(max-width:600px){#public-navigation{padding:10px 12px;gap:6px}#public-navigation .page-revision{flex-basis:100%}}
+</style></head>
+<body><!-- public-navigation:start --><nav id="public-navigation" aria-label="전체 목차 탐색"><a href="https://bin3743-debug.github.io/krx-dashboard-pages/research/">전체 목차</a><span class="page-revision">페이지 수정: <time datetime="2026-09-24T00:52:39+09:00">2026-09-24 00:52 KST</time></span></nav><!-- public-navigation:end --><aside id="public-basis" aria-label="자료 기준일">갱신 대기 · 최신 대상 2026-09-22 · 마지막 검증 자료 2026-09-21 유지<span> · 장중 실시간 자료가 아닙니다.</span></aside>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">미국 지수선물 수급</div>
+      <h1>미국 지수선물 수급 한눈에 보기</h1>
+      <div class="hero-copy">
+        S&P500·나스닥·러셀 선물의 가격, 미결제약정(OI), 옵션 쏠림을 함께 보며 오늘 시장 톤을 읽는 화면입니다.
+        처음 볼 때는 오늘의 결론과 지수별 판독부터 보고, 데이터 상태는 그다음에 확인하면 됩니다.
+      </div>
+      <div class="hero-meta" id="hero-meta"></div>
+      <div class="hero-brief" id="hero-brief"></div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="toolbar">
+      <label for="date-select">기준 날짜</label>
+      <select id="date-select"></select>
+      <div class="stamp" id="generated-stamp"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">오늘의 결론</h2>
+          <div class="section-copy">먼저 오늘 시장 톤을 보고, 그다음 ES/NQ/RTY별로 왜 그렇게 읽는지 확인합니다. OI는 미결제약정, put/call은 옵션 쏠림, 만기 사이클은 직전 만기부터 다음 만기까지의 흐름입니다.</div>
+        </div>
+      </div>
+      <div class="decision-head">
+        <div class="decision-title">지수별 판독</div>
+        <div class="decision-copy">가격+OI는 방향 힌트, 옵션 put/call은 옵션 쏠림, 데이터 기준일은 위 숫자가 어느 날짜 자료인지 확인하는 장치입니다.</div>
+      </div>
+      <div class="market-read-grid" id="market-read-grid"></div>
+      <div class="summary-grid" id="quality-grid"></div>
+      <div class="two-col" id="risk-grid" style="margin-top:16px;"></div>
+      <div class="three-col" id="action-grid" style="margin-top:16px;"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">트레이딩 메모</h2>
+          <div class="section-copy">숫자만 나열하지 않고, 사람이 바로 읽을 수 있게 짧은 해석 문장을 함께 붙입니다.</div>
+        </div>
+      </div>
+      <div class="commentary-grid" id="commentary-grid"></div>
+    </section>
+
+    <section class="footer-grid" id="footer-grid"></section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">데이터 상태 / 옵션 쏠림</h2>
+          <div class="section-copy">시장 해석은 위에서 먼저 보고, 여기서는 데이터가 최신인지와 옵션 쏠림이 어떤 집계 기준으로 잡혔는지 확인합니다. 수집 세부값은 접어서 두었습니다.</div>
+        </div>
+      </div>
+      <div class="two-col" id="proof-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">지수별 판독 근거</h2>
+          <div class="section-copy">ES / NQ / RTY 카드로 오늘 결론의 근거만 빠르게 확인합니다.</div>
+        </div>
+      </div>
+      <div class="summary-grid" id="summary-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">만기 사이클 요약</h2>
+          <div class="section-copy">현재 분기물 기준으로 `직전 만기일 -> 다음 만기일` 구간을 하나의 사이클로 보고, 그 안에서 TFF 변화와 롤오버 준비 상태를 함께 읽는다.</div>
+        </div>
+      </div>
+      <div class="two-col" id="cycle-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">지난 만기일 이후 일간 OI 타임라인</h2>
+          <div class="section-copy">현재 사이클 안에 누적된 `section11` 공식 표본을 날짜순으로 이어서 본다. 무료 공식 백필이 없으면 가용 표본만 연결하고, 이후 매일 실행될수록 차트가 자연스럽게 채워진다.</div>
+        </div>
+      </div>
+      <div class="timeline-grid" id="timeline-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">만기 사이클 주간 포지셔닝 추이</h2>
+          <div class="section-copy">기존 12주 관성 차트 대신, 현재 분기물 사이클 안에 들어온 TFF 주간 표본만 다시 그려 본다. 0선을 포함해 순롱/순숏 크기가 더 직관적으로 보이도록 정리했다.</div>
+        </div>
+      </div>
+      <div class="two-col" id="weekly-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">일일 강도 해석</h2>
+          <div class="section-copy">가격 변화와 OI 변화를 결합해 신규 롱, 신규 숏, 숏커버, 롱청산 가능성을 단순하고 일관되게 판독한다.</div>
+        </div>
+      </div>
+      <div class="two-col" id="flow-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">옵션 / 만기 참고</h2>
+          <div class="section-copy">옵션 OI는 주체 추정보다 `어디에 포지션이 몰려 있는가`를 보는 보조 레이어다. put/call 성격, 주요 만기 일정, 만기 전후 OI 해석의 확장 여지를 함께 보여준다.</div>
+        </div>
+      </div>
+      <div class="two-col" id="options-grid"></div>
+    </section>
+
+  </main>
+
+  <script>window.US_INDEX_FUTURES_POSITIONING_DATA={"source_mode":"official","source_status":{"expected_latest_date":"2026-09-21","run_type":"FINAL","source_bundle_status":"complete_same_day","mixed_date_bundle":false,"completeness":"complete","source_quality":"fallback","overall":"partial but usable","fallback_or_reuse_used":true,"terminal_proof_status":"PASS","tff_proof":{"status":"PASS","expected_week":"2026-09-15","markets":[{"market":"ES","market_name":"E-MINI S&P 500 - CHICAGO MERCANTILE EXCHANGE","expected_week":"2026-09-15","actual_week":"2026-09-15","source_url":"https://www.cftc.gov/files/dea/history/fut_fin_txt_2026.zip","freshness_ok":true,"market_match":true},{"market":"NQ","market_name":"NASDAQ MINI - CHICAGO MERCANTILE EXCHANGE","expected_week":"2026-09-15","actual_week":"2026-09-15","source_url":"https://www.cftc.gov/files/dea/history/fut_fin_txt_2026.zip","freshness_ok":true,"market_match":true}],"failure_reasons":[]},"browser_local_mismatch":"not_checked","note":"CME official PDFs are the source, but at least one component was obtained through a rolling/fallback path.","component_proof":[{"component_name":"section11","acquired":true,"expected_latest_date":"2026-09-21","actual_component_date":"2026-09-21","fetch_method":"rolling_only","fallback_used":true,"exact_or_rolling":"rolling","source_url":"https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf","report_stage":"FINAL","freshness_ok":true},{"component_name":"section40","acquired":true,"expected_latest_date":"2026-09-21","actual_component_date":"2026-09-21","fetch_method":"rolling_only","fallback_used":true,"exact_or_rolling":"rolling","source_url":"https://www.cmegroup.com/daily_bulletin/current/Section40_Nasdaq_100_And_E_Mini_Nasdaq_100_Options.pdf","report_stage":"FINAL","freshness_ok":true},{"component_name":"section47","acquired":true,"expected_latest_date":"2026-09-21","actual_component_date":"2026-09-21","fetch_method":"rolling_only","fallback_used":true,"exact_or_rolling":"rolling","source_url":"https://www.cmegroup.com/daily_bulletin/current/Section47_E_Mini_S_And_P_500_Call_Options.pdf","report_stage":"FINAL","freshness_ok":true},{"component_name":"section48","acquired":true,"expected_latest_date":"2026-09-21","actual_component_date":"2026-09-21","fetch_method":"rolling_only","fallback_used":true,"exact_or_rolling":"rolling","source_url":"https://www.cmegroup.com/daily_bulletin/current/Section48_E_Mini_S_And_P_500_Put_Options.pdf","report_stage":"FINAL","freshness_ok":true},{"component_name":"equities_overview","acquired":true,"expected_latest_date":"2026-09-21","actual_component_date":"2026-09-21","fetch_method":"rolling_only","fallback_used":true,"exact_or_rolling":"rolling","source_url":"https://www.cmegroup.com/reports/equities-market-data-overview.pdf","report_stage":"NOT_APPLICABLE","freshness_ok":true}]},"generated_at":"2026-09-23T14:47:41","latest_date":"2026-09-21","weekly_history":{"ES":{"dates":["2026-09-15"],"dealer_net":[-702938],"asset_manager_net":[904684],"leveraged_fund_net":[-293143]},"NQ":{"dates":["2026-09-15"],"dealer_net":[-79229],"asset_manager_net":[66811],"leveraged_fund_net":[-6387]},"RTY":{"dates":["2026-09-15"],"dealer_net":[80602],"asset_manager_net":[24273],"leveraged_fund_net":[-97203]}},"rows":[{"date":"2026-09-21","tff_asof":"2026-09-15","tff_release_at":"2026-09-18 15:30 ET","contracts":{"ES":{"weekly":{"date":"2026-09-15","open_interest_all":2446519,"dealer_net":-702938,"asset_manager_net":904684,"leveraged_fund_net":-293143,"other_reportable_net":127,"nonreportable_net":91270,"dealer_net_pct_oi":-28.73,"asset_manager_net_pct_oi":36.98,"leveraged_fund_net_pct_oi":-11.98,"other_reportable_net_pct_oi":0.01,"nonreportable_net_pct_oi":3.73,"asset_manager_percentile_52w":15,"leveraged_percentile_52w":92},"daily":{"last_price":7657.35,"daily_change_pct":0.0,"total_open_interest":1872243,"oi_change":-486594,"total_volume":1357017,"volume_to_oi_ratio":0.72,"front_contract":"SEP26","front_oi_share":0.0,"next_contract":"DEC26","next_oi_share":99.7,"front_next_settle_spread":176.15,"front_next_settle_spread_pct":2.3,"term_structure":"contango","roll_state":"차월물 중심 전환","regime_note":"가격 반등과 OI 감소 조합이라 기존 숏 청산의 영향 가능성을 우선 본다. 전면 월물 비중은 0.0%이고 차월물은 99.7%다.","read_title":"숏커버 가능성"},"options":{"total_call_oi":8238368,"total_put_oi":16401501,"put_call_oi_ratio":1.99,"has_option_pressure":true,"total_call_volume":0,"total_put_volume":0,"put_call_volume_ratio":null,"total_call_oi_change":0,"total_put_oi_change":0,"volume_basis":"parsed_option_section_total","oi_basis":"overview_bucket","call_section_scope":null,"put_section_scope":null,"nearest_expiry":"2026-09-25","call_walls":[],"put_walls":[],"expiry_ladder":[{"expiry":"0-5 Days","share":30.0},{"expiry":"6-28 Days","share":22.5},{"expiry":"29-96 Days","share":29.9},{"expiry":"97+d","share":17.6}],"note":"풋 우세 구조이며, 최근 근접 만기 strike OI도 함께 표시한다."},"maturity":{"key_dates":[{"date":"2026-09-25","label":"가장 가까운 주간 옵션 만기","dte":4},{"date":"2026-12-18","label":"분기물 선물/옵션 중심 만기","dte":88},{"date":"2027-03-19","label":"다음 분기물 만기","dte":179}],"phase2":{"pre_expiry_front_oi_change":-510239,"pre_expiry_next_oi_change":23188,"estimated_roll_ratio":0.05,"post_expiry_oi_rebuild":0,"interpretation":"근월물 OI 감소와 차월물 OI 증가가 같이 나타나 롤오버 우세 신호로 본다."}},"cycle":{"previous_major_expiry":"2026-09-18","next_major_expiry":"2026-12-18","next_roll_date":"2026-12-14","recent_near_expiry":"2026-09-18","next_near_expiry":"2026-09-25","days_total":91,"days_elapsed":3,"days_remaining":88,"progress_pct":3.3,"roll_phase":"프리롤","weekly_points":1,"daily_sample_count":1,"cumulative_oi_change":0,"changes":{"dealer_net":0,"asset_manager_net":0,"leveraged_fund_net":0},"history":{"dates":["2026-09-15"],"dealer_net":[-702938],"asset_manager_net":[904684],"leveraged_fund_net":[-293143]},"daily_timeline":[{"date":"2026-09-21","last_price":7657.35,"daily_change_pct":0.0,"total_open_interest":1872243,"oi_change":-486594,"total_volume":1357017,"volume_to_oi_ratio":0.72,"front_contract":"SEP26","front_oi_share":0.0,"next_contract":"DEC26","next_oi_share":99.7,"front_next_settle_spread":176.15,"front_next_settle_spread_pct":2.3,"term_structure":"contango","roll_state":"차월물 중심 전환"}],"timeline_meta":{"sample_count":1,"first_available_date":"2026-09-21","last_available_date":"2026-09-21","cumulative_oi_change":0,"source_mode":"rolling_only","missing_days_note":"오늘부터 누적 중이라 일간 OI 타임라인은 아직 1개 표본만 보인다."},"summary":"직전 분기만기 2026-09-18 이후 자산운용 변화는 제한적, 레버리지 변화는 제한적. 다음 분기만기 2026-12-18까지 88일 남았고 예상 롤 시작일은 2026-12-14이다. 현재 판독은 차월물 중심 전환이며, 근월물 OI 감소와 차월물 OI 증가가 같이 나타나 롤오버 우세 신호로 본다. 사이클 내 CME 일간 표본은 아직 1일이라 누적 OI 추세는 다음 실행부터 더 선명해진다."},"composite":{"summary":"자산운용은 순롱 우위, 레버리지 펀드 순숏은 일부 축소, 당일 판독은 숏커버 가능성, 옵션 구조는 풋 우세","caution":"공식 공개 데이터 기준의 보조 지표이며, 일일 투자자별 순매수로 해석하면 안 된다."}},"NQ":{"weekly":{"date":"2026-09-15","open_interest_all":325784,"dealer_net":-79229,"asset_manager_net":66811,"leveraged_fund_net":-6387,"other_reportable_net":3665,"nonreportable_net":15140,"dealer_net_pct_oi":-24.32,"asset_manager_net_pct_oi":20.51,"leveraged_fund_net_pct_oi":-1.96,"other_reportable_net_pct_oi":1.12,"nonreportable_net_pct_oi":4.65,"asset_manager_percentile_52w":17,"leveraged_percentile_52w":83},"daily":{"last_price":29613.6,"daily_change_pct":0.0,"total_open_interest":288271,"oi_change":-36970,"total_volume":543054,"volume_to_oi_ratio":1.88,"front_contract":"SEP26","front_oi_share":0.0,"next_contract":"DEC26","next_oi_share":99.7,"front_next_settle_spread":1171.1,"front_next_settle_spread_pct":3.95,"term_structure":"contango","roll_state":"차월물 중심 전환","regime_note":"가격 반등과 OI 감소 조합이라 기존 숏 청산의 영향 가능성을 우선 본다. 전면 월물 비중은 0.0%이고 차월물은 99.7%다.","read_title":"숏커버 가능성"},"options":{"total_call_oi":466497,"total_put_oi":620673,"put_call_oi_ratio":1.33,"has_option_pressure":true,"total_call_volume":0,"total_put_volume":7364,"put_call_volume_ratio":null,"total_call_oi_change":0,"total_put_oi_change":2958,"volume_basis":"parsed_option_section_total","oi_basis":"overview_bucket","call_section_scope":null,"put_section_scope":null,"nearest_expiry":"2026-12-18","call_walls":[],"put_walls":[{"strike":28800,"oi":539,"volume":8,"oi_change":0},{"strike":21000,"oi":376,"volume":0,"oi_change":0},{"strike":28800,"oi":321,"volume":1,"oi_change":1}],"expiry_ladder":[{"expiry":"0-5 Days","share":33.8},{"expiry":"6-28 Days","share":25.9},{"expiry":"29-96 Days","share":35.5},{"expiry":"97+d","share":4.8}],"note":"풋 우세 구조이며, 최근 근접 만기 strike OI도 함께 표시한다."},"maturity":{"key_dates":[{"date":"2026-12-18","label":"표준 옵션 만기 / 분기물 선물 만기","dte":88},{"date":"2027-03-19","label":"다음 분기물 만기","dte":179}],"phase2":{"pre_expiry_front_oi_change":-68493,"pre_expiry_next_oi_change":31131,"estimated_roll_ratio":0.45,"post_expiry_oi_rebuild":0,"interpretation":"근월물 OI 감소와 차월물 OI 증가가 같이 나타나 롤오버 우세 신호로 본다."}},"cycle":{"previous_major_expiry":"2026-09-18","next_major_expiry":"2026-12-18","next_roll_date":"2026-12-14","recent_near_expiry":"2026-09-18","next_near_expiry":"2026-12-18","days_total":91,"days_elapsed":3,"days_remaining":88,"progress_pct":3.3,"roll_phase":"프리롤","weekly_points":1,"daily_sample_count":1,"cumulative_oi_change":0,"changes":{"dealer_net":0,"asset_manager_net":0,"leveraged_fund_net":0},"history":{"dates":["2026-09-15"],"dealer_net":[-79229],"asset_manager_net":[66811],"leveraged_fund_net":[-6387]},"daily_timeline":[{"date":"2026-09-21","last_price":29613.6,"daily_change_pct":0.0,"total_open_interest":288271,"oi_change":-36970,"total_volume":543054,"volume_to_oi_ratio":1.88,"front_contract":"SEP26","front_oi_share":0.0,"next_contract":"DEC26","next_oi_share":99.7,"front_next_settle_spread":1171.1,"front_next_settle_spread_pct":3.95,"term_structure":"contango","roll_state":"차월물 중심 전환"}],"timeline_meta":{"sample_count":1,"first_available_date":"2026-09-21","last_available_date":"2026-09-21","cumulative_oi_change":0,"source_mode":"rolling_only","missing_days_note":"오늘부터 누적 중이라 일간 OI 타임라인은 아직 1개 표본만 보인다."},"summary":"직전 분기만기 2026-09-18 이후 자산운용 변화는 제한적, 레버리지 변화는 제한적. 다음 분기만기 2026-12-18까지 88일 남았고 예상 롤 시작일은 2026-12-14이다. 현재 판독은 차월물 중심 전환이며, 근월물 OI 감소와 차월물 OI 증가가 같이 나타나 롤오버 우세 신호로 본다. 사이클 내 CME 일간 표본은 아직 1일이라 누적 OI 추세는 다음 실행부터 더 선명해진다."},"composite":{"summary":"자산운용은 순롱 우위, 레버리지 펀드 순숏은 일부 축소, 당일 판독은 숏커버 가능성, 옵션 구조는 풋 우세","caution":"공식 공개 데이터 기준의 보조 지표이며, 일일 투자자별 순매수로 해석하면 안 된다."}},"RTY":{"weekly":{"date":"2026-09-15","open_interest_all":496762,"dealer_net":80602,"asset_manager_net":24273,"leveraged_fund_net":-97203,"other_reportable_net":-11339,"nonreportable_net":3667,"dealer_net_pct_oi":16.23,"asset_manager_net_pct_oi":4.89,"leveraged_fund_net_pct_oi":-19.57,"other_reportable_net_pct_oi":-2.28,"nonreportable_net_pct_oi":0.74,"asset_manager_percentile_52w":65,"leveraged_percentile_52w":10},"daily":{"last_price":2873.23,"daily_change_pct":0.0,"total_open_interest":414599,"oi_change":-131620,"total_volume":679190,"volume_to_oi_ratio":1.64,"front_contract":"SEP26","front_oi_share":0.0,"next_contract":"DEC26","next_oi_share":100.0,"front_next_settle_spread":24.17,"front_next_settle_spread_pct":0.84,"term_structure":"contango","roll_state":"차월물 중심 전환","regime_note":"가격 반등과 OI 감소 조합이라 기존 숏 청산의 영향 가능성을 우선 본다. 전면 월물 비중은 0.0%이고 차월물은 100.0%다.","read_title":"숏커버 가능성"},"options":{"total_call_oi":15946,"total_put_oi":59368,"put_call_oi_ratio":3.72,"has_option_pressure":true,"total_call_volume":4666,"total_put_volume":7145,"put_call_volume_ratio":1.53,"total_call_oi_change":1089,"total_put_oi_change":1053,"volume_basis":"parsed_option_section_total","oi_basis":"parsed_option_section_total","call_section_scope":"section40_rty_code_blocks","put_section_scope":"section40_rty_code_blocks_plus_implicit_regular_puts","nearest_expiry":"2026-12-18","call_walls":[{"strike":3000,"oi":1002,"volume":1000,"oi_change":1000},{"strike":3200,"oi":667,"volume":3,"oi_change":-3},{"strike":2940,"oi":563,"volume":567,"oi_change":563}],"put_walls":[{"strike":2575,"oi":1206,"volume":3,"oi_change":-2},{"strike":2775,"oi":1034,"volume":40,"oi_change":3},{"strike":2800,"oi":978,"volume":31,"oi_change":20}],"expiry_ladder":[{"expiry":"DEC26","share":41.0},{"expiry":"SEP26","share":19.3},{"expiry":"OCT26","share":19.2},{"expiry":"MAR27","share":7.2},{"expiry":"NOV26","share":5.9},{"expiry":"20260900","share":3.9},{"expiry":"JUN27","share":2.4},{"expiry":"DEC27","share":0.4},{"expiry":"20261000","share":0.3},{"expiry":"JUN28","share":0.2},{"expiry":"DEC28","share":0.2},{"expiry":"DEC30","share":0.0},{"expiry":"DEC29","share":0.0},{"expiry":"SEP27","share":0.0}],"note":"풋 우세 구조이며, 최근 근접 만기 strike OI도 함께 표시한다."},"maturity":{"key_dates":[{"date":"2026-12-18","label":"표준 옵션 만기 / 분기물 선물 만기","dte":88},{"date":"2027-03-19","label":"다음 분기물 만기","dte":179}],"phase2":{"pre_expiry_front_oi_change":-87389,"pre_expiry_next_oi_change":-7309,"estimated_roll_ratio":0.0,"post_expiry_oi_rebuild":0,"interpretation":"전일 비교 기준이 제한적이라 롤 신호는 보수적으로 해석한다."}},"cycle":{"previous_major_expiry":"2026-09-18","next_major_expiry":"2026-12-18","next_roll_date":"2026-12-14","recent_near_expiry":"2026-09-18","next_near_expiry":"2026-12-18","days_total":91,"days_elapsed":3,"days_remaining":88,"progress_pct":3.3,"roll_phase":"프리롤","weekly_points":1,"daily_sample_count":1,"cumulative_oi_change":0,"changes":{"dealer_net":0,"asset_manager_net":0,"leveraged_fund_net":0},"history":{"dates":["2026-09-15"],"dealer_net":[80602],"asset_manager_net":[24273],"leveraged_fund_net":[-97203]},"daily_timeline":[{"date":"2026-09-21","last_price":2873.23,"daily_change_pct":0.0,"total_open_interest":414599,"oi_change":-131620,"total_volume":679190,"volume_to_oi_ratio":1.64,"front_contract":"SEP26","front_oi_share":0.0,"next_contract":"DEC26","next_oi_share":100.0,"front_next_settle_spread":24.17,"front_next_settle_spread_pct":0.84,"term_structure":"contango","roll_state":"차월물 중심 전환"}],"timeline_meta":{"sample_count":1,"first_available_date":"2026-09-21","last_available_date":"2026-09-21","cumulative_oi_change":0,"source_mode":"rolling_only","missing_days_note":"오늘부터 누적 중이라 일간 OI 타임라인은 아직 1개 표본만 보인다."},"summary":"직전 분기만기 2026-09-18 이후 자산운용 변화는 제한적, 레버리지 변화는 제한적. 다음 분기만기 2026-12-18까지 88일 남았고 예상 롤 시작일은 2026-12-14이다. 현재 판독은 차월물 중심 전환이며, 전일 비교 기준이 제한적이라 롤 신호는 보수적으로 해석한다. 사이클 내 CME 일간 표본은 아직 1일이라 누적 OI 추세는 다음 실행부터 더 선명해진다."},"composite":{"summary":"자산운용은 순롱 우위, 레버리지 펀드 순숏은 일부 축소, 당일 판독은 숏커버 가능성, 옵션 구조는 풋 우세","caution":"공식 공개 데이터 기준의 보조 지표이며, 일일 투자자별 순매수로 해석하면 안 된다."}}},"meta":{"can_tell":["주간 구조 포지셔닝","일간 OI 유입 강도","옵션 OI의 만기 구간 분포"],"cannot_tell":["미국판 투자자별 일일 순매수","OTC 포함 전체 옵션 노출","가격 방향의 단독 원인"]}}]};</script>
+  <script>
+    const dashboardData = window.US_INDEX_FUTURES_POSITIONING_DATA;
+    const dateSelect = document.getElementById("date-select");
+    const summaryGrid = document.getElementById("summary-grid");
+    const cycleGrid = document.getElementById("cycle-grid");
+    const timelineGrid = document.getElementById("timeline-grid");
+    const weeklyGrid = document.getElementById("weekly-grid");
+    const flowGrid = document.getElementById("flow-grid");
+    const optionsGrid = document.getElementById("options-grid");
+    const commentaryGrid = document.getElementById("commentary-grid");
+    const footerGrid = document.getElementById("footer-grid");
+    const generatedStamp = document.getElementById("generated-stamp");
+    const heroMeta = document.getElementById("hero-meta");
+    const heroBrief = document.getElementById("hero-brief");
+    const marketReadGrid = document.getElementById("market-read-grid");
+    const qualityGrid = document.getElementById("quality-grid");
+    const riskGrid = document.getElementById("risk-grid");
+    const actionGrid = document.getElementById("action-grid");
+    const proofGrid = document.getElementById("proof-grid");
+    const chartTooltip = document.createElement("div");
+    chartTooltip.className = "chart-tooltip";
+    document.body.appendChild(chartTooltip);
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value).replace(/\n/g, "&#10;");
+    }
+
+    function moveChartTooltip(event) {
+      chartTooltip.style.left = `${event.clientX}px`;
+      chartTooltip.style.top = `${event.clientY}px`;
+    }
+
+    document.addEventListener("pointerover", (event) => {
+      const target = event.target.closest("[data-chart-tooltip]");
+      if (!target) return;
+      chartTooltip.textContent = target.dataset.chartTooltip || "";
+      chartTooltip.classList.add("visible");
+      moveChartTooltip(event);
+    });
+
+    document.addEventListener("pointermove", (event) => {
+      if (chartTooltip.classList.contains("visible")) {
+        moveChartTooltip(event);
+      }
+    });
+
+    document.addEventListener("pointerout", (event) => {
+      const target = event.target.closest("[data-chart-tooltip]");
+      if (target) {
+        chartTooltip.classList.remove("visible");
+      }
+    });
+
+    function formatSigned(value, digits = 0, suffix = "") {
+      const num = Number(value || 0);
+      const sign = num > 0 ? "+" : "";
+      return sign + num.toLocaleString("ko-KR", {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits
+      }) + suffix;
+    }
+
+    function formatPlain(value, digits = 0, suffix = "") {
+      return Number(value || 0).toLocaleString("ko-KR", {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits
+      }) + suffix;
+    }
+
+    function formatPct(value, digits = 2) {
+      return `${Number(value || 0).toFixed(digits)}%`;
+    }
+
+    function formatContracts(value, digits = 0) {
+      return formatPlain(value, digits, " 계약");
+    }
+
+    function formatSignedContracts(value, digits = 0) {
+      return formatSigned(value, digits, " 계약");
+    }
+
+    function formatPoints(value, digits = 2) {
+      return formatPlain(value, digits, " pt");
+    }
+
+    function formatMultiple(value, digits = 2) {
+      return `${Number(value || 0).toFixed(digits)}x`;
+    }
+
+    function toneClass(value) {
+      if (Number(value) > 0) return "positive";
+      if (Number(value) < 0) return "negative";
+      return "neutral";
+    }
+
+    function badgeTone(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("normal") || text.includes("complete_same_day") || text.includes("official_exact") || text === "no") return "positive";
+      if (text.includes("partial") || text.includes("fallback") || text.includes("rolling") || text.includes("mixed") || text.includes("not_checked")) return "warning";
+      if (text.includes("stale") || text.includes("incomplete") || text.includes("failed") || text.includes("yes")) return "negative";
+      return "neutral";
+    }
+
+    function labelBadge(label, value) {
+      return `<span class="badge ${badgeTone(value)}">${label}: ${value || "-"}</span>`;
+    }
+
+    function sourceStatus() {
+      return dashboardData.source_status || {};
+    }
+
+    function isReaderHealthy(status) {
+      const proof = status.component_proof || [];
+      const freshness = String(status.freshness || "").toLowerCase();
+      const completeness = String(status.completeness || "").toLowerCase();
+      const bundle = String(status.source_bundle_status || "").toLowerCase();
+      const allFresh = proof.length ? proof.every((item) => item.freshness_ok) : false;
+      return freshness.includes("current") && completeness.includes("complete") && !bundle.includes("mixed") && !bundle.includes("incomplete") && allFresh;
+    }
+
+    function readerOverallLabel(status) {
+      if (isReaderHealthy(status)) return "정상";
+      const overall = String(status.overall || "").toLowerCase();
+      const freshness = String(status.freshness || "").toLowerCase();
+      const completeness = String(status.completeness || "").toLowerCase();
+      const bundle = String(status.source_bundle_status || "").toLowerCase();
+      if (overall.includes("failed")) return "사용 보류";
+      if (freshness.includes("stale") || completeness.includes("partial") || completeness.includes("incomplete") || bundle.includes("mixed")) return "주의 필요";
+      if (overall.includes("degraded")) return "주의 필요";
+      if (overall.includes("partial")) return "확인 필요";
+      return overallLabel(status.overall);
+    }
+
+    function readerStatusNote(status, selectedDate) {
+      if (isReaderHealthy(status)) {
+        return `${status.expected_latest_date || selectedDate || "-"} 기준 5개 자료가 같은 날짜로 맞았습니다. RTY 옵션은 포함됐지만 집계 기준이 ES/NQ와 달라 절대 크기 비교만 조심하면 됩니다.`;
+      }
+      const reasons = [];
+      if (!String(status.freshness || "").toLowerCase().includes("current")) reasons.push("최신 날짜가 아직 덜 올라왔습니다");
+      if (!String(status.completeness || "").toLowerCase().includes("complete")) reasons.push("필수 자료가 일부 비어 있습니다");
+      if (String(status.source_bundle_status || "").toLowerCase().includes("mixed")) reasons.push("자료 날짜가 서로 섞여 있습니다");
+      return `${reasons.join(" · ") || "세부 상태를 한 번 더 확인해야 합니다"}.`;
+    }
+
+    function overallLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("normal")) return "정상";
+      if (text.includes("partial")) return "사용 가능";
+      if (text.includes("degraded")) return "주의 필요";
+      if (text.includes("failed")) return "사용 보류";
+      return value || "-";
+    }
+
+    function sourceQualityLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("official") && !text.includes("fallback")) return "공식 원본";
+      if (text.includes("fallback") || text.includes("rolling")) return "공식 원본 + 최신 파일 재확인";
+      if (text.includes("mixed")) return "출처 혼합";
+      return value || "-";
+    }
+
+    function bundleLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("complete_same_day")) return "같은 날짜 완료";
+      if (text.includes("mixed")) return "날짜 섞임";
+      if (text.includes("incomplete")) return "일부 누락";
+      return value || "-";
+    }
+
+    function mismatchLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (!text || text === "not_checked") return "이번 턴 미확인";
+      if (text.includes("false") || text.includes("no")) return "브라우저와 일치";
+      if (text.includes("true") || text.includes("mismatch")) return "차이 의심";
+      return value || "-";
+    }
+
+    function runTypeLabel(value) {
+      const text = String(value || "").toUpperCase();
+      if (text === "PRELIMINARY") return "장중/예비";
+      if (text === "FINAL") return "최종";
+      return value || "확인 중";
+    }
+
+    function fetchMethodLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("direct")) return "직접 수집";
+      if (text.includes("browser")) return "브라우저 수집";
+      if (text.includes("rolling")) return "CME 현재 파일";
+      if (text.includes("drop")) return "수동 파일";
+      return value || "-";
+    }
+
+    function modeLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("exact")) return "고정 날짜 파일";
+      if (text.includes("rolling")) return "최신/current 파일";
+      return value || "-";
+    }
+
+    function yesNoLabel(value) {
+      return value ? "사용" : "미사용";
+    }
+
+    function componentLabel(value) {
+      const text = String(value || "").toLowerCase();
+      if (text.includes("section11")) return "선물 본문";
+      if (text.includes("section40")) return "NQ/RTY 옵션";
+      if (text.includes("section47")) return "ES 콜 옵션";
+      if (text.includes("section48")) return "ES 풋 옵션";
+      if (text.includes("equities")) return "시장 요약표";
+      return value || "-";
+    }
+
+    function formatBasisShort(value) {
+      const text = String(value || "").toLowerCase();
+      if (!text || text === "null" || text === "undefined") return "-";
+      if (text.includes("official") && text.includes("summary")) return "공식 요약표 기준";
+      if (text.includes("official")) return "공식 원본 기준";
+      if (text.includes("option") || text.includes("section")) return "옵션 표 합산 기준";
+      if (text.includes("fallback") || text.includes("rolling")) return "공식 원본 보조 기준";
+      return value;
+    }
+
+    function availableSymbols(row) {
+      return ["ES", "NQ", "RTY"].filter((symbol) => row.contracts && row.contracts[symbol]);
+    }
+
+    function optionSymbols(row) {
+      return ["ES", "NQ", "RTY"].filter((symbol) => row.contracts && row.contracts[symbol] && row.contracts[symbol].options && row.contracts[symbol].options.has_option_pressure !== false);
+    }
+
+    function getLatestRow() {
+      return dashboardData.rows.find((row) => row.date === dashboardData.latest_date) || dashboardData.rows[dashboardData.rows.length - 1];
+    }
+
+    function collectAvailableDates(row) {
+      const dates = new Set([row.date]);
+      availableSymbols(row).forEach((symbol) => {
+        ((row.contracts[symbol].cycle || {}).daily_timeline || []).forEach((item) => dates.add(item.date));
+      });
+      return [...dates].sort();
+    }
+
+    function getDailySnapshot(row, symbol, selectedDate) {
+      const base = row.contracts[symbol].daily || {};
+      const timeline = ((row.contracts[symbol].cycle || {}).daily_timeline || []);
+      const sample = timeline.find((item) => item.date === selectedDate);
+      if (!sample) {
+        return {
+          ...base,
+          source_date: row.date,
+          sample_found: false,
+          is_latest_snapshot: true,
+        };
+      }
+      return {
+        ...base,
+        ...sample,
+        total_volume: sample.total_volume ?? base.total_volume ?? 0,
+        volume_to_oi_ratio: sample.volume_to_oi_ratio ?? base.volume_to_oi_ratio ?? 0,
+        source_date: sample.date,
+        sample_found: true,
+        is_latest_snapshot: sample.date === row.date,
+      };
+    }
+
+    function getHistoryBlock(symbol, row) {
+      if (row && row.contracts && row.contracts[symbol] && row.contracts[symbol].cycle && row.contracts[symbol].cycle.history) {
+        return row.contracts[symbol].cycle.history;
+      }
+      if (dashboardData.weekly_history && dashboardData.weekly_history[symbol]) {
+        return dashboardData.weekly_history[symbol];
+      }
+      return null;
+    }
+
+    function getHistory(symbol, row, key) {
+      const block = getHistoryBlock(symbol, row);
+      if (block && block[key]) {
+        return block[key].map((value) => Number(value || 0));
+      }
+      return dashboardData.rows.map((item) => Number(item.contracts[symbol].weekly[key] || 0));
+    }
+
+    function getHistoryDates(symbol, row) {
+      const block = getHistoryBlock(symbol, row);
+      if (block && block.dates) {
+        return block.dates;
+      }
+      return dashboardData.rows.map((item) => item.contracts[symbol].weekly.date);
+    }
+
+    function sparkline(values, colorClass, labels = [], seriesLabel = "값") {
+      const width = 240;
+      const height = 54;
+      const rawMin = Math.min(...values);
+      const rawMax = Math.max(...values);
+      const min = Math.min(rawMin, 0);
+      const max = Math.max(rawMax, 0);
+      const range = max - min || 1;
+      const points = values.map((value, index) => {
+        const x = values.length === 1 ? width / 2 : index * (width / (values.length - 1));
+        const y = height - ((value - min) / range) * (height - 8) - 4;
+        return `${x},${y}`;
+      }).join(" ");
+      const stroke = colorClass === "positive" ? "#15805f" : colorClass === "negative" ? "#bf5647" : "#1f2c33";
+      const zeroY = height - ((0 - min) / range) * (height - 8) - 4;
+      const dots = values.map((value, index) => {
+        const x = values.length === 1 ? width / 2 : index * (width / (values.length - 1));
+        const y = height - ((value - min) / range) * (height - 8) - 4;
+        const tooltip = `${labels[index] || `표본 ${index + 1}`}\n${seriesLabel}: ${formatSignedContracts(value)}`;
+        return `<circle class="spark-dot" cx="${x}" cy="${y}" r="${index === values.length - 1 ? 3.8 : 3}" stroke="${stroke}" data-chart-tooltip="${escapeAttr(tooltip)}"><title>${escapeHtml(tooltip)}</title></circle>`;
+      }).join("");
+      return `
+        <svg class="sparkline" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" y1="${zeroY}" x2="${width}" y2="${zeroY}" stroke="rgba(31, 44, 51, 0.16)" stroke-width="1.2" stroke-dasharray="4 4"></line>
+          <polyline fill="none" stroke="${stroke}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${points}"></polyline>
+          ${dots}
+        </svg>
+      `;
+    }
+
+    function parseIsoDate(value) {
+      return new Date(`${value}T00:00:00`);
+    }
+
+    function dayDiff(start, end) {
+      const ms = parseIsoDate(end) - parseIsoDate(start);
+      return Math.round(ms / 86400000);
+    }
+
+    function timelineSvg(cycle) {
+      const timeline = cycle.daily_timeline || [];
+      const width = 420;
+      const height = 180;
+      const padLeft = 48;
+      const padRight = 22;
+      const padTop = 18;
+      const padBottom = 30;
+      const plotWidth = width - padLeft - padRight;
+      const plotHeight = height - padTop - padBottom;
+      const totalDays = Math.max(cycle.days_total, 1);
+      const values = timeline.map((item) => Number(item.total_open_interest || 0));
+      const min = Math.min(...values, values[0] || 0);
+      const max = Math.max(...values, values[0] || 1);
+      const range = max - min || 1;
+      const xForDate = (value) => padLeft + (dayDiff(cycle.previous_major_expiry, value) / totalDays) * plotWidth;
+      const yForValue = (value) => padTop + plotHeight - ((Number(value || 0) - min) / range) * plotHeight;
+      const guides = [
+        { label: "Prev Exp", date: cycle.previous_major_expiry },
+        { label: "Roll", date: cycle.next_roll_date },
+        { label: "Next Exp", date: cycle.next_major_expiry }
+      ];
+      const gridLines = [0, 0.5, 1].map((ratio) => {
+        const y = padTop + plotHeight * ratio;
+        return `<line class="timeline-gridline" x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}"></line>`;
+      }).join("");
+      const guideLines = guides.map((item) => {
+        const x = xForDate(item.date);
+        return `
+          <line class="timeline-guide" x1="${x}" y1="${padTop}" x2="${x}" y2="${height - padBottom + 4}"></line>
+          <text class="timeline-label" x="${x}" y="${height - 8}" text-anchor="middle">${item.label}</text>
+        `;
+      }).join("");
+      if (!timeline.length) {
+        return `
+          <svg class="timeline-svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">
+            ${gridLines}
+            ${guideLines}
+            <text class="timeline-label" x="${width / 2}" y="${height / 2}" text-anchor="middle">표본이 아직 없습니다.</text>
+          </svg>
+        `;
+      }
+
+      const points = timeline.map((item) => `${xForDate(item.date)},${yForValue(item.total_open_interest)}`).join(" ");
+      const dots = timeline.map((item, index) => {
+        const x = xForDate(item.date);
+        const y = yForValue(item.total_open_interest);
+        const labelY = index % 2 === 0 ? y - 10 : y + 18;
+        const tooltip = `${item.date}\nTotal OI: ${formatContracts(item.total_open_interest)}\nΔOI: ${formatSignedContracts(item.oi_change)}\nFront share: ${formatPct(item.front_oi_share, 1)}\n판독: ${item.roll_state || "-"}`;
+        return `
+          <circle class="timeline-dot" cx="${x}" cy="${y}" r="${index === timeline.length - 1 ? 5 : 4}" data-chart-tooltip="${escapeAttr(tooltip)}"><title>${escapeHtml(tooltip)}</title></circle>
+          <text class="timeline-label" x="${x}" y="${labelY}" text-anchor="middle">${item.date.slice(5)}</text>
+        `;
+      }).join("");
+
+      return `
+        <svg class="timeline-svg" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">
+          ${gridLines}
+          ${guideLines}
+          ${timeline.length > 1 ? `<polyline class="timeline-line" points="${points}"></polyline>` : ""}
+          ${dots}
+          <text class="timeline-label" x="${padLeft}" y="${padTop - 4}">OI ${formatContracts(min)} - ${formatContracts(max)}</text>
+        </svg>
+      `;
+    }
+
+    function timelineRows(timeline) {
+      const rows = [...timeline].slice(-5).reverse().map((item) => `
+        <tr>
+          <td>${item.date}</td>
+          <td>${formatContracts(item.total_open_interest)}</td>
+          <td class="${toneClass(item.oi_change)}">${formatSignedContracts(item.oi_change)}</td>
+          <td>${formatPct(item.front_oi_share, 1)}</td>
+          <td>${item.roll_state}</td>
+        </tr>
+      `).join("");
+      return rows || `<tr><td colspan="5">표본이 아직 없습니다.</td></tr>`;
+    }
+
+    function buildHeroMeta(row, selectedDate) {
+      const status = sourceStatus();
+      const items = [
+        `일간 기준 ${selectedDate}`,
+        `주간 수급 기준 ${row.tff_asof}`,
+        `데이터 상태 ${readerOverallLabel(status)}`
+      ];
+      heroMeta.innerHTML = items.map((item) => `<div class="chip">${item}</div>`).join("");
+    }
+
+    function summaryCards(row, selectedDate) {
+      return availableSymbols(row).flatMap((symbol) => {
+        const daily = getDailySnapshot(row, symbol, selectedDate);
+        return [
+          `
+            <article class="card">
+              <div class="summary-label">${symbol} 현재가</div>
+              <div class="summary-value">${formatPoints(daily.last_price, 2)}</div>
+              <div class="summary-note ${toneClass(daily.daily_change_pct)}">${formatSigned(daily.daily_change_pct, 2, "%")} 일간 변동률 · ${daily.source_date}</div>
+            </article>
+          `,
+          `
+            <article class="card">
+              <div class="summary-label">${symbol} OI 변화</div>
+              <div class="summary-value ${toneClass(daily.oi_change)}">${formatSignedContracts(daily.oi_change)}</div>
+              <div class="summary-note">총 OI ${formatContracts(daily.total_open_interest)} · 거래량 ${formatContracts(daily.total_volume)} · term ${daily.term_structure || "-"} ${formatSigned(daily.front_next_settle_spread, 2, " pt")}</div>
+            </article>
+          `
+        ];
+      }).join("");
+    }
+
+    function cycleCard(symbol, row) {
+      const cycle = row.contracts[symbol].cycle;
+      if (!cycle) {
+        return `<article class="card"><div class="empty">만기 사이클 데이터가 아직 없습니다.</div></article>`;
+      }
+      const phase2 = row.contracts[symbol].maturity.phase2;
+      return `
+        <article class="card">
+          <div class="symbol-head">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">${cycle.roll_phase}</div>
+          </div>
+          <div class="subgrid">
+            <div class="subcard">
+              <div class="subcard-label">직전 분기만기</div>
+              <div class="subcard-value">${cycle.previous_major_expiry}</div>
+              <div class="subcard-note">최근 근접 만기 ${cycle.recent_near_expiry || "-"}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">다음 분기만기</div>
+              <div class="subcard-value">${cycle.next_major_expiry}</div>
+              <div class="subcard-note">다음 근접 만기 ${cycle.next_near_expiry || "-"}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">예상 롤 시작일</div>
+              <div class="subcard-value">${cycle.next_roll_date}</div>
+              <div class="subcard-note">${cycle.days_remaining}일 남음 · TFF 표본 ${cycle.weekly_points}주</div>
+            </div>
+          </div>
+          <div class="subcard" style="margin-top:12px;">
+            <div class="subcard-label">사이클 진행률</div>
+            <div class="subcard-value">${formatPct(cycle.progress_pct, 1)}</div>
+            <div class="subcard-note">${cycle.days_elapsed}일 경과 / 총 ${cycle.days_total}일 · CME 일간 표본 ${cycle.daily_sample_count}일 · 누적 OI ${formatSignedContracts(cycle.cumulative_oi_change)}</div>
+            <div class="progress-track"><div class="progress-fill" style="width:${Math.min(cycle.progress_pct, 100)}%"></div></div>
+          </div>
+          <div class="subgrid" style="margin-top:12px;">
+            <div class="subcard">
+              <div class="subcard-label">Asset Managers</div>
+              <div class="subcard-value ${toneClass(cycle.changes.asset_manager_net)}">${formatSignedContracts(cycle.changes.asset_manager_net)}</div>
+              <div class="subcard-note">직전 만기 이후 순포지션 변화, 계약 기준</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Leveraged Funds</div>
+              <div class="subcard-value ${toneClass(cycle.changes.leveraged_fund_net)}">${formatSignedContracts(cycle.changes.leveraged_fund_net)}</div>
+              <div class="subcard-note">직전 만기 이후 순포지션 변화, 계약 기준</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Dealers</div>
+              <div class="subcard-value ${toneClass(cycle.changes.dealer_net)}">${formatSignedContracts(cycle.changes.dealer_net)}</div>
+              <div class="subcard-note">직전 만기 이후 순포지션 변화, 계약 기준</div>
+            </div>
+          </div>
+          <div class="interpret-box">
+            <div class="interpret-title">이번 만기 사이클 해석</div>
+            <div class="interpret-copy">${cycle.summary}</div>
+            <div class="interpret-copy" style="margin-top:8px;">롤오버/OI 메모: ${phase2.interpretation}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function timelineCard(symbol, row) {
+      const cycle = row.contracts[symbol].cycle;
+      const meta = cycle.timeline_meta || {};
+      const timeline = cycle.daily_timeline || [];
+      return `
+        <article class="card timeline-card">
+          <div class="timeline-header">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">${fetchMethodLabel(meta.source_mode || "rolling_only")}</div>
+          </div>
+          <div class="timeline-note">사이클 ${cycle.previous_major_expiry} → ${cycle.next_major_expiry} · 가용 표본 ${meta.sample_count || 0}일 · ${meta.missing_days_note || "가용 표본만 표시한다."}</div>
+          <div class="timeline-legend">
+            <div class="subcard">
+              <div class="subcard-label">누적 OI 변화</div>
+              <div class="subcard-value ${toneClass(meta.cumulative_oi_change)}">${formatSignedContracts(meta.cumulative_oi_change)}</div>
+              <div class="subcard-note">${meta.first_available_date || "-"} → ${meta.last_available_date || "-"}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">최근 Front Share</div>
+              <div class="subcard-value">${timeline.length ? formatPct(timeline[timeline.length - 1].front_oi_share, 1) : "-"}</div>
+              <div class="subcard-note">${timeline.length ? timeline[timeline.length - 1].front_contract : "-"}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">최근 판독</div>
+              <div class="subcard-value">${timeline.length ? timeline[timeline.length - 1].roll_state : "-"}</div>
+              <div class="subcard-note">${timeline.length ? formatSignedContracts(timeline[timeline.length - 1].oi_change) : "표본 대기"}</div>
+            </div>
+          </div>
+          ${timelineSvg(cycle)}
+          <div class="subcard">
+            <div class="subcard-label">최근 표본 5일</div>
+            <table>
+              <thead><tr><th>Date</th><th>Total OI (계약)</th><th>ΔOI (계약)</th><th>Front (%)</th><th>Read</th></tr></thead>
+              <tbody>${timelineRows(timeline)}</tbody>
+            </table>
+          </div>
+        </article>
+      `;
+    }
+
+    function weeklyCard(symbol, row) {
+      const weekly = row.contracts[symbol].weekly;
+      const cycle = row.contracts[symbol].cycle;
+      const historyDates = getHistoryDates(symbol, row);
+      const historyLength = historyDates.length;
+      const series = [
+        {
+          label: "Leveraged Funds",
+          key: "leveraged_fund_net",
+          pctKey: weekly.leveraged_fund_net_pct_oi !== undefined ? "leveraged_fund_net_pct_oi" : "leveraged_net_pct_oi"
+        },
+        { label: "Asset Managers", key: "asset_manager_net", pctKey: "asset_manager_net_pct_oi" },
+        { label: "Dealers", key: "dealer_net", pctKey: "dealer_net_pct_oi" }
+      ];
+      const rows = series.map((item) => {
+        const values = getHistory(symbol, row, item.key);
+        const latest = values[values.length - 1] || 0;
+        return `
+          <div class="trend-row">
+            <div class="trend-label">${item.label}</div>
+            <div>${sparkline(values, toneClass(latest), historyDates, item.label)}</div>
+            <div class="trend-value ${toneClass(latest)}">${formatSignedContracts(latest)}<br>${formatPct(weekly[item.pctKey], 1)} of OI</div>
+          </div>
+        `;
+      }).join("");
+      return `
+        <article class="card">
+          <div class="symbol-head">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">${historyLength}주 표본</div>
+          </div>
+          <div class="range-copy">분기만기 사이클 ${cycle ? `${cycle.previous_major_expiry} → ${cycle.next_major_expiry}` : "-"} · 실제 TFF 관측 ${historyDates[0] || "-"} → ${historyDates[historyDates.length - 1] || "-"}</div>
+          <div class="trend-list">${rows}</div>
+        </article>
+      `;
+    }
+
+    function interpretDaily(daily, cycle) {
+      const priceUp = Number(daily.daily_change_pct) >= 0;
+      const oiUp = Number(daily.oi_change) >= 0;
+      const rollActive = cycle && cycle.roll_phase === "롤 주간";
+      if (priceUp && oiUp) {
+        return {
+          title: "신규 롱 가능성",
+          copy: rollActive
+            ? "가격 상승과 OI 증가가 동반됐다. 다만 롤 주간이라 신규 롱과 차월물 이동이 함께 섞였을 수 있어, 추세 확인은 차월물 OI 유지와 총 OI 지속 증가를 같이 본다."
+            : "가격 상승과 OI 증가가 동반됐다. 신규 포지션 유입 관점에서는 롱 성격일 가능성을 우선 본다."
+        };
+      }
+      if (!priceUp && oiUp) {
+        return {
+          title: "신규 숏 가능성",
+          copy: rollActive
+            ? "가격 하락과 OI 증가가 같이 나타났다. 다만 롤 주간에는 신규 숏과 월물 이동이 섞일 수 있어, 근월물 비중과 차월물 증가를 함께 봐야 한다."
+            : "가격 하락과 OI 증가가 같이 나타났다. 새 숏 포지션 유입 가능성을 우선 해석한다."
+        };
+      }
+      if (priceUp && !oiUp) {
+        return {
+          title: "숏커버 가능성",
+          copy: rollActive
+            ? "가격은 오르지만 OI는 줄었다. 숏커버와 롤오버가 같이 나타났을 가능성을 우선 본다."
+            : "가격은 오르지만 OI는 줄었다. 기존 숏 청산이 반등을 만들었을 가능성을 우선 본다."
+        };
+      }
+      return {
+        title: "롱청산 가능성",
+        copy: rollActive
+          ? "가격 하락과 OI 감소가 같이 나타났다. 롱청산과 롤오버가 함께 섞였을 가능성을 열어 두고 본다."
+          : "가격 하락과 OI 감소가 같이 나타났다. 기존 롱 포지션 축소 가능성을 우선 해석한다."
+      };
+    }
+
+    function buildStructureRead(weekly) {
+      const assetLong = Number(weekly.asset_manager_net) > 0;
+      const levShort = Number(weekly.leveraged_fund_net) < 0;
+      const levLong = Number(weekly.leveraged_fund_net) > 0;
+      if (assetLong && levShort) {
+        return "주간 구조는 자산운용 순롱과 레버리지 순숏이 맞서는 형태다. 상방으로는 숏 squeeze 여지, 하방으로는 추세 재개 리스크가 함께 남아 있다.";
+      }
+      if (assetLong && levLong) {
+        return "주간 구조는 자산운용과 레버리지 모두 순롱 쪽이라, 추세 추종 성격이 더 강한 편으로 읽힌다.";
+      }
+      if (!assetLong && !levLong) {
+        return "주간 구조는 자산운용과 레버리지 모두 방어적이라, 반등이 나와도 추세 전환 판단은 보수적으로 보는 편이 낫다.";
+      }
+      return "주간 구조는 한쪽으로 강하게 정렬되지 않아, 일간 OI와 만기 구간 판독의 비중이 더 크다.";
+    }
+
+    function buildOptionsRead(options) {
+      if (Number(options.put_call_oi_ratio) >= 1.5) {
+        return "옵션은 풋 헤지 우위라 아직 깔끔한 risk-on 확정으로 읽기 어렵다.";
+      }
+      if (Number(options.put_call_oi_ratio) <= 0.85) {
+        return "옵션은 콜 우위라 상방 추종 심리가 상대적으로 강한 편이다.";
+      }
+      return "옵션은 한쪽으로 크게 치우치지 않아 방향성보다는 만기 전 변동성 참고값에 가깝다.";
+    }
+
+    function buildTraderChecklist(daily, cycle, readTitle) {
+      if (readTitle === "신규 롱 가능성") {
+        return cycle.roll_phase === "롤 주간"
+          ? "차월물 비중이 유지되면서 총 OI가 계속 늘어나는지 확인하면 롤 이후 신규 롱 재형성 여부를 가늠하기 쉽다."
+          : "다음 날에도 가격 고점 유지와 OI 재증가가 이어지는지 확인하는 편이 추격보다 낫다.";
+      }
+      if (readTitle === "신규 숏 가능성") {
+        return cycle.roll_phase === "롤 주간"
+          ? "근월물 이탈보다 차월물 OI 확대가 더 빠른지 봐야 신규 숏과 롤오버를 구분할 수 있다."
+          : "하락 연장 시 OI가 계속 붙는지, 아니면 하루짜리 공포성 증가였는지 구분하는 확인이 필요하다.";
+      }
+      if (readTitle === "숏커버 가능성") {
+        return "반등 다음 날 OI가 다시 붙지 않으면 단순 숏커버성 반등으로 끝날 수 있어 추격은 보수적으로 보는 편이 낫다.";
+      }
+      return "하락 이후 OI 재증가 없이 거래량만 줄면 롱청산성 조정일 수 있어, 하방 추세 확정은 다음 OI 반응까지 확인하는 편이 안전하다.";
+    }
+
+    function buildSelectedDateNote(row, selectedDate) {
+      if (selectedDate === row.date) {
+        return `선택한 일간 기준일과 최신 종합 기준일이 같다. 주간 구조는 ${row.tff_asof}, 옵션/만기와 일간 흐름은 ${row.date} 기준으로 함께 읽으면 된다.`;
+      }
+      return `선택한 일간 기준일은 ${selectedDate}이고, 주간 TFF와 옵션/만기 구조는 최신 공식 기준일 ${row.date}를 유지한다. 즉, 일간 흐름은 ${selectedDate}, 구조 해석은 ${row.tff_asof}/${row.date} 기준으로 나눠 읽어야 한다.`;
+    }
+
+    function buildTraderView(symbol, row, selectedDate) {
+      const weekly = row.contracts[symbol].weekly;
+      const options = row.contracts[symbol].options;
+      const cycle = row.contracts[symbol].cycle;
+      const daily = getDailySnapshot(row, symbol, selectedDate);
+      const read = interpretDaily(daily, cycle);
+      const rollClause = cycle.roll_phase === "롤 주간"
+        ? `${daily.front_contract} 비중 ${formatPct(daily.front_oi_share, 1)}라 롤오버 영향이 크다.`
+        : `${daily.front_contract} 비중 ${formatPct(daily.front_oi_share, 1)}로 당일 OI 해석을 비교적 단순하게 볼 수 있다.`;
+      return {
+        summary: `${daily.source_date} 당일 흐름은 '${read.title}'로 읽힌다. ${buildStructureRead(weekly)} ${buildOptionsRead(options)} ${rollClause}`,
+        checklist: buildTraderChecklist(daily, cycle, read.title),
+      };
+    }
+
+    function futuresBias(readTitle) {
+      if (readTitle === "신규 롱 가능성") return { score: 1, label: "bullish", text: "신규 롱" };
+      if (readTitle === "숏커버 가능성") return { score: 0.35, label: "covering", text: "숏커버" };
+      if (readTitle === "신규 숏 가능성") return { score: -1, label: "bearish", text: "신규 숏" };
+      return { score: -0.35, label: "liquidation", text: "롱청산" };
+    }
+
+    function optionBias(options) {
+      if (!options || options.has_option_pressure === false || options.put_call_oi_ratio == null) {
+        return { score: 0, label: "no-options", text: "옵션 미수집" };
+      }
+      const ratio = Number(options.put_call_oi_ratio || 0);
+      if (ratio >= 1.5) return { score: -0.6, label: "put-heavy", text: `풋 OI 우세 ${formatMultiple(ratio, 2)}` };
+      if (ratio <= 0.85) return { score: 0.45, label: "call-heavy", text: `콜 OI 우세 ${formatMultiple(ratio, 2)}` };
+      return { score: 0, label: "balanced", text: `중립권 ${formatMultiple(ratio, 2)}` };
+    }
+
+    function alignmentFor(symbol, row, selectedDate) {
+      const daily = getDailySnapshot(row, symbol, selectedDate);
+      const read = interpretDaily(daily, row.contracts[symbol].cycle);
+      const futures = futuresBias(read.title);
+      const options = optionBias(row.contracts[symbol].options);
+      let alignment = "mixed";
+      if (futures.score * options.score > 0) alignment = "aligned";
+      if (futures.score * options.score < 0) alignment = "conflict";
+      return { daily, read, futures, options, alignment };
+    }
+
+    function riskTape(row, selectedDate) {
+      const alignments = availableSymbols(row).map((symbol) => ({ symbol, ...alignmentFor(symbol, row, selectedDate) }));
+      const score = alignments.reduce((sum, item) => sum + item.futures.score + item.options.score, 0) / alignments.length;
+      let tape = "방어적 혼조";
+      let tone = "warning";
+      if (score >= 0.75) {
+        tape = "Risk-on 우세";
+        tone = "positive";
+      } else if (score <= -0.75) {
+        tape = "Risk-off 우세";
+        tone = "negative";
+      }
+      const leader = alignments.slice().sort((a, b) => Math.abs(b.futures.score + b.options.score) - Math.abs(a.futures.score + a.options.score))[0];
+      return { tape, tone, score, leader, alignments };
+    }
+
+    function expiryRisk(symbol, row) {
+      const options = row.contracts[symbol].options;
+      const cycle = row.contracts[symbol].cycle;
+      const daily = row.contracts[symbol].daily;
+      const largest = [...(options.expiry_ladder || [])].sort((a, b) => Number(b.share || 0) - Number(a.share || 0))[0] || {};
+      const share = Number(largest.share || 0);
+      let risk = "low";
+      if (share >= 40 || cycle.roll_phase === "롤 주간") risk = "high";
+      else if (share >= 25 || cycle.days_remaining <= 35) risk = "medium";
+      return {
+        risk,
+        largestBucket: largest.expiry || "-",
+        largestShare: share,
+        nextExpiry: cycle.next_major_expiry,
+        daysRemaining: cycle.days_remaining,
+        frontShare: daily.front_oi_share,
+        rollPhase: cycle.roll_phase,
+      };
+    }
+
+    function renderTraderBriefing(row, selectedDate) {
+      const status = sourceStatus();
+      const tape = riskTape(row, selectedDate);
+      const proof = status.component_proof || [];
+      const rollingCount = proof.filter((item) => item.exact_or_rolling === "rolling").length;
+      const optionVolumeCoverage = optionSymbols(row).some((symbol) => row.contracts[symbol].options.total_call_volume != null || row.contracts[symbol].options.total_put_volume != null)
+        ? "section_total"
+        : "not_collected";
+      qualityGrid.innerHTML = [
+        `<article class="card"><div class="summary-label">데이터 상태</div><div class="summary-value">${status.run_type || "UNKNOWN"}</div><div class="badge-row">${labelBadge("overall", status.overall)}${labelBadge("source", status.source_quality)}${labelBadge("bundle", status.source_bundle_status)}</div><div class="summary-note">CME 공식 PDF 기반이며, 아래 카드에서 최신성/집계 기준을 따로 확인합니다.</div></article>`,
+        `<article class="card"><div class="summary-label">원본 최신성</div><div class="summary-value">${proof.filter((item) => item.freshness_ok).length}/${proof.length || 5}</div><div class="summary-note">${rollingCount}개 보조 경로 사용 · mixed-date ${status.mixed_date_bundle ? "yes" : "no"} · run ${status.run_type || "UNKNOWN"}</div></article>`,
+        `<article class="card"><div class="summary-label">브라우저와 로컬 비교</div><div class="summary-value">${status.browser_local_mismatch || "not_checked"}</div><div class="summary-note">같은 턴에 브라우저 검증하지 않으면 화면 일치로 단정하지 않습니다.</div></article>`,
+        `<article class="card"><div class="summary-label">포함 지수</div><div class="summary-value">${availableSymbols(row).join(" / ")}</div><div class="summary-note">ES/NQ/RTY 선물, CFTC TFF, 옵션 쏠림을 함께 봅니다.</div></article>`,
+      ].join("");
+      riskGrid.innerHTML = [
+        `<article class="card"><div class="summary-label">Risk Tape</div><div class="summary-value ${tape.tone}">${tape.tape}</div><div class="summary-note">확신도 ${formatPlain(Math.abs(tape.score) * 100, 0, "%")} · 리더 ${tape.leader.symbol} · ES/NQ/RTY 기준</div><div class="interpret-box"><div class="interpret-title">오늘 결론</div><div class="interpret-copy">ES/NQ 옵션 압력과 RTY Section40 option pressure를 함께 보되, RTY는 ES/NQ와 basis가 달라 크기 비교를 제한한다.</div></div></article>`,
+        `<article class="card"><div class="summary-label">Derived Signal Warning</div><div class="summary-value">해석 신호</div><div class="summary-note">가격+OI 판독은 파생 해석이며, 일일 투자자별 순매수나 가격 방향의 원인이 아닙니다.</div><div class="badge-row">${labelBadge("official source", "CME/CFTC")}${labelBadge("derived", "price+OI read")}${labelBadge("option volume", optionVolumeCoverage)}</div></article>`,
+      ].join("");
+      actionGrid.innerHTML = [
+        `<article class="card"><div class="summary-label">다음 체크 1</div><div class="summary-value">ES 하방 압력</div><ol class="action-list"><li>가격 하락 + OI 증가가 다음 표본에서도 반복되는지 확인</li><li>Put-heavy OI가 완화되지 않으면 추격 매수는 보수적</li></ol></article>`,
+        `<article class="card"><div class="summary-label">다음 체크 2</div><div class="summary-value">NQ 숏커버 확인</div><ol class="action-list"><li>반등 뒤 OI가 다시 붙지 않으면 숏커버성 반등 가능성</li><li>Options put/call 1배 이상이면 clean long 확정 금지</li></ol></article>`,
+        `<article class="card"><div class="summary-label">다음 체크 3</div><div class="summary-value">RTY 폭 확인</div><ol class="action-list"><li>RTY 가격/OI가 ES/NQ와 같은 방향인지 확인</li><li>RTY 옵션은 Section40 parsed total 기준이라 집계 기준 차이를 감안해 본다</li></ol></article>`,
+      ].join("");
+    }
+
+    function renderProofAndPressure(row, selectedDate) {
+      const status = sourceStatus();
+      const proofRows = (status.component_proof || []).map((item) => `
+        <tr>
+          <td>${item.component_name}</td>
+          <td>${item.expected_latest_date || "-"}</td>
+          <td>${item.actual_component_date || "-"}</td>
+          <td>${fetchMethodLabel(item.fetch_method)}</td>
+          <td>${yesNoLabel(item.fallback_used)}</td>
+          <td>${modeLabel(item.exact_or_rolling)}</td>
+        </tr>
+      `).join("");
+      const pressureRows = optionSymbols(row).map((symbol) => {
+        const options = row.contracts[symbol].options;
+        const align = alignmentFor(symbol, row, selectedDate);
+        const exp = expiryRisk(symbol, row);
+        const callVol = options.total_call_volume == null ? "미수집" : formatContracts(options.total_call_volume);
+        const putVol = options.total_put_volume == null ? "미수집" : formatContracts(options.total_put_volume);
+        const callOiChange = options.total_call_oi_change == null ? "미수집" : formatSignedContracts(options.total_call_oi_change);
+        const putOiChange = options.total_put_oi_change == null ? "미수집" : formatSignedContracts(options.total_put_oi_change);
+        return `
+          <tr>
+            <td>${symbol}</td>
+            <td>${callVol}</td>
+            <td>${putVol}</td>
+            <td>${formatContracts(options.total_call_oi)}</td>
+            <td>${formatContracts(options.total_put_oi)}</td>
+            <td>${callOiChange}</td>
+            <td>${putOiChange}</td>
+            <td>${formatMultiple(options.put_call_oi_ratio, 2)}</td>
+            <td>${align.alignment}</td>
+            <td>${exp.risk} · ${exp.largestBucket} ${formatPct(exp.largestShare, 1)}</td>
+          </tr>
+        `;
+      }).join("");
+      proofGrid.innerHTML = [
+        `<article class="card"><div class="symbol-head"><div class="symbol" style="font-size:28px;">Source Proof</div><div class="symbol-tag">${status.overall || "-"}</div></div><table class="proof-table"><thead><tr><th>Component</th><th>Expected</th><th>Actual</th><th>Method</th><th>Fallback</th><th>Mode</th></tr></thead><tbody>${proofRows}</tbody></table><div class="subcard-note">browser/local mismatch는 ${status.browser_local_mismatch || "not_checked"}입니다.</div></article>`,
+        `<article class="card"><div class="symbol-head"><div class="symbol" style="font-size:28px;">Option Pressure</div><div class="symbol-tag">OI + 옵션 표</div></div><table class="proof-table"><thead><tr><th>Symbol</th><th>Call Vol</th><th>Put Vol</th><th>Call OI</th><th>Put OI</th><th>Call ΔOI</th><th>Put ΔOI</th><th>P/C OI</th><th>Align</th><th>Expiry Risk</th></tr></thead><tbody>${pressureRows}</tbody></table><div class="subcard-note">옵션 거래량과 ΔOI는 자동 파싱 가능한 CME 옵션 표 합산 기준입니다. 공식 요약표 전체 옵션 OI와 범위가 다를 수 있어, 전체 옵션 원인으로 단정하지 않습니다.</div></article>`,
+      ].join("");
+    }
+
+    function flowCard(symbol, row, selectedDate) {
+      const daily = getDailySnapshot(row, symbol, selectedDate);
+      const cycle = row.contracts[symbol].cycle;
+      const read = interpretDaily(daily, cycle);
+      return `
+        <article class="card">
+          <div class="symbol-head">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">${daily.source_date} Price + OI Read</div>
+          </div>
+          <div class="subgrid">
+            <div class="subcard">
+              <div class="subcard-label">현재가</div>
+              <div class="subcard-value">${formatPoints(daily.last_price, 2)}</div>
+              <div class="subcard-note ${toneClass(daily.daily_change_pct)}">${formatSigned(daily.daily_change_pct, 2, "%")}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">OI Delta</div>
+              <div class="subcard-value ${toneClass(daily.oi_change)}">${formatSignedContracts(daily.oi_change)}</div>
+              <div class="subcard-note">총 OI ${formatContracts(daily.total_open_interest)}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Volume / OI</div>
+              <div class="subcard-value">${formatMultiple(daily.volume_to_oi_ratio, 2)}</div>
+              <div class="subcard-note">${daily.front_contract} · Front share ${formatPct(daily.front_oi_share, 1)}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Term Spread</div>
+              <div class="subcard-value ${toneClass(daily.front_next_settle_spread)}">${formatSigned(daily.front_next_settle_spread, 2, " pt")}</div>
+              <div class="subcard-note">${daily.front_contract}/${daily.next_contract} · ${daily.term_structure || "-"}</div>
+            </div>
+          </div>
+          <div class="interpret-box">
+            <div class="interpret-title">${read.title}</div>
+            <div class="interpret-copy">${read.copy}</div>
+            <div class="interpret-copy" style="margin-top:8px;">추가 메모: ${daily.source_date} 기준 가격 ${formatSigned(daily.daily_change_pct, 2, "%")} / OI ${formatSignedContracts(daily.oi_change)} / 거래량 ${formatContracts(daily.total_volume)}.</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function strikeTable(title, rows) {
+      if (!rows || !rows.length) {
+        return `
+          <div class="subcard">
+            <div class="subcard-label">${title}</div>
+            <div class="subcard-note" style="margin-top:10px;">현재 자동 파이프라인에서 이 표는 부분 지원 상태다.</div>
+          </div>
+        `;
+      }
+      const body = rows.map((row) => `
+        <tr>
+          <td>${formatPoints(row.strike, 0)}</td>
+          <td>${formatContracts(row.oi)}</td>
+        </tr>
+      `).join("");
+      return `
+        <div class="subcard">
+          <div class="subcard-label">${title}</div>
+          <table>
+            <thead><tr><th>Strike (pt)</th><th>OI (계약)</th></tr></thead>
+            <tbody>${body}</tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function optionsCard(symbol, row, selectedDate) {
+      const options = row.contracts[symbol].options;
+      const maturity = row.contracts[symbol].maturity;
+      const basisNote = selectedDate !== row.date
+        ? `<div class="subcard-note" style="margin-top:10px;">옵션 OI와 만기 해석은 최신 공식 기준일 ${row.date} 기준으로 유지한다.</div>`
+        : "";
+      const expiryRows = options.expiry_ladder.map((item) => `
+        <div class="expiry-row">
+          <div>${item.expiry}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${item.share}%"></div></div>
+          <div>${formatPct(item.share, 1)}</div>
+        </div>
+      `).join("");
+      const keyDates = maturity.key_dates.map((item) => `
+        <tr>
+          <td>${item.date}</td>
+          <td>${item.label}</td>
+          <td>${item.dte}일</td>
+        </tr>
+      `).join("");
+      return `
+        <article class="card">
+          <div class="symbol-head">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">Options on Futures</div>
+          </div>
+          <div class="subgrid">
+            <div class="subcard">
+              <div class="subcard-label">Call OI</div>
+              <div class="subcard-value">${formatContracts(options.total_call_oi)}</div>
+              <div class="subcard-note">근접 만기 ${options.nearest_expiry}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Put OI</div>
+              <div class="subcard-value">${formatContracts(options.total_put_oi)}</div>
+              <div class="subcard-note">Put/Call ${formatMultiple(options.put_call_oi_ratio, 2)}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Read</div>
+              <div class="subcard-value">${options.put_call_oi_ratio > 1 ? "Put 우세" : "Call 우세"}</div>
+              <div class="subcard-note">${options.note}</div>
+            </div>
+          </div>
+          ${basisNote}
+          <div class="strike-grid">
+            ${strikeTable("Top Call Walls", options.call_walls)}
+            ${strikeTable("Top Put Walls", options.put_walls)}
+          </div>
+          <div class="subcard" style="margin-top:12px;">
+            <div class="subcard-label">주요 만기 일정</div>
+            <table>
+              <thead><tr><th>날짜</th><th>이벤트</th><th>DTE</th></tr></thead>
+              <tbody>${keyDates}</tbody>
+            </table>
+          </div>
+          <div class="subcard" style="margin-top:12px;">
+            <div class="subcard-label">주요 만기 집중도</div>
+            <div class="expiry-list">${expiryRows}</div>
+          </div>
+          <div class="interpret-box">
+            <div class="interpret-title">2차 확장안: 만기 전후 OI 해석</div>
+            <div class="interpret-copy">만기 전 근월물 OI 변화 ${formatSignedContracts(maturity.phase2.pre_expiry_front_oi_change)} / 차월물 OI 변화 ${formatSignedContracts(maturity.phase2.pre_expiry_next_oi_change)}</div>
+            <div class="interpret-copy">추정 롤오버 비율 ${formatPct(maturity.phase2.estimated_roll_ratio * 100, 1)} · 만기 후 OI 재형성 ${formatSignedContracts(maturity.phase2.post_expiry_oi_rebuild)}</div>
+            <div class="interpret-copy" style="margin-top:8px;">${maturity.phase2.interpretation}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function commentaryCards(row, selectedDate) {
+      const views = availableSymbols(row).map((symbol) => ({ symbol, ...buildTraderView(symbol, row, selectedDate) }));
+      const viewItems = views.map((view) => `
+            <li>${view.symbol}: ${view.summary}</li>
+            <li>${view.symbol} 체크 포인트: ${view.checklist}</li>
+      `).join("");
+      return `
+        <article class="note-card">
+          <h3>트레이더 관점 코멘트</h3>
+          <ul>
+            ${viewItems}
+          </ul>
+        </article>
+        <article class="note-card">
+          <h3>해석 원칙</h3>
+          <ul>
+            <li>${buildSelectedDateNote(row, selectedDate)}</li>
+            <li>KRX는 공식 투자자별 일일 수급이 있어 더 직접적으로 읽히지만, 미국판은 주간 TFF와 일간 CME OI를 합성한 보조 해석 구조다.</li>
+            <li>그래서 이 대시보드는 방향을 단정하는 도구가 아니라, 구조 포지션과 당일 OI 반응을 같이 읽는 트레이더용 체크리스트에 가깝다.</li>
+            <li>만기 주간에는 OI 증가를 곧바로 신규 포지션으로 단정하지 않고, 차월물 비중 변화와 총 OI 유지 여부를 반드시 함께 본다.</li>
+          </ul>
+        </article>
+      `;
+    }
+
+    function footerCards(meta) {
+      return `
+        <article class="footer-card">
+          <h3>이 화면이 알려주는 것</h3>
+          <ul>${meta.can_tell.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </article>
+        <article class="footer-card">
+          <h3>이 화면만으로 알 수 없는 것</h3>
+          <ul>${meta.cannot_tell.map((item) => `<li>${item}</li>`).join("")}</ul>
+        </article>
+      `;
+    }
+
+    function humanExpiry(value) {
+      const text = String(value || "-");
+      if (/^\d{8}$/.test(text) && text.endsWith("00")) {
+        return `${text.slice(0, 4)}-${text.slice(4, 6)} 월물 버킷`;
+      }
+      return text;
+    }
+
+    function formatBasis(value) {
+      const text = String(value || "-");
+      const map = {
+        overview_bucket: "공식 요약표",
+        parsed_option_section_total: "옵션 표 합산",
+        section40_rty_code_blocks: "RTY 코드 블록",
+        section40_rty_code_blocks_plus_implicit_regular_puts: "RTY 풋 보정 합산"
+      };
+      return map[text] || text.replaceAll("_", " ");
+    }
+
+    function formatMaybeContracts(value, signed = false) {
+      if (value == null) return "미수집";
+      return signed ? formatSignedContracts(value) : formatContracts(value);
+    }
+
+    function formatMaybeMultiple(value, digits = 2) {
+      if (value == null) return "미수집";
+      return formatMultiple(value, digits);
+    }
+
+    function dailyBias(daily) {
+      const priceUp = Number(daily.daily_change_pct || 0) >= 0;
+      const oiUp = Number(daily.oi_change || 0) >= 0;
+      if (priceUp && oiUp) {
+        return {
+          score: 1,
+          tone: "positive",
+          label: "신규 롱 유입",
+          note: "가격과 OI가 함께 증가",
+          confirm: "다음 표본에서도 가격 고점 유지와 OI 추가 증가가 같이 나오는지 확인",
+          caution: "옵션 풋 압력이 높으면 clean risk-on으로 단정하지 않기"
+        };
+      }
+      if (!priceUp && oiUp) {
+        return {
+          score: -1,
+          tone: "negative",
+          label: "신규 숏 유입",
+          note: "가격 하락과 OI 증가가 동반",
+          confirm: "하락 중 OI가 계속 붙는지 확인",
+          caution: "롤 구간이면 만기 이동 효과와 신규 숏을 분리해서 보기"
+        };
+      }
+      if (priceUp && !oiUp) {
+        return {
+          score: 0.35,
+          tone: "warning",
+          label: "숏커버 가능성",
+          note: "가격은 오르지만 OI는 감소",
+          confirm: "반등 뒤 OI가 다시 붙는지 확인",
+          caution: "OI가 회복되지 않으면 추격 매수 강도는 낮춰 보기"
+        };
+      }
+      return {
+        score: -0.35,
+        tone: "warning",
+        label: "롱 청산 가능성",
+        note: "가격과 OI가 함께 감소",
+        confirm: "거래량 감소와 OI 회복 여부를 확인",
+        caution: "급락 원인으로 단정하지 말고 청산성 조정으로 먼저 보기"
+      };
+    }
+
+    function optionBias(options) {
+      if (!options || options.has_option_pressure === false || options.put_call_oi_ratio == null) {
+        return { score: 0, label: "no-options", tone: "neutral", text: "옵션 미수집", note: "선물/TFF 중심으로만 해석" };
+      }
+      const ratio = Number(options.put_call_oi_ratio || 0);
+      if (ratio >= 1.5) {
+        return {
+          score: -0.6,
+          label: "put-heavy",
+          tone: "negative",
+          text: `풋 OI 우위 ${formatMultiple(ratio, 2)}`,
+          note: "위험선호를 막는 방어/헤지 압력으로 해석"
+        };
+      }
+      if (ratio <= 0.85) {
+        return {
+          score: 0.45,
+          label: "call-heavy",
+          tone: "positive",
+          text: `콜 OI 우위 ${formatMultiple(ratio, 2)}`,
+          note: "상방 추종 또는 콜 수요 우위로 해석"
+        };
+      }
+      return {
+        score: 0,
+        label: "balanced",
+        tone: "neutral",
+        text: `옵션 중립권 ${formatMultiple(ratio, 2)}`,
+        note: "방향성보다 만기/변동성 참고값에 가깝다"
+      };
+    }
+
+    function alignmentFor(symbol, row, selectedDate) {
+      const daily = getDailySnapshot(row, symbol, selectedDate);
+      const futures = dailyBias(daily);
+      const options = optionBias(row.contracts[symbol].options);
+      let alignment = "mixed";
+      if (futures.score * options.score > 0) alignment = "aligned";
+      if (futures.score * options.score < 0) alignment = "conflict";
+      return { daily, futures, options, alignment };
+    }
+
+    function riskTape(row, selectedDate) {
+      const alignments = availableSymbols(row).map((symbol) => ({ symbol, ...alignmentFor(symbol, row, selectedDate) }));
+      const score = alignments.reduce((sum, item) => sum + item.futures.score + item.options.score, 0) / Math.max(alignments.length, 1);
+      let tape = "방어적 혼조";
+      let tone = "warning";
+      if (score >= 0.75) {
+        tape = "Risk-on 우위";
+        tone = "positive";
+      } else if (score <= -0.75) {
+        tape = "Risk-off 우위";
+        tone = "negative";
+      }
+      const leader = alignments.slice().sort((a, b) => Math.abs(b.futures.score + b.options.score) - Math.abs(a.futures.score + a.options.score))[0] || alignments[0];
+      return { tape, tone, score, leader, alignments };
+    }
+
+    function expiryRisk(symbol, row) {
+      const contract = row.contracts[symbol] || {};
+      const options = contract.options || {};
+      const cycle = contract.cycle || {};
+      const daily = contract.daily || {};
+      const largest = [...(options.expiry_ladder || [])].sort((a, b) => Number(b.share || 0) - Number(a.share || 0))[0] || {};
+      const share = Number(largest.share || 0);
+      let risk = "low";
+      if (share >= 40 || cycle.roll_phase === "롤 주간") risk = "high";
+      else if (share >= 25 || Number(cycle.days_remaining || 999) <= 35) risk = "medium";
+      return {
+        risk,
+        largestBucket: humanExpiry(largest.expiry),
+        largestShare: share,
+        nextExpiry: cycle.next_major_expiry,
+        daysRemaining: cycle.days_remaining,
+        frontShare: daily.front_oi_share,
+        rollPhase: cycle.roll_phase,
+      };
+    }
+
+    function signalRow(label, value, note, tone = "neutral") {
+      return `
+        <div class="signal-row">
+          <div>
+            <div class="subcard-label">${label}</div>
+            <div class="signal-note">${note || ""}</div>
+          </div>
+          <div class="signal-value ${tone}">${value}</div>
+        </div>
+      `;
+    }
+
+    function basisSignalRow(value, note, tone = "neutral") {
+      return `
+        <div class="signal-row data-basis-row">
+          <div>
+            <div class="subcard-label">데이터 기준일</div>
+            <div class="signal-value ${tone}">${value}</div>
+            <div class="signal-note">${note || ""}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function marketReadCard(symbol, row, selectedDate) {
+      const contract = row.contracts[symbol];
+      const daily = getDailySnapshot(row, symbol, selectedDate);
+      const options = contract.options || {};
+      const futures = dailyBias(daily);
+      const opt = optionBias(options);
+      const exp = expiryRisk(symbol, row);
+      const basis = `OI ${formatBasis(options.oi_basis)} / 거래량·ΔOI ${formatBasis(options.volume_basis || options.oi_basis)}`;
+      const dateValue = selectedDate === row.date
+        ? `${daily.source_date} CME 선물·옵션 자료`
+        : `선물 ${daily.source_date} / 옵션·TFF 최신 ${row.date}`;
+      const dateNote = `${basis}. 이 날짜 자료로 위 카드의 가격, OI, 옵션 압력을 계산합니다.`;
+      return `
+        <article class="card">
+          <div class="symbol-head">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">${futures.label}</div>
+          </div>
+          <div class="signal-stack">
+            ${signalRow("선물 흐름", futures.label, `${futures.note} · 가격 ${formatSigned(daily.daily_change_pct, 2, "%")} / OI ${formatSignedContracts(daily.oi_change)} / Vol-OI ${formatMultiple(daily.volume_to_oi_ratio, 2)}`, futures.tone)}
+            ${signalRow("옵션 쏠림", opt.text, `P/C Vol ${formatMaybeMultiple(options.put_call_volume_ratio, 2)} · Call ΔOI ${formatMaybeContracts(options.total_call_oi_change, true)} / Put ΔOI ${formatMaybeContracts(options.total_put_oi_change, true)}`, opt.tone)}
+            ${signalRow("만기 / 스프레드", `${daily.term_structure || "-"} ${formatSigned(daily.front_next_settle_spread, 2, " pt")}`, `${daily.front_contract} share ${formatPct(daily.front_oi_share, 1)} · 만기 집중 ${exp.largestBucket} ${formatPct(exp.largestShare, 1)}`, "neutral")}
+            ${basisSignalRow(dateValue, dateNote, symbol === "RTY" ? "warning" : "neutral")}
+          </div>
+        </article>
+      `;
+    }
+
+    function buildRiskConclusion(tape) {
+      const futures = tape.alignments.map((item) => `${item.symbol} ${item.futures.label}`).join(" · ");
+      const putHeavy = tape.alignments.filter((item) => item.options.label === "put-heavy").map((item) => item.symbol);
+      const optionText = putHeavy.length
+        ? `${putHeavy.join("/")}는 풋 OI가 높아 상승 tape를 그대로 risk-on으로 확정하기 어렵습니다.`
+        : "옵션 압력은 방향성 판단을 크게 막지 않습니다.";
+      return `${futures}. ${optionText}`;
+    }
+
+    function renderHeroBrief(row, selectedDate, status, tape) {
+      if (!heroBrief) return;
+      const componentCount = (status.component_proof || []).filter((item) => item.freshness_ok).length;
+      const symbols = tape.alignments.map((item) => `${item.symbol} ${item.futures.label}`).join(" · ");
+      const rtyOptions = row.contracts.RTY && row.contracts.RTY.options && row.contracts.RTY.options.has_option_pressure !== false;
+      heroBrief.innerHTML = [
+        `<div class="hero-brief-card"><div class="hero-brief-label">오늘의 결론</div><div class="hero-brief-value">${selectedDate} · ${tape.tape}</div><div class="hero-brief-note">${buildRiskConclusion(tape)}</div></div>`,
+        `<div class="hero-brief-card"><div class="hero-brief-label">지수별 흐름</div><div class="hero-brief-value">${symbols}</div><div class="hero-brief-note">가격+OI 조합은 방향 힌트일 뿐, 일별 투자자 순매수로 해석하지 않습니다.</div></div>`,
+        `<div class="hero-brief-card"><div class="hero-brief-label">데이터 상태</div><div class="hero-brief-value">${componentCount}/${(status.component_proof || []).length || 5} 최신 · ${readerOverallLabel(status)}</div><div class="hero-brief-note">${rtyOptions ? "RTY 옵션은 포함됐지만 집계 기준이 ES/NQ와 달라 절대 크기 비교만 제한됩니다." : "RTY 옵션 데이터가 없으면 futures/TFF 중심으로 봅니다."}</div></div>`
+      ].join("");
+    }
+
+    function actionWatchCard(symbol, row, selectedDate, index) {
+      const daily = getDailySnapshot(row, symbol, selectedDate);
+      const options = row.contracts[symbol].options || {};
+      const futures = dailyBias(daily);
+      const opt = optionBias(options);
+      const exp = expiryRisk(symbol, row);
+      const optionCheck = opt.label === "put-heavy"
+        ? `풋 OI ${formatMaybeMultiple(options.put_call_oi_ratio, 2)}가 완화되는지 확인`
+        : opt.label === "call-heavy"
+          ? `콜 우위가 거래량까지 동반되는지 확인`
+          : `옵션은 중립권이므로 다음 OI 변화가 더 중요`;
+      const basisCheck = symbol === "RTY"
+        ? "RTY 옵션은 옵션 표 합산 기준이라 ES/NQ와 직접 크기 비교는 보수적으로 보기"
+        : `옵션 OI 기준 ${formatBasis(options.oi_basis)}, 거래량/ΔOI 기준 ${formatBasis(options.volume_basis || options.oi_basis)}`;
+      return `
+        <article class="card">
+          <div class="summary-label">다음 체크 ${index + 1}</div>
+          <div class="summary-value">${symbol} ${futures.label}</div>
+          <ol class="action-list">
+            <li>${daily.source_date} 가격 ${formatSigned(daily.daily_change_pct, 2, "%")} / OI ${formatSignedContracts(daily.oi_change)}가 다음 표본에서도 이어지는지 확인</li>
+            <li>${optionCheck}</li>
+            <li>${futures.caution} · ${basisCheck}</li>
+          </ol>
+        </article>
+      `;
+    }
+
+    function renderTraderBriefing(row, selectedDate) {
+      const status = sourceStatus();
+      const tape = riskTape(row, selectedDate);
+      const proof = status.component_proof || [];
+      const rollingCount = proof.filter((item) => item.exact_or_rolling === "rolling" || item.fallback_used).length;
+      const optionVolumeCoverage = optionSymbols(row).map((symbol) => symbol).join(" / ") || "not_collected";
+      renderHeroBrief(row, selectedDate, status, tape);
+      marketReadGrid.innerHTML = availableSymbols(row).map((symbol) => marketReadCard(symbol, row, selectedDate)).join("");
+      qualityGrid.innerHTML = [
+        `<article class="card"><div class="summary-label">데이터 상태</div><div class="summary-value">${runTypeLabel(status.run_type)} · ${readerOverallLabel(status)}</div><div class="badge-row">${labelBadge("판정", readerOverallLabel(status))}${labelBadge("수집", sourceQualityLabel(status.source_quality))}${labelBadge("날짜", bundleLabel(status.source_bundle_status))}</div><div class="summary-note">${readerStatusNote(status, selectedDate)}</div></article>`,
+        `<article class="card"><div class="summary-label">CME 최신일 확인</div><div class="summary-value">${proof.filter((item) => item.freshness_ok).length}/${proof.length || 5}</div><div class="summary-note">${status.expected_latest_date || "-"} 기준으로 5개 자료를 확인했습니다. 공식 최신 파일 재확인 ${rollingCount}개 · 날짜 섞임 ${status.mixed_date_bundle ? "있음" : "없음"}</div></article>`,
+        `<article class="card"><div class="summary-label">브라우저와 로컬 비교</div><div class="summary-value">${mismatchLabel(status.browser_local_mismatch)}</div><div class="summary-note">같은 턴에 브라우저 검증을 하지 않은 경우, local 결과만으로 최신 화면 일치를 단정하지 않습니다.</div></article>`,
+        `<article class="card"><div class="summary-label">포함 범위</div><div class="summary-value">${availableSymbols(row).join(" / ")}</div><div class="summary-note">ES/NQ/RTY 선물, CFTC TFF, 옵션 쏠림을 함께 봅니다. RTY 옵션은 옵션 표 합산 기준으로 포함됩니다.</div></article>`,
+      ].join("");
+      const scoreRows = tape.alignments.map((item) => signalRow(
+        item.symbol,
+        formatSigned(item.futures.score + item.options.score, 2),
+        `${item.futures.label} ${formatSigned(item.futures.score, 2)} + ${item.options.text} ${formatSigned(item.options.score, 2)} · ${item.alignment}`,
+        item.futures.score + item.options.score > 0 ? "positive" : item.futures.score + item.options.score < 0 ? "negative" : "neutral"
+      )).join("");
+      riskGrid.innerHTML = [
+        `<article class="card"><div class="summary-label">오늘 시장 톤</div><div class="summary-value ${tape.tone}">${tape.tape}</div><div class="summary-note">확신도 ${formatPlain(Math.abs(tape.score) * 100, 0, "%")} · 리더 ${tape.leader.symbol} · ES/NQ/RTY 기준</div><div class="interpret-box"><div class="interpret-title">오늘 결론</div><div class="interpret-copy">${buildRiskConclusion(tape)}</div></div></article>`,
+        `<article class="card"><div class="summary-label">판독 근거</div><div class="summary-value">선물 + 옵션</div><div class="summary-note">오늘 시장 톤은 가격+OI와 옵션 쏠림을 함께 본 체크리스트 점수입니다. 원인 설명이 아니라 읽는 순서를 도와주는 요약입니다.</div><div class="signal-stack">${scoreRows}</div></article>`,
+      ].join("");
+      actionGrid.innerHTML = availableSymbols(row).map((symbol, index) => actionWatchCard(symbol, row, selectedDate, index)).join("");
+    }
+
+    function renderProofAndPressure(row, selectedDate) {
+      const status = sourceStatus();
+      const proof = status.component_proof || [];
+      const proofTotal = proof.length || 0;
+      const freshCount = proof.filter((item) => item.freshness_ok).length;
+      const fallbackCount = proof.filter((item) => item.fallback_used).length;
+      const rollingCount = proof.filter((item) => item.exact_or_rolling === "rolling").length;
+      const proofRows = (status.component_proof || []).map((item) => `
+        <tr>
+          <td>${componentLabel(item.component_name)}</td>
+          <td>${item.expected_latest_date || "-"}</td>
+          <td>${item.actual_component_date || "-"}</td>
+          <td>${fetchMethodLabel(item.fetch_method)}</td>
+          <td>${yesNoLabel(item.fallback_used)}</td>
+          <td>${modeLabel(item.exact_or_rolling)}</td>
+        </tr>
+      `).join("");
+      const sourceSummary = `
+        <div class="source-readable">
+          <div class="source-read-item">
+            <div class="subcard-label">최신 날짜 확인</div>
+            <div class="source-read-value">${freshCount}/${proofTotal || 5} 일치</div>
+            <div class="source-read-note">기대 최신일 ${status.expected_latest_date || row.date || "-"} 기준입니다.</div>
+          </div>
+          <div class="source-read-item">
+            <div class="subcard-label">최신 파일 재확인</div>
+            <div class="source-read-value">${fallbackCount ? `${fallbackCount}개 확인` : "없음"}</div>
+            <div class="source-read-note">다른 출처가 아니라 CME/CFTC 공식 자료를 최신 파일로 다시 확인한 횟수입니다.</div>
+          </div>
+          <div class="source-read-item">
+            <div class="subcard-label">현재 파일 형태</div>
+            <div class="source-read-value">${rollingCount ? "최신/current 파일" : "고정 날짜 파일"}</div>
+            <div class="source-read-note">current 파일은 CME가 매일 같은 주소에 최신 PDF를 올리는 방식입니다.</div>
+          </div>
+        </div>
+        <div class="proof-legend">브라우저 대조 상태는 ${mismatchLabel(status.browser_local_mismatch)}입니다. 일반 독자는 위 3칸만 먼저 보면 되고, 아래 표는 필요할 때만 펼치면 됩니다.</div>
+      `;
+      const pressureRows = optionSymbols(row).map((symbol) => {
+        const options = row.contracts[symbol].options;
+        const align = alignmentFor(symbol, row, selectedDate);
+        const exp = expiryRisk(symbol, row);
+        return `
+          <tr>
+            <td>${symbol}</td>
+            <td>${formatMaybeContracts(options.total_call_volume)}</td>
+            <td>${formatMaybeContracts(options.total_put_volume)}</td>
+            <td>${formatMaybeContracts(options.total_call_oi)}</td>
+            <td>${formatMaybeContracts(options.total_put_oi)}</td>
+            <td>${formatMaybeContracts(options.total_call_oi_change, true)}</td>
+            <td>${formatMaybeContracts(options.total_put_oi_change, true)}</td>
+            <td>${formatMaybeMultiple(options.put_call_oi_ratio, 2)}</td>
+            <td>${align.alignment}</td>
+            <td>${exp.risk} · ${exp.largestBucket} ${formatPct(exp.largestShare, 1)}</td>
+            <td>${formatBasis(options.oi_basis)}</td>
+            <td>${formatBasis(options.volume_basis || options.oi_basis)}</td>
+          </tr>
+        `;
+      }).join("");
+      proofGrid.innerHTML = [
+        `<article class="card"><div class="symbol-head"><div class="symbol" style="font-size:28px;">데이터 상태</div><div class="symbol-tag">${readerOverallLabel(status)}</div></div>${sourceSummary}<details class="technical-proof"><summary>운영자용 수집 세부 보기</summary><div class="table-scroll" style="margin-top:10px;"><table class="proof-table"><thead><tr><th>자료</th><th>기대 최신일</th><th>확인된 날짜</th><th>읽은 방식</th><th>보조 사용</th><th>파일 형태</th></tr></thead><tbody>${proofRows}</tbody></table></div></details></article>`,
+        `<article class="card"><div class="symbol-head"><div class="symbol" style="font-size:28px;">옵션 쏠림</div><div class="symbol-tag">OI + 옵션 표</div></div><div class="table-scroll"><table class="proof-table"><thead><tr><th>지수</th><th>콜 거래량</th><th>풋 거래량</th><th>콜 OI</th><th>풋 OI</th><th>콜 ΔOI</th><th>풋 ΔOI</th><th>P/C OI</th><th>정렬</th><th>만기 위험</th><th>OI 집계 기준</th><th>거래량/ΔOI 집계 기준</th></tr></thead><tbody>${pressureRows}</tbody></table></div><div class="subcard-note">ES/NQ OI는 공식 요약표를 우선 사용하고, RTY OI/거래량/ΔOI는 CME 옵션 표 합산 기준입니다. 집계 기준이 달라 종목 간 절대 크기 비교는 제한적으로만 쓰는 편이 안전합니다.</div></article>`,
+      ].join("");
+    }
+
+    function strikeTable(title, rows) {
+      if (!rows || !rows.length) {
+        return `
+          <div class="subcard">
+            <div class="subcard-label">${title}</div>
+            <div class="subcard-note" style="margin-top:10px;">현재 자동 파이프라인에서 읽을 수 있는 strike가 없습니다.</div>
+          </div>
+        `;
+      }
+      const body = rows.map((row) => `
+        <tr>
+          <td>${formatPoints(row.strike, 0)}</td>
+          <td>${formatMaybeContracts(row.oi)}</td>
+          <td>${formatMaybeContracts(row.volume)}</td>
+          <td>${formatMaybeContracts(row.oi_change, true)}</td>
+        </tr>
+      `).join("");
+      return `
+        <div class="subcard">
+          <div class="subcard-label">${title}</div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Strike</th><th>OI</th><th>Volume</th><th>ΔOI</th></tr></thead>
+              <tbody>${body}</tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    function optionsCard(symbol, row, selectedDate) {
+      const options = row.contracts[symbol].options;
+      const maturity = row.contracts[symbol].maturity;
+      const basisNote = selectedDate !== row.date
+        ? `<div class="subcard-note" style="margin-top:10px;">옵션 OI와 만기 구조는 최신 공식 기준일 ${row.date}를 유지합니다.</div>`
+        : "";
+      const expiryRows = (options.expiry_ladder || []).map((item) => `
+        <div class="expiry-row">
+          <div>${humanExpiry(item.expiry)}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${item.share}%"></div></div>
+          <div>${formatPct(item.share, 1)}</div>
+        </div>
+      `).join("");
+      const keyDates = (maturity.key_dates || []).map((item) => `
+        <tr>
+          <td>${item.date}</td>
+          <td>${item.label}</td>
+          <td>${item.dte}일</td>
+        </tr>
+      `).join("");
+      const opt = optionBias(options);
+      return `
+        <article class="card">
+          <div class="symbol-head">
+            <div class="symbol">${symbol}</div>
+            <div class="symbol-tag">Options on Futures</div>
+          </div>
+          <div class="subgrid">
+            <div class="subcard">
+              <div class="subcard-label">Call OI</div>
+              <div class="subcard-value">${formatMaybeContracts(options.total_call_oi)}</div>
+              <div class="subcard-note">근접 만기 ${options.nearest_expiry || "-"}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Put OI</div>
+              <div class="subcard-value">${formatMaybeContracts(options.total_put_oi)}</div>
+              <div class="subcard-note">Put/Call ${formatMaybeMultiple(options.put_call_oi_ratio, 2)}</div>
+            </div>
+            <div class="subcard">
+              <div class="subcard-label">Read</div>
+              <div class="subcard-value ${opt.tone}">${opt.text}</div>
+              <div class="subcard-note">${opt.note}</div>
+            </div>
+          </div>
+          ${basisNote}
+          <div class="interpret-box">
+            <div class="interpret-title">데이터 기준</div>
+            <div class="interpret-copy">OI 기준 ${formatBasis(options.oi_basis)} · 거래량/ΔOI 기준 ${formatBasis(options.volume_basis || options.oi_basis)}${symbol === "RTY" ? " · RTY는 옵션 표 합산 기준이라 ES/NQ 공식 요약표와 직접 비교를 제한합니다." : ""}</div>
+          </div>
+          <div class="strike-grid">
+            ${strikeTable("Top Call Walls", options.call_walls)}
+            ${strikeTable("Top Put Walls", options.put_walls)}
+          </div>
+          <div class="subcard" style="margin-top:12px;">
+            <div class="subcard-label">주요 만기 일정</div>
+            <div class="table-scroll"><table>
+              <thead><tr><th>날짜</th><th>이벤트</th><th>DTE</th></tr></thead>
+              <tbody>${keyDates}</tbody>
+            </table></div>
+          </div>
+          <div class="subcard" style="margin-top:12px;">
+            <div class="subcard-label">주요 만기 집중도</div>
+            <div class="expiry-list">${expiryRows}</div>
+          </div>
+          <div class="interpret-box">
+            <div class="interpret-title">만기 전후 OI 체크</div>
+            <div class="interpret-copy">만기 전 근월물 OI 변화 ${formatSignedContracts(maturity.phase2.pre_expiry_front_oi_change)} / 차월물 OI 변화 ${formatSignedContracts(maturity.phase2.pre_expiry_next_oi_change)}</div>
+            <div class="interpret-copy">추정 롤오버 비율 ${formatPct(maturity.phase2.estimated_roll_ratio * 100, 1)} · 만기 후 OI 재형성 ${formatSignedContracts(maturity.phase2.post_expiry_oi_rebuild)}</div>
+            <div class="interpret-copy" style="margin-top:8px;">${maturity.phase2.interpretation}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function render(selectedDate) {
+      if (!dashboardData || !dashboardData.rows || !dashboardData.rows.length) {
+        summaryGrid.innerHTML = '<div class="empty">대시보드 데이터가 없습니다.</div>';
+        return;
+      }
+      const row = getLatestRow();
+      buildHeroMeta(row, selectedDate);
+      generatedStamp.textContent = dashboardData.source_mode === "sample"
+        ? "현재 화면은 구조 검토용 샘플 데이터입니다."
+        : selectedDate === row.date
+          ? `생성 시각 ${dashboardData.generated_at} · 일간/옵션 최신 기준일 ${row.date} · CFTC 기준일 ${row.tff_asof}`
+          : `생성 시각 ${dashboardData.generated_at} · 선택 일간 기준일 ${selectedDate} · 최신 옵션 기준일 ${row.date} · CFTC 기준일 ${row.tff_asof}`;
+      renderTraderBriefing(row, selectedDate);
+      renderProofAndPressure(row, selectedDate);
+      summaryGrid.innerHTML = summaryCards(row, selectedDate);
+      cycleGrid.innerHTML = availableSymbols(row).map((symbol) => cycleCard(symbol, row)).join("");
+      timelineGrid.innerHTML = availableSymbols(row).map((symbol) => timelineCard(symbol, row)).join("");
+      weeklyGrid.innerHTML = availableSymbols(row).map((symbol) => weeklyCard(symbol, row)).join("");
+      flowGrid.innerHTML = availableSymbols(row).map((symbol) => flowCard(symbol, row, selectedDate)).join("");
+      optionsGrid.innerHTML = optionSymbols(row).map((symbol) => optionsCard(symbol, row, selectedDate)).join("");
+      commentaryGrid.innerHTML = commentaryCards(row, selectedDate);
+      footerGrid.innerHTML = footerCards(row.meta);
+    }
+
+    function init() {
+      if (!dashboardData || !dashboardData.rows || !dashboardData.rows.length) {
+        summaryGrid.innerHTML = '<div class="empty">tracker 데이터 파일을 찾지 못했습니다.</div>';
+        return;
+      }
+      const row = getLatestRow();
+      collectAvailableDates(row).forEach((date) => {
+        const option = document.createElement("option");
+        option.value = date;
+        option.textContent = date;
+        dateSelect.appendChild(option);
+      });
+      dateSelect.value = dashboardData.latest_date || row.date;
+      dateSelect.addEventListener("change", (event) => render(event.target.value));
+      render(dateSelect.value);
+    }
+
+    init();
+  </script>
+<footer id="public-footer"><span>출처: <a href="https://www.cmegroup.com/market-data/daily-bulletin.html" target="_blank" rel="noopener">CME Daily Bulletin · CFTC TFF</a></span><span id="public-watermark">S HB</span></footer></body>
+</html>
