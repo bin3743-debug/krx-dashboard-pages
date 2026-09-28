@@ -875,5 +875,12 @@ html{letter-spacing:0}body{padding-bottom:0;min-width:0}*{box-sizing:border-box}
     document.querySelectorAll('.tab-btn').forEach((btn) => btn.addEventListener('click', () => activateTab(btn.dataset.tab)));
     renderAll(payload.as_of_date);
   </script>
-<footer id="public-footer"><span>출처: TIME · KoAct · PLUS 공식 보유자료 및 순자산 공시</span><span id="public-watermark">S HB</span></footer></body>
+<footer id="public-footer"><span>출처: TIME · KoAct · PLUS 공식 보유자료 및 순자산 공시</span><span id="public-watermark">S HB</span></footer><script id="public-status-loader">
+(async()=>{try{const r=await fetch('./status.json',{cache:'no-store'});if(!r.ok)return;
+const s=await r.json();const p=await fetch('./publication.json',{cache:'no-store'}).then(r=>r.json());
+if(s.schema_version!=='1.0'||s.product!==p.product||s.published_as_of!==p.as_of||s.publication_source_key!==p.source_key||s.publication_sha256!==p.sha256)return;
+const reasons={etf_official_aum_pending:'공식 당일 AUM 제공 대기',us_terminal_wait:'CME FINAL 및 동일 기준일 증거 검증 대기'};
+if(!reasons[s.reason])return;const el=document.getElementById('public-basis');if(!el)return;
+el.textContent='갱신 대기 · 최신 대상 '+s.expected_as_of+' · 확인 '+s.checked_at+' · '+reasons[s.reason]+' · 마지막 검증 자료 '+s.published_as_of+' 유지';
+}catch(e){}})();</script></body>
 </html>
