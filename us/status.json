@@ -1,0 +1,1 @@
+{"checked_at": "2026-10-01T15:33:46+00:00", "expected_as_of": "2026-09-30", "product": "us", "publication_sha256": "66a044b26427c475b11cb7c78d3f3e4168896081f25714e3460f9a3667dbd4bf", "publication_source_key": "569129006035e729aa8e2baecf06a699bf8f9d2e76aa71a1750b0165d6822478", "published_as_of": "2026-09-29", "reason": "us_terminal_wait", "schema_version": "1.0", "status": "WAIT"}
